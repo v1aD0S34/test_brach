@@ -4,5 +4,6 @@
 	<unit-link name="Alarms" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="Alarms" ver="5"/>
 	<unit-link name="Alpha_HMI_SecurityConfigurator" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="Alpha.HMI.SecurityConfigurator" ver="5"/>
 	<unit-link name="Trends" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="Trends" ver="5"/>
+	<object file="Ф2.omobj" filter=""/>
 </unit>
 
