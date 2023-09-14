@@ -1,0 +1,156 @@
+<object access-modifier="private" name="Const" display-name="Const" uuid="2679e7ac-6522-49ce-b5bf-ada40e3dcf24" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="MAX_LINES" display-name="MAX_LINES" uuid="b755ce33-bcfe-4598-8874-adaefd7acad7" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="MAX_REPERS" display-name="MAX_REPERS" uuid="2b512776-cda0-484f-8abd-42fd90aefea4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="stNOADVISED" display-name="stNOADVISED" uuid="25324305-abbf-465a-8cb2-582e43b68399" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="stADVISED_OK" display-name="stADVISED_OK" uuid="df4f8fdf-f288-4e62-84e7-d05efd258c88" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="ALL" display-name="ALL" uuid="925a1f08-f5e8-436d-8077-72d8c5389fc9" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="amOPERATIVE" display-name="amOPERATIVE" uuid="38017d08-3f3c-4d2b-97c2-9e22fb4793b3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="amHISTORY" display-name="amHISTORY" uuid="fd0b3629-bcbf-4eeb-84c5-d90d62d5ee85" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="tmSERVER" display-name="tmSERVER" uuid="4328df24-c981-4e2e-a3de-6be0ab603e69" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="tmSOURCE" display-name="tmSOURCE" uuid="97c58379-09ce-4f84-ad18-d6d53de86cd2" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="cmZOOM" display-name="cmZOOM" uuid="6b8f74c0-2b34-441e-af2a-96e24c641fab" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="cmHAND_MOVE" display-name="cmHAND_MOVE" uuid="cb0a8323-f9fa-40d3-9702-218ec8053e9f" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="cmADD_REPER" display-name="cmADD_REPER" uuid="ff76aa57-cd7c-4521-a307-115e877069ac" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="cpVALUE" display-name="cpVALUE" uuid="dc3ada24-ec9b-4957-941e-f1bbfa734930" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="cpQUALITY" display-name="cpQUALITY" uuid="10156a2d-1ff5-4dd6-a79d-75ec577f373e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="cpTIMESTAMP" display-name="cpTIMESTAMP" uuid="a3726815-f03e-4161-89d0-67c8ed702572" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="K_ZOOM" display-name="K_ZOOM" uuid="d5044ff7-bde6-42cc-bc06-6811e876782f" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="5"/>
+	<object access-modifier="private" name="clHIGH_LIGHT" display-name="clHIGH_LIGHT" uuid="3ad6a929-e4a1-4b86-8188-4e23bcb41ece" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="clBLACK" display-name="clBLACK" uuid="99fc5fa3-0599-437e-82eb-80fa4c8e5b3d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="clRED" display-name="clRED" uuid="ab37b9ac-7655-4884-b0e5-55e6f9d6c270" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="clYELLOW" display-name="clYELLOW" uuid="50508482-55a9-4b89-96a0-dad46491bf98" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="clWHITE" display-name="clWHITE" uuid="04daf84a-f96a-4265-8ebe-19bdb72eeda0" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="tgNONE" display-name="tgNONE" uuid="3ee01ded-16d6-467b-9012-db67a809f622" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="tgMAIN_GRAPH" display-name="tgMAIN_GRAPH" uuid="9b589ec0-f523-4c1f-a691-f3373519a308" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="tgFILE_GRAPH" display-name="tgFILE_GRAPH" uuid="d6c96a07-9584-4059-bd26-4e0a99c45248" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="tgLEVEL" display-name="tgLEVEL" uuid="871cd017-f195-4a6e-8dc8-64a03014200d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="slWITHOUT_LINE" display-name="slWITHOUT_LINE" uuid="a0d55d0c-f1d1-4293-8962-607d265b17b5" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+	<object access-modifier="private" name="slSOLID_LINE" display-name="slSOLID_LINE" uuid="94cb4d71-9ee0-4123-959f-915a042623ee" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+	<object access-modifier="private" name="slDOTED_LINE" display-name="slDOTED_LINE" uuid="688e73ac-de3b-4d63-a062-4f150cda99e6" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+	<object access-modifier="private" name="slDASHED_LINE" display-name="slDASHED_LINE" uuid="ce64411f-8632-425e-a93f-003431c20462" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+	<object access-modifier="private" name="dtONE_SECOND" display-name="dtONE_SECOND" uuid="79069411-b05d-4e3a-b1a4-dbfbd9f436bb" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+	<object access-modifier="private" name="scAUTO" display-name="scAUTO" uuid="7b30fbd8-611b-4b2c-8116-6973d4ac6e91" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="scFIXED" display-name="scFIXED" uuid="b5f903ee-1f15-4c0c-8788-2c3f6f048e17" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="vqmHISTORY" display-name="vqmHISTORY" uuid="0c4a45de-721e-4918-b260-99f14cc5697e" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+	<object access-modifier="private" name="vqmOPERATIVE" display-name="vqmOPERATIVE" uuid="609f22d0-5f6f-41bf-8d30-d98481bce667" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+	<object access-modifier="private" name="NULL" display-name="NULL" uuid="c9c090a5-f5e4-4105-8778-09150393702a" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+	<object access-modifier="private" name="cdt" display-name="Типы сигналов" uuid="40157035-b56c-4d01-aaf2-1677540980c4" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<object access-modifier="private" name="EMPTY" display-name="EMPTY" uuid="be322b9e-5145-4a83-b08e-86f137df0abd" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="BOOL" display-name="BOOL" uuid="01dbc189-2031-4082-872b-711d93aed317" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="INT1" display-name="INT1" uuid="870974cf-50de-47e6-82b8-b1d82221e926" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="UINT1" display-name="UINT1" uuid="09c853f4-09fc-45e0-9dbb-31459560e6ec" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="INT2" display-name="INT2" uuid="7d9c0a67-a779-4544-8cd3-4c98d32387fd" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="UINT2" display-name="UINT2" uuid="f5a8c9fa-7c5c-49c6-a227-f8286d480823" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="INT4" display-name="INT4" uuid="70a6c29f-b9e7-4741-995e-5551024f894a" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="UINT4" display-name="UINT4" uuid="f693a391-687f-4ac7-8827-e2dbbecea346" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="INT8" display-name="INT8" uuid="c4413d83-cd11-4c60-b6e6-2639f5da609b" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="UINT8" display-name="UINT8" uuid="40504efa-3665-473c-ac92-6e1f1e25e647" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="FLOAT" display-name="FLOAT" uuid="2467f3a9-3f7b-4338-85f5-9ae66b5dbd34" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="DOUBLE" display-name="DOUBLE" uuid="da036fa1-793d-4506-ba85-eb1a66d8d96e" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="TIMESTAMP" display-name="TIMESTAMP" uuid="905b067a-d0f7-458c-a7f7-38675f19fa18" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<object access-modifier="private" name="STRING" display-name="STRING" uuid="f262cf58-6c3e-4a9f-a854-7de33d664d7c" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+		<init target="EMPTY" ver="5" value="0"/>
+		<init target="BOOL" ver="5" value="1"/>
+		<init target="INT1" ver="5" value="2"/>
+		<init target="UINT1" ver="5" value="3"/>
+		<init target="INT2" ver="5" value="4"/>
+		<init target="UINT2" ver="5" value="5"/>
+		<init target="INT4" ver="5" value="6"/>
+		<init target="UINT4" ver="5" value="7"/>
+		<init target="INT8" ver="5" value="8"/>
+		<init target="UINT8" ver="5" value="9"/>
+		<init target="FLOAT" ver="5" value="10"/>
+		<init target="DOUBLE" ver="5" value="11"/>
+		<init target="TIMESTAMP" ver="5" value="12"/>
+		<init target="STRING" ver="5" value="14"/>
+	</object>
+	<object access-modifier="private" name="cn" display-name="Колонки в таблице Легенды" uuid="d3574417-a2e5-4d90-b21a-4c7a37b16821" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+		<designed target="X" value="-30" ver="5"/>
+		<designed target="Y" value="-30" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<object access-modifier="private" name="ADVISE" display-name="ADVISE" uuid="8a640f2f-0a67-4a36-8c4a-3b1d981b4cfd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="CL_AXIS" display-name="CL_AXIS" uuid="252b57d0-ec41-43d3-8a46-3de9bc16dbcf" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="CL_LINE" display-name="CL_LINE" uuid="9986e3c4-961e-4c20-890c-05466b2ca57a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="LINE_STYLE" display-name="LINE_STYLE" uuid="dcbff07f-5256-4b07-a21d-fc01bce667cd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="MARKER" display-name="MARKER" uuid="20f8ff88-a3e2-4064-9c8a-282a9c032b67" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="DESCRIPTION" display-name="DESCRIPTION" uuid="229168ef-b020-4ca0-b06e-52637522906c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="TAG" display-name="TAG" uuid="618b2f72-4297-4ab4-863d-a16e9a8f2728" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="VALUE" display-name="VALUE" uuid="8358808a-b67d-4175-88c4-1b4657012218" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="EU" display-name="EU" uuid="7ff0dc3f-ba8b-496a-8e95-ea7f751cca72" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="TIME" display-name="TIME" uuid="f240db30-2179-4746-8bdf-5d616bbaf88b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="QUALITY" display-name="QUALITY" uuid="dde260ca-096f-41d3-96db-ad051dbb8532" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="MINIMUM" display-name="MINIMUM" uuid="0c01b719-ee54-4816-880b-13a639a34a51" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="MAXIMUM" display-name="MAXIMUM" uuid="362e3121-8594-4903-b27e-8741b3e68c13" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="QUANTITY" display-name="QUANTITY" uuid="cc5c14d1-7d4d-4e84-8a04-161cd12af85b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<init target="ADVISE" ver="5" value="0"/>
+		<init target="CL_AXIS" ver="5" value="1"/>
+		<init target="CL_LINE" ver="5" value="2"/>
+		<init target="LINE_STYLE" ver="5" value="3"/>
+		<init target="MARKER" ver="5" value="4"/>
+		<init target="DESCRIPTION" ver="5" value="5"/>
+		<init target="TAG" ver="5" value="6"/>
+		<init target="VALUE" ver="5" value="7"/>
+		<init target="EU" ver="5" value="8"/>
+		<init target="TIME" ver="5" value="9"/>
+		<init target="QUALITY" ver="5" value="10"/>
+		<init target="MINIMUM" ver="5" value="11"/>
+		<init target="MAXIMUM" ver="5" value="12"/>
+		<init target="QUANTITY" ver="5" value="13"/>
+	</object>
+	<init target="MAX_LINES" ver="5" value="20"/>
+	<init target="MAX_REPERS" ver="5" value="20"/>
+	<init target="stNOADVISED" ver="5" value="4"/>
+	<init target="stADVISED_OK" ver="5" value="2"/>
+	<init target="ALL" ver="5" value="0"/>
+	<init target="amOPERATIVE" ver="5" value="0"/>
+	<init target="amHISTORY" ver="5" value="1"/>
+	<init target="tmSERVER" ver="5" value="3"/>
+	<init target="tmSOURCE" ver="5" value="2"/>
+	<init target="cmZOOM" ver="5" value="1"/>
+	<init target="cmHAND_MOVE" ver="5" value="2"/>
+	<init target="cmADD_REPER" ver="5" value="3"/>
+	<init target="cpVALUE" ver="5" value="0"/>
+	<init target="cpQUALITY" ver="5" value="1"/>
+	<init target="cpTIMESTAMP" ver="5" value="2"/>
+	<init target="K_ZOOM" ver="5" value="0.1"/>
+	<init target="clHIGH_LIGHT" ver="5" value="0xff00aaff"/>
+	<init target="clBLACK" ver="5" value="0xff000000"/>
+	<init target="clRED" ver="5" value="0xffff0000"/>
+	<init target="clYELLOW" ver="5" value="0xffffff00"/>
+	<init target="clWHITE" ver="5" value="0xffffffff"/>
+	<init target="tgNONE" ver="5" value="0"/>
+	<init target="tgMAIN_GRAPH" ver="5" value="1"/>
+	<init target="tgFILE_GRAPH" ver="5" value="2"/>
+	<init target="tgLEVEL" ver="5" value="3"/>
+	<init target="slWITHOUT_LINE" ver="5" value="0"/>
+	<init target="slSOLID_LINE" ver="5" value="1"/>
+	<init target="slDOTED_LINE" ver="5" value="2"/>
+	<init target="slDASHED_LINE" ver="5" value="3"/>
+	<init target="dtONE_SECOND" ver="5" value="10000000"/>
+	<init target="scAUTO" ver="5" value="2"/>
+	<init target="scFIXED" ver="5" value="0"/>
+	<init target="vqmHISTORY" ver="5" value="1"/>
+	<init target="vqmOPERATIVE" ver="5" value="2"/>
+	<object access-modifier="private" name="dtONE_MINUTE" display-name="dtONE_MINUTE" uuid="8a0627ea-b715-42d2-bc54-737c4ff708aa" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+	<init target="dtONE_MINUTE" ver="5" value="600000000"/>
+	<object access-modifier="private" name="rwmDESIGNER" display-name="rwmDESIGNER" uuid="462a91bd-c74a-4a7c-9835-710408c5b03b" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="rwmWEBVIEWER" display-name="rwmWEBVIEWER" uuid="95274f97-497b-40a0-bca0-de8aa5c49777" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+	<init target="rwmDESIGNER" ver="5" value="0"/>
+	<init target="rwmWEBVIEWER" ver="5" value="1"/>
+</object>
+

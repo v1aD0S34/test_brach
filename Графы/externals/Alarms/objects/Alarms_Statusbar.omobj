@@ -1,0 +1,395 @@
+<type access-modifier="private" name="Alarms_Statusbar" display-name="Alarms_Statusbar" uuid="6a487b77-c5f0-4cbf-a203-f548d75b5459" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1000" ver="5"/>
+	<designed target="Height" value="25" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="ConnectionState" display-name="ConnectionState" uuid="a6009cc7-dcfb-484c-8771-b089183351e5" base-type="ConnectionIndicator" base-type-id="931aa326-7fd9-496c-acaa-61370986249f" ver="3">
+		<designed target="X" value="0" ver="3"/>
+		<designed target="Y" value="575.5" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Width" value="24" ver="5"/>
+		<designed target="Height" value="24" ver="5"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="30402006-01b1-4fe1-9cc2-8b107c7a448d" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="24" ver="5"/>
+			<designed target="MaxHeight" value="24" ver="5"/>
+		</object>
+		<init target="init_ApSource" ver="5" ref="here.ApSource"/>
+	</object>
+	<object access-modifier="private" name="ClearSoundQuery" display-name="ClearSoundQuery" uuid="fb04669b-7d3a-4dfa-9efc-907fbb46b913" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+		<designed target="X" value="24" ver="5"/>
+		<designed target="Y" value="579.5" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="16" ver="5"/>
+		<designed target="Height" value="16" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="ImageFile" value="Alarms_Icons/Warning16.png" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="CurrentFrameNumber" value="0" ver="5"/>
+		<designed target="Speed" value="1" ver="5"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="4042ca33-6392-4f91-a6ea-71da0140efbe" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="16" ver="5"/>
+			<designed target="MinHeight" value="16" ver="5"/>
+			<designed target="MaxWidth" value="16" ver="5"/>
+			<designed target="MaxHeight" value="16" ver="5"/>
+			<do-trace access-modifier="private" target="MinWidth" ver="5">
+				<body>
+					<![CDATA[ApItem.adviseError == "" ? 0 : 16]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[ApItem.adviseError]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ApItem.adviseError != ""]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="44587ec8-3325-4fd8-8e57-99f3dfd79729" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="0" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="LoginBtn" display-name="LoginBtn" uuid="4e4197ff-526e-4203-af1c-25ddc23c1044" base-type="LoginButton" base-type-id="d8d684bc-471f-4726-912c-02ba8a974892" ver="4">
+		<designed target="X" value="41" ver="4"/>
+		<designed target="Y" value="576.5" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.UseSecurity]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ShowDialogOnTop" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.AlwaysOnTopForm]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5">
+			<object access-modifier="private" uuid="bef0cf31-e077-4ad6-9103-d6cef087be57" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="4">
+				<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+					<body>
+						<![CDATA[here.pTheme.BackgroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+					<body>
+						<![CDATA[here.pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="BorderColor" ver="5">
+					<body>
+						<![CDATA[here.pTheme.BorderColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+					<body>
+						<![CDATA[here.pTheme.EditorBrushColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+					<body>
+						<![CDATA[here.pTheme.EditorFontColor]]>
+					</body>
+				</do-trace>
+			</object>
+		</init>
+		<object access-modifier="private" name="HideFlag" display-name="HideFlag" uuid="f36f2a2e-2f4b-43c5-9bf6-2e1946150020" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[LoginBtn.Height = value ? 0 : 20;
+LoginBtn.Width = value ? 0 : 20;
+LoginBtn.UpdateLayout();
+
+here.Width = here.Width;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="5846f3b6-5121-479c-ab2e-dfd4667c12ad" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="1" ver="5"/>
+			<designed target="Bottom" value="1" ver="5"/>
+			<designed target="Left" value="1" ver="5"/>
+			<designed target="Right" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="d3994fe6-b0f0-4c19-8597-d5ab334bca9a" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="22" ver="5"/>
+			<designed target="MaxHeight" value="22" ver="5"/>
+			<do-trace access-modifier="private" target="MaxWidth" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.UseSecurity ? 22 : 0]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="Width" value="22" ver="5"/>
+		<designed target="Height" value="22" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ViewFilterState" display-name="ViewFilterState" uuid="3adb15ec-91d3-45f9-ba88-303b6671a4bd" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3">
+		<designed target="X" value="66" ver="3"/>
+		<designed target="Y" value="579.5" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="16" ver="3"/>
+		<designed target="Height" value="16" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="ImageFile" value="Alarms_Icons/ViewFilter16.png" ver="3"/>
+		<designed target="Active" value="true" ver="3"/>
+		<designed target="CurrentFrameNumber" value="0" ver="3"/>
+		<designed target="Speed" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<do-trace access-modifier="private" target="Opacity" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.StatePanel.ViewFilterON || pAlarmsTable.StatePanel.SubscriptionFilterON ? 1 : 0.5]]>
+			</body>
+		</do-trace>
+		<designed target="Opacity" value="1" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="a1705750-3cbb-41b3-b110-dd84b8afdf35" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="4" ver="5"/>
+			<designed target="Bottom" value="4" ver="5"/>
+			<designed target="Left" value="2" ver="5"/>
+			<designed target="Right" value="2" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="3294b6b4-ce19-4528-ad03-4127ce211690" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="16" ver="5"/>
+			<designed target="MaxHeight" value="16" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.StatePanel.ViewFilterTooltip]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="RequestFilterState" display-name="RequestFilterState" uuid="ffb77625-37cd-4a39-818f-8b9f3ca204e2" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3">
+		<designed target="X" value="86" ver="3"/>
+		<designed target="Y" value="579.5" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="16" ver="3"/>
+		<designed target="Height" value="16" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="ImageFile" value="Alarms_Icons/RequestFilter16.png" ver="3"/>
+		<designed target="Active" value="true" ver="3"/>
+		<designed target="CurrentFrameNumber" value="0" ver="3"/>
+		<designed target="Speed" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Opacity" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.StatePanel.RequestFilterON ? 1 : 0.5]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="HideFlag" display-name="HideFlag" uuid="c114e37d-a3a6-456a-98d2-2a5cda274b90" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="e28445c5-5c95-409b-83ea-9294128c0dcf" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="4" ver="5"/>
+			<designed target="Bottom" value="4" ver="5"/>
+			<designed target="Left" value="2" ver="5"/>
+			<designed target="Right" value="2" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="4f3acaa5-fefd-443d-80dc-02d9f5e30810" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="16" ver="5"/>
+			<designed target="MaxHeight" value="16" ver="5"/>
+			<do-trace access-modifier="private" target="MaxWidth" ver="5">
+				<body>
+					<![CDATA[HideFlag ? 0 : 16]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[!HideFlag]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="7c38dab0-3139-4f8b-b1f5-189a8b11a1d4" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="Weight" ver="5">
+				<body>
+					<![CDATA[HideFlag?0:1]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="HideFlag" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.ActiveMode!=1]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.StatePanel.RequestFilterTooltip]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="SoundState" display-name="SoundState" uuid="7b316cca-2c23-45e6-a742-3c8679fbcea0" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3">
+		<designed target="X" value="106" ver="3"/>
+		<designed target="Y" value="579.5" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="16" ver="3"/>
+		<designed target="Height" value="16" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="ImageFile" value="Alarms_Icons/SoundPlay16.png" ver="3"/>
+		<designed target="Active" value="true" ver="3"/>
+		<designed target="CurrentFrameNumber" value="0" ver="3"/>
+		<designed target="Speed" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<do-trace access-modifier="private" target="ImageFile" ver="5">
+			<body>
+				<![CDATA[(pAlarmsTable.Mute)?("Alarms_Icons/SoundMute16.png"):("Alarms_Icons/SoundPlay16.png")]]>
+			</body>
+		</do-trace>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="cf0c6af3-ddaa-45ac-b48f-8c92dbef49b0" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="4" ver="5"/>
+			<designed target="Bottom" value="4" ver="5"/>
+			<designed target="Left" value="2" ver="5"/>
+			<designed target="Right" value="2" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="cd653611-dc6d-413b-91b4-b921c7b1c589" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="16" ver="5"/>
+			<designed target="MaxHeight" value="16" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="MessageCount" display-name="MessageCount" uuid="0f65bd6c-7715-4cb6-9847-7c4aa7db87fa" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+		<designed target="X" value="167" ver="3"/>
+		<designed target="Y" value="575" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="800" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="Text" value="0 сообщений" ver="3"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+		<designed target="FontColor" value="0xff000000" ver="3"/>
+		<designed target="TextAlignment" value="129" ver="3"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="2c85cf78-b53b-4a5f-8de9-be6acd4075db" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="0" ver="5"/>
+			<designed target="Bottom" value="0" ver="5"/>
+			<designed target="Left" value="10" ver="5"/>
+			<designed target="Right" value="0" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.StatePanel.MessageCountText]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="3706fafb-585c-4672-ada0-cb3c0f6b20d5" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+		<designed target="MinWidth" value="0" ver="5"/>
+		<designed target="MinHeight" value="25" ver="5"/>
+		<designed target="MaxWidth" value="16777215" ver="5"/>
+		<designed target="MaxHeight" value="25" ver="5"/>
+		<do-trace access-modifier="private" target="MinHeight" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.DisplayStatePanel ? 25 : 0]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="MaxHeight" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.DisplayStatePanel ? 25 : 0]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="144680f7-d8ab-470e-b554-f3f363956b1c" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ApItem" display-name="ApItem" uuid="a165d2ed-92a8-4bf2-b6c1-76091ef0dda1" base-type="ApItemBool" base-type-id="e3f11724-0f76-4497-8d01-38fbb82fb844" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[ //инициализируем флаг для пропуска первого значения после подписки
+if (adviseState != 2)
+	initStart = false;
+
+if (adviseState == 4) // ошибка подписки
+	adviseError = "Сигнал очистки очереди звуков: " + Tag + "\n" + AdviseStateString;
+else adviseError = "";]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="initStart" display-name="initStart" uuid="6c235cfa-615c-4f87-b541-c3426bec762f" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnValueChanged">
+			<body kind="om">
+				<![CDATA[if (Quality >= 192 && value && initStart)
+	pAlarmsTable.Main_tables_Operative.ClearSoundQueue();
+
+if (AdviseState == 2)
+	initStart = true;]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="adviseError" display-name="adviseError" uuid="b89a939c-7e7e-4985-b89e-c6ba81c4fa00" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+		<init target="Path" ver="5" ref="ClearSoundQueryTag"/>
+	</object>
+	<object access-modifier="private" name="pAlarmsTable" display-name="pAlarmsTable" uuid="3117b75c-f586-4c23-a183-67277aa3fb18" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="d541ea58-c594-4ed6-bf9a-7e78d40eb817" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="ClearSoundQueryTag" display-name="ClearSoundQueryTag" uuid="67f0b42c-bb2c-42c5-8473-cdd97ccbfd96" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="Visible" ver="5">
+		<body>
+			<![CDATA[pAlarmsTable.DisplayStatePanel]]>
+		</body>
+	</do-trace>
+	<param access-modifier="private" name="init_ApSource" display-name="Ссылка на источник AP" uuid="50523222-9209-4efa-b0c1-da5042338374" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="3"/>
+	<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="8538c14e-ed0c-4ff7-873b-b10032107af9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+		<init target="ParentSource" ver="5" ref="here.init_ApSource"/>
+	</object>
+</type>
+

@@ -1,0 +1,4 @@
+<type access-modifier="public" name="DialogResult" display-name="DialogResult" uuid="edf8f921-912c-457b-838d-25607e6715bb" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="Value" display-name="Value" uuid="972f321e-27f3-4cf1-9367-3a550a18a909" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+</type>
+

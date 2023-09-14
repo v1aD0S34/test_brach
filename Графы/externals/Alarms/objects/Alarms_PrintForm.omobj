@@ -1,0 +1,1506 @@
+<type access-modifier="private" name="Alarms_PrintForm" display-name="Alarms_PrintForm" uuid="a0785a72-33ef-4e4e-a349-99dd6fa180bc" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="1000" ver="2"/>
+	<designed target="Height" value="770" ver="2"/>
+	<designed target="PenColor" value="0xff000000" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="1000" ver="2"/>
+	<designed target="WindowHeight" value="770" ver="2"/>
+	<designed target="WindowCaption" value="Печать" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="true" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="1" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="1" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="Buttons" display-name="Buttons" uuid="6aa1d285-b9dd-43a5-ae4b-1d77313402f9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="1000" ver="4"/>
+		<designed target="Height" value="70" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="PrintButton" display-name="PrintButton" uuid="b464e65c-1f2c-41dc-9b09-79c0c24ae13f" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+			<designed target="X" value="10" ver="2"/>
+			<designed target="Y" value="5" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="Печать" ver="2"/>
+			<designed target="Width" value="40" ver="2"/>
+			<designed target="Height" value="40" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="TextAlignment" value="132" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+			<designed target="BrushColor" value="4293980400" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="2"/>
+			<designed target="OnClickBrushStyle" value="1" ver="2"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="2"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="2"/>
+			<designed target="OnClickPenStyle" value="1" ver="2"/>
+			<designed target="OnClickPenWidth" value="1" ver="2"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverPenStyle" value="1" ver="2"/>
+			<designed target="OnHoverPenWidth" value="1" ver="2"/>
+			<designed target="Checkable" value="false" ver="2"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+			<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+			<designed target="DisabledBrushStyle" value="1" ver="3"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+			<designed target="DisabledPenStyle" value="1" ver="3"/>
+			<designed target="DisabledPenWidth" value="1" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Checked" value="false" ver="4"/>
+			<object access-modifier="private" name="Icon" display-name="Icon" uuid="e1d07ed1-bd95-4ce0-ab07-39abb7250fb6" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="4">
+				<designed target="X" value="4" ver="4"/>
+				<designed target="Y" value="4" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="32" ver="4"/>
+				<designed target="Height" value="32" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="0" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="ImageFile" value="Alarms_Icons/Printer.png" ver="4"/>
+				<designed target="Active" value="true" ver="4"/>
+				<designed target="CurrentFrameNumber" value="0" ver="4"/>
+				<designed target="Speed" value="1" ver="4"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[if (Buttons.PrinterComboBox.Text != "")
+	Page.Center.Table.SetDefaultPrinter(Buttons.PrinterComboBox.Text);
+if (PagesComboBox.SelectedIndex == 0)
+	Page.PrintAll();
+else if (PagesComboBox.SelectedIndex == 1)
+	Page.Print();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="PagesComboBox" display-name="PagesComboBox" uuid="2b9cf735-b637-4453-af89-93f7c5ca0f23" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+			<designed target="X" value="60" ver="4"/>
+			<designed target="Y" value="35" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="120" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Editable" value="false" ver="4"/>
+			<designed target="Text" value="" ver="4"/>
+			<designed target="SelectedIndex" value="-1" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="MaxVisibleItems" value="10" ver="4"/>
+		</object>
+		<object access-modifier="private" name="OrientationComboBox" display-name="OrientationComboBox" uuid="322541c4-7a85-437d-9404-1a556436b2fe" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+			<designed target="X" value="190" ver="4"/>
+			<designed target="Y" value="35" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="Ориентация страницы" ver="4"/>
+			<designed target="Width" value="90" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Editable" value="false" ver="4"/>
+			<designed target="Text" value="" ver="4"/>
+			<designed target="SelectedIndex" value="-1" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="MaxVisibleItems" value="10" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+{
+	if (selected == 0)
+		Page.SetOrientation(0); // книжная
+	else Page.SetOrientation(1); // альбомная
+
+	here.UpdatePageView();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Navigator.X = Width - Navigator.Width - 10;
+MsgCountCheckbox.X = Navigator.X - MsgCountCheckbox.Width;
+HistIntervalCheckbox.X = MsgCountCheckbox.X - HistIntervalCheckbox.Width;
+FilterCheckbox.X = HistIntervalCheckbox.X - FilterCheckbox.Width;
+CurrentUserCheckbox.X = FilterCheckbox.X;
+CurrentDateCheckbox.X = CurrentUserCheckbox.X + CurrentUserCheckbox.Width;
+UpperTextCheckbox.X = CurrentDateCheckbox.X + CurrentDateCheckbox.Width;
+UpperTextEdit.X = UpperTextCheckbox.X + UpperTextCheckbox.Width;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="PrinterComboBox" display-name="PrinterComboBox" uuid="1b462df4-325a-49b1-9ff2-7f5bc776f026" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5">
+			<designed target="X" value="60" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="Принтер" ver="5"/>
+			<designed target="Width" value="220" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Editable" value="false" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="SelectedIndex" value="-1" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="MaxVisibleItems" value="10" ver="5"/>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[pAlarms.Main_panel.private.Permission.FileSystem]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="SelectColumnsButton" display-name="SelectColumnsButton" uuid="99c1cd5b-b68d-4d04-a5be-5f798bf2bb32" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+			<designed target="X" value="286" ver="2"/>
+			<designed target="Y" value="5" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="110" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Выбор столбцов" ver="2"/>
+			<designed target="TextAlignment" value="132" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+			<designed target="BrushColor" value="4293980400" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="2"/>
+			<designed target="OnClickBrushStyle" value="1" ver="2"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="2"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="2"/>
+			<designed target="OnClickPenStyle" value="1" ver="2"/>
+			<designed target="OnClickPenWidth" value="1" ver="2"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverPenStyle" value="1" ver="2"/>
+			<designed target="OnHoverPenWidth" value="1" ver="2"/>
+			<designed target="Checkable" value="false" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+			<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+			<designed target="DisabledBrushStyle" value="1" ver="3"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+			<designed target="DisabledPenStyle" value="1" ver="3"/>
+			<designed target="DisabledPenWidth" value="1" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Checked" value="false" ver="4"/>
+			<object access-modifier="private" name="VisibleColumns" display-name="VisibleColumns" uuid="70efaa4a-f99d-4545-bbdc-86fb05cd467b" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="b4d469c7-5d27-411d-8d59-8ef759fb97c0" base-type="Alarms_SelectColumns" base-type-id="3b4031c4-d45e-4596-9232-5120026222ce" ver="4">
+					<init target="Result" ver="5" ref="VisibleColumns"/>
+					<init target="OnComplete" ver="5" ref="SetVisibleColumns"/>
+					<init target="CurrentState" ver="5">
+						<expr>
+							<![CDATA[Page.Center.Table.GetVisibleColumns()]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="SetVisibleColumns" display-name="SetVisibleColumns" uuid="d652e42d-6f18-4515-b522-2ef4f0ff5df4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Page.Center.Table.SetVisibleColumns(VisibleColumns.Value);]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="CurrentUserCheckbox" display-name="CurrentUserCheckbox" uuid="57990cfe-77f9-4f60-aa2c-27919b40ddc4" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="410" ver="4"/>
+			<designed target="Y" value="5" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="Печатать имя и место для подписи" ver="4"/>
+			<designed target="Width" value="70" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Подпись" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="true" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[UpdateHeaderText();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="CurrentDateCheckbox" display-name="CurrentDateCheckbox" uuid="f19d63e9-f5b4-459b-a5c4-b433cd415e85" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="480" ver="4"/>
+			<designed target="Y" value="5" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="Печатать текущую дату" ver="4"/>
+			<designed target="Width" value="60" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Дата" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="true" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[UpdateHeaderText();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="UpperTextCheckbox" display-name="UpperTextCheckbox" uuid="983d0c28-ebe6-4c7a-a1a4-75bf31bc328e" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="540" ver="4"/>
+			<designed target="Y" value="5" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="Печатать текст колонтитула" ver="4"/>
+			<designed target="Width" value="60" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Текст" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="true" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[UpperTextEdit.Enabled = UpperTextCheckbox.State;
+UpdateHeaderText();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<designed target="Flip" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="UpperTextEdit" display-name="UpperTextEdit" uuid="1df119e5-2359-4a8d-8cce-621478004732" base-type="LineEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5" description="" cardinal="1">
+			<designed target="X" value="600" ver="5"/>
+			<designed target="Y" value="5" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Flip" value="0" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="210" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="HideInput" value="false" ver="5"/>
+			<designed target="PlaceholderText" value="" ver="5"/>
+			<designed target="ReadOnly" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+				<body kind="om">
+					<![CDATA[UpdateHeaderText();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ColorPrintCheckbox" display-name="ColorPrintCheckbox" uuid="4be29d96-f314-45f4-a6a4-8ec70c417a01" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="287" ver="4"/>
+			<designed target="Y" value="35" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="115" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Цветная печать" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="true" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[decorator: string = state ? Page.defaultDecorator : Page.grayscaleDecorator;
+if (decorator != "")
+	Page.Center.Table.TableDecorator_1.JsonDecorator = decorator;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Navigator" display-name="Navigator" uuid="504b83bf-b473-4709-9eeb-433fcd554e40" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="815" ver="2"/>
+			<designed target="Y" value="5" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="180" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="0xff808080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xffffffff" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<object access-modifier="private" name="PrevButton" display-name="PrevButton" uuid="b96e3ad2-aa29-49a4-b358-23b3597b7a7e" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="0" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="24" ver="4"/>
+				<designed target="Height" value="24" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Checked" value="false" ver="4"/>
+				<designed target="Text" value="" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="0xff000000" ver="4"/>
+				<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+				<designed target="DisabledFontColor" value="0xff000000" ver="4"/>
+				<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="0xff000000" ver="4"/>
+				<designed target="PenStyle" value="0" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="0xff000000" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="0" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<object access-modifier="private" name="Icon" display-name="Icon" uuid="06ff3646-36d3-476f-bf19-a8df7ff5ec3a" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="2">
+					<designed target="X" value="4" ver="2"/>
+					<designed target="Y" value="4" ver="2"/>
+					<designed target="Rotation" value="0" ver="2"/>
+					<designed target="Scale" value="1" ver="2"/>
+					<designed target="Visible" value="true" ver="2"/>
+					<designed target="Enabled" value="true" ver="2"/>
+					<designed target="Tooltip" value="" ver="2"/>
+					<designed target="Width" value="16" ver="2"/>
+					<designed target="Height" value="16" ver="2"/>
+					<designed target="PenColor" value="0xff000000" ver="2"/>
+					<designed target="PenStyle" value="0" ver="2"/>
+					<designed target="PenWidth" value="1" ver="2"/>
+					<designed target="ImageFile" value="Alarms_Icons/PrevPage16.png" ver="2"/>
+					<designed target="Active" value="true" ver="2"/>
+					<designed target="CurrentFrameNumber" value="0" ver="2"/>
+					<designed target="Speed" value="1" ver="2"/>
+					<designed target="ZValue" value="0" ver="3"/>
+					<designed target="Opacity" value="1" ver="3"/>
+					<do-trace access-modifier="private" target="Opacity" ver="5">
+						<body>
+							<![CDATA[Page.PageIndex > 0 ? 1 : 0.5]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+					<body kind="om">
+						<![CDATA[Page.PageIndex = Page.PageIndex - 1;
+Page.NextPage();]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Enabled" ver="5">
+					<body>
+						<![CDATA[Page.PageIndex > 0]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Number" display-name="Number" uuid="5eedbde0-5e56-47cc-bda3-bfdeaad2faa7" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+				<designed target="X" value="25" ver="2"/>
+				<designed target="Y" value="0" ver="2"/>
+				<designed target="Rotation" value="0" ver="2"/>
+				<designed target="Scale" value="1" ver="2"/>
+				<designed target="Visible" value="true" ver="2"/>
+				<designed target="Enabled" value="true" ver="2"/>
+				<designed target="Tooltip" value="" ver="2"/>
+				<designed target="Width" value="130" ver="2"/>
+				<designed target="Height" value="25" ver="2"/>
+				<designed target="Text" value="Страница  001 из 001" ver="2"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+				<designed target="FontColor" value="4278190080" ver="2"/>
+				<designed target="TextAlignment" value="132" ver="2"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Opacity" value="1" ver="3"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA["Страница " + String.ToString(Page.PageIndex + 1) +
+" из " + String.ToString(Page.PageCount)]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="NextButton" display-name="NextButton" uuid="49f4f714-c671-47da-b55d-ac62e9e7177f" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="155" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="24" ver="4"/>
+				<designed target="Height" value="24" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Checked" value="false" ver="4"/>
+				<designed target="Text" value="" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="0xff000000" ver="4"/>
+				<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+				<designed target="DisabledFontColor" value="0xff000000" ver="4"/>
+				<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="0xff000000" ver="4"/>
+				<designed target="PenStyle" value="0" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="0xff000000" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="0" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<object access-modifier="private" name="Icon" display-name="Icon" uuid="67dd0d0d-820f-4371-b5e3-27ecc9f6e2f9" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="2">
+					<designed target="X" value="4" ver="2"/>
+					<designed target="Y" value="4" ver="2"/>
+					<designed target="Rotation" value="0" ver="2"/>
+					<designed target="Scale" value="1" ver="2"/>
+					<designed target="Visible" value="true" ver="2"/>
+					<designed target="Enabled" value="true" ver="2"/>
+					<designed target="Tooltip" value="" ver="2"/>
+					<designed target="Width" value="16" ver="2"/>
+					<designed target="Height" value="16" ver="2"/>
+					<designed target="PenColor" value="0xff000000" ver="2"/>
+					<designed target="PenStyle" value="0" ver="2"/>
+					<designed target="PenWidth" value="1" ver="2"/>
+					<designed target="ImageFile" value="Alarms_Icons/NextPage16.png" ver="2"/>
+					<designed target="Active" value="true" ver="2"/>
+					<designed target="CurrentFrameNumber" value="0" ver="2"/>
+					<designed target="Speed" value="1" ver="2"/>
+					<designed target="ZValue" value="0" ver="3"/>
+					<designed target="Opacity" value="1" ver="3"/>
+					<do-trace access-modifier="private" target="Opacity" ver="5">
+						<body>
+							<![CDATA[(Page.PageIndex < Page.PageCount - 1) ? 1 : 0.5]]>
+						</body>
+					</do-trace>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+					<body kind="om">
+						<![CDATA[Page.PageIndex = Page.PageIndex + 1;
+Page.NextPage();]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="Enabled" ver="5">
+					<body>
+						<![CDATA[Page.PageIndex < Page.PageCount - 1]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="FilterCheckbox" display-name="FilterCheckbox" uuid="fe4932cd-f85b-4471-a96b-0a4806f354db" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="410" ver="4"/>
+			<designed target="Y" value="35" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="135" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Фильтр отображения" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="false" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[UpdateFooterText();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="HistIntervalCheckbox" display-name="HistIntervalCheckbox" uuid="237bf752-b61f-47f3-9496-23392fd3e132" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="545" ver="4"/>
+			<designed target="Y" value="35" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="120" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Интервал запроса" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="false" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[UpdateFooterText();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="MsgCountCheckbox" display-name="MsgCountCheckbox" uuid="3880bd05-795f-493e-88e2-86df3d13c25c" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+			<designed target="X" value="665" ver="4"/>
+			<designed target="Y" value="35" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="150" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Количество сообщений" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="State" value="false" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+				<body kind="om">
+					<![CDATA[UpdateFooterText();]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="718750bf-d5d3-49ca-b5a0-a7a442ddb6dc" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<do-on access-modifier="private" name="Handler_Opened" display-name="Handler_Opened" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[if (pAlarms.ActiveMode==0)
+{
+	// включаем снапшот перед печатью (#23749)
+	snapshotActivity = pAlarms.Main_panel.ToolBar.SnapshotON;
+	if (!pAlarms.Main_panel.ToolBar.SnapshotON)
+		pAlarms.DisplayCurrentEventsSnapshot();
+}
+
+Buttons.PagesComboBox.AddItem("Всех страниц");
+Buttons.PagesComboBox.AddItem("Только текущей");
+Buttons.PagesComboBox.SelectedIndex = 0;
+
+Buttons.OrientationComboBox.AddItem("Книжная");
+Buttons.OrientationComboBox.AddItem("Альбомная");
+Buttons.OrientationComboBox.SelectedIndex = 1;
+
+Buttons.UpperTextCheckbox.State = pAlarms.Main_panel.private.Print.HeaderTextUse;
+Buttons.UpperTextEdit.Text = pAlarms.Main_panel.private.Print.HeaderText;
+
+Page.Initialize();
+Page.Center.Table.GetAvailablePrinters();
+
+Focus = true;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Page" display-name="Page" uuid="8e66032a-2a22-4919-88e2-74d241809d6f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="5" ver="4"/>
+		<designed target="Y" value="70" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="990" ver="4"/>
+		<designed target="Height" value="695" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="0xffffffff" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<object access-modifier="private" name="Left" display-name="Left" uuid="6ef2c6fa-e3f0-4f14-915e-fd73d94a4a5b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="30" ver="4"/>
+			<designed target="Height" value="545" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="0" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Center" display-name="Center" uuid="a164dd91-163c-41f5-87b1-a0ca26b3472d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="30" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="830" ver="4"/>
+			<designed target="Height" value="545" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="0" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<object access-modifier="private" name="Header" display-name="Header" uuid="3e3a0c14-0799-4657-aa39-9c211e3c73f2" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+				<designed target="X" value="0" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="830" ver="4"/>
+				<designed target="Height" value="50" ver="4"/>
+				<designed target="Text" value="" ver="4"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="TextAlignment" value="129" ver="4"/>
+			</object>
+			<object access-modifier="private" name="Footer" display-name="Footer" uuid="80c69f2a-16c0-444a-a60c-f0340de45654" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+				<designed target="X" value="0" ver="2"/>
+				<designed target="Y" value="490" ver="2"/>
+				<designed target="Rotation" value="0" ver="2"/>
+				<designed target="Scale" value="1" ver="2"/>
+				<designed target="Visible" value="true" ver="2"/>
+				<designed target="Enabled" value="true" ver="2"/>
+				<designed target="Tooltip" value="" ver="2"/>
+				<designed target="Width" value="830" ver="2"/>
+				<designed target="Height" value="50" ver="2"/>
+				<designed target="Text" value="1" ver="2"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+				<designed target="FontColor" value="0xff000000" ver="2"/>
+				<designed target="TextAlignment" value="130" ver="2"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Opacity" value="1" ver="3"/>
+				<do-trace access-modifier="private" target="Text" ver="5">
+					<body>
+						<![CDATA[String.ToString(PageIndex + 1)]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Table" display-name="Table" uuid="c4c85d75-5260-44b2-879d-f525159bbca3" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+				<designed target="X" value="0" ver="2"/>
+				<designed target="Y" value="50" ver="2"/>
+				<designed target="Rotation" value="0" ver="2"/>
+				<designed target="Scale" value="1" ver="2"/>
+				<designed target="Visible" value="true" ver="2"/>
+				<designed target="Enabled" value="true" ver="2"/>
+				<designed target="Width" value="830" ver="2"/>
+				<designed target="Height" value="440" ver="2"/>
+				<designed target="SelectionBehavior" value="1" ver="2"/>
+				<designed target="SelectionMode" value="0" ver="2"/>
+				<object access-modifier="private" name="Columns" display-name="Columns" uuid="32ba4492-ac3b-4104-9832-77ca9bc3c0fa" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="23">
+					<designed target="Title" value="" ver="2"/>
+					<designed target="Description" value="" ver="2"/>
+					<designed target="Id" value="" ver="2"/>
+					<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+					<designed target="ForegroundColor" value="0xff000000" ver="2"/>
+					<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+					<designed target="TitleBackgroundColor" value="0xffffffff" ver="2"/>
+					<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+					<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+					<designed target="Width" value="60" ver="2"/>
+					<designed target="WidthResizeMode" value="0" ver="2"/>
+					<designed target="Hidden" value="false" ver="2"/>
+					<designed target="NumberFormat" value="%d" ver="2"/>
+					<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+					<designed target="Emptiable" value="true" ver="2"/>
+					<designed target="TextAlignment" value="129" ver="2"/>
+					<designed target="JsonFilter" value="" ver="2"/>
+					<designed target="SortingEnabled" value="false" ver="3"/>
+					<designed target="SortOrder" value="0" ver="3"/>
+					<designed target="SortPriority" value="0" ver="3"/>
+					<designed target="WordWrap" value="true" ver="3"/>
+					<designed target="TitleTextAlignment" value="132" ver="3"/>
+					<designed target="SortMode" value="0" ver="3"/>
+					<designed target="ColumnOwnId" value="" ver="4"/>
+					<do-trace access-modifier="private" target="TimeFormat" ver="5">
+						<body>
+							<![CDATA[(pAlarms.ShowMilliseconds)?("dd.MM.yyyy hh:mm:ss.zzz"):("dd.MM.yyyy hh:mm:ss")]]>
+						</body>
+					</do-trace>
+				</object>
+				<designed target="LatestRowTracking" value="false" ver="2"/>
+				<designed target="HeaderHeight" value="23" ver="3"/>
+				<designed target="HeaderVisible" value="true" ver="3"/>
+				<designed target="RowHeight" value="23" ver="3"/>
+				<designed target="RowOrder" value="0" ver="3"/>
+				<init target="TableModel" ver="5" ref="TableModel_1"/>
+				<designed target="SelectionOverlayEnabled" value="false" ver="3"/>
+				<object access-modifier="private" name="TableDecorator_1" display-name="TableDecorator_1" uuid="e71153ed-e496-48d7-bb45-701ba6d164bb" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="3">
+					<designed target="JsonDecorator" value="" ver="3"/>
+				</object>
+				<designed target="HorizontalScrollMode" value="1" ver="4"/>
+				<designed target="VerticalScrollMode" value="0" ver="4"/>
+				<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+				<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+				<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+				<object access-modifier="private" name="columnWidths" display-name="columnWidths" uuid="6cee0ca9-c3ec-42d4-b6a7-d893cb7cea0c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="23"/>
+				<do access-modifier="private" name="GetVisibleColumns" display-name="GetVisibleColumns" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[var columns = [];
+for(let i = 0; i < Columns.Length; i++)
+{
+	if (Columns[i].Title != "")
+	{
+		var column = {};
+		column.Index = Columns[i].GetIndex();
+		column.Title = Columns[i].Title;
+		column.State = !Columns[i].Hidden;
+		columns.push(column);
+	}
+}
+
+columns.sort(function (a, b)
+{
+  if (a.Index > b.Index)
+    return 1;
+  else if (a.Index < b.Index)
+    return -1;
+  else return 0;
+});
+
+return JSON.stringify(columns);]]>
+					</body>
+				</do>
+				<do access-modifier="private" name="SetVisibleColumns" display-name="SetVisibleColumns" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<body kind="javascript">
+						<![CDATA[var columns = JSON.parse(value);
+for(let j = 0; j < Columns.Length; j++)
+{
+	var column = Columns[j];
+	var hidden = true;
+	for(let i = 0; i < columns.length; i++)
+	{
+		// в диалог выбора столбцы поступают отсортированные, поэтому идентифицируем их по заголовку
+		if (columns[i].Title == column.Title)
+		{
+			hidden = !columns[i].State;
+			break;
+		}
+	}
+	
+	if (column.Hidden != hidden)
+	{
+		// запоминаем/восстанавливаем ширину столбца
+		if (column.Hidden)
+			column.Width = columnWidths[j];
+		else	columnWidths[j] = column.Width;
+		
+		column.Hidden = hidden;
+	}
+}
+// масштабируем синхронно
+scaleNeeded = true;
+Scaling();]]>
+					</body>
+					<param access-modifier="private" name="value" display-name="" uuid="bf010f6c-0529-434a-8738-754afebf2077" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+				</do>
+				<designed target="BackgroundColor" value="0xffffffff" ver="4"/>
+				<designed target="FrameColor" value="0xffffffff" ver="4"/>
+				<designed target="GridColor" value="0xffd8d8d8" ver="4"/>
+				<do-on access-modifier="private" name="Handler_PrintersFinished" display-name="Handler_PrintersFinished" ver="5" event="GetAvailablePrintersFinished">
+					<body kind="javascript">
+						<![CDATA[var data = JSON.parse(printerList);
+for (let i = 0; i < data.printers.length; i++)
+	Buttons.PrinterComboBox.AddItem(data.printers[i].id);
+Buttons.PrinterComboBox.Text = data.default.id;]]>
+					</body>
+				</do-on>
+				<do access-modifier="private" name="Scaling" display-name="Scaling" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<body kind="javascript">
+						<![CDATA[if (scaleNeeded == false) return;
+scaleNeeded = false;
+
+///исходя из предположения что отображаемая таблица настроена оптимально, выполняем масштабирование
+function ScaleFont(_font,_scale)
+{
+	var _fontItems = _font.split(',');
+	var _fontSize = parseInt(_fontItems[1]);
+	_fontItems[1] = Math.max(2, _fontSize + _scale);
+	return _fontItems.join(',');
+}
+function GetNewWidth(_col,_scale)
+{
+	var title_prev_items = Columns[_col].GetTitleTextSizePx(Columns[_col].TitleFont).split(',');
+	var cell_prev_items = Columns[_col].GetMaxTextSizePx(Columns[_col].Font).split(',');
+	var prev_text_width = Math.max(title_prev_items[1],cell_prev_items[1]);
+	var cropped = prev_text_width > Columns[_col].Width;
+	var title_items = Columns[_col].GetTitleTextSizePx(ScaleFont(columnOrigTitleFont[_col],_scale)).split(',');
+	var cell_items = Columns[_col].GetMaxTextSizePx(ScaleFont(columnOrigCellFont[_col],_scale)).split(',');
+	var text_width = Math.max(title_items[1],cell_items[1]);
+	var scale = Math.min(title_items[1]/title_prev_items[1], cell_items[1]/cell_prev_items[1]);//experiment#29230
+	return cropped ? Columns[_col].Width * scale : text_width;
+}
+//выбираем новый масштаб шрифтам
+var fontScale = 0;//работаем всегда от исходного масштаба оригинальной таблицы, т.к. для него высота строки должна быть корректна
+while (true)
+{
+	var thmax = 0;
+	var chmax = 0;
+	var widthSum = 0;
+	for (let i = 0; i < Columns.Length; i++)
+		if (Columns[i].Hidden==false && Columns[i].Width>0)
+			{
+				var title_items = Columns[i].GetTitleTextSizePx(ScaleFont(columnOrigTitleFont[i],fontScale)).split(',');//height,width
+				var cell_items = Columns[i].GetMaxTextSizePx(ScaleFont(columnOrigCellFont[i],fontScale)).split(',');//height, width без учета переноса слов, height, width с учетом переноса слов
+				thmax = Math.max(thmax,title_items[0]);
+				chmax = Math.max(chmax,cell_items[0]);
+				widthSum += GetNewWidth(i, fontScale);
+			}
+	//если шрифт слишком мелкий - останавливаемся на предыдущем масштабе
+	if (thmax<14/*bonefix*/ || chmax<14/*bonefix*/ || fontScale<-20)
+	{
+		fontScale = fontScale + 1;
+		//log("micro fontScale "+fontScale+"  max heights " + thmax +","+ chmax);
+		break;
+	}
+	//проверяем вмещаемость на лист
+	else if (widthSum <= Table.Width)
+	{
+		//log("good fontScale "+fontScale+" widthSum "+widthSum);
+		break;
+	}
+	//если чтото не входит - пытаемся уменьшить шрифт
+	else
+		fontScale -= 1;
+}
+//теперь применяем чего навыбирали
+{
+	var widthSum = 0;
+	var thmax = 0;
+	var chmax = 0;
+	for (let i = 0; i < Columns.Length; i++)
+		if (Columns[i].Hidden==false && Columns[i].Width>0)
+		{
+			Columns[i].Width = GetNewWidth(i, fontScale);
+			widthSum += Columns[i].Width;
+			Columns[i].TitleFont = ScaleFont(columnOrigTitleFont[i], fontScale);
+			Columns[i].Font = ScaleFont(columnOrigCellFont[i], fontScale);
+		}
+	// сейчас нельзя уменьшать высоту строки - реальная высота строки подстраивается под шрифт и запросто превышает заданный RowHeight. что приводит к неверному расчёту MaxRowsOnPage и появлению скролла!
+	//RowHeight = chmax;
+}]]>
+					</body>
+				</do>
+				<object access-modifier="private" name="columnOrigWidths" display-name="columnOrigWidths" uuid="0d0ff34e-1650-4c7c-9b2d-17649fb8caf3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="23"/>
+				<object access-modifier="private" name="columnOrigTitleFont" display-name="columnOrigTitleFont" uuid="e7c19bbd-efc8-4101-988f-33add50951cd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="23"/>
+				<object access-modifier="private" name="columnOrigCellFont" display-name="columnOrigCellFont" uuid="6aa968d3-6fcf-4a79-832c-199bec3f8be8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="23"/>
+				<object access-modifier="private" name="scaleNeeded" display-name="scaleNeeded" uuid="a88ee45a-7f05-4f56-bb07-e2a47ee5eb9b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			</object>
+			<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// растягиваем по ширине
+Header.Width = Width;
+Footer.Width = Width;
+Footer2.Width = Width;
+Table.Width = Width;
+Line1.Point_2.X = Width;
+Line2.Point_2.X = Width;
+
+// сверху и снизу отступ по 50
+Header.Height = 40;
+Line1.Y = 40;
+Footer.Height = 40;
+Footer2.Height = 40;
+Footer.Y = Height - Footer.Height;
+Footer2.Y = Height - Footer2.Height;
+Line2.Y = Footer.Y;
+
+Table.Y = 50;
+Table.Height = Height - 100;]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="Footer2" display-name="Footer2" uuid="61fb786e-e8cc-4df4-80b5-3b061025682f" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+				<designed target="X" value="0" ver="2"/>
+				<designed target="Y" value="490" ver="2"/>
+				<designed target="Rotation" value="0" ver="2"/>
+				<designed target="Scale" value="1" ver="2"/>
+				<designed target="Visible" value="true" ver="2"/>
+				<designed target="Enabled" value="true" ver="2"/>
+				<designed target="Tooltip" value="" ver="2"/>
+				<designed target="Width" value="830" ver="2"/>
+				<designed target="Height" value="50" ver="2"/>
+				<designed target="Text" value="" ver="2"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+				<designed target="FontColor" value="0xff000000" ver="2"/>
+				<designed target="TextAlignment" value="129" ver="2"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Opacity" value="1" ver="3"/>
+			</object>
+			<object access-modifier="private" name="Line1" display-name="Line1" uuid="5368df1f-73b5-4598-86e4-828a92fc6ffe" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="50" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="830" ver="5"/>
+				<designed target="Height" value="0" ver="5"/>
+				<designed target="PenColor" value="4278190080" ver="5"/>
+				<designed target="PenStyle" value="1" ver="5"/>
+				<designed target="PenWidth" value="1" ver="5"/>
+				<designed target="BrushColor" value="4278190080" ver="5"/>
+				<designed target="BrushStyle" value="0" ver="5"/>
+				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="d524025d-586f-4f41-8e19-559ed79c0cdd" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="0" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="c26915b5-f7ba-4a73-8297-d9fbe3f2e598" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="830" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+			</object>
+			<object access-modifier="private" name="Line2" display-name="Line2" uuid="6d4edccc-0102-474d-a854-133ce3766612" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="5">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="490" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="830" ver="5"/>
+				<designed target="Height" value="0" ver="5"/>
+				<designed target="PenColor" value="4278190080" ver="5"/>
+				<designed target="PenStyle" value="1" ver="5"/>
+				<designed target="PenWidth" value="1" ver="5"/>
+				<designed target="BrushColor" value="4278190080" ver="5"/>
+				<designed target="BrushStyle" value="0" ver="5"/>
+				<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="29ec5596-47b1-4276-9ad8-3b8bde28137a" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="0" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="ed3e3f0c-27aa-4246-aed1-5b6ecfea5d06" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="5">
+					<designed target="X" value="830" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+				</object>
+			</object>
+		</object>
+		<object access-modifier="private" name="Right" display-name="Right" uuid="5caa7593-8323-441b-84e1-bf0b3502e9c5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="860" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="30" ver="4"/>
+			<designed target="Height" value="545" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="0" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+		</object>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[TableModel_1.Initialize();
+
+// Определяем заголовки и последовательность столбцов таблицы по активной таблице
+var AlarmColumn=[]
+var ActiveTable;
+
+if (pAlarms.ActiveMode==0)
+{
+	for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
+		if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
+			AlarmColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
+	AlarmColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.pos]);
+	ActiveTable = pAlarms.Main_tables_Operative.Table_Operative_mode;
+}
+else
+{
+	for (let i = 0; i < pAlarms.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
+		if (pAlarms.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
+			AlarmColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[i]);
+	AlarmColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.pos]);
+	ActiveTable = pAlarms.Main_tables_Historical.Table_History_mode;
+}
+
+var indexesArray = [];
+for (let i = 0; i < Center.Table.Columns.Length; i++)
+{
+	var column = AlarmColumn[i];
+	if (column != null)
+	{
+		// запоминаем ширину столбца, так как при скрытии она обнуляется
+		Center.Table.columnWidths[i] = column.Width;
+		Center.Table.columnOrigWidths[i] = column.Width;
+		Center.Table.columnOrigTitleFont[i] = column.TitleFont;
+		Center.Table.columnOrigCellFont[i] = column.Font;
+		
+		Center.Table.Columns[i].Title = column.Title;
+		Center.Table.Columns[i].Id = column.Id;
+		Center.Table.Columns[i].ColumnOwnId = column.ColumnOwnId;
+		Center.Table.Columns[i].Hidden = column.Hidden;
+		Center.Table.Columns[i].Width = column.Width;
+		Center.Table.Columns[i].Font = column.Font;
+		Center.Table.Columns[i].TitleFont = column.TitleFont;
+		indexesArray[column.GetIndex()] = i;
+	}
+	
+	// неиспользуемую колонку скрываем и помечаем пустым заголовком
+	if (column == null || column.Title == "-")//cheat1
+	{
+		Center.Table.Columns[i].Hidden = true;
+		Center.Table.Columns[i].Title = "";
+	}
+}
+//#25486 расстановка столбцов должна выполняться в порядке их расположения
+for (let i = 0; i < indexesArray.length; i++)
+	if (indexesArray[i] != null)
+		Center.Table.MoveColumn(Center.Table.Columns[indexesArray[i]].GetIndex(), i);
+
+RowCount = ActiveTable.GetRowCount();
+Center.Table.RowHeight = ActiveTable.RowHeight;
+Center.Table.HeaderHeight = ActiveTable.HeaderHeight;
+Center.Table.TableDecorator_1.JsonDecorator = pAlarms.Main_panel.private.EventSettings.BuildDecorator(pAlarms.ActiveMode == 1, true);
+defaultDecorator = Center.Table.TableDecorator_1.JsonDecorator;
+grayscaleDecorator = DisableDecoratorColor(defaultDecorator);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetOrientation" display-name="SetOrientation" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//Debug.Log("SetOrientation: " + String.ToString(orientation));
+Center.Table.SetPageOrientation(orientation);
+
+// размер A4 при разрешении 96 dpi будет 794 x 1123
+a4height: double = 1123;
+a4width: double = 794;
+
+// в зависимости от ориентации страницы задаем ее размер
+Width = orientation == 0 ? a4width : a4height;
+Height = orientation == 0 ? a4height : a4width;
+UpdateLayout();
+
+// определяем максимально возможное количество строк в таблице с учётом заголовка
+MaxRowsOnPage = TypeConvert.ToInt4((Center.Table.Height - Center.Table.HeaderHeight - 8) / Center.Table.RowHeight);
+
+// определяем сколько будет страниц
+PageCount = RowCount / MaxRowsOnPage;
+if (RowCount % MaxRowsOnPage > 0)
+	PageCount += 1;
+
+// заполняем таблицу
+NextPage();
+
+// масштабируем асинхронно (в NextPage выполняются SetCellData которые приводят к событию TableModel_1.DataChanged)
+Center.Table.scaleNeeded = true;]]>
+			</body>
+			<param access-modifier="private" name="orientation" display-name="" uuid="565efe70-0793-4938-b26c-07df88982318" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		</do>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// растягиваем по высоте
+Left.Height = Height;
+Right.Height = Height;
+Center.Height = Height;
+
+// слева и справа отступ по 30
+Left.Width = 30;
+Right.Width = 30;
+Right.X = Width - Right.Width;
+
+Center.Width = Width - Left.Width - Right.Width;
+Center.X = Left.Width;
+Center.UpdateLayout();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="DisableDecoratorColor" display-name="DisableDecoratorColor" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[// Удаление окрашивания в декораторе
+try
+{
+	var decorator = JSON.parse(decoratorJSON);	
+	if (decorator.Decorating != undefined)
+		delete decorator.Decorating;
+	return JSON.stringify(decorator);
+}
+catch (error)
+{
+	return decoratorJSON;
+}]]>
+			</body>
+			<param access-modifier="private" name="decoratorJSON" display-name="" uuid="51bffce5-c66c-4a13-a230-ed4aa6844256" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		</do>
+		<do access-modifier="private" name="NextPage" display-name="NextPage" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//Функция заполнения таблицы печати для текущей страницы
+var currentRow = 0;//Номер текущей строки в таблице
+var end = false;//Конец итератора
+
+//Определяем номер строки в таблице на печать, с которой начинается очередная страница
+var countRows = getPageIndex() * MaxRowsOnPage;//Определяется как номер текущей страницы на максимальное количество строк в таблице
+
+TableModel_1.Clear();
+TableModel_1.InsertRows(0, Math.min(MaxRowsOnPage, RowCount - countRows));
+
+//набираем индексы столбцов
+var colum_index = [];
+for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
+	if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
+		colum_index.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].GetIndex());
+colum_index.push(pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.GetIndex());
+
+//Начинаем заполнять таблицу
+if (pAlarms.ActiveMode == 0)
+{
+	pAlarms.Main_tables_Operative.Table_Operative_mode.TablePersistentIterator_1.FirstRow();
+	while (currentRow < MaxRowsOnPage && !end)
+	{
+		//В случае, если дошли до конца таблицы на печать, выходим
+		if (countRows >= RowCount)
+			break;
+		if (pAlarms.Main_tables_Operative.Table_Operative_mode.TablePersistentIterator_1.GetRow() >= countRows)
+		{
+			for (let i = 0; i < colum_index.length; i++)
+				TableModel_1.SetCellData(currentRow,i,pAlarms.Main_tables_Operative.Table_Operative_mode.TablePersistentIterator_1.GetData(colum_index[i]));
+			currentRow += 1;
+			countRows += 1;
+		}
+		end = !pAlarms.Main_tables_Operative.Table_Operative_mode.TablePersistentIterator_1.HasNext();
+		pAlarms.Main_tables_Operative.Table_Operative_mode.TablePersistentIterator_1.Next();
+	}
+}
+else
+{
+	pAlarms.Main_tables_Historical.Table_History_mode.TablePersistentIterator_1.FirstRow();
+	while (currentRow < MaxRowsOnPage && !end)
+	{
+		//В случае, если дошли до конца таблицы на печать, выходим
+		if (countRows >= RowCount)
+			break;
+		if (pAlarms.Main_tables_Historical.Table_History_mode.TablePersistentIterator_1.GetRow() >= countRows)
+		{
+			for (let i = 0; i < colum_index.length; i++)
+				TableModel_1.SetCellData(currentRow,i,pAlarms.Main_tables_Historical.Table_History_mode.TablePersistentIterator_1.GetData(colum_index[i]));
+			currentRow += 1;
+			countRows += 1;
+		}
+		end = !pAlarms.Main_tables_Historical.Table_History_mode.TablePersistentIterator_1.HasNext();
+		pAlarms.Main_tables_Historical.Table_History_mode.TablePersistentIterator_1.Next();
+	}
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Print" display-name="Print" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Center.Table.SetPageHeaderText(Center.Header.Text);
+Center.Table.SetPageHeaderFont(Center.Header.Font);
+Center.Table.SetPageFooterText(Center.Footer2.Text);
+Center.Table.SetPageFooterFont(Center.Footer2.Font);
+//Center.Table.SetPageNumberFont(Center.Footer.Font); надеюсь что шрифт номера был пропущен специально
+Center.Table.Print();
+pAlarms.OnPrint.Invoke();]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="RowCount" display-name="RowCount" uuid="32fe429e-bf0d-4fb5-9e5f-f2c5c000120e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<object access-modifier="private" name="MaxRowsOnPage" display-name="MaxRowsOnPage" uuid="a00f49b6-fd2d-4283-b707-ce0add33354a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<object access-modifier="private" name="PageCount" display-name="PageCount" uuid="dc432b0a-57d9-436c-bd0e-066808ad5e10" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2"/>
+		<object access-modifier="private" name="PageIndex" display-name="PageIndex" uuid="46176332-92fa-41ff-8b2c-f8d64db1949d" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2"/>
+		<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="99733a0d-39a1-42dc-8f27-df335ef35587" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+			<designed target="Frozen" value="false" ver="3"/>
+			<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[i: int4 = 0;
+while (i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length)
+{
+	if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
+		AddColumn(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Id,"","","",pAlarms.Main_panel.private.TableView.modelType[i],false,true);
+	i+=1;
+}
+AddColumn(pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.Id,"","","","string",false,true);]]>
+				</body>
+			</do>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="DataChanged">
+				<body kind="om">
+					<![CDATA[Center.Table.Scaling();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="defaultDecorator" display-name="defaultDecorator" uuid="36817804-6b69-4017-95e1-f1cec4907320" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<object access-modifier="private" name="grayscaleDecorator" display-name="grayscaleDecorator" uuid="e66b7ff7-a263-419e-ae1e-be3189d50a67" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<do access-modifier="private" name="PrintAll" display-name="PrintAll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Запоминаем текущую позицию и макс.количество строк для постраничного режима
+tempMaxRow: int4 = MaxRowsOnPage;
+tempCurrentPage: int4 = PageIndex;
+
+// Заполняем таблицу в виде сплошного списка
+MaxRowsOnPage = TableModel_1.MaxRowCount;
+PageIndex = 0;
+NextPage();
+
+// Печатаем
+Print();
+
+// Возвращаем прежние параметры, заполняем в виде страниц
+MaxRowsOnPage = tempMaxRow;
+PageIndex = tempCurrentPage;
+NextPage();]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="getPageIndex" display-name="getPageIndex" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[return PageIndex;//cheat2 JS не читает уведомляющие поля]]>
+			</body>
+		</do>
+	</object>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 75)
+	Close();]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="pAlarms" display-name="pAlarms" uuid="ce36a76f-2d17-4a31-af00-80f95077bb90" base-type="Alarms_1" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
+	<do-on access-modifier="private" name="Handler_Closed" display-name="Handler_Closed" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[// возвращаем оперативный режим обратно
+if (pAlarms.ActiveMode == 0 && !snapshotActivity)
+	pAlarms.DisplayCurrentEvents();
+
+pAlarms.Main_panel.private.Print.HeaderTextUse = Buttons.UpperTextCheckbox.State;
+pAlarms.Main_panel.private.Print.HeaderText = Buttons.UpperTextEdit.Text;
+pAlarms.Main_panel.private.Print.SaveSettings();
+]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Buttons.Width = Width;
+Buttons.UpdateLayout();
+
+UpdatePageView();]]>
+		</body>
+	</do>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;
+UpdateLayout();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="snapshotActivity" display-name="snapshotActivity" uuid="aabbec79-3215-4139-924d-adff81e55e69" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+	<do access-modifier="private" name="UpdatePageView" display-name="UpdatePageView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[// выбираем масштаб отображения, чтобы вместился в размер формы
+fw: double = (Width - 10)/Page.Width;
+fh: double = (Height - Buttons.Height - 10)/Page.Height;
+Page.Scale = Math.Min(1, Math.Min(fw, fh));
+
+// корректируем положение страницы относительно центра
+Page.X = 5 + (Width - 10 - Page.Width)/2;
+Page.Y = Buttons.Height + 5 + (Height - Buttons.Height - 10 - Page.Height)/2;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateHeaderText" display-name="UpdateHeaderText" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[header: string = "";
+
+if (Buttons.UpperTextCheckbox.State)
+	header = Buttons.UpperTextEdit.Text;
+
+if (Buttons.CurrentUserCheckbox.State)
+{
+	if (header != "")
+		header += "     ";
+	header += pAlarms.Main_panel.private.UserName + " ______________(подпись)";
+}
+
+if (Buttons.CurrentDateCheckbox.State)
+{
+	if (header != "")
+		header += "\n";
+	header += DateTime.ToString(DateTime.Now());
+}
+
+Page.Center.Header.Text = header;]]>
+		</body>
+	</do>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="da875e50-52f6-4386-aff7-e40cbb1a69a8" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="UpdateFooterText" display-name="UpdateFooterText" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[text: string = "";
+
+if (Buttons.HistIntervalCheckbox.State)
+{
+	text += "Интервал запроса: ";
+	if (pAlarms.ActiveMode == 0)
+		text += "Оперативный";
+	else
+		text += DateTime.ToString(DateTime.ToLocal(pAlarms.Main_tables_Historical.TableModel_1.ApAlarmQuery_1.HistoricalRangeStart)) + " - " + DateTime.ToString(DateTime.ToLocal(pAlarms.Main_tables_Historical.TableModel_1.ApAlarmQuery_1.HistoricalRangeEnd));
+}
+
+if (Buttons.MsgCountCheckbox.State)
+{
+	if (text != "") text += ".  ";
+	text += String.ToString(Page.RowCount) + " сообщений";
+}
+
+if (Buttons.FilterCheckbox.State)
+{
+	if (text != "") text += "\n";
+	text += "Фильтр отображения: ";
+	if (pAlarms.StatePanel.ViewFilterON)
+		text += pAlarms.Main_panel.private.ViewFilter.GetDescription();
+}
+
+Page.Center.Footer2.Text = text;]]>
+		</body>
+	</do>
+</type>
+

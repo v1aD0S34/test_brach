@@ -1,0 +1,19 @@
+<type access-modifier="public" name="Theme" display-name="Theme" uuid="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="BackgroundColor" display-name="Цвет фона" uuid="a1db124e-50a3-47f0-89ed-93b7d2761e7d" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="ForegroundColor" display-name="Цвет текста" uuid="01ce7566-e551-4981-8ba4-847df133984e" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="DisabledFontColor" display-name="Цвет текста при выключении" uuid="bba85648-2f9e-4c6b-bd51-9b312dd6b3e8" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="EditorBrushColor" display-name="Цвет фона редактора" uuid="2cb38916-cd4a-412e-9458-5b1f35b287ee" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="EditorFontColor" display-name="Цвет текста в редакторе" uuid="a9512e24-eeb6-48a4-9bde-091befa62513" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="SelectionColor" display-name="Цвет выделения" uuid="99b04de0-4f41-40f7-85b2-e1386e4efd56" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="BorderColor" display-name="Цвет рамки" uuid="76a7f04c-59c3-4fd4-bc49-d7dbd2c16959" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<object access-modifier="private" name="DisabledBorderColor" display-name="Цвет рамки при выключении" uuid="99677fe9-be2e-4910-a667-5558356977e1" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="4"/>
+	<init target="BackgroundColor" ver="4" value="0xfff0f0f0"/>
+	<init target="ForegroundColor" ver="4" value="0xff000000"/>
+	<init target="BorderColor" ver="4" value="0xff808080"/>
+	<init target="EditorBrushColor" ver="4" value="0xffffffff"/>
+	<init target="EditorFontColor" ver="4" value="0xff000000"/>
+	<init target="SelectionColor" ver="4" value="0xffcde8ff"/>
+	<init target="DisabledFontColor" ver="4" value="0xffa0a0a0"/>
+	<init target="DisabledBorderColor" ver="4" value="0xffa0a0a0"/>
+</type>
+

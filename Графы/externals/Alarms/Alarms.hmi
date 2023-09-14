@@ -1,0 +1,33 @@
+<unit uuid="9c421d3c-9afc-4370-a1a9-e30a9a870181" name="Alarms" main-form-id="efb8c4bd-654d-45b2-afca-e5a665ffe19c">
+	<object file="Alarms_App.omobj" filter=""/>
+	<object file="Alarms_TestForm.omobj" filter=""/>
+	<object file="Alarms_FilterRequestForm.omobj" filter=""/>
+	<object file="Alarms_ExportAlarms.omobj" filter=""/>
+	<object file="Alarms_CommentAck.omobj" filter=""/>
+	<object file="Alarms_SettingsForm.omobj" filter="Settings"/>
+	<object file="Alarms_SettingsSeverity.omobj" filter="Settings"/>
+	<object file="Alarms_PrintForm.omobj" filter=""/>
+	<object file="Alarms.omobj" filter=""/>
+	<object file="Alarms_Table.omobj" filter=""/>
+	<object file="Alarms_FilterViewForm.omobj" filter=""/>
+	<object file="Alarms_SortForm.omobj" filter=""/>
+	<object file="Alarms_SettingsPanel.omobj" filter="Settings"/>
+	<object file="Alarms_SettingsComments.omobj" filter="Settings"/>
+	<object file="Alarms_SettingsView.omobj" filter="Settings"/>
+	<object file="Alarms_SelectColumns.omobj" filter=""/>
+	<object file="Alarms_SettingsExport.omobj" filter="Settings"/>
+	<object file="Alarms_SettingsEvents.omobj" filter="Settings"/>
+	<object file="Alarms_SettingsEventsEdit.omobj" filter="Settings"/>
+	<object file="Alarms_SettingsPreset.omobj" filter="Settings"/>
+	<object file="Alarms_ViewFilterControl.omobj" filter=""/>
+	<object file="ProductInfo.omobj" filter=""/>
+	<unit-link name="CommonLib" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="CommonLib" ver="5"/>
+	<object file="Alarms_ViewFilterItem.omobj" filter=""/>
+	<object file="Alarms_SettingsViewEdit.omobj" filter="Settings"/>
+	<object file="Alarms_Statusbar.omobj" filter=""/>
+	<object file="Alarms_Toolbar.omobj" filter=""/>
+	<object file="Alarms_SettingsMenu.omobj" filter="Settings"/>
+	<object file="UnacknowledgedEventsButton.omobj" filter=""/>
+	<object file="Alarms_SettingsQueryProcessing.omobj" filter="Settings"/>
+</unit>
+

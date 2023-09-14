@@ -1,0 +1,994 @@
+<type access-modifier="private" name="Trends_Table" display-name="Форма таблицы графиков" uuid="2eaa655b-e7df-43ce-a704-693e19fb182e" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="1000" ver="2"/>
+	<designed target="Height" value="500" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="1000" ver="2"/>
+	<designed target="WindowHeight" value="500" ver="2"/>
+	<designed target="WindowCaption" value="Таблица данных" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="true" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="true" ver="2"/>
+	<designed target="WindowSizeMode" value="1" ver="2"/>
+	<designed target="WindowBorderStyle" value="1" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="3b86ac6d-9cd4-4ace-ab0b-fe377a5e3cb9" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="435f7ccb-b83a-4c3c-8962-b124cf639d85" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="2">
+		<designed target="RootPath" value="/" ver="4"/>
+	</object>
+	<object access-modifier="private" name="pCore" display-name="pCore" uuid="0d73cd5d-f142-46a1-8c08-64d5a621d2e2" base-type="Trends_Core" base-type-id="f0fa79fc-d3d2-43f0-9eed-88d0f13b0fa0" base-const="true" base-ref="true" ver="2"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 75) // Esc
+	Close();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[// на время просмотра табличного представления ставим проигрывание на паузу
+if (pCore.ActiveMode == unit.Const.amOPERATIVE)
+{
+    isPlaying = pCore.private.Play;
+    if (isPlaying)
+        pCore.private.SetPause(true);
+}
+
+TopRec.initComboBoxes();
+
+Focus = true;
+]]>
+		</body>
+	</do-on>
+	<param access-modifier="private" name="init_Chart" display-name="init_Chart" uuid="9a1a5953-41d1-440e-9d14-2bb63018e59a" base-type="Chart" base-type-id="447c3e77-56f5-497c-950c-067da367ad6a" base-const="true" base-ref="true" ver="3"/>
+	<object access-modifier="private" name="TopRec" display-name="TopRec" uuid="67ce7e9a-c910-4722-8ec4-603aa217aec9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="0" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="1000" ver="3"/>
+		<designed target="Height" value="60" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="3"/>
+		<designed target="BrushStyle" value="0" ver="3"/>
+		<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="a199eccf-821f-4731-9c2d-ac23c4485371" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+			<designed target="X" value="10" ver="2"/>
+			<designed target="Y" value="10" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="Сохранить в файл" ver="2"/>
+			<designed target="Width" value="40" ver="2"/>
+			<designed target="Height" value="40" ver="2"/>
+			<designed target="Checkable" value="false" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="TextAlignment" value="132" ver="2"/>
+			<designed target="Font" value="Tahoma,8.25,-1,5,50,0,0,0,0,0" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+			<designed target="BrushColor" value="0xffe8e8e8" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="OnClickBrushColor" value="0xffe8e8e8" ver="2"/>
+			<designed target="OnClickBrushStyle" value="1" ver="2"/>
+			<designed target="OnHoverBrushColor" value="0xffe8e8e8" ver="2"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+			<designed target="PenColor" value="0xff808080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+			<designed target="OnClickPenStyle" value="1" ver="2"/>
+			<designed target="OnClickPenWidth" value="1" ver="2"/>
+			<designed target="OnHoverPenColor" value="0xff00aaff" ver="2"/>
+			<designed target="OnHoverPenStyle" value="1" ver="2"/>
+			<designed target="OnHoverPenWidth" value="1" ver="2"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+			<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+			<designed target="DisabledBrushStyle" value="1" ver="3"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+			<designed target="DisabledPenStyle" value="1" ver="3"/>
+			<designed target="DisabledPenWidth" value="1" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Checked" value="false" ver="4"/>
+			<object access-modifier="private" name="Icon" display-name="Icon" uuid="5fbb54bd-1274-4d69-add7-8e12d2a48629" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="4">
+				<designed target="X" value="4" ver="4"/>
+				<designed target="Y" value="4" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="32" ver="4"/>
+				<designed target="Height" value="33" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="0" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="ImageFile" value="Trends_Icons/ExportToFile.png" ver="4"/>
+				<designed target="Active" value="true" ver="4"/>
+				<designed target="CurrentFrameNumber" value="0" ver="4"/>
+				<designed target="Speed" value="1" ver="4"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[if (!Files.Exists(pCore.private.ExportPath))
+	Files.CreateRecursiveFolder(pCore.private.ExportPath);
+ShowSaveDialog.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ComboMode" display-name="ComboMode" uuid="c8c2e4da-9469-4c0c-9619-d21f3a174394" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="3">
+			<designed target="X" value="60" ver="3"/>
+			<designed target="Y" value="5" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="230" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Editable" value="false" ver="3"/>
+			<designed target="Text" value="" ver="3"/>
+			<designed target="SelectedIndex" value="-1" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="MaxVisibleItems" value="10" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+{
+	// В режимах сведения и дисретизации отображаются данные всех сигналов
+	if (selected == 1 || selected == 2)
+	{
+		ComboTitle.SelectedIndex = 0;
+		ComboTag.SelectedIndex = 0;
+	}
+	
+	Reload();
+}]]>
+				</body>
+			</do-on>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[AddItem("Перечень точек данных");
+AddItem("Соответствие значений по времени");
+AddItem("Дискретизация значений по времени");
+SelectedIndex = 0;]]>
+				</body>
+			</do>
+		</object>
+		<object access-modifier="private" name="ComboInterval" display-name="ComboInterval" uuid="ea5e352c-8d18-47e0-8d24-61f6df175321" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="3">
+			<designed target="X" value="360" ver="3"/>
+			<designed target="Y" value="5" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="100" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Editable" value="false" ver="3"/>
+			<designed target="Text" value="" ver="3"/>
+			<designed target="SelectedIndex" value="-1" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="MaxVisibleItems" value="10" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+	Reload();]]>
+				</body>
+			</do-on>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[AddItem("1 секунда");
+AddItem("10 секунд");
+AddItem("30 секунд");
+AddItem("1 минута");
+AddItem("10 минут");
+AddItem("30 минут");
+AddItem("1 час");
+AddItem("12 часов");
+AddItem("24 часа");
+SelectedIndex = 0;]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="GetInterval" display-name="GetInterval" ver="5" type="float8" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409">
+				<body kind="om">
+					<![CDATA[if (SelectedIndex == 0) return 1; // 1 секунда
+else if (SelectedIndex == 1) return 10; // 10 секунд
+else if (SelectedIndex == 2) return 30; // 30 секунд
+else if (SelectedIndex == 3) return 60; // 1 минута
+else if (SelectedIndex == 4) return 10*60; // 10 минут
+else if (SelectedIndex == 5) return 30*60; // 30 минут
+else if (SelectedIndex == 6) return 60*60; // 1 час
+else if (SelectedIndex == 7) return 12*60*60; // 12 часов
+else if (SelectedIndex == 8) return 24*60*60; // 24 часа
+else return 0;]]>
+				</body>
+			</do>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ComboMode.SelectedIndex == 2]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Label" display-name="Label" uuid="bcc70b42-3c49-4237-9530-b8b4fe7da6ea" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+				<designed target="X" value="-65" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="60" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Text" value="Интервал" ver="4"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="TextAlignment" value="130" ver="4"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="ComboTitle" display-name="ComboTitle" uuid="d51df486-bc40-4db1-9a55-8afd429e89c8" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="3">
+			<designed target="X" value="60" ver="3"/>
+			<designed target="Y" value="35" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="260" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Editable" value="false" ver="3"/>
+			<designed target="Text" value="" ver="3"/>
+			<designed target="SelectedIndex" value="-1" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="MaxVisibleItems" value="10" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+{
+	if (ComboMode.SelectedIndex == 1)
+	{
+		if (selected > 0)
+		{
+			// для фильтрации по сигналу в режиме сведения переключаем режим на список точек
+			// фильтрация выполнится после переключения режима
+			ComboMode.SelectedIndex = 0;
+		}
+	}
+	else
+		SetTitleFilter();
+
+	// сбрасываем фильтр по тегу
+	if (selected > 0)
+		ComboTag.SelectedIndex = 0;
+}]]>
+				</body>
+			</do-on>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+		</object>
+		<object access-modifier="private" name="ComboTag" display-name="ComboTag" uuid="1c3c3dfa-6d7f-4fc7-8549-fc9dfc9e7a4b" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="3">
+			<designed target="X" value="330" ver="3"/>
+			<designed target="Y" value="35" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="260" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Editable" value="false" ver="3"/>
+			<designed target="Text" value="" ver="3"/>
+			<designed target="SelectedIndex" value="-1" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="MaxVisibleItems" value="10" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+{
+	if (ComboMode.SelectedIndex == 1)
+	{
+		if (selected > 0)
+		{
+			// для фильтрации по тегу в режиме сведения переключаем режим на список точек
+			// фильтрация выполнится после переключения режима
+			ComboMode.SelectedIndex = 0;
+		}
+	}
+	else
+		SetTagFilter();
+		
+	// сбрасываем фильтр по сигналу
+	if (selected > 0)
+		ComboTitle.SelectedIndex = 0;
+}]]>
+				</body>
+			</do-on>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+		</object>
+		<object access-modifier="private" name="ComboBounds" display-name="ComboBounds" uuid="3f940f96-3a09-4b20-96dc-6d7be35e12f2" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="3">
+			<designed target="X" value="600" ver="3"/>
+			<designed target="Y" value="35" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="170" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Editable" value="false" ver="3"/>
+			<designed target="Text" value="" ver="3"/>
+			<designed target="SelectedIndex" value="-1" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="MaxVisibleItems" value="10" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+	SetBoundsFilter();
+]]>
+				</body>
+			</do-on>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+		</object>
+		<object access-modifier="private" name="ComboQuality" display-name="ComboQuality" uuid="c8a6a2d2-aeb9-489f-b8be-d1ae56b14480" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="3">
+			<designed target="X" value="780" ver="3"/>
+			<designed target="Y" value="35" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="170" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Editable" value="false" ver="3"/>
+			<designed target="Text" value="" ver="3"/>
+			<designed target="SelectedIndex" value="-1" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="MaxVisibleItems" value="10" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1)
+	SetQualityFilter();]]>
+				</body>
+			</do-on>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+		</object>
+		<do access-modifier="private" name="initComboBoxes" display-name="initComboBoxes" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[ComboMode.Initialize();
+ComboInterval.Initialize();
+
+ComboQuality.AddItem("Любого качества");
+ComboQuality.AddItem("Хорошего качества (>=192)");
+ComboQuality.AddItem("Плохого качества (<192)");
+ComboQuality.SelectedIndex = 0;
+
+ComboBounds.AddItem("С граничными точками");
+ComboBounds.AddItem("Без граничных точек");
+ComboBounds.SelectedIndex = 1;
+
+ComboTag.AddItem("По всем тегам");
+ComboTag.SelectedIndex = 0;
+
+ComboTitle.AddItem("По всем описаниям");
+ComboTitle.SelectedIndex = 0;
+
+i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	if (pCore.private.NowParams.Lines[i].bVisible)
+	{
+		ComboTag.AddItem(pCore.private.NowParams.Lines[i].Tag);
+		if (pCore.private.NowParams.Lines[i].Description != "")
+			ComboTitle.AddItem(pCore.private.NowParams.Lines[i].Description);
+	}
+	i += 1;
+}
+
+]]>
+			</body>
+		</do>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do access-modifier="private" name="Reload" display-name="Reload" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// удаляем все данные
+TableModel_1.Reset();
+
+// настраиваем столбцы таблицы
+Table_1.Initialize(ComboMode.SelectedIndex);
+
+// Обновляем фильтры
+SetTitleFilter();
+SetTagFilter();
+SetBoundsFilter();
+SetQualityFilter();
+
+// Загружаем данные в таблицу
+TableModel_1.Load(ComboMode.SelectedIndex, ComboInterval.GetInterval());]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetTitleFilter" display-name="SetTitleFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[titleFilter: string;
+if (ComboTitle.SelectedIndex > 0)
+	titleFilter = "{\"==\" : { \"data\" : \"" + ComboTitle.Text + "\" }}";
+else titleFilter = "";
+
+Table_1.SetTitleFilter(ComboMode.SelectedIndex, titleFilter);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetTagFilter" display-name="SetTagFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[tagFilter: string;
+if (ComboTag.SelectedIndex > 0)
+	tagFilter = "{\"==\" : { \"data\" : \"" + ComboTag.Text + "\" }}";
+else tagFilter = "";
+
+Table_1.SetTagFilter(ComboMode.SelectedIndex, tagFilter);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetBoundsFilter" display-name="SetBoundsFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[boundsFilter: string;
+if (ComboBounds.SelectedIndex == 1)
+	boundsFilter = "{\"AND\":[{\">\":{\"data\":"+Str.ToString(tLeftBorderInterval)+"}},{\"<=\":{\"data\":"+Str.ToString(tRightBorderInterval)+"}}]}";
+else boundsFilter = "";
+
+Table_1.SetBoundsFilter(ComboMode.SelectedIndex, boundsFilter);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetQualityFilter" display-name="SetQualityFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[qualityFilter: string;
+if (ComboQuality.SelectedIndex == 1)
+	qualityFilter = "{\">\":{\"data\":191}}";
+else if (ComboQuality.SelectedIndex == 2)
+	qualityFilter = "{\"<\":{\"data\":192}}";
+else qualityFilter = "";
+
+Table_1.SetQualityFilter(ComboMode.SelectedIndex, qualityFilter);]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="14fc1344-2fc1-4216-bb3b-0bafa0a128c7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="InvokeTrigger" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+			<object access-modifier="private" uuid="8f5e339e-beb2-4e73-af93-3ff43d7ce804" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="3">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Result" ver="5" ref="SaveFileDialogResult"/>
+				<init target="OnComplete" ver="5" ref="ExportToFile"/>
+				<init target="FileTypeFilter" ver="5" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx|Файл Adobe PDF (*.pdf)|*.pdf"/>
+				<init target="DefaultPath" ver="5">
+					<expr>
+						<![CDATA[pCore.private.ExportPath]]>
+					</expr>
+				</init>
+				<init target="RootPath" ver="5">
+					<expr>
+						<![CDATA[pCore.private.ExportPath.Root]]>
+					</expr>
+				</init>
+			</object>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ExportToFile" display-name="ExportToFile" uuid="566a5a0b-6e74-42a1-9010-c7e4cb97659c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="InvokeTrigger" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[// подготавливаем папку для сохранения
+folder: string = SaveFileDialogResult.FolderPath;
+if (!Files.Exists(folder))
+	Files.CreateRecursiveFolder(folder);
+
+// выполняем сохранение
+filePath: string = SaveFileDialogResult.FilePath;
+if (SaveFileDialogResult.FileType == 0)
+	Table_1.Save(filePath,"csv");
+else if (SaveFileDialogResult.FileType == 1)
+	Table_1.Save(filePath,"xlsx");
+else if (SaveFileDialogResult.FileType == 2)
+	Table_1.Save(filePath,"pdf");
+
+// уведомляем о том, что сохранение выполнено
+pCore.private.EventParams[0] = filePath;
+pCore.OnSaveTable.Invoke();
+
+]]>
+			</body>
+		</do-on>
+	</object>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;
+
+TopRec.Width = Width;
+
+Table_1.Width = Width - 10;
+Table_1.Height = Height - TopRec.Height - 10;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[// запускаем проигрывание, если оно было преостановлено при открытии формы
+if (pCore.ActiveMode == unit.Const.amOPERATIVE)
+{
+	if (isPlaying)
+		pCore.private.SetPause(false);
+}]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="isPlaying" display-name="isPlaying" uuid="6f31d002-b1c3-4174-ac90-fc1ffbcb0fdc" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+	<object access-modifier="private" name="tLeftBorderInterval" display-name="tLeftBorderInterval" uuid="8b92841e-6d37-4808-b10b-6080898151a4" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+	<object access-modifier="private" name="tRightBorderInterval" display-name="tRightBorderInterval" uuid="9b25a764-81d9-48f4-a94a-cd5d6735b97e" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="10fbffcb-42b5-4430-bedb-2e409e59b1ab" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="7fb735f9-343b-44a0-a73a-fda5a7cd624c" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="65" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="990" ver="2"/>
+		<designed target="Height" value="430" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="3" ver="2"/>
+		<object access-modifier="private" name="TableColumns" display-name="TableColumns" uuid="f17dd940-ffa3-49a4-9820-5d57b8aed750" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="122">
+			<designed target="Title" value="" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="214" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%g" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseTitleClick">
+				<body kind="om">
+					<![CDATA[// меняем направление сортировки: прямая -> обратная -> отключена и т.д.
+if (SortingEnabled)
+{
+	if (SortOrder == 0)
+		SortOrder = 1; // меняем направление сортировки
+	else SortingEnabled = false; // отключаем сортировку
+}
+else
+{
+	// включаем сортировку
+	SortOrder = 0;
+	SortingEnabled = true;
+}
+
+// eсли сортировка по новому столбцу, то увеличиваем приоритет
+if (SortingEnabled && SortPriority != SortPriorityCount)
+{
+	SortPriorityCount = SortPriorityCount + 1;
+	SortPriority = SortPriorityCount;
+}
+
+// сортируем таблицу
+ApplySort();
+]]>
+				</body>
+			</do-on>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="LatestRowTracking" value="false" ver="2"/>
+		<designed target="HeaderHeight" value="40" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="25" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<init target="TableModel" ver="3" ref="TableModel_1"/>
+		<object access-modifier="private" name="SortPriorityCount" display-name="SortPriorityCount" uuid="c472e209-1165-4bb1-b78f-635ddce48c0f" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[timeFormat: string = pCore.ShowMilliseconds ? "hh:mm:ss.zzz yyyy-MM-dd" : "hh:mm:ss yyyy-MM-dd";
+
+if (mode == 0) // список точек
+{
+	TableColumns[0].Title = "График";
+	TableColumns[0].Id = "line";
+	TableColumns[0].Width = 200;
+	TableColumns[0].Hidden = false;
+	
+	TableColumns[1].Title = "Тег сигнала";
+	TableColumns[1].Id = "tag";
+	TableColumns[1].Width = 200;
+	TableColumns[1].Hidden = false;
+	
+	TableColumns[2].Title = "Значение";
+	TableColumns[2].Id = "value";
+	TableColumns[2].Width = 70;
+	TableColumns[2].NumberFormat = "%g";
+	TableColumns[2].Hidden = false;
+	
+	TableColumns[3].Title = "Единицы";
+	TableColumns[3].Id = "unit";
+	TableColumns[3].Width = 70;
+	TableColumns[3].Hidden = false;
+	
+	TableColumns[4].Title = "Время";
+	TableColumns[4].Id = "timestamp";
+	TableColumns[4].Width = 150;
+	TableColumns[4].TimeFormat = timeFormat;
+	TableColumns[4].Hidden = false;
+	TableColumns[4].SortPriority = 0;
+	TableColumns[4].SortingEnabled = true;
+	
+	if (pCore.UseServerTime && pCore.ActiveMode == unit.Const.amHISTORY)
+	{
+		TableColumns[5].Title = "Время сервера";	
+		TableColumns[5].Id = "server_timestamp";
+		TableColumns[5].Width = 150;
+		TableColumns[5].TimeFormat = timeFormat;
+		TableColumns[5].Hidden = false;
+	}
+	else
+	{
+		TableColumns[5].Hidden = true;
+	}
+	
+	TableColumns[6].Title = "Качество";
+	TableColumns[6].Id = "quality";
+	TableColumns[6].Width = 70;
+	TableColumns[6].NumberFormat = "%d";
+	TableColumns[6].Hidden = false;
+	
+	i:int4 = 7;
+	while (i < TableColumns.Length)
+	{
+		TableColumns[i].Id = "";
+		TableColumns[i].Hidden = true;
+		TableColumns[i].SortPriority = 0;
+		TableColumns[i].SortingEnabled = false;
+		i += 1;
+	}
+}
+else if (mode == 1 || mode == 2) // сведение по времени или дискретизация
+{
+	i:int4 = 0;
+	while (i < 8)
+	{
+		TableColumns[i].Id = "";
+		TableColumns[i].Hidden = true;
+		TableColumns[i].SortPriority = 0;
+		TableColumns[i].SortingEnabled = false;
+		i += 1;
+	}
+	
+	TableColumns[8].Title = "Время";
+	TableColumns[8].Id = "time";
+	TableColumns[8].Width = 150;
+	TableColumns[8].TimeFormat = timeFormat;
+	TableColumns[8].Hidden = false;
+	
+	iLine: int4 = 1;	// индекс перебора линий
+	iGraph: int4 = 0; // индекс реальных графиков
+	iColumn: int4 = 9; // номер столбца
+
+	while (iLine <= unit.Const.MAX_LINES)
+	{
+		if (pCore.private.NowParams.Lines[iLine].Used)
+		{
+			signal: string = pCore.private.NowParams.Lines[iLine].Description;
+			if (signal == "") signal = pCore.private.NowParams.Lines[iLine].Tag;
+			lineID:int4 = (pCore.ActiveMode == unit.Const.amOPERATIVE)? pCore.private.Lines.OperID[iLine] : pCore.private.Lines.HistID[iLine];
+			sID:string = "line" + Str.ToString(lineID) + "_";
+			
+			TableColumns[iColumn].Title = "Значение\r\n" + signal;
+			TableColumns[iColumn].Id = sID + "value_column_name" ;
+			TableColumns[iColumn].Width = 120;
+			TableColumns[iColumn].NumberFormat = "%g";
+			TableColumns[iColumn].Hidden = false;
+			iColumn += 1;
+	
+			TableColumns[iColumn].Title = "Качество\r\n" + signal;
+			TableColumns[iColumn].Id = sID + "quality_column_name";
+			TableColumns[iColumn].Width = 70;
+			TableColumns[iColumn].NumberFormat = "%d";
+			TableColumns[iColumn].Hidden = false;
+			iColumn += 1;
+	
+			TableColumns[iColumn].Title = "Единицы\r\n" + signal;
+			TableColumns[iColumn].Id = sID + "unit_column_name";
+			TableColumns[iColumn].Width = 70;
+			TableColumns[iColumn].Hidden = false;
+			iColumn += 1;
+
+			iGraph += 1;	
+		}
+		iLine += 1;
+	}
+
+	// остальные столбцы отключаем
+	while (iColumn < TableColumns.Length)
+	{
+		TableColumns[iColumn].Id = "";
+		TableColumns[iColumn].Hidden = true;
+		iColumn += 1;
+	}
+}
+else
+{
+	// отключаем все столбцы
+	i:int4 = 0;
+	while (i < TableColumns.Length)
+	{
+		TableColumns[i].Id = "";
+		TableColumns[i].Hidden = true;
+		i += 1;
+	}
+}
+
+// отключаем фильтры всех столбцов
+i:int4 = 0;
+while (i < TableColumns.Length)
+{
+	TableColumns[i].JsonFilter = "";
+	i += 1;
+}
+
+// применяем новую сортировку
+SortPriorityCount = 0;
+ApplySort();]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="9087c616-3afc-44a5-ae96-6456dec88f09" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		</do>
+		<do access-modifier="private" name="SetTitleFilter" display-name="SetTitleFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (mode == 0) // список точек
+{
+	TableColumns[0].JsonFilter = filter;
+}
+else if (mode == 1 || mode == 2) // сведение по времени или дискретизация
+{
+	 TableColumns[0].JsonFilter = "";
+}]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="b52ae6e4-1046-4db6-ba2f-06db88b9fb1c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="filter" display-name="" uuid="099895da-38bd-43a0-ba2b-133aacea5d7c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<do access-modifier="private" name="SetTagFilter" display-name="SetTagFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (mode == 0) // список точек
+{
+	TableColumns[1].JsonFilter = filter;
+}
+else if (mode == 1 || mode == 2) // сведение по времени или дискретизация
+{
+	 TableColumns[1].JsonFilter = "";
+}]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="29a91e4e-b44c-428a-8a62-33b96134e914" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="filter" display-name="" uuid="b69ea273-d602-4b64-8f63-9d6993c23711" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<do access-modifier="private" name="SetBoundsFilter" display-name="SetBoundsFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (mode == 0) // список точек
+{
+  TableColumns[4].JsonFilter = filter;
+}
+else if (mode == 1 || mode == 2) // сведение по времени или дискретизация
+{
+	 TableColumns[8].JsonFilter = filter;
+}]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="32bfa432-4b94-4594-996c-bfced07b3c49" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="filter" display-name="" uuid="8f0a75cb-654b-4e27-bf80-5516c14270c6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<do access-modifier="private" name="SetQualityFilter" display-name="SetQualityFilter" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (mode == 0) // список точек
+{
+	 TableColumns[6].JsonFilter = filter;	
+}
+else if (mode == 1 || mode == 2) // сведение по времени или дискретизация
+{
+	i:int4 = 10;
+	while (i <  TableColumns.Length)
+	{
+		if (!TableColumns[i].Hidden)
+			 TableColumns[i].JsonFilter = filter;
+		else break;
+		i += 3;
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="f9ae1c08-a754-4950-b011-d3057a37a9db" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="filter" display-name="" uuid="0af51fcd-7350-4b5f-8eb4-aa11d6541aa7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameColor" value="4278190080" ver="4"/>
+		<designed target="GridColor" value="4292401368" ver="4"/>
+		<do-trace access-modifier="private" target="GridColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="03d1fa52-6cc8-4342-a3f3-6ceac93dd486" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+		<designed target="Frozen" value="false" ver="3"/>
+		<designed target="MaxRowCount" value="2147483647" ver="3"/>
+		<object access-modifier="private" name="Exporter" display-name="Exporter" uuid="ee1289b9-50e0-4e64-a89b-fc82206e2373" base-type="Exporter" base-type-id="2a508563-364d-4472-b86f-4a1a2242c583" ver="3">
+			<designed target="Sort" value="true" ver="3"/>
+			<designed target="SortColumnNumber" value="3" ver="3"/>
+			<init target="Chart" ver="3" ref="init_Chart"/>
+			<designed target="Parameters" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="DataExportFailed">
+				<body kind="om">
+					<![CDATA[if (errorMessage != "")
+{
+	ShowError.message = errorMessage;	
+	ShowError.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="Load" display-name="Load" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[/* Заполнить таблицу данными
+mode
+	0 - Перечень точек данных
+	1 - Соответствие значений по времени
+	2 - Дискретизация значений по времени
+
+interval - интервал дискретизации в секундах, имеет смысл при mode = 2
+*/
+
+// формируем параметры экспорта
+parameters: string;
+if (mode > 0)
+{
+	parameters = "{\"export_mode\":" + String.ToString(mode) + ",\"consolidation_column\":\"timestamp\"";
+	if (mode == 2) 
+	{
+		if (interval > 0) 
+			parameters += ",\"interval\":" + String.ToString(interval);
+		parameters += ",\"time_start\":" + String.ToString(tLeftBorderInterval);
+		parameters += ",\"time_end\":" + String.ToString(tRightBorderInterval);
+	}
+	parameters += ",\"columns\":[\"timestamp\",\"value\",\"quality\",\"unit\"]}";
+}
+Exporter.Parameters = parameters;
+
+// загружаем данные
+Exporter.Reload();
+BeginReadAsync();	]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="83d6c3a3-d5e5-47c4-9cb8-5ee6879db1b4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="interval" display-name="" uuid="77f31424-ab81-4fb8-9a3a-db0807f131c1" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="SaveFileDialogResult" display-name="SaveFileDialogResult" uuid="33000800-b97e-4db9-a308-4534b7a262e3" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+	<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="7345c481-4573-4844-89c3-a074d08d692e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="e6ba3732-49ba-4ff8-aa86-c940095d32a5" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="pTheme" ver="4" ref="here.pTheme"/>
+				<init target="Icon" ver="4" value="3"/>
+				<init target="Buttons" ver="4" value="0"/>
+				<designed target="WindowCaption" value="Ошибка" ver="4"/>
+				<init target="Message" ver="5">
+					<expr>
+						<![CDATA[message]]>
+					</expr>
+				</init>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="0025e50f-ff63-40fd-a9a7-725ada8d3a78" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<designed target="WindowIconPath" value="Trends_Icons/ExportToFile.png" ver="5"/>
+	<object access-modifier="private" name="bShowDialog" display-name="bShowDialog" uuid="ec908057-f246-4499-8bb0-3ca54a492b66" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	<do-trace access-modifier="private" target="Visible" ver="5">
+		<body>
+			<![CDATA[bShowDialog]]>
+		</body>
+	</do-trace>
+</type>
+

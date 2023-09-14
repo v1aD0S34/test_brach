@@ -1,0 +1,330 @@
+<type access-modifier="public" name="Converter" display-name="Converter" uuid="9846118d-6c33-44f8-8ff4-f502280dd5c0" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="ba20751b-7c0d-4bda-8e0b-634dad7f2ba0" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<do access-modifier="private" name="StringToVariant" display-name="StringToVariant" ver="5" type="variant" type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a">
+		<body kind="om">
+			<![CDATA[if (dataType == "int1")
+	return String.ToInt1(value, 0);
+else if (dataType == "uint1")
+	return String.ToUint1(value, 0); 
+else if (dataType == "int2")
+	return String.ToInt2(value, 0);
+else if (dataType == "uint2")
+	return String.ToUint2(value, 0);
+else if (dataType == "int4")
+	return String.ToInt4(value, 0);
+else if (dataType == "uint4")
+	return String.ToUint4(value, 0);
+else if (dataType == "int8")
+	return String.ToInt8(value, 0);
+else if (dataType == "uint8")
+	return String.ToUint8(value, 0);
+else if (dataType == "double")
+	return String.ToDouble(String.Replace(value, ",", "."), 0);
+else if (dataType == "float")
+	return String.ToFloat(String.Replace(value, ",", "."), 0);
+else if (dataType == "timestamp")
+	return DateTime.Parse(value);
+else if (dataType == "string")
+	return value;
+else if (dataType == "bool")
+{
+	if (value == "0") return false;
+	else if (value == "1") return true;
+	else return String.ToBool(value);
+}
+else
+{
+	empty: variant;
+	return empty;
+}]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="8ec37521-e8b5-4e6c-9eaf-a8e4fdaaf462" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="dataType" display-name="" uuid="e0ff237c-b003-4259-9ef5-18518db9e731" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="VariantToString" display-name="VariantToString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[if (!Variant.IsEmpty(value))
+{
+	if (dataType == "int1")
+		return String.ToString(Variant.ToInt1(value, 0));
+	else if (dataType == "uint1")
+		return String.ToString(Variant.ToUint1(value, 0));
+	else if (dataType == "int2")
+		return String.ToString(Variant.ToInt2(value, 0));
+	else if (dataType == "uint2")
+		return String.ToString(Variant.ToUint2(value, 0));
+	else if (dataType == "int4")
+		return String.ToString(Variant.ToInt4(value, 0));
+	else if (dataType == "uint4")
+		return String.ToString("%llu", Variant.ToUint4(value, 0));
+	else if (dataType == "int8")
+		return String.ToString("%lld", Variant.ToInt8(value, 0));
+	else if (dataType == "uint8")
+		return String.ToString("%llu", Variant.ToUint8(value, 0));
+	else if (dataType == "float")
+		return String.ToString("%.7g", Variant.ToFloat(value, 0));
+	else if (dataType == "double")
+		return String.ToString("%.15g", Variant.ToDouble(value, 0));
+	else if (dataType == "timestamp")
+		return DateTime.ToString(Variant.ToUint8(value, 0));
+	else if (dataType == "string")
+		return Variant.ToString(value, "");
+	else if (dataType == "bool")
+		return String.ToString(Variant.ToBool(value, false));
+}
+
+return "";]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="e333676c-1689-49f9-93d7-945479dab336" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+		<param access-modifier="private" name="dataType" display-name="" uuid="22d59f3d-8331-4c90-8de5-bb3e0b6d2baa" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="ValidateValue" display-name="ValidateValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[const realRegTemp = /^(?:\+|\-)?\d+(?:(\.|,)\d+)?(?:e(?:\+|\-)?\d+)?$/;
+const intRegTemp = /^((-\d+)|(0+)|(\d+))$/;
+
+function checkRealInRange(min, max, val)
+{
+	if (realRegTemp.test(val))
+	{
+		var floatVal = parseFloat(val);
+		if (!isNaN(floatVal))
+		{
+			if (min <= floatVal && floatVal <= max)
+				return "";
+			else return "Допустимые значения: [" + min + ".." + max + "]";
+		}
+	}
+	return "Не является числом";
+}
+
+function checkIntInRange(min, max, val)
+{
+	if (intRegTemp.test(val))
+	{
+		var intVal = parseInt(val);
+		if (!isNaN(intVal))
+		{
+			if (min <= intVal && intVal <= max)
+				return "";
+			else return "Допустимые значения: [" + min + ".." + max + "]";
+		}
+	}
+	return "Не является целым числом";
+}
+
+function compareBigIntValue(min, max, val)
+{
+	//BigInt проверяет наличе лишних символов
+	try
+	{
+		min = BigInt(min);
+		max = BigInt(max);
+		val = BigInt(val);
+
+		if (min <= val && val <= max)
+			return "";
+		else return "Допустимые значения: [" + min + ".." + max + "]";
+	}
+	catch
+	{
+		return "Не является целым числом";
+	}
+}
+
+if (dataType == "uint1")
+	return checkIntInRange(0, 255, value);
+else if (dataType == "int1")
+	return checkIntInRange(-128, 127, value);
+else if (dataType == "uint2")
+	return checkIntInRange(0, 65535, value);
+else if (dataType == "int2")
+	return checkIntInRange(-32768, 32767, value);
+else if (dataType == "uint4")
+	return checkIntInRange(0, 4294967295, value);
+else if (dataType == "int4")
+	return checkIntInRange(-2147483648, 2147483647, value);
+else if (dataType == "uint8")
+	return compareBigIntValue(0, 18446744073709551615n, value);
+else if (dataType == "int8")
+	return compareBigIntValue(-9223372036854775808n, 9223372036854775807n, value);
+else if (dataType == "float")
+	return checkRealInRange(-3.4e38, 3.4e38, value);
+else if (dataType == "double")
+	return checkRealInRange(-1.79e308, 1.79e308, value);
+else if (dataType == "string")
+	return "";
+else if (dataType == "bool")
+{
+	if (value == "true" || value == "false" || value == "0" || value == "1")
+		return "";
+	else return "Допустимые значения: true, false, 1, 0";
+}
+else if (dataType == "")
+	return "Тип данных не определён";
+else
+	return "Некорректный тип данных '" + dataType + "'";]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="f64d7fc2-5ece-4989-8c2f-9c23f7fa83f9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="dataType" display-name="" uuid="9b491527-688a-4a65-8b1c-fabdfda624a0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="ValidateRange" display-name="ValidateRange" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[// заменяем неуказаные пределы пределами, соответствующими типу данных
+varMin: variant = min;
+varMax: variant = max;
+private.DefineLimits(dataType, &varMin, &varMax);
+
+// если пределы не определены, то значение не является числом
+if (Variant.IsEmpty(varMin) || Variant.IsEmpty(varMax))
+	return "";
+
+// если значение в заданных пределах, то возвращаем пустую строку
+if (Variant.ToBool(Variant.GE(value, varMin), false) && Variant.ToBool(Variant.LE(value, varMax), false))
+	return "";
+
+// иначе возвращаем описание ошибки
+return private.GetRangeError(dataType, varMin, varMax);]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="d7bf2b65-9361-4abd-92cf-acf8cd611553" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+		<param access-modifier="private" name="dataType" display-name="" uuid="7c7c8b51-d9dd-4ad7-94c9-2de31797779d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="min" display-name="" uuid="361e4cdc-a005-4371-967f-5660b35fb61a" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+		<param access-modifier="private" name="max" display-name="" uuid="7699dc43-9b72-475d-8d33-e6ad807831a5" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+	</do>
+	<do access-modifier="private" name="ValidateValueRange" display-name="ValidateValueRange" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[// проверяем, что входная строка это значение заданного типа
+result: string = ValidateValue(value, dataType);
+if (result == "")
+{
+	// преобразуем строку в число заданного типа
+	varValue: variant = StringToVariant(value, dataType);
+	
+	// проверка попадания значения в заданные пределы
+	return ValidateRange(varValue, dataType, min, max);
+}
+else
+{
+	// заменяем неуказаные пределы пределами, соответствующими типу данных
+	varMin: variant = min;
+	varMax: variant = max;
+	private.DefineLimits(dataType, &varMin, &varMax);
+	
+	// если пределы не определены, то значение не является числом и мы просто возвращаем описание ошибки
+	if (Variant.IsEmpty(varMin) || Variant.IsEmpty(varMax))
+		return result;
+	
+	// иначе указываем допустимые пределы, соответствующие типу данных
+	return private.GetRangeError(dataType, varMin, varMax);
+}]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="f2fa4192-4ecc-4f51-9423-09316f5abc7b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="dataType" display-name="" uuid="9a366f93-1625-4668-ae85-e7275834c2bb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="min" display-name="" uuid="50e69623-1c86-4fed-8858-9a85f9cf9c01" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+		<param access-modifier="private" name="max" display-name="" uuid="2edcee91-61db-4136-8b6c-ab64fe62d286" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+	</do>
+	<do access-modifier="private" name="CanonicalTypeToDataType" display-name="CanonicalTypeToDataType" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[if (canonicalType == 0) return "void";
+else if (canonicalType == 1) return "bool";
+else if (canonicalType == 2) return "int1";
+else if (canonicalType == 3) return "uint1";
+else if (canonicalType == 4) return "int2";
+else if (canonicalType == 5) return "uint2";
+else if (canonicalType == 6) return "int4";
+else if (canonicalType == 7) return "uint4";
+else if (canonicalType == 8) return "int8";
+else if (canonicalType == 9) return "uint8";
+else if (canonicalType == 10) return "float";
+else if (canonicalType == 11) return "double";
+else if (canonicalType == 12) return "timestamp";
+else if (canonicalType == 14) return "string";
+else return "";]]>
+		</body>
+		<param access-modifier="private" name="canonicalType" display-name="" uuid="ca1cfe7b-e4dc-447e-9fff-6a17ee14ecbf" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetDeclension" display-name="GetDeclension" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[number = number % 100;
+
+if (number >= 11 && number <= 19)
+	return plural;
+
+number = number % 10;
+if (number == 1)
+	return nominative;
+else if (number >= 2 && number <= 4)
+	return genitive;
+else	return plural;]]>
+		</body>
+		<param access-modifier="private" name="number" display-name="" uuid="7f3cc2f2-2af9-414f-8901-72c05e4a2cf6" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+		<param access-modifier="private" name="nominative" display-name="" uuid="d24d5325-2aed-4a33-8994-8c1f89269928" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="genitive" display-name="" uuid="2feaa1b7-d62a-4a23-8f2a-d8e7328009fe" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="plural" display-name="" uuid="adc95018-510d-45cf-87e5-b429a9baa241" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="private" display-name="private" uuid="b55ea5a0-8cc3-49d6-84a5-7fa750383781" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="DefineLimits" display-name="DefineLimits" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (Variant.IsEmpty(min))
+{
+	if (dataType == "uint1")
+		min = 0;
+	else if (dataType == "int1")
+		min = -128;
+	else if (dataType == "uint2")
+		min = 0;
+	else if (dataType == "int2")
+		min = -32768;
+	else if (dataType == "uint4")
+		min = 0;
+	else if (dataType == "int4")
+		min = -2147483648;
+	else if (dataType == "uint8")
+		min = 0;
+	else if (dataType == "int8")
+		min = -9223372036854775808;
+	else if (dataType == "float")
+		min = -3.4e+38f;
+	else if (dataType == "double")
+		min = -1.79e+308;
+}
+
+if (Variant.IsEmpty(max))
+{
+	if (dataType == "uint1")
+		max = 255;
+	else if (dataType == "int1")
+		max = 127;
+	else if (dataType == "uint2")
+		max = 65535;
+	else if (dataType == "int2")
+		max = 32767;
+	else if (dataType == "uint4")
+		max = 4294967295;
+	else if (dataType == "int4")
+		max = 2147483647;
+	else if (dataType == "uint8")
+		max = 18446744073709551615;
+	else if (dataType == "int8")
+		max = 9223372036854775807;
+	else if (dataType == "float")
+		max = 3.4e+38f;
+	else if (dataType == "double")
+		max = 1.79e+308;
+}]]>
+			</body>
+			<param access-modifier="private" name="dataType" display-name="" uuid="c1e7e882-5e10-40f4-9d80-744656100694" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="min" display-name="" uuid="74dadf84-f942-4846-9efc-e854e7ab4fbd" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5" base-ref="true"/>
+			<param access-modifier="private" name="max" display-name="" uuid="aad29579-eccb-4320-9452-007f6bcf21fa" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5" base-ref="true"/>
+		</do>
+		<do access-modifier="private" name="GetRangeError" display-name="GetRangeError" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[return "Допустимые значения: [" + VariantToString(min, dataType) + ".." + VariantToString(max, dataType) + "]";]]>
+			</body>
+			<param access-modifier="private" name="dataType" display-name="" uuid="56913c8b-619c-46ac-8d5a-b34029ff177d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="min" display-name="" uuid="d5e55948-d407-4d04-9848-071ca596ce96" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+			<param access-modifier="private" name="max" display-name="" uuid="d040e4b3-9995-449b-a620-99a538074366" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+		</do>
+	</object>
+</type>
+

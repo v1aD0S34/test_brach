@@ -1,0 +1,2233 @@
+<type access-modifier="private" name="TestForm" display-name="TestForm" uuid="68e78df5-0b85-4ef3-a9f4-6dce0b4141f2" base-type="" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Width" value="800" ver="4"/>
+	<designed target="Height" value="550" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<designed target="PenColor" value="4278190080" ver="4"/>
+	<designed target="PenStyle" value="0" ver="4"/>
+	<designed target="PenWidth" value="1" ver="4"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+	<designed target="BrushStyle" value="1" ver="4"/>
+	<designed target="WindowX" value="0" ver="4"/>
+	<designed target="WindowY" value="0" ver="4"/>
+	<designed target="WindowWidth" value="800" ver="4"/>
+	<designed target="WindowHeight" value="550" ver="4"/>
+	<designed target="WindowCaption" value="TestForm" ver="4"/>
+	<designed target="ShowWindowCaption" value="true" ver="4"/>
+	<designed target="ShowWindowMinimize" value="true" ver="4"/>
+	<designed target="ShowWindowMaximize" value="true" ver="4"/>
+	<designed target="ShowWindowClose" value="true" ver="4"/>
+	<designed target="AlwaysOnTop" value="false" ver="4"/>
+	<designed target="WindowSizeMode" value="0" ver="4"/>
+	<designed target="WindowBorderStyle" value="1" ver="4"/>
+	<designed target="WindowState" value="0" ver="4"/>
+	<designed target="WindowScalingMode" value="0" ver="4"/>
+	<designed target="MonitorNumber" value="0" ver="4"/>
+	<designed target="WindowPosition" value="1" ver="4"/>
+	<designed target="WindowCloseMode" value="0" ver="4"/>
+	<object access-modifier="private" name="ToolBar" display-name="ToolBar" uuid="0c6cfd60-bab4-4877-94ab-6071ba33c16a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Width" value="500" ver="4"/>
+		<designed target="Height" value="30" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="0xffc0c0c0" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="0xff000000" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="Layout" display-name="Layout" uuid="d51599e9-6f7d-4f31-91bd-28498fbf58bc" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+			<designed target="Orientation" value="1" ver="4"/>
+			<designed target="Gap" value="0" ver="4"/>
+		</object>
+		<object access-modifier="private" name="btnClose" display-name="btnClose" uuid="25bb6129-b4ab-400f-abbe-e26009567ad6" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="IsVisible" ver="4" value="false"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[!btnCheck.Checked]]>
+				</body>
+			</do-trace>
+			<init target="IconFile" ver="5" value="CommonLib_Icons/Users.png"/>
+			<designed target="Width" value="29" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnOpen" display-name="btnOpen" uuid="0fe06944-220e-4052-95fc-492be9fb65ce" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+			<designed target="X" value="30" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="IconFile" ver="5" value="CommonLib_Icons/OpenFile16.png"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="344ffacb-9267-4641-b833-5367c39df936" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="4">
+					<init target="FileTypeFilter" ver="4" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx"/>
+					<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					<init target="Result" ver="5" ref="Workspace.RightPanel.Button_1.OpenFileResult"/>
+					<init target="OnComplete" ver="5" ref="Workspace.RightPanel.Button_1.OnComplete"/>
+				</object>
+			</do-on>
+			<init target="pDropDown" ver="4" ref="btnOpenExt"/>
+			<designed target="Width" value="29" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnOpenExt" display-name="btnOpenExt" uuid="3e96c3f2-4bbc-4362-9a3b-e6e91f811299" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="4">
+			<designed target="X" value="114" ver="4"/>
+			<designed target="Y" value="25" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false" form-action="open-new">
+				<object access-modifier="private" uuid="fe42b02c-0f45-489f-ab97-e6966140a6b5" base-type="ContextMenu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="4">
+					<init target="pResult" ver="4" ref="MenuResult"/>
+					<init target="pAction" ver="4" ref="OnMenuClick"/>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[parent.ScreenY(0, 31)]]>
+						</expr>
+					</init>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[parent.ScreenX(-29, 0)]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="Theme_1"/>
+					<init target="PointHeight" ver="5" value="30"/>
+				</object>
+			</do-on>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var items = [
+	{ 'id': "csv", 'title': "Открыть файл CSV" },
+	{	'id': "xlsx", 'title': "Открыть файл Excel" }
+];
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="68e8a911-e7b0-42fe-a1e3-2609ff313aac" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "csv")
+{
+	Workspace.RightPanel.Button_1.defaultFileType = 0;
+	Workspace.RightPanel.Button_1.Click();
+}
+else if (cmd == "xlsx")
+{
+	Workspace.RightPanel.Button_1.defaultFileType = 1;
+	Workspace.RightPanel.Button_1.Click();
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pButton" ver="4" ref="btnOpen"/>
+			<designed target="Width" value="11" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="bde9f61d-16d6-4478-9bb4-a85ec1bbf779" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="5">
+			<designed target="X" value="60" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="IconFile" ver="5" value="CommonLib_Icons/SaveFile16.png"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="2d16b5e3-edf8-4af4-be0b-e6b4d28d5d7a" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="4">
+					<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					<init target="FileTypeFilter" ver="4" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx|Файл Adobe PDF (*.pdf)|*.pdf"/>
+					<init target="Result" ver="5" ref="Workspace.RightPanel.Button_2.SaveFileResult"/>
+					<init target="DefaultPath" ver="5">
+						<expr>
+							<![CDATA[ExportPath + here.Files.PreferredSeparator()]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+			<init target="pDropDown" ver="4" ref="btnSaveExt"/>
+			<designed target="Width" value="29" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[!btnCheck.Checked]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme_1"/>
+		</object>
+		<object access-modifier="private" name="btnSaveExt" display-name="btnSaveExt" uuid="3e9cc432-ed98-4491-bde1-3ce558a550bc" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="4">
+			<designed target="X" value="90" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<init target="pButton" ver="4" ref="btnSave"/>
+			<init target="pTheme" ver="4" ref="Theme_1"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false" form-action="open-new">
+				<object access-modifier="private" uuid="d8b90867-0f12-4d71-9c0e-200c43c255dc" base-type="ContextMenu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="4">
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[parent.ScreenY(0, 31)]]>
+						</expr>
+					</init>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetMenuItems()]]>
+						</expr>
+					</init>
+					<init target="pAction" ver="5" ref="OnMenuClick"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[parent.ScreenX(-29, 0)]]>
+						</expr>
+					</init>
+					<init target="pResult" ver="4" ref="MenuResult"/>
+					<init target="pTheme" ver="5" ref="Theme_1"/>
+					<init target="PointHeight" ver="5" value="30"/>
+					<init target="pOnClosed" ver="5" ref="MenuClosed"/>
+				</object>
+			</do-on>
+			<do access-modifier="private" name="GetMenuItems" display-name="GetMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[// для загрузки ресурсов в библиотечном типе необходимо указывать полный путь к файлу
+var iconsPath = Files.CanonicalPath(Files.ProjectFolder) + "/resources/CommonLib_Icons";
+
+var items = [];
+
+items.push({
+	'id': "save",
+	'title': "Сохранить как..."
+});
+
+items.push({	'title': "-" });
+
+items.push({
+	'id': "save_pdf",
+	'title': "Сохранить в формате PDF",
+	'icon': Files.CombinePath(iconsPath, "SaveFile16.png"),
+	'active': false
+});
+
+items.push({
+	'id': "save_xlsx",
+	'title': "Сохранить в формате Excel",
+	'icon': Files.CombinePath(iconsPath, "SaveFile16.png"),
+	'active': true
+});
+
+var temp = [];
+for(var t = 0; t < 30; t++)
+	temp.push({ 'id': "temp_file" + t, 'title': t + ".txt" });
+
+items.push({
+	'id': "recent",
+	'title': "Последние сохраненные файлы",
+	'items': [
+		{	'id': "c0",	'title': "c:\\rnd" },
+		{	'id': "temp",	'title': "c:\\temp\\",
+			'items': temp
+		},
+		{	'id': "projects",	'title': "c:\\projects\\",
+			'items': [
+				{ 'id': "projects_file0", 'title': "asdfg.prj" }
+			]
+		}
+	]
+});
+
+items.push({
+	'id': "formats",
+	'title': "Доступные форматы",
+	'items': [
+		{	'id': "csv",	'title': "CSV файл", 'checked': true, 'staysOpen': true},
+		{	'id': "xlsx",	'title': "Excel", 'checked': false, 'staysOpen': true },
+	]
+});
+
+items.push({	'title': "-" });
+
+items.push({
+	'id': "slim",
+	'title': "Компактный вид диалога сохранения (только имя папки и файла)",
+	'checked': Workspace.RightPanel.Button_2.Checkbox_1.State,
+	'staysOpen': true
+});
+
+return JSON.stringify(items);]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="OnMenuClick" display-name="OnMenuClick" uuid="e48002a2-61da-4f28-9d3e-bee2c57e3267" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "save")
+{
+	Workspace.RightPanel.Button_2.defaultFileType = 0;
+	Workspace.RightPanel.Button_2.Click();
+}
+else if (cmd == "save_pdf")
+{
+	Workspace.RightPanel.Button_2.defaultFileType = 2;
+	Workspace.RightPanel.Button_2.Click();
+}
+else if (cmd == "save_xlsx")
+{
+	Workspace.RightPanel.Button_2.defaultFileType = 1;
+	Workspace.RightPanel.Button_2.Click();
+}
+else if (cmd == "slim")
+	Workspace.RightPanel.Button_2.Checkbox_1.State = !Workspace.RightPanel.Button_2.Checkbox_1.State;]]>
+					</body>
+				</do-on>
+			</object>
+			<designed target="Width" value="11" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[!btnCheck.Checked]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="MenuClosed" display-name="MenuClosed" uuid="54817a63-983a-4dba-8960-fb0344ff2eda" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Checked = false;]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Checked = true;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DateEditor" display-name="DateEditor" uuid="9ee028ac-06ad-4f1d-a25b-47f441c5a4b0" base-type="DateEditor" base-type-id="69318eaa-4b1e-41d3-a9ef-5126cded808c" ver="5" description="" cardinal="1">
+			<designed target="X" value="110" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<object access-modifier="private" name="DateChanged" display-name="DateChanged" uuid="655572b2-39c4-425b-9197-b71a50043c5b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Debug.Log("В редакторе даты выбрано " + DateTime.ToString(DateEditor.Value));
+DateEditor.Error = DateEditor.Value > DateTime.Now() ? "Этот день еще не настал" : "";]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pValueChanged" ver="5" ref="DateChanged"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[!btnCheck.Checked]]>
+				</body>
+			</do-trace>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Width" value="85" ver="5"/>
+		</object>
+		<object access-modifier="private" name="TimeEditor" display-name="TimeEditor" uuid="4127dd8a-1aa0-426e-b69d-08326cdf43a0" base-type="TimeEditor" base-type-id="d0247632-ed97-46ad-b054-1da38b54f7b7" ver="5" description="" cardinal="1">
+			<designed target="X" value="240" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<object access-modifier="private" name="TimeChanged" display-name="TimeChanged" uuid="f8648e0a-32cb-464e-8a18-d3d1deedb4f0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Debug.Log("В редакторе времени выбрано " + DateTime.ToString(TimeEditor.Value));
+if (DateTime.Hour(TimeEditor.Value) < 9 || DateTime.Hour(TimeEditor.Value) > 18)
+	TimeEditor.Error = "Рабочее время вышло";
+else TimeEditor.Error = "";]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pValueChanged" ver="5" ref="TimeChanged"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[!btnCheck.Checked]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Width" value="75" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator1" display-name="separator1" uuid="bdd50012-96a2-454d-938e-dbd407034037" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="4">
+			<designed target="X" value="240" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<init target="pTheme" ver="4" ref="Theme_1"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[!btnCheck.Checked]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="6" ver="5"/>
+			<designed target="Height" value="28" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnCheck" display-name="btnCheck" uuid="3138c24d-1197-480f-9801-1213382fba67" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="4">
+			<designed target="X" value="330" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Checked = !Checked;]]>
+				</body>
+			</do-on>
+			<init target="IconFile" ver="4" value="CommonLib_Icons/Warning.png"/>
+			<designed target="Tooltip" value="Скрыть/показать кнопку" ver="5"/>
+			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<designed target="Width" value="28" ver="5"/>
+			<designed target="Height" value="28" ver="5"/>
+		</object>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="5150e200-6dfe-4d5c-90fe-f68f6ba4b86f" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="4"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="922a60da-453f-4496-9578-59519801b6f2" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="30" ver="5"/>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[Workspace.RightPanel.cbToolbarVisible.State ? 30 : 0]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[Theme_1.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[Workspace.RightPanel.cbToolbarVisible.State]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="space" display-name="space" uuid="fc61dd53-095b-4e6b-8826-ab388954bc81" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="297.5" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="10" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="05ba7b51-cc80-456f-8f09-45e4b7bb91ca" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+				<designed target="Weight" value="1" ver="5"/>
+			</object>
+		</object>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="18334017-8115-41b0-8069-b3d7eb0caab7" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="89aa5850-8dc2-498a-9308-bc7084dfa11a" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[ExportPath.Value = Files.CombinePath(Files.ProjectFolder, "Export");
+
+Workspace.RightPanel.Button_6.DataType.AddItem("");
+Workspace.RightPanel.Button_6.DataType.AddItem("int1");
+Workspace.RightPanel.Button_6.DataType.AddItem("uint1");
+Workspace.RightPanel.Button_6.DataType.AddItem("int2");
+Workspace.RightPanel.Button_6.DataType.AddItem("uint2");
+Workspace.RightPanel.Button_6.DataType.AddItem("int4");
+Workspace.RightPanel.Button_6.DataType.AddItem("uint4");
+Workspace.RightPanel.Button_6.DataType.AddItem("int8");
+Workspace.RightPanel.Button_6.DataType.AddItem("uint8");
+Workspace.RightPanel.Button_6.DataType.AddItem("float");
+Workspace.RightPanel.Button_6.DataType.AddItem("double");
+Workspace.RightPanel.Button_6.DataType.AddItem("bool");
+Workspace.RightPanel.Button_6.DataType.AddItem("string");
+
+Workspace.RightPanel.Button_8.ComboBox_1.AddItem("градиент яркости");
+Workspace.RightPanel.Button_8.ComboBox_1.AddItem("web-цвета");
+
+ApSource_1.Active = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="541fb95b-46d6-4ab0-beb9-8987c6924bfe" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="4">
+		<designed target="RootPath" value="/" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ExportPath" display-name="ExportPath" uuid="2408757d-069f-4699-ad52-e9f0983ba72e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Workspace" display-name="Workspace" uuid="75a578b2-3481-470d-9670-5dc4d0966a5c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="30" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="370" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="LeftPanel" display-name="LeftPanel" uuid="7a6cc4cd-186a-4344-9376-403495483d47" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="370" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="0xff808080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="SearchBar" display-name="SearchBar" uuid="a0d8bff9-5dad-4bbc-b353-2683623a24d4" base-type="SearchBar" base-type-id="eed9303b-0032-4f78-8bfe-aff18c14190a" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="250" ver="5"/>
+				<designed target="Height" value="25" ver="5"/>
+				<object access-modifier="private" name="PatternChanged" display-name="PatternChanged" uuid="b17bb74b-6e70-4183-b65e-65b1d099f3c1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[ItemTree.Tree.SetColumnFilter(0, "*" + SearchBar.Pattern + "*");]]>
+						</body>
+					</do-on>
+				</object>
+				<init target="pPatternChanged" ver="5" ref="PatternChanged"/>
+				<do-trace access-modifier="private" target="IsVisible" ver="5">
+					<body>
+						<![CDATA[RightPanel.cbTreeVisible.State && RightPanel.cbSeachBarVisible.State]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="PenColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.BorderColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="ItemTree" display-name="ItemTree" uuid="09af59bd-b252-4091-9249-839addb24653" base-type="ApItemTree" base-type-id="c334bfb4-cb34-44c9-8ba1-4961a2834b3b" ver="5" description="" cardinal="1">
+				<designed target="X" value="0" ver="5"/>
+				<designed target="Y" value="22" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Width" value="250" ver="5"/>
+				<designed target="Height" value="350" ver="5"/>
+				<init target="init_ApSource" ver="5" ref="ApSource_1"/>
+				<init target="pTheme" ver="5" ref="Theme_1"/>
+				<init target="DescriptionPreferred" ver="5" value="false"/>
+				<do-trace access-modifier="private" target="DescriptionPreferred" ver="5">
+					<body>
+						<![CDATA[RightPanel.cbDescriptionsInTree.State]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[RightPanel.cbTreeVisible.State]]>
+					</body>
+				</do-trace>
+				<object access-modifier="private" name="Drag" display-name="Drag" uuid="54cd119c-acbe-4cf0-804e-e78e59533a71" base-type="DragNDrop" base-type-id="c4ddb32f-3653-44c8-be57-3a595e10c2fb" ver="5" description="" cardinal="1">
+					<designed target="DragEnabled" value="true" ver="5"/>
+					<designed target="DropEnabled" value="false" ver="5"/>
+					<designed target="Image" value="" ver="5"/>
+					<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="e54429b9-2501-4514-9b2f-bd047e70eba6" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+						<designed target="Weight" value="0" ver="5"/>
+					</object>
+				</object>
+				<object access-modifier="private" name="DragStarted" display-name="DragStarted" uuid="d21cf38b-c533-481f-b20d-eac9ad5a4e7c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[var json = GetCurrentItemInfo();
+if (json != "")
+{
+	var info = JSON.parse(json);
+	Log.AddMessage(0, "Начато перетаскивание " + info.tag + " (" + info.dataType + ")");
+	
+	Drag.Image = Tree.GetItemIconPath(Tree.CurrentItem, false);
+	Drag.SetText("{\"data\":[" + json + "]}");
+	Drag.DoDragDrop();
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<init target="pDragStarted" ver="5" ref="DragStarted"/>
+				<object access-modifier="private" name="DoubleClicked" display-name="DoubleClicked" uuid="807c9557-7fbe-44a2-a23c-10faae93a467" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[var json = GetCurrentItemInfo();
+if (json != "")
+{
+	var info = JSON.parse(json);
+	Log.AddMessage(0, "Двойной клик по " + info.tag + " (" + info.dataType + ")");
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<init target="pDoubleClicked" ver="5" ref="DoubleClicked"/>
+			</object>
+			<object access-modifier="private" name="Layout" display-name="Layout" uuid="194e62ca-6140-41de-b634-c6031ef2ad14" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+				<designed target="Orientation" value="2" ver="5"/>
+				<designed target="Gap" value="0" ver="5"/>
+			</object>
+			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="fc4966a3-961a-4368-bbcc-109b7938cdab" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+				<designed target="Weight" value="250" ver="5"/>
+				<do-trace access-modifier="private" target="Weight" ver="5">
+					<body>
+						<![CDATA[RightPanel.cbTreeVisible.State ? 250 : 0]]>
+					</body>
+				</do-trace>
+			</object>
+		</object>
+		<object access-modifier="private" name="RightPanel" display-name="RightPanel" uuid="23acdd28-1c91-4ed6-b620-65e034fc2473" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="250" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="550" ver="5"/>
+			<designed target="Height" value="370" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="cbTreeVisible" display-name="cbTreeVisible" uuid="61d3a680-0a0a-4b25-8936-82201b4f899b" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+				<designed target="X" value="10" ver="5"/>
+				<designed target="Y" value="5" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Дерево сигналов" ver="5"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="State" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="cbSeachBarVisible" display-name="cbSeachBarVisible" uuid="ec2802b3-193d-410a-9682-0b4b1d05bfe4" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+				<designed target="X" value="10" ver="5"/>
+				<designed target="Y" value="30" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="180" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Поиск в дереве сигналов" ver="5"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="State" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="cbDescriptionsInTree" display-name="cbDescriptionsInTree" uuid="b35b29e1-1007-4b7b-94d9-697384756a23" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+				<designed target="X" value="10" ver="5"/>
+				<designed target="Y" value="55" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="180" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Описания в дереве сигналов" ver="5"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="State" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="cbToolbarVisible" display-name="cbToolbarVisible" uuid="8060dd28-c0ec-4591-b696-10a831f5df7f" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+				<designed target="X" value="190" ver="5"/>
+				<designed target="Y" value="5" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Панель инструментов" ver="5"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="State" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="cbLogVisible" display-name="cbLogVisible" uuid="fb4b3a9f-bee7-42a9-a20e-fb598597b8a0" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+				<designed target="X" value="360" ver="5"/>
+				<designed target="Y" value="5" ver="5"/>
+				<designed target="ZValue" value="0" ver="5"/>
+				<designed target="Rotation" value="0" ver="5"/>
+				<designed target="Scale" value="1" ver="5"/>
+				<designed target="Visible" value="true" ver="5"/>
+				<designed target="Opacity" value="1" ver="5"/>
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="Tooltip" value="" ver="5"/>
+				<designed target="Width" value="140" ver="5"/>
+				<designed target="Height" value="20" ver="5"/>
+				<designed target="Text" value="Журнал" ver="5"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+				<designed target="FontColor" value="4278190080" ver="5"/>
+				<designed target="State" value="true" ver="5"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[Theme_1.ForegroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="State" ver="5">
+					<body>
+						<![CDATA[Log.IsVisible]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Button_1" display-name="Button_1" uuid="fe42b8c8-f7b6-45b1-ac25-0dfec56e7fd9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="90" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Открыть файл" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="6c0e88d6-ee66-4cdf-a7e9-7533a42f944a" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="4">
+						<init target="Result" ver="4" ref="OpenFileResult"/>
+						<init target="FileTypeFilter" ver="4" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx"/>
+						<init target="ShowBrowsePanel" ver="5">
+							<expr>
+								<![CDATA[Checkbox_1.State == false]]>
+							</expr>
+						</init>
+						<init target="OnComplete" ver="4" ref="parent.OnComplete"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+						<init target="DefaultFileType" ver="5">
+							<expr>
+								<![CDATA[defaultFileType]]>
+							</expr>
+						</init>
+						<init target="DefaultPath" ver="5">
+							<expr>
+								<![CDATA[ExportPath + here.Files.PreferredSeparator()]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="OpenFilePath" display-name="OpenFilePath" uuid="3e0fed22-6ade-4703-be04-59f2413c3362" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="170" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="230" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="OpenFileType" display-name="OpenFileType" uuid="39005db5-4eb1-43d5-89f8-aad5ed62c97d" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="420" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="50" ver="4"/>
+					<designed target="Height" value="20" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="OpenFileResult" display-name="OpenFileResult" uuid="185ac41a-81a4-46cb-a531-74ebdba69ac8" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+				<object access-modifier="private" name="Checkbox_1" display-name="Checkbox_1" uuid="e209eb49-5d02-4ff5-a095-c4a00b03f5cc" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+					<designed target="X" value="110" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="50" ver="4"/>
+					<designed target="Height" value="20" ver="4"/>
+					<designed target="Text" value="Slim" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="4"/>
+					<designed target="FontColor" value="0xff000000" ver="4"/>
+					<designed target="State" value="false" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="f347827c-0476-49d0-b580-19b05799c80c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[OpenFilePath.Text = OpenFileResult.FilePath;
+OpenFileType.Text = String.ToString(OpenFileResult.FileType);]]>
+						</body>
+					</do-on>
+				</object>
+				<designed target="Checked" value="false" ver="4"/>
+				<object access-modifier="private" name="defaultFileType" display-name="defaultFileType" uuid="a31129b4-a603-4d94-9ffa-af3035697512" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			</object>
+			<object access-modifier="private" name="Button_2" display-name="Button_2" uuid="d76ea347-c83b-4e46-8607-aeca20b3ace0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="130" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Сохранить файл" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="b7e27c90-3300-4f62-8094-a486c99af578" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="4">
+						<init target="FileTypeFilter" ver="4" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx|Файл Adobe PDF (*.pdf)|*.pdf"/>
+						<init target="Result" ver="4" ref="SaveFileResult"/>
+						<init target="ShowBrowsePanel" ver="5">
+							<expr>
+								<![CDATA[!Checkbox_1.State]]>
+							</expr>
+						</init>
+						<init target="OnEditSettings" ver="4" ref="EditSettings"/>
+						<init target="EditSettingsAllowed" ver="4" value="true"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+						<init target="DefaultFileType" ver="5">
+							<expr>
+								<![CDATA[defaultFileType]]>
+							</expr>
+						</init>
+						<init target="RootPath" ver="5">
+							<expr>
+								<![CDATA[ExportPath + "/Export"]]>
+							</expr>
+						</init>
+						<init target="DefaultPath" ver="5">
+							<expr>
+								<![CDATA[ExportPath + "/Export/file.csv"]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="SaveFilePath" display-name="SaveFilePath" uuid="e92fbe95-cdb1-49ae-a480-b363f5a48d51" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="170" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="230" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="Text" ver="5">
+						<body>
+							<![CDATA[SaveFileResult.FilePath]]>
+						</body>
+					</do-trace>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="SaveFileType" display-name="SaveFileType" uuid="4853bf8c-7256-4c6e-bab9-1194e11fb803" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="420" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="50" ver="4"/>
+					<designed target="Height" value="20" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="Text" ver="5">
+						<body>
+							<![CDATA[String.ToString(SaveFileResult.FileType)]]>
+						</body>
+					</do-trace>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="SaveFileResult" display-name="SaveFileResult" uuid="a6436e69-7c75-41de-88b9-ebe530b399e1" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+				<object access-modifier="private" name="Checkbox_1" display-name="Checkbox_1" uuid="2687c349-58c8-4370-a058-813429f4939e" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+					<designed target="X" value="110" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="50" ver="4"/>
+					<designed target="Height" value="20" ver="4"/>
+					<designed target="Text" value="Slim" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="4"/>
+					<designed target="FontColor" value="0xff000000" ver="4"/>
+					<designed target="State" value="true" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="EditSettings" display-name="EditSettings" uuid="a2e05cd0-d5b5-44f6-82ee-899b538804cb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+						<object access-modifier="private" uuid="bc268cb3-4bae-44f9-bcef-62564830dffb" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+							<init target="Result" ver="4" ref="Settings"/>
+							<designed target="WindowCaption" value="Курица или рыба?" ver="4"/>
+						</object>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="Settings" display-name="Settings" uuid="c5a0cf7f-e92e-4df2-a3c2-1ef6a375313d" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4"/>
+				<designed target="Checked" value="false" ver="4"/>
+				<object access-modifier="private" name="defaultFileType" display-name="defaultFileType" uuid="b94028c1-f2ea-478d-929d-5dcbd267326a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			</object>
+			<object access-modifier="private" name="Button_3" display-name="Button_3" uuid="7d0e00f1-19af-46a5-96d0-a77e03ae5287" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="210" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Сообщение" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="bcbf31e2-cf55-4830-9896-9dfbd99973df" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<init target="Message" ver="4" value="Сохранение в файл C:\ProgramData\Microsoft\DiagnosticLogCSP\DeviceStateData\zcvbn.txt выполнено успешно (Файл можно открыть для редактирования с помощью текстового редактора)."/>
+						<init target="Icon" ver="4" value="0"/>
+						<init target="Buttons" ver="4" value="0"/>
+						<designed target="Width" value="400" ver="4"/>
+						<designed target="WindowWidth" value="400" ver="4"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					</object>
+				</do-on>
+				<designed target="Checked" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Button_4" display-name="Button_4" uuid="186e1e98-4c3f-4550-b1fd-75b11b2b475a" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="250" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Подтверждение" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="52c86450-761c-4c10-8c35-66a81f3a33cb" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<init target="Message" ver="4" value="Файл существует, вы хотите его заменить?"/>
+						<init target="Icon" ver="4" value="1"/>
+						<init target="Buttons" ver="4" value="2"/>
+						<init target="YesAction" ver="4" ref="parent.YesAction"/>
+						<designed target="WindowCaption" value="Подтверждение" ver="4"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="YesAction" display-name="YesAction" uuid="f9d0faea-6f17-45d7-8a9d-40bcbc40b532" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[ProgressBar_1.Value = 0;
+ProgressBar_1.Timer_1.Active = true;]]>
+						</body>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="ProgressBar_1" display-name="ProgressBar_1" uuid="2b82e8ec-2522-41ad-95da-8e255f610efd" base-type="ProgressBar" base-type-id="a5193173-0399-4840-95f8-2e9958e4e74e" ver="4">
+					<designed target="X" value="120" ver="4"/>
+					<designed target="Y" value="5" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="340" ver="4"/>
+					<designed target="Height" value="20" ver="4"/>
+					<designed target="Orientation" value="1" ver="4"/>
+					<designed target="MinLimit" value="0" ver="4"/>
+					<designed target="MaxLimit" value="100" ver="4"/>
+					<designed target="Value" value="0" ver="4"/>
+					<designed target="ShowText" value="true" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<object access-modifier="private" name="Timer_1" display-name="Timer_1" uuid="06f11d8e-7a1f-4933-8167-c31508a9f37f" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="4">
+						<designed target="Period" value="100" ver="4"/>
+						<designed target="Active" value="false" ver="4"/>
+						<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+							<body kind="om">
+								<![CDATA[ProgressBar_1.Value += 10;
+if (ProgressBar_1.Value >= 100)
+{
+	Active = false;
+	ProgressBar_1.Value = 0;
+}]]>
+							</body>
+						</do-on>
+					</object>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.EditorFontColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<designed target="Checked" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Button_5" display-name="Button_5" uuid="00e1ca07-4756-4196-a56f-e2e02effa582" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="170" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Выбрать папку" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="51a599dd-bd8e-42b1-a273-619a87bc6838" base-type="SelectFolderDialog" base-type-id="5b99010a-629a-4d7b-b1cf-a388ef2395c3" ver="4">
+						<init target="Result" ver="4" ref="SelectFolderResult"/>
+						<init target="DefaultPath" ver="5">
+							<expr>
+								<![CDATA[ExportPath]]>
+							</expr>
+						</init>
+						<init target="OnComplete" ver="4" ref="parent.OnComplete"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+						<init target="RootPath" ver="5" value="E:\"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="SelectedFolder" display-name="SelectedFolder" uuid="fb7f1377-bc03-4224-8958-151ffd4777a0" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="110" ver="4"/>
+					<designed target="Y" value="0" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="160" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="Text" ver="5">
+						<body>
+							<![CDATA[SelectFolderResult.Value]]>
+						</body>
+					</do-trace>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="SelectFolderResult" display-name="SelectFolderResult" uuid="d308a9ce-1007-488f-b84b-c47ab308a62e" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4"/>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="559ee63f-0b04-421b-ad62-c3c18783392c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[SelectedFolderOnComplete.Text = SelectFolderResult.Value;]]>
+						</body>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="SelectedFolderOnComplete" display-name="SelectedFolderOnComplete" uuid="d8be5826-dd79-4fd7-856a-ffb9dfbde193" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="280" ver="4"/>
+					<designed target="Y" value="0" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="160" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<designed target="Checked" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Button_6" display-name="Button_6" uuid="d62d2478-d6fb-4f32-a3ce-b85b6b77c723" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="290" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Ввод числа" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="48c4ada1-9ecb-44f4-9da8-d8a807a0fddd" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+						<init target="Result" ver="4" ref="InputResult"/>
+						<designed target="WindowCaption" value="Введите новое число" ver="4"/>
+						<init target="OkAction" ver="4" ref="SetNumber"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="Number" display-name="Number" uuid="4345ce0f-27fa-482a-9f40-3d711e95a028" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="375" ver="4"/>
+					<designed target="Y" value="0" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="145" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="InputResult" display-name="InputResult" uuid="1b53e6f5-b55c-4030-9e14-99853348ce48" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4">
+					<do-trace access-modifier="private" target="Error" ver="5">
+						<body>
+							<![CDATA[CheckValue(InputText, DataType.Text)]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="SetNumber" display-name="SetNumber" uuid="c828f4b4-71a8-4b39-91ff-f0e0f2b116c6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[dataType: string = DataType.Text;
+number: variant = Converter_1.StringToVariant(InputResult.Value, dataType);
+Number.Text = Converter_1.VariantToString(number, dataType);]]>
+						</body>
+					</do-on>
+				</object>
+				<designed target="Checked" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[InputResult.InputText = Number.Text;]]>
+					</body>
+				</do-on>
+				<object access-modifier="private" name="DataType" display-name="DataType" uuid="43e38c4d-bb59-4d41-ae82-b2e40f7e6d3c" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5" description="" cardinal="1">
+					<designed target="X" value="115" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+					<designed target="ZValue" value="0" ver="5"/>
+					<designed target="Rotation" value="0" ver="5"/>
+					<designed target="Scale" value="1" ver="5"/>
+					<designed target="Visible" value="true" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="Tooltip" value="" ver="5"/>
+					<designed target="Width" value="70" ver="5"/>
+					<designed target="Height" value="25" ver="5"/>
+					<designed target="Editable" value="false" ver="5"/>
+					<designed target="Text" value="" ver="5"/>
+					<designed target="SelectedIndex" value="-1" ver="5"/>
+					<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+					<designed target="FontColor" value="4278190080" ver="5"/>
+					<designed target="MaxVisibleItems" value="13" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Min" display-name="Min" uuid="713278e2-2f3a-4c28-925e-3a8d2f359ad5" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="5" description="" cardinal="1">
+					<designed target="X" value="250" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+					<designed target="Rotation" value="0" ver="5"/>
+					<designed target="Width" value="55" ver="5"/>
+					<designed target="Height" value="25" ver="5"/>
+					<init target="Value" ver="5" value="-10"/>
+				</object>
+				<object access-modifier="private" name="Max" display-name="Max" uuid="f201a9e0-8d51-43f6-bcc0-5bc27bcac320" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="5" description="" cardinal="1">
+					<designed target="X" value="315" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+					<designed target="Rotation" value="0" ver="5"/>
+					<designed target="Width" value="50" ver="5"/>
+					<designed target="Height" value="25" ver="5"/>
+					<init target="Value" ver="5" value="100"/>
+				</object>
+				<do access-modifier="private" name="CheckValue" display-name="CheckValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="om">
+						<![CDATA[if (cbRange.State)
+{
+	empty: variant;
+	if (dataType == "int1")
+		return Converter_1.ValidateValueRange(value, dataType, TypeConvert.ToInt1(Min.Value), TypeConvert.ToInt1(Max.Value));
+	else if (dataType == "int2")
+		return Converter_1.ValidateValueRange(value, dataType, TypeConvert.ToInt2(Min.Value), TypeConvert.ToInt2(Max.Value));
+	else if (dataType == "int4")
+		return Converter_1.ValidateValueRange(value, dataType, TypeConvert.ToInt4(Min.Value), TypeConvert.ToInt4(Max.Value));
+	else if (dataType == "int8")
+		return Converter_1.ValidateValueRange(value, dataType, empty, empty);
+	else if (dataType == "uint8")
+		return Converter_1.ValidateValueRange(value, dataType, empty, empty);
+	else if (dataType == "float")
+		return Converter_1.ValidateValueRange(value, dataType, empty, empty);
+	else if (dataType == "double")
+		return Converter_1.ValidateValueRange(value, dataType, empty, empty);
+}
+
+return Converter_1.ValidateValue(value, dataType);]]>
+					</body>
+					<param access-modifier="private" name="value" display-name="" uuid="4403d1d3-4c48-4b93-95c2-ee466c4effb8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+					<param access-modifier="private" name="dataType" display-name="" uuid="b601bbd1-2a3e-432f-b757-8dd8c915b677" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				</do>
+				<object access-modifier="private" name="cbRange" display-name="cbRange" uuid="4588f530-500d-48db-a3e3-8f063e63e6bf" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" description="" cardinal="1">
+					<designed target="X" value="190" ver="5"/>
+					<designed target="Y" value="0" ver="5"/>
+					<designed target="ZValue" value="0" ver="5"/>
+					<designed target="Rotation" value="0" ver="5"/>
+					<designed target="Scale" value="1" ver="5"/>
+					<designed target="Visible" value="true" ver="5"/>
+					<designed target="Opacity" value="1" ver="5"/>
+					<designed target="Enabled" value="true" ver="5"/>
+					<designed target="Tooltip" value="" ver="5"/>
+					<designed target="Width" value="60" ver="5"/>
+					<designed target="Height" value="25" ver="5"/>
+					<designed target="Text" value="Range" ver="5"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+					<designed target="FontColor" value="4278190080" ver="5"/>
+					<designed target="State" value="false" ver="5"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+			</object>
+			<object access-modifier="private" name="Button_7" display-name="Button_7" uuid="4cae4e3e-2060-4a3d-bd04-15866a160a76" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="125" ver="4"/>
+				<designed target="Y" value="210" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="110" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Предупреждение" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="505b87ef-fd11-4b31-b6cd-3442321e48d8" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<init target="Message" ver="4" value="Внимание!
+Форма содержит несохраненные данные.
+Сохранить изменения перед выходом?
+Вы точно уверены?
+А может быть еще раз подумаете и все-таки передумаете?"/>
+						<init target="Icon" ver="4" value="2"/>
+						<init target="Buttons" ver="4" value="3"/>
+						<designed target="Width" value="400" ver="4"/>
+						<designed target="WindowWidth" value="400" ver="4"/>
+						<designed target="WindowCaption" value="Предупреждение" ver="4"/>
+						<init target="YesAction" ver="4" ref="parent.YesAction"/>
+						<init target="NoAction" ver="4" ref="parent.NoAction"/>
+						<init target="CancelAction" ver="4" ref="parent.CancelAction"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+						<init target="LineHeight" ver="4" value="16"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="Result" display-name="Result" uuid="1262457d-6460-40fb-acc1-0d482ddc9396" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+					<designed target="X" value="120" ver="4"/>
+					<designed target="Y" value="0" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="50" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Text" value="Text" ver="4"/>
+					<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="TextAlignment" value="129" ver="4"/>
+					<do-trace access-modifier="private" target="FontColor" ver="5">
+						<body>
+							<![CDATA[Theme_1.ForegroundColor]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="YesAction" display-name="YesAction" uuid="8c972e36-ef00-403c-b858-d46837efc176" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[Result.Text = "да";]]>
+						</body>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="NoAction" display-name="NoAction" uuid="42e87a3b-b4d1-4c1f-9c95-04d59f1462ac" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[Result.Text = "нет";]]>
+						</body>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="CancelAction" display-name="CancelAction" uuid="de75f641-9f17-469d-8033-4187d922db5c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[Result.Text = "отмена";]]>
+						</body>
+					</do-on>
+				</object>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[Result.Text = "";]]>
+					</body>
+				</do-on>
+				<designed target="Checked" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Button_8" display-name="Button_8" uuid="b622dad1-5903-4b7d-ad4c-cb70a8a79ae9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="10" ver="4"/>
+				<designed target="Y" value="330" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Выбрать цвет" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="a3c0a6db-4739-454f-9059-6cc59b545ed9" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+						<init target="Result" ver="4" ref="ColorDialogResult_1"/>
+						<init target="PaletteType" ver="5">
+							<expr>
+								<![CDATA[ComboBox_1.SelectedIndex]]>
+							</expr>
+						</init>
+						<init target="OkAction" ver="4" ref="OnComplete"/>
+						<init target="SelectedColor" ver="5">
+							<expr>
+								<![CDATA[parent.BrushColor]]>
+							</expr>
+						</init>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="ColorDialogResult_1" display-name="ColorDialogResult_1" uuid="1d4ce467-1c4a-431b-a092-a5cf14f4cc88" base-type="ColorDialogResult" base-type-id="b51f78e4-f30c-411b-9a81-b57ef602013a" ver="4"/>
+				<do-trace access-modifier="private" target="BrushColor" ver="5">
+					<body>
+						<![CDATA[ColorDialogResult_1.Color]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="OnHoverBrushColor" ver="5">
+					<body>
+						<![CDATA[ColorDialogResult_1.Color]]>
+					</body>
+				</do-trace>
+				<object access-modifier="private" name="ComboBox_1" display-name="ComboBox_1" uuid="3412b594-a169-408f-9ebe-bbc86bf8d437" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+					<designed target="X" value="110" ver="4"/>
+					<designed target="Y" value="0" ver="4"/>
+					<designed target="ZValue" value="0" ver="4"/>
+					<designed target="Rotation" value="0" ver="4"/>
+					<designed target="Scale" value="1" ver="4"/>
+					<designed target="Visible" value="true" ver="4"/>
+					<designed target="Opacity" value="1" ver="4"/>
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="Tooltip" value="" ver="4"/>
+					<designed target="Width" value="150" ver="4"/>
+					<designed target="Height" value="25" ver="4"/>
+					<designed target="Editable" value="false" ver="4"/>
+					<designed target="Text" value="" ver="4"/>
+					<designed target="SelectedIndex" value="-1" ver="4"/>
+					<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+					<designed target="FontColor" value="4278190080" ver="4"/>
+					<designed target="MaxVisibleItems" value="10" ver="4"/>
+				</object>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="f0db8db0-43b0-41e6-914d-bac8a1da26b2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[filePath: string = Files.CombinePath(Files.ProjectFolder, "colors.json");
+Files.WriteTextFile(filePath, ColorDialogResult_1.CustomColors);]]>
+						</body>
+					</do-on>
+				</object>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[filePath: string = Files.CombinePath(Files.ProjectFolder, "colors.json");
+ColorDialogResult_1.CustomColors = Files.ReadTextFile(filePath);]]>
+					</body>
+				</do-on>
+				<designed target="Checked" value="false" ver="5"/>
+			</object>
+			<object access-modifier="private" name="IntegerUpDown_1" display-name="IntegerUpDown_1" uuid="1a1288be-862f-4bf7-a35d-2c1b3edf03b9" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="4">
+				<designed target="X" value="285" ver="4"/>
+				<designed target="Y" value="330" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Width" value="60" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<init target="Minimum" ver="4" value="10"/>
+				<init target="Maximum" ver="4" value="100"/>
+				<init target="Value" ver="4" value="10"/>
+			</object>
+			<object access-modifier="private" name="Button_9" display-name="Button_9" uuid="8df690eb-7192-4597-af16-e3590f5e826f" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="360" ver="4"/>
+				<designed target="Y" value="330" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="105" ver="4"/>
+				<designed target="Height" value="25" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Text" value="Подключиться" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="4278190080" ver="4"/>
+				<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+				<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+				<designed target="BrushColor" value="4293980400" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="e46edf9b-0a0c-47cf-a147-b4c2af5c43c9" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+						<init target="Result" ver="4" ref="InputResult"/>
+						<designed target="WindowCaption" value="Подключиться к серверу" ver="4"/>
+						<init target="OkAction" ver="4" ref="Reconnect"/>
+						<init target="pTheme" ver="4" ref="here.Theme_1"/>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="InputResult" display-name="InputResult" uuid="d5d56137-92a2-4328-bd32-e07b166274ce" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4">
+					<do-trace access-modifier="private" target="Error" ver="5">
+						<body>
+							<![CDATA[InputText == "" ? "Имя папки не должно быть пустым" : ""]]>
+						</body>
+					</do-trace>
+				</object>
+				<object access-modifier="private" name="Reconnect" display-name="Reconnect" uuid="8a7bac04-5e15-4d33-aa78-8605b07fab79" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[ApSource_1.Active = false;
+ApSource_1.Location = InputResult.Value;
+ApSource_1.Active = true;]]>
+						</body>
+					</do-on>
+				</object>
+				<designed target="Checked" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[InputResult.InputText = ApSource_1.Location;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="24062276-4035-478b-bd54-0d34b9b4347e" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+				<designed target="Weight" value="550" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="48f00e9b-e48b-48ac-8ad3-6dcce9d956d6" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+			<designed target="Orientation" value="1" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Log" display-name="Log" uuid="31420a22-5b9a-4ee1-9f34-013f1bfd4a77" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="400" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="120" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme_1"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[Workspace.RightPanel.cbLogVisible.State]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="91e15ea2-2a21-4aa4-b751-3035f45719c6" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="120" ver="5"/>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[IsVisible ? 120 : 0]]>
+				</body>
+			</do-trace>
+		</object>
+		<init target="AdditionalColumns" ver="5" value='[{"id":"address", "title":"Адрес сервера"},
+{"id":"port", "title":"Номер порта"}]'/>
+	</object>
+	<object access-modifier="private" name="Statusbar" display-name="Statusbar" uuid="d9e38701-05ee-4d3b-9b1a-c3369177a5fd" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="520" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="0xffc0c0c0" ver="5"/>
+		<designed target="PenStyle" value="1" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+		<designed target="BrushStyle" value="1" ver="5"/>
+		<object access-modifier="private" name="ConnectionIndicator_1" display-name="ConnectionIndicator_1" uuid="7da0d51c-6930-4705-877f-954364e601bf" base-type="ConnectionIndicator" base-type-id="931aa326-7fd9-496c-acaa-61370986249f" ver="5" description="" cardinal="1">
+			<designed target="X" value="5" ver="5"/>
+			<designed target="Y" value="3" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="25" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="b6aa1830-9d4c-4ecc-830c-8d988ac9bce0" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="25" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+			<init target="init_ApSource" ver="5" ref="ApSource_1"/>
+			<object access-modifier="private" name="stateInfo" display-name="stateInfo" uuid="7a530c42-375b-4939-a42b-080f81bbbe58" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="javascript">
+						<![CDATA[if (value != "")
+{
+	var info = JSON.parse(value);
+	var importance = (info.importance == "error" ? 3 : (info.importance == "warning" ? 2 : (info.importance == "info" ? 1 : 0)));
+	var additional = {'address':ApSource_1.Location, 'port':ApSource_1.Port};
+	Log.Add(importance, info.description, JSON.stringify(additional));
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="stateInfo" ver="5">
+				<body>
+					<![CDATA[this.StateInfo]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="LoginButton_1" display-name="LoginButton_1" uuid="0c5e2575-33f3-4837-8142-143cc8e57842" base-type="LoginButton" base-type-id="d8d684bc-471f-4726-912c-02ba8a974892" ver="4">
+			<designed target="X" value="30" ver="4"/>
+			<designed target="Y" value="3" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Width" value="25" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<init target="pTheme" ver="4" ref="here.Theme_1"/>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="928ca26d-07c2-4cbd-86ee-38286fed3526" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="25" ver="5"/>
+				<designed target="MaxHeight" value="25" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="de8d51bf-34c7-420a-97b1-e5b943317755" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="30" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="30" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[Theme_1.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[Theme_1.BackgroundColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LogViewButton_1" display-name="LogViewButton_1" uuid="e392acb1-9cd0-45de-a5e9-77ff1027a929" base-type="LogViewButton" base-type-id="f441f6b3-2f00-4d56-b3d1-eaf11905bf72" ver="5" description="" cardinal="1">
+			<designed target="X" value="60" ver="5"/>
+			<designed target="Y" value="3" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="65" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<init target="pLogView" ver="5" ref="Log"/>
+			<init target="pTheme" ver="5" ref="Theme_1"/>
+			<init target="ButtonHeight" ver="5" value="22"/>
+		</object>
+		<object access-modifier="private" name="space" display-name="space" uuid="83929e13-923c-4620-9780-59a86a59737a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="90" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="10" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Themes" display-name="Themes" uuid="920b490b-45a9-4994-84e8-df1b3798cf7c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="" cardinal="1">
+			<designed target="X" value="550" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="250" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="4278190080" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<object access-modifier="private" name="Button_36" display-name="Button_36" uuid="8bc27d61-ba26-467e-b887-2307c850509f" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="5" ver="4"/>
+				<designed target="Y" value="5" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="70" ver="4"/>
+				<designed target="Height" value="20" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Checked" value="false" ver="4"/>
+				<designed target="Text" value="светлая" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="0xff000000" ver="4"/>
+				<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+				<designed target="DisabledFontColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="0xffb4d4f4" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="0xff5f5f5f" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[Theme_1.BackgroundColor = BrushColor;
+Theme_1.ForegroundColor = FontColor;
+Theme_1.DisabledFontColor = DisabledFontColor;
+Theme_1.BorderColor = PenColor;
+Theme_1.DisabledBorderColor = DisabledPenColor;
+Theme_1.SelectionColor = OnClickBrushColor;
+Theme_1.EditorBrushColor = OnHoverBrushColor;
+Theme_1.EditorFontColor = OnHoverFontColor;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="Button_37" display-name="Button_37" uuid="71ed3e72-d2a7-4810-a566-576348a4b319" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="85" ver="4"/>
+				<designed target="Y" value="5" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="70" ver="4"/>
+				<designed target="Height" value="20" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Checked" value="false" ver="4"/>
+				<designed target="Text" value="серая" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="0xff000000" ver="4"/>
+				<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+				<designed target="DisabledFontColor" value="0xff808080" ver="4"/>
+				<designed target="BrushColor" value="0xffcccccc" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="0xffe6eef1" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="0xffe0e0e0" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="0xff8c8c8c" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[Theme_1.BackgroundColor = BrushColor;
+Theme_1.ForegroundColor = FontColor;
+Theme_1.DisabledFontColor = DisabledFontColor;
+Theme_1.BorderColor = PenColor;
+Theme_1.DisabledBorderColor = DisabledPenColor;
+Theme_1.SelectionColor = OnClickBrushColor;
+Theme_1.EditorBrushColor = OnHoverBrushColor;
+Theme_1.EditorFontColor = OnHoverFontColor;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="Button_38" display-name="Button_38" uuid="bdd5970a-eb8d-477b-96dd-a96e7a33bb92" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+				<designed target="X" value="165" ver="4"/>
+				<designed target="Y" value="5" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="70" ver="4"/>
+				<designed target="Height" value="20" ver="4"/>
+				<designed target="Checkable" value="false" ver="4"/>
+				<designed target="Checked" value="false" ver="4"/>
+				<designed target="Text" value="темная" ver="4"/>
+				<designed target="TextAlignment" value="132" ver="4"/>
+				<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+				<designed target="FontColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="OnClickFontColor" value="0xffffffff" ver="4"/>
+				<designed target="OnHoverFontColor" value="0xfff0f0f0" ver="4"/>
+				<designed target="DisabledFontColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="BrushColor" value="0xff00344a" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<designed target="OnClickBrushColor" value="0xff5a84a1" ver="4"/>
+				<designed target="OnClickBrushStyle" value="1" ver="4"/>
+				<designed target="OnHoverBrushColor" value="0xff416075" ver="4"/>
+				<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+				<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="DisabledBrushStyle" value="1" ver="4"/>
+				<designed target="PenColor" value="0xffb0b0b0" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+				<designed target="OnClickPenStyle" value="1" ver="4"/>
+				<designed target="OnClickPenWidth" value="1" ver="4"/>
+				<designed target="OnHoverPenColor" value="0xff000000" ver="4"/>
+				<designed target="OnHoverPenStyle" value="1" ver="4"/>
+				<designed target="OnHoverPenWidth" value="1" ver="4"/>
+				<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+				<designed target="DisabledPenStyle" value="1" ver="4"/>
+				<designed target="DisabledPenWidth" value="1" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+					<body kind="om">
+						<![CDATA[Theme_1.BackgroundColor = BrushColor;
+Theme_1.ForegroundColor = FontColor;
+Theme_1.DisabledFontColor = DisabledFontColor;
+Theme_1.BorderColor = PenColor;
+Theme_1.DisabledBorderColor = DisabledPenColor;
+Theme_1.SelectionColor = OnClickBrushColor;
+Theme_1.EditorBrushColor = OnHoverBrushColor;
+Theme_1.EditorFontColor = OnHoverFontColor;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="7f05205b-5704-4397-be4e-8c23e0d0f571" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="0" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="250" ver="5"/>
+				<designed target="MaxHeight" value="16777215" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="Layout" display-name="Layout" uuid="20b923d6-e5ae-4fec-a275-41cf5dee0b1f" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+			<designed target="Orientation" value="1" ver="5"/>
+			<designed target="Gap" value="0" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Theme_1" display-name="Theme_1" uuid="19423adc-06aa-4a3a-846c-ca9d00eda520" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[Theme_1.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="f9a82078-b641-4187-a69f-eded8541eb04" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="2" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ApSource_1" display-name="ApSource_1" uuid="219fe4b1-3e7c-4209-808d-fea548720ea7" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+		<designed target="Location" value="127.0.0.1" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="" ver="5"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[LoadSession();
+WindowUtilities_1.CorrectPosition();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[SaveSession();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="SaveSession" display-name="SaveSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[try
+{
+	var settings = 
+	{
+		"Window": {
+			"X": WindowX,
+			"Y": WindowY, 
+			"Width": WindowWidth,
+			"Height": WindowHeight,
+			"State": WindowState
+		},
+		"LogView": JSON.parse(Log.GetViewSettings())
+	};
+
+	var folderPath = Files.CombinePath(Files.CurrentUserFolder, Files.CombinePath("Automiq", "CommonLib"));
+	if (!Files.Exists(folderPath))
+		Files.CreateRecursiveFolder(folderPath);
+
+	var filePath = Files.CombinePath(folderPath, "session.json");
+	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить настройки сессии в "  + filePath + ":\n" + error);
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="LoadSession" display-name="LoadSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var folderPath = Files.CombinePath(Files.CurrentUserFolder, Files.CombinePath("Automiq", "CommonLib"));
+var filePath = Files.CombinePath(folderPath, "session.json");
+if (Files.Exists(filePath))
+{
+	//log("Загрузка настроек из файла "  + filePath);
+	try
+	{
+		var settings = JSON.parse(Files.ReadTextFile(filePath));
+		
+		var window = settings.Window;
+		if (window != undefined)
+		{
+			WindowX = window.X;
+			WindowY = window.Y;
+			WindowWidth = window.Width;
+			WindowHeight = window.Height;
+			WindowState = window.State;
+		}
+
+		var logView = settings.LogView;
+		if (logView != undefined){
+			Log.UpdateView(JSON.stringify(logView));
+		}
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить настройки сессии из "  + filePath + ":\n" + error);
+	}
+}]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Converter_1" display-name="Converter_1" uuid="adff2d57-0ff2-4bce-8448-8a512cd5824a" base-type="Converter" base-type-id="9846118d-6c33-44f8-8ff4-f502280dd5c0" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="WindowUtilities_1" display-name="WindowUtilities_1" uuid="1c51b834-0443-48df-adf7-69af2566f56d" base-type="WindowUtilities" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
+		<init target="pForm" ver="5" ref="here"/>
+	</object>
+</type>
+

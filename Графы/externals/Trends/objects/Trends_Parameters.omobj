@@ -1,0 +1,470 @@
+<type access-modifier="private" name="Trends_Parameters" display-name="Тренды. Параметры" uuid="b3130c37-74d0-4745-864b-c3a1702c818e" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<object access-modifier="private" name="LinesCount" display-name="LinesCount" uuid="a7ff28c5-feff-4993-8aab-cd76f33f29fb" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2"/>
+	<object access-modifier="private" name="Lines" display-name="Lines" uuid="5b8dd9f3-fcb8-4642-ae6e-e5a4d0cf8a74" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5" cardinal="21">
+		<designed target="X" value="-50" ver="5"/>
+		<designed target="Y" value="-50" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<object access-modifier="private" name="numAxis" display-name="numAxis" uuid="ca1f0aea-a734-4c95-9df0-34fe27ad844d" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="Description" display-name="Description" uuid="964a9e3e-644c-42ab-b8c7-b208de48b835" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="ObjectDescription" display-name="ObjectDescription" uuid="61885d84-c8fa-427a-8ff7-2080359c6641" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="Unit" display-name="Unit" uuid="cc818411-a46f-4949-88f2-76fa869e99a6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="Tag" display-name="Tag" uuid="2fcb8eb1-7d60-4813-b420-900c367e305a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="Used" display-name="Used" uuid="0f7d6b82-a66a-41af-bb38-51c791a688b4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="bVisible" display-name="bVisible" uuid="62ff5462-f111-4ccc-92c6-49d49a841f7d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<object access-modifier="private" name="TypeGraph" display-name="TypeGraph" uuid="db89ab30-7088-4bee-a59c-760b1e4a8ce8" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="bShowMarkerLabels" display-name="bShowMarkerLabels" uuid="57f85957-5b6f-4ddc-af7b-77da3b54de3d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="bSyncroColorMarkerLabels" display-name="bSyncroColorMarkerLabels" uuid="6c9f98b1-c973-49f7-84f6-86984bd86403" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="RelationTag" display-name="RelationTag" uuid="9e5580c2-4780-4e09-81bf-a975b7b96f6b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="nChart" display-name="nChart" uuid="452c1a02-a9b8-485b-bbdb-b1e63d968f34" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="ColorMain" display-name="ColorMain" uuid="41d47dbd-bce9-4bde-afb8-a1c2d85348de" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="bUseColorManual" display-name="bUseColorManual" uuid="1ca6d2b9-ad29-4b4d-9ae7-fd3395a9ffee" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3" cardinal="1"/>
+		<object access-modifier="private" name="ColorManual" display-name="ColorManual" uuid="c8704f43-9bca-463e-970d-dab894de5cf7" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="nXColumn" display-name="nXColumn" uuid="f355129b-3213-44ca-9a3c-2a44f6476677" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="PointSymbol" display-name="PointSymbol" uuid="b2baa2a9-1f4b-4bec-a839-5f69c5666833" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="PointSymbolCode" display-name="PointSymbolCode" uuid="3d8598ff-80a0-499e-bd6c-6db3718304a8" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="StyleGood" display-name="StyleGood" uuid="9d245eb8-7914-414f-bfc0-e898fa5503b5" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="StyleBad" display-name="StyleBad" uuid="6ec8abd8-6bfb-470b-a16b-ce5cdb613564" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="WidthGood" display-name="WidthGood" uuid="82a53818-be25-41d8-96d5-41c8be48754a" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="WidthBad" display-name="WidthBad" uuid="fbce4717-2cd7-48af-b347-ff58992e5e5f" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="ItemCDT" display-name="ItemCDT" uuid="bc7b242e-a3ea-491d-8deb-e97b13b8ab0a" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="StringTagYValue" display-name="StringTagYValue" uuid="5cbd4788-5f63-4758-88a7-6368d4979094" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4" cardinal="1"/>
+		<init target="Used" ver="5" value="false"/>
+	</object>
+	<object access-modifier="private" name="Axis" display-name="Axis" uuid="88f4bcba-48f7-427f-b8e9-b9097ce204b7" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5" cardinal="21">
+		<designed target="X" value="-50" ver="5"/>
+		<designed target="Y" value="-50" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<object access-modifier="private" name="ColorY" display-name="ColorY" uuid="4c096aff-3ab1-495e-a0b5-0095a7396f03" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="fixYmax" display-name="fixYmax" uuid="b51b10a1-ee79-4ee0-8479-a0134f15c154" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="fixYmin" display-name="fixYmin" uuid="b9ef9ee5-fdb2-47dd-ad22-313e4519f5dc" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="Ymin" display-name="Ymin" uuid="708b2f80-833d-4ca0-9ae4-883c69a0d88b" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="Ymax" display-name="Ymax" uuid="a187519d-e294-450a-8447-fb6b5f107071" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="Yscale" display-name="Yscale" uuid="8b0462ff-d6d4-4780-a3ff-131b74f51134" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" cardinal="1"/>
+		<object access-modifier="private" name="bUserScale" display-name="bUserScale" uuid="c6a31450-89f2-4576-8c73-d09ca1e20f1f" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	</object>
+	<do access-modifier="private" name="LoadFromFile" display-name="LoadFromFile" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="javascript">
+			<![CDATA[// Заполнение списка параметров на случай если файл не содержит данных по каким-то параметрам
+SetDefault();
+// Чтение из файла
+try
+{
+//	log("Params.LoadFromFile: " + filePath);
+	var curContent = pFileSystem.ReadTextFile(filePath);
+	var Table = JSON.parse(curContent);
+
+	LinesCount = Table.LinesCount;
+	if (Table.ActiveMode 		!= null)		ActiveMode = Table.ActiveMode;
+	if (Table.GlobalRanges	!= null)		bGlobalRanges = Table.GlobalRanges;
+	if (Table.AutoRange 		!= null)		bAutoRange = Table.AutoRange;
+	if (Table.THistInterval != null)
+	{
+		tHistRangeStart = Table.THistInterval[0];
+		tHistRangeEnd = Table.THistInterval[1];
+	}
+	if (Table.TRedLine 			!= null)		tRedLine = Table.TRedLine;
+	if (Table.TInterval 		!= null)
+	{
+		Xmin = Table.TInterval[0];
+		Xmax = Table.TInterval[1];
+	}
+
+	var i;
+	for (i=0; i<=LinesCount; i++)
+	{
+		if (Table.AxisMin			!= null)	Axis[i].Ymin = Table.AxisMin[i];
+		if (Table.AxisMax			!= null)	Axis[i].Ymax = Table.AxisMax[i];
+		if (Table.fixYMin			!= null)	Axis[i].fixYmin = Table.fixYMin[i];
+		if (Table.fixYMax			!= null)	Axis[i].fixYmax = Table.fixYMax[i];
+		if (Table.AxisColor		!= null)	Axis[i].ColorY = Table.AxisColor[i];
+		if (Table.AxisYScale	!= null)	Axis[i].Yscale = Table.AxisYScale[i];
+		if (Table.UserScale 	!= null)	Axis[i].bUserScale = Table.UserScale[i];
+	}
+	for (i=1; i<=LinesCount; i++)
+	{
+		Lines[i].Used = true;
+		if (Table.Visible					!= null)	Lines[i].bVisible = Table.Visible[i-1];
+		else	Lines[i].bVisible = true;
+		if (Table.IndexAxis				!= null)	Lines[i].numAxis = Table.IndexAxis[i-1];
+		if (Table.nChart					!= null)	Lines[i].nChart = Table.nChart[i-1] - 1;
+		if (Table.TypeGraph				!= null)	Lines[i].TypeGraph = Table.TypeGraph[i-1];
+		else Lines[i].TypeGraph = unit.Const.tgMAIN_GRAPH;
+		if (Table.LineColor				!= null)	Lines[i].ColorMain = Table.LineColor[i-1];
+		if (Table.ColorManual			!= null)	Lines[i].ColorManual = Table.ColorManual[i-1];
+		if (Table.UseColorManual 	!= null)	Lines[i].bUseColorManual = Table.UseColorManual[i-1];
+		if (Table.SyncroColorMarkerLabels	!= null)	Lines[i].bSyncroColorMarkerLabels = Table.SyncroColorMarkerLabels[i-1];
+		if (Table.ShowMarkerLabels != null)	Lines[i].bShowMarkerLabels = Table.ShowMarkerLabels[i-1];
+		if (Table.Description			!= null)	Lines[i].Description = Table.Description[i-1];
+		if (Table.ObjectDescription	!= null)	Lines[i].ObjectDescription = Table.ObjectDescription[i-1];
+		if (Table.Tag							!= null)	Lines[i].Tag = Table.Tag[i-1];
+		if (Table.Units						!= null)	Lines[i].Unit = Table.Units[i-1];
+		if (Table.LinesWidth			!= null)	Lines[i].WidthGood = Table.LinesWidth[i-1];
+		if (Table.LinesWidthBad		!= null)	Lines[i].WidthBad = Table.LinesWidthBad[i-1];
+		if (Table.LineStyleGood		!= null)	Lines[i].StyleGood = Table.LineStyleGood[i-1];
+		if (Table.LineStyleBad		!= null)	Lines[i].StyleBad = Table.LineStyleBad[i-1];
+		if (Table.PointSymbol			!= null)	Lines[i].PointSymbol = Table.PointSymbol[i-1];
+		if (Table.PointSymbolCode	!= null)	Lines[i].PointSymbolCode = Table.PointSymbolCode[i-1];
+		if (Table.nColumnT				!= null)	Lines[i].nXColumn = Table.nColumnT[i-1];
+		if (Table.ItemCDT					!= null)	Lines[i].ItemCDT = Table.ItemCDT[i-1];
+		if (Table.StringTagYValue	!= null)	Lines[i].StringTagYValue = Table.StringTagYValue[i-1];
+	}
+	Charts[0].bVisible = false;
+	var charts_length = (Table.ChartVisible	!= null) ?	Table.ChartVisible.Length : 1;
+	for (var n=0; n<charts_length; n++)
+	{
+		var nChart = (Table.ChartVisible	!= null) ?	Table.ChartVisible.Length : 0;
+		if (Table.ChartVisible	!= null)	Charts[nChart].bVisible = true;
+		if (Table.Axis0Min 			!= null)	Charts[nChart].Y0min = Table.Axis0Min[n] ;
+		if (Table.Axis0Max 			!= null)	Charts[nChart].Y0max = Table.Axis0Max[n];
+		if (Table.Y0UserScale 	!= null)	Charts[nChart].bUserScale = Table.Y0UserScale[n];
+	}
+	return true;
+}
+catch(err)
+{
+	log("Ошибка чтения параметров из файла " + filePath + "\n" + err.message);
+	return false;
+}//*/]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="d08792fb-3abd-42d1-bcc6-de3798d1a9f8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<object access-modifier="private" name="Xmin" display-name="Xmin" uuid="d0523a4a-a26e-4a82-a64b-3576aa6f4e7b" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+	<object access-modifier="private" name="Xmax" display-name="Xmax" uuid="47b82938-3f31-43b2-b245-ae219fef3917" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+	<object access-modifier="private" name="ActiveMode" display-name="ActiveMode" uuid="b1fb64e0-ead7-49e4-a738-bc2f5399f2bd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2" cardinal="1"/>
+	<object access-modifier="private" name="bGlobalRanges" display-name="bGlobalRanges" uuid="a19ca8f9-9ee2-42d7-b9d3-34cff81bfc02" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	<object access-modifier="private" name="bAutoRange" display-name="bAutoRange" uuid="7362bb9c-c9a5-4ba5-921e-ffefe32ece7d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2" cardinal="1"/>
+	<object access-modifier="private" name="tHistRangeStart" display-name="tHistRangeStart" uuid="893f9c51-1ed0-4398-995f-5d274bbd5cac" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+	<object access-modifier="private" name="tHistRangeEnd" display-name="tHistRangeEnd" uuid="a9f961ae-7feb-487f-bacc-29e123972d2e" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+	<do access-modifier="private" name="CopyLineFromEx" display-name="CopyLineFromEx" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[
+// Копрование данных линии из внешнего источника
+Axis[iLine].Ymin 			= pExParams.Axis[iEx].Ymin;
+Axis[iLine].Ymax 			= pExParams.Axis[iEx].Ymax;
+Axis[iLine].fixYmin 	= pExParams.Axis[iEx].fixYmin;
+Axis[iLine].fixYmax 	= pExParams.Axis[iEx].fixYmax;
+Axis[iLine].ColorY 		= pExParams.Axis[iEx].ColorY;
+Axis[iLine].Yscale 		= pExParams.Axis[iEx].Yscale;
+
+Lines[iLine].Description 			= pExParams.Lines[iEx].Description;
+Lines[iLine].ObjectDescription 	= pExParams.Lines[iEx].ObjectDescription;
+Lines[iLine].Unit 						= pExParams.Lines[iEx].Unit;
+Lines[iLine].Tag 							= pExParams.Lines[iEx].Tag;
+Lines[iLine].bVisible	 				= pExParams.Lines[iEx].bVisible;
+Lines[iLine].bShowMarkerLabels = pExParams.Lines[iEx].bShowMarkerLabels;
+Lines[iLine].bSyncroColorMarkerLabels = pExParams.Lines[iEx].bSyncroColorMarkerLabels;
+Lines[iLine].nChart 					= pExParams.Lines[iEx].nChart;
+Lines[iLine].ColorMain 				= pExParams.Lines[iEx].ColorMain;
+Lines[iLine].bUseColorManual 	= pExParams.Lines[iEx].bUseColorManual;
+Lines[iLine].ColorManual 			= pExParams.Lines[iEx].ColorManual;
+Lines[iLine].nXColumn 				= pExParams.Lines[iEx].nXColumn;
+Lines[iLine].PointSymbol 			= pExParams.Lines[iEx].PointSymbol;
+Lines[iLine].PointSymbolCode 	= pExParams.Lines[iEx].PointSymbolCode;
+Lines[iLine].StyleGood 				= pExParams.Lines[iEx].StyleGood;
+Lines[iLine].StyleBad 				= pExParams.Lines[iEx].StyleBad;
+Lines[iLine].WidthGood 				= pExParams.Lines[iEx].WidthGood;
+Lines[iLine].WidthBad 				= pExParams.Lines[iEx].WidthBad;
+Lines[iLine].ItemCDT 					= pExParams.Lines[iEx].ItemCDT;
+Lines[iLine].StringTagYValue 	= pExParams.Lines[iEx].StringTagYValue;
+]]>
+		</body>
+		<param access-modifier="private" name="iLine" display-name="" uuid="c24c1e4d-1705-48c7-8f9b-d5d888212232" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<param access-modifier="private" name="iEx" display-name="" uuid="5e7dbada-496f-485e-bd78-337a326ad0cf" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<object access-modifier="private" name="pExParams" display-name="pExParams" uuid="7169d8de-95a6-461b-b465-f68b9c4f237c" base-type="Trends_Parameters" base-type-id="b3130c37-74d0-4745-864b-c3a1702c818e" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="tRedLine" display-name="tRedLine" uuid="f79662a8-5216-4c62-8eff-cd31180a6c06" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+	<object access-modifier="private" name="pFileSystem" display-name="pFileSystem" uuid="d4af2086-424f-45c5-9dad-1f1af6b605b8" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" base-const="true" base-ref="true" ver="5"/>
+	<do access-modifier="private" name="SaveToFile" display-name="SaveToFile" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[//DebugTool_1.Log("Params.SaveToFile");
+
+var j = fileName.lastIndexOf("/");
+if (j < 1) j = fileName.lastIndexOf("\\");
+var filePath = fileName.substring(0, j);
+if (pFileSystem.Exists(filePath) == false)
+	pFileSystem.CreateRecursiveFolder(filePath);
+var count = 0;
+	
+var Table = {}
+
+if (pFileSystem.Exists(filePath))
+{
+	Table.ActiveMode = ActiveMode;
+	Table.GlobalRanges = bGlobalRanges;
+	Table.AutoRange = bAutoRange;	
+	
+	Table.TInterval = [Xmin, Xmax];
+	Table.THistInterval = [tHistRangeStart, tHistRangeEnd];
+	Table.TRedLine = tRedLine;
+
+	Table.AxisColor = [];
+	Table.fixYMin = [];	
+	Table.fixYMax = [];
+	Table.AxisMin = [];
+	Table.AxisMax = [];
+//	Table.AxisYScale = [];  // Параметр заменен на UserScale
+	Table.UserScale = [];
+
+	Table.IndexAxis = [];
+	Table.Description = [];
+	Table.ObjectDescription = [];
+	Table.Tag = [];
+	Table.Units = [];
+	Table.Visible = [];
+	Table.TypeGraph = [];
+	Table.ShowMarkerLabels = [];
+	Table.SyncroColorMarkerLabels = [];
+	Table.RelationTag = [];
+	Table.nChart = [];
+	Table.LineColor = [];
+	Table.UseColorManual = [];
+	Table.ColorManual = [];
+	Table.nColumnT = [];
+	Table.PointSymbol = [];
+	Table.PointSymbolCode = [];
+	Table.LinesWidth = [];
+	Table.LinesWidthBad = [];
+	Table.LineStyleGood = [];
+	Table.LineStyleBad = [];
+	Table.ItemCDT = [];
+	Table.StringTagYValue = [];
+	Table.ChartVisible = [];
+	Table.Axis0Min = [];
+	Table.Axis0Max = [];
+	Table.Y0UserScale = [];
+
+	for (var i=0; i<Lines.Length; i++)
+	{
+		if (i==0 || Lines[i].Used)
+		{
+			Table.AxisColor.push(Axis[i].ColorY);
+			Table.fixYMin.push(Axis[i].fixYmin);	
+			Table.fixYMax.push(Axis[i].fixYmax);
+			Table.AxisMin.push(Axis[i].Ymin);
+			Table.AxisMax.push(Axis[i].Ymax);
+			Table.UserScale.push(Axis[i].bUserScale);
+		}
+		if (Lines[i].Used)
+		{
+			Table.IndexAxis.push(Lines[i].numAxis);
+			Table.Description.push(Lines[i].Description);
+			Table.ObjectDescription.push(Lines[i].ObjectDescription);
+			Table.Tag.push(Lines[i].Tag);
+			Table.Units.push(Lines[i].Unit);
+			Table.Visible.push(Lines[i].bVisible);
+			Table.TypeGraph.push(Lines[i].TypeGraph);
+			Table.ShowMarkerLabels.push(Lines[i].bShowMarkerLabels);
+			Table.SyncroColorMarkerLabels.push(Lines[i].bSyncroColorMarkerLabels);
+			Table.RelationTag.push(Lines[i].RelationTag);
+			Table.nChart.push(Lines[i].nChart);
+			Table.LineColor.push(Lines[i].ColorMain);
+			Table.UseColorManual.push(Lines[i].bUseColorManual);
+			Table.ColorManual.push(Lines[i].ColorManual);
+			Table.nColumnT.push(Lines[i].nXColumn);
+			Table.PointSymbol.push(Lines[i].PointSymbol);
+			Table.PointSymbolCode.push(Lines[i].PointSymbolCode);
+			Table.LinesWidth.push(Lines[i].WidthGood);
+			Table.LinesWidthBad.push(Lines[i].WidthBad);
+			Table.LineStyleGood.push(Lines[i].StyleGood);
+			Table.LineStyleBad.push(Lines[i].StyleBad);
+			Table.ItemCDT.push(Lines[i].ItemCDT);
+			Table.StringTagYValue.push(Lines[i].StringTagYValue);
+			count += 1;
+		}
+	}
+	Table.LinesCount = count;
+
+	for (var n=0; n<Charts.Length; n++)
+	{
+		if (Charts[n].bVisible)
+		{
+			Table.ChartVisible.push(n);
+			Table.Axis0Min.push(Charts[n].Y0min);
+			Table.Axis0Max.push(Charts[n].Y0max);
+			Table.Y0UserScale.push(Charts[n].bUserScale);
+		}
+	}
+
+	var tofile = JSON.stringify(Table, null, 2);
+	pFileSystem.WriteTextFile(fileName, tofile); 
+}
+else
+{
+	DebugTool_1.Log("Путь не существует : " + filePath);
+}]]>
+		</body>
+		<param access-modifier="private" name="fileName" display-name="" uuid="d2ac54dc-0e17-4a0e-958f-50f2a1c494ba" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="2dd94208-f470-4d39-8c23-e3fc0d976134" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<do access-modifier="private" name="SetDefault" display-name="SetDefault" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[
+// Устновка значений по умолчанию
+
+	LinesCount = 0;
+	ActiveMode = 0;
+	bGlobalRanges = true;
+	bAutoRange = true;
+	tHistRangeEnd = DateTime.Now();
+	tHistRangeStart = DateTime.AddMinutes(tHistRangeEnd, -10);
+	tRedLine = DateTime.Now();
+
+	Xmin = tHistRangeStart;
+	Xmax = tHistRangeEnd;
+	
+	i:int4 = 0;
+	while (i < Axis.Length)
+	{
+		Axis[i].Ymin = 0;
+		Axis[i].Ymax = 100;
+		Axis[i].fixYmin = 0;
+		Axis[i].fixYmax = 100;
+		Axis[i].ColorY = GetColor(i);
+		Axis[i].Yscale = unit.Const.scAUTO;
+		Axis[i].bUserScale = false;
+		i += 1;
+	}
+	i = 1;
+	while (i < Lines.Length)
+	{
+		Lines[i].Used = false;
+		Lines[i].bVisible = true;
+		Lines[i].numAxis = i;
+		Lines[i].nChart = 0;
+		Lines[i].TypeGraph = unit.Const.tgMAIN_GRAPH;
+		Lines[i].ColorMain = GetColor(i);
+		Lines[i].ColorManual = GetColor(i);
+		Lines[i].bUseColorManual = false;
+		Lines[i].bSyncroColorMarkerLabels = false;
+		Lines[i].bShowMarkerLabels = true;
+		Lines[i].Description = "";
+		Lines[i].ObjectDescription = "";
+		Lines[i].Tag = "**";
+		Lines[i].Unit = "";
+		Lines[i].WidthGood = 1;
+		Lines[i].WidthBad = 1;
+		Lines[i].StyleGood = unit.Const.slSOLID_LINE;
+		Lines[i].StyleBad = unit.Const.slDASHED_LINE;
+		Lines[i].PointSymbol = "●";
+		Lines[i].PointSymbolCode = 0x25CF;		 // код символа ●
+		Lines[i].nXColumn = unit.Const.tmSOURCE;
+		Lines[i].ItemCDT = unit.Const.cdt.DOUBLE;
+		Lines[i].StringTagYValue = 0;
+		i += 1;
+	}
+	i = 0;
+	while (i < Charts.Length)
+	{
+		Charts[i].bVisible = false;	
+		Charts[i].Y0min = 0;
+		Charts[i].Y0max = 100;
+		Charts[i].bUserScale = false;
+		i += 1;
+	}
+	Charts[0].bVisible = true;
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetColor" display-name="GetColor" ver="5" type="uint4" type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e">
+		<body kind="javascript">
+			<![CDATA[var colors = [unit.Const.clBLACK,
+	0xFF0000FF, 0xFF00FF00, 0xFFFF0000, 0xFFFF1EB4, 0xFFFFD200,
+	0xFF0087FF, 0xFF0F873C, 0xFF874B00, 0xFF3C005A, 0xFF0087A5,
+	0xFFFF8796, 0xFF00FFF0, 0xFFD2FF96, 0xFFB45AFF, 0xFFF0A5FF,
+	0xFF78002D, 0xFFFF8700, 0xFF878769, 0xFF00FF96, 0xFFFFC378];
+
+return colors[index];
+]]>
+		</body>
+		<param access-modifier="private" name="index" display-name="" uuid="f00c50ae-32df-4874-a6e8-3386275a47de" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<object access-modifier="private" name="Charts" display-name="Charts" uuid="ecb5e24e-3d4d-44f2-b838-e580be23b351" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5" cardinal="10">
+		<designed target="X" value="-30" ver="5"/>
+		<designed target="Y" value="-30" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<object access-modifier="private" name="bVisible" display-name="bVisible" uuid="817880a9-9b2b-475e-a58e-c64582a5e714" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<init target="bVisible" ver="5" value="false"/>
+		<do access-modifier="private" name="GetFree" display-name="GetFree" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[i:int4 = 0;
+while (i < Charts.Length)
+{
+	if (!Charts[i].bVisible) return i;
+	i += 1;
+}
+return -1;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetFirstActive" display-name="GetFirstActive" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[i:int4 = 0;
+while (i < Charts.Length)
+{
+	if (Charts[i].bVisible) return i;
+	i += 1;
+}
+return 0;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Y0min" display-name="Y0min" uuid="8ca4e88e-0c97-4daa-bab8-316cc000d096" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="Y0max" display-name="Y0max" uuid="ca546081-e220-4c72-a1a3-397de20af0bf" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2" cardinal="1"/>
+		<object access-modifier="private" name="bUserScale" display-name="bUserScale" uuid="78d5aaf5-c4f8-488c-adef-b54565d68e97" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	</object>
+	<do access-modifier="private" name="GetItemFree" display-name="GetItemFree" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[i:int4 = 1;
+while (i <= Lines.Length)
+{
+	if (!Lines[i].Used)
+		return i;
+	i += 1;
+}
+return 0;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ResetUserScale" display-name="ResetUserScale" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[i:int4 = 0;
+while (i < Axis.Length)
+{
+	Axis[i].bUserScale = false;
+	i += 1;
+}
+
+n:int4 = 0;
+while (n < Charts.Length)
+{
+	Charts[n].bUserScale = false;
+	n += 1;
+}]]>
+		</body>
+	</do>
+</type>
+

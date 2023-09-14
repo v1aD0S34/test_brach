@@ -1,0 +1,571 @@
+<type access-modifier="public" name="SaveFileDialog" display-name="SaveFileDialog" uuid="d69a91c3-89e9-4e7b-994e-9242dbc5e095" base-type="FileDialog" base-type-id="29986250-295b-4615-96f2-ca366bec24d1" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="550" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="550" ver="5"/>
+	<designed target="WindowCaption" value="Сохранить файл" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="2" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="BottomPanel" display-name="BottomPanel" uuid="6444e3aa-258e-420d-86d3-01cc21050a3b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="265" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="550" ver="5"/>
+		<designed target="Height" value="115" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="FileLabel" display-name="FileLabel" uuid="22df286b-1c13-43bc-987e-696631ea1d37" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="80" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Имя файла:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="TypeLabel" display-name="TypeLabel" uuid="7b5d20b9-10ca-433e-bf17-64b67c6febc3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5">
+			<designed target="X" value="0" ver="5"/>
+			<designed target="Y" value="40" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="80" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="Тип файла:" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="130" ver="5"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="FileEdit" display-name="FileEdit" uuid="d2c2af3d-734a-4e7a-874b-615658377fba" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="5">
+			<designed target="X" value="90" ver="5"/>
+			<designed target="Y" value="10" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="450" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="HideInput" value="false" ver="5"/>
+			<designed target="PlaceholderText" value="" ver="5"/>
+			<designed target="ReadOnly" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[BrowsePanel.FileList.SelectedFileName]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="FileType" display-name="FileType" uuid="d2f12db4-fbfb-4bf4-b67f-755640116dee" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5">
+			<designed target="X" value="90" ver="5"/>
+			<designed target="Y" value="40" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="450" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Editable" value="false" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="SelectedIndex" value="-1" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="MaxVisibleItems" value="10" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="javascript">
+					<![CDATA[if (SelectedIndex >= 0)
+{
+	var filterPairs = Items.Value.split("|");
+	
+	var prevFilter = filterPairs[oldValue * 2 + 1];
+	var prevExt = prevFilter.substring(prevFilter.indexOf("."));
+	
+	var selectedFilter = filterPairs[SelectedIndex * 2 + 1];
+	selectedExt = selectedFilter.substring(selectedFilter.indexOf("."));
+
+	var fileName = BottomPanel.FileEdit.Text;
+	BottomPanel.FileEdit.Text = CoerseFileName(fileName, prevExt, selectedExt);
+	
+	//log("Set browser filter: " + selectedFilter);
+	BrowsePanel.FileList.Filter = selectedFilter;
+	
+	oldValue = SelectedIndex;
+}
+else
+	selectedExt = "";]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="Items" display-name="Items" uuid="8e7c41b0-7caf-40bb-b46c-81731424056d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="javascript">
+						<![CDATA[if (Items.Value != "")
+{
+	Clear();
+
+	var filterPairs = Items.Value.split("|");
+	for (let i = 0; i < filterPairs.length; i+=2)
+		BottomPanel.FileType.AddItem(filterPairs[i]);
+	
+	SelectedIndex = DefaultFileType;	
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="Items" ver="5">
+				<body>
+					<![CDATA[here.FileTypeFilter]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="52a2c25e-9ddc-44e3-a520-817726d03917" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="selectedExt" display-name="selectedExt" uuid="882c92a7-7d53-4b0a-a42a-a5a33b55ca12" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SettingsButton" display-name="SettingsButton" uuid="a9e1d964-5f6c-4804-b1bb-2d771da984f7" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+			<designed target="X" value="250" ver="5"/>
+			<designed target="Y" value="80" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Text" value="Параметры" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="0xff000000" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[OnEditSettings.Invoke();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[EditSettingsAllowed]]>
+				</body>
+			</do-trace>
+			<designed target="Checked" value="false" ver="5"/>
+		</object>
+		<object access-modifier="private" name="OkButton" display-name="OkButton" uuid="ec59afba-6fec-4ba9-b778-9b73db60edc4" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+			<designed target="X" value="350" ver="5"/>
+			<designed target="Y" value="80" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Text" value="Сохранить" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
+			<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
+			<designed target="DisabledFontColor" value="0xff808080" ver="5"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="2" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="0xff808080" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[Complete.Invoke();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[Complete.Enabled]]>
+				</body>
+			</do-trace>
+			<designed target="Checked" value="false" ver="5"/>
+		</object>
+		<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="a0f216b3-8638-4dac-96c2-cce9d1534969" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+			<designed target="X" value="450" ver="5"/>
+			<designed target="Y" value="80" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="90" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Text" value="Отмена" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+			<designed target="BrushColor" value="4293980400" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="DisabledBrushStyle" value="1" ver="5"/>
+			<designed target="PenColor" value="0xff000000" ver="5"/>
+			<designed target="PenStyle" value="1" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+			<designed target="DisabledPenStyle" value="1" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
+			<designed target="Checked" value="false" ver="5"/>
+		</object>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="" type-id="">
+			<body kind="om">
+				<![CDATA[FileEdit.Width = Width - FileEdit.X - 10;
+FileType.Width = Width - FileType.X - 10;
+CancelButton.X = Width - CancelButton.Width - 10;
+OkButton.X = Width - CancelButton.Width - OkButton.Width - 20;
+SettingsButton.X = Width - SettingsButton.Width - CancelButton.Width - OkButton.Width - 30;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="HideBrowsePanelButton" display-name="HideBrowsePanelButton" uuid="2ba757d2-e0d2-47c9-b131-162ef1fdfda9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+			<designed target="X" value="10" ver="5"/>
+			<designed target="Y" value="85" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="105" ver="5"/>
+			<designed target="Height" value="20" ver="5"/>
+			<designed target="Checkable" value="false" ver="5"/>
+			<designed target="Text" value="Скрыть папки" ver="5"/>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="FontColor" value="0xff000000" ver="5"/>
+			<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
+			<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
+			<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="BrushStyle" value="0" ver="5"/>
+			<designed target="OnClickBrushColor" value="0xffffffff" ver="5"/>
+			<designed target="OnClickBrushStyle" value="1" ver="5"/>
+			<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+			<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="DisabledBrushStyle" value="0" ver="5"/>
+			<designed target="PenColor" value="0xff000000" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+			<designed target="OnClickPenStyle" value="1" ver="5"/>
+			<designed target="OnClickPenWidth" value="1" ver="5"/>
+			<designed target="OnHoverPenColor" value="0xff000000" ver="5"/>
+			<designed target="OnHoverPenStyle" value="1" ver="5"/>
+			<designed target="OnHoverPenWidth" value="1" ver="5"/>
+			<designed target="DisabledPenColor" value="0xffa0a0a0" ver="5"/>
+			<designed target="DisabledPenStyle" value="0" ver="5"/>
+			<designed target="DisabledPenWidth" value="1" ver="5"/>
+			<do-trace access-modifier="private" target="Text" ver="5">
+				<body>
+					<![CDATA[ShowBrowsePanel ? "Скрыть папки" : "Просмотр папок"]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[ShowBrowsePanel = !ShowBrowsePanel;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="OnClickFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="OnHoverFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<designed target="Checked" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="OnHoverBrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="OnClickBrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="OnHoverPenColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChangeFolderAllowed && WindowBorderStyle == 1]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Complete" display-name="Complete" uuid="8d02d7db-a54e-4428-9e24-a5d6ad78af69" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[fileName: string = BottomPanel.FileEdit.Text;
+
+// если имя файла не содержит расширения, то добавим расширение из фильтра типа
+if (String.IndexOf(fileName, ".") == -1)
+{
+	fileName += BottomPanel.FileType.selectedExt;
+	BottomPanel.FileEdit.Text = fileName;
+}
+
+// если файл существует, то нужно подтверждение на перезапись
+filePath = Files.ToNative(Files.CombinePath(FolderPanel.FolderEdit.Text, fileName));
+if (Files.IsFile(filePath))
+	ConfirmReplace.Invoke();
+else
+	CloseWithResult.Invoke();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Enabled" ver="5">
+				<body>
+					<![CDATA[Files.IsDirectory(FolderPanel.FolderEdit.Text) &&
+BottomPanel.FileEdit.Text != ""]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="filePath" display-name="filePath" uuid="64a94c3a-8e69-4016-9b91-09f1e6dd08ab" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ConfirmReplace" display-name="ConfirmReplace" uuid="51e06586-904e-484b-a230-275ee41468e2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="0f55e86e-3005-4ac9-9dae-8397f117136b" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="5">
+					<init target="WindowCaption" ver="5">
+						<expr>
+							<![CDATA[here.WindowCaption]]>
+						</expr>
+					</init>
+					<init target="OkAction" ver="5" ref="CloseWithResult"/>
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA["Файл \"" + Complete.filePath + "\" существует, вы хотите заменить его?"]]>
+						</expr>
+					</init>
+					<init target="Icon" ver="5" value="1"/>
+					<init target="Buttons" ver="5" value="1"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="CloseWithResult" display-name="CloseWithResult" uuid="1e592e79-6d10-4e5f-9c98-f13f895dd2df" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[// формируем результат и закрываем диалог
+Result.FolderPath = Files.ToNative(Files.AbsolutePath(FolderPanel.FolderEdit.Text));
+Result.FileName = BottomPanel.FileEdit.Text;
+Result.FilePath = Files.ToNative(Files.AbsolutePath(Complete.filePath));
+Result.FileType = BottomPanel.FileType.SelectedIndex;
+OnComplete.Invoke();
+Close();]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[//Debug.Log("Window size changed: " + String.ToString(width) + "," + String.ToString(height));
+
+minHeightWithBrowserPanel: double = BottomPanel.Height + 20;
+if (ChangeFolderAllowed)
+	minHeightWithBrowserPanel += FolderPanel.Height;
+
+if (WindowHeight > minHeightWithBrowserPanel)
+	ShowBrowsePanel = true;
+else if (WindowHeight < minHeightWithBrowserPanel)
+	ShowBrowsePanel = false;
+
+UpdateLayout();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//Debug.Log("Update layout for window height " + String.ToString(WindowHeight));
+
+FolderPanel.Width = WindowWidth;
+FolderPanel.UpdateLayout();
+
+BrowsePanel.Y = ChangeFolderAllowed ? FolderPanel.Height : 0;
+BrowsePanel.Visible = ShowBrowsePanel;
+if (ShowBrowsePanel)
+{
+	BrowsePanel.Width = WindowWidth;
+	BrowsePanel.Height = Math.Max(0, WindowHeight - BrowsePanel.Y - BottomPanel.Height);
+	BrowsePanel.UpdateLayout();
+}
+
+BottomPanel.Width = WindowWidth;
+BottomPanel.Y = WindowHeight - BottomPanel.Height;
+BottomPanel.UpdateLayout();]]>
+		</body>
+	</do>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[//Debug.Log("Key pressed: " + String.ToString(event.KeyCode));
+if (event.KeyCode == 82) // Enter
+	BottomPanel.Complete.Invoke();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[if (DefaultPath != "")
+{	
+	defaultPath: string = Files.ToNative(Files.RelativePath(DefaultPath));
+	if (defaultPath != GetFolderPath(DefaultPath))
+		BottomPanel.FileEdit.Text = Files.FileName(defaultPath);
+}]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="EditSettingsAllowed" display-name="Отображать кнопку Параметры" uuid="3c84e629-2f52-4df9-9076-b0e0b8fa027a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="OnEditSettings" display-name="OnEditSettings" uuid="a3919e76-0987-445f-ab80-5ccb9324a04d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<designed target="Height" value="380" ver="5"/>
+	<designed target="WindowHeight" value="380" ver="5"/>
+	<init target="OnPathChosen" ver="5" ref="BottomPanel.Complete"/>
+	<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="8ee9a776-c1a6-432e-b68f-990449efe573" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<init target="EditSettingsAllowed" ver="5" value="false"/>
+	<designed target="WindowIconPath" value="CommonLib_Icons/SaveFile16.png" ver="5"/>
+	<init target="BottomPanelHeight" ver="5" value="115"/>
+</type>
+

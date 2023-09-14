@@ -1,0 +1,632 @@
+<type access-modifier="private" name="ChangeRights" display-name="ChangeRights" uuid="24f489ad-7aec-41a5-b0f7-8ed917e6f052" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="750" ver="2"/>
+	<designed target="Height" value="400" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="750" ver="2"/>
+	<designed target="WindowHeight" value="400" ver="2"/>
+	<designed target="WindowCaption" value="Выбор прав" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="1" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="3" ver="2"/>
+	<designed target="WindowCloseMode" value="1" ver="2"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="6247417e-6370-4683-beca-c12168efea9f" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="Application" display-name="Application" uuid="e803fafb-2416-4584-a805-71a6deb03b25" base-type="SecurityManagerApplication" base-type-id="cfc3985c-54fc-4fe4-b001-cade048d6ee0" ver="2">
+		<designed target="ApplicationName" value="" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
+			<body kind="om">
+				<![CDATA[LoadDataToTree(ApplicationID,GetTokensList());
+
+//Прерывание загрузки при получении сигнала закрыть
+if (CancelButton.incomCloseRequest){
+	Close();
+}]]>
+			</body>
+		</do-on>
+		<init target="SecurityManager" ver="4" ref="here.SecurityManager"/>
+		<object access-modifier="private" name="NumOfAllApps" display-name="NumOfAllApps" uuid="54e5bbac-3ea8-4d19-9835-1d787b95e03b" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[TokensTree.Init();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="ApplyButton" display-name="ApplyButton" uuid="f39a002d-9331-4384-b27b-2169b0c766d2" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="590" ver="2"/>
+		<designed target="Y" value="370" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="OK" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+		<designed target="BrushColor" value="4293980400" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<init target="Text" ver="3" value=""/>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[if (modeDelete){
+	OutputData.Value = DeleteRights();
+}else {
+	OutputData.Value = AddRights();
+}
+doExcuteAction.Invoke();
+Close();
+]]>
+			</body>
+		</do-on>
+		<init target="Enabled" ver="4" value="false"/>
+	</object>
+	<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="1f135b84-00d6-402a-a1dc-740a94ce15f0" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="670" ver="2"/>
+		<designed target="Y" value="370" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Отмена" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+		<designed target="BrushColor" value="4293980400" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checkable" value="false" ver="3"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseRelease" form-action="close"/>
+		<object access-modifier="private" name="incomCloseRequest" display-name="incomCloseRequest" uuid="40c8b46b-70b3-48de-8032-25dbe433ff01" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value){
+	if (modeDelete || Application.NumOfAllApps == private.queue.Iterator){	//если в режиме удаления ролей или приложения обработаны
+		Close();
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+	</object>
+	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="80931db0-12c6-4758-847f-f1b2f31c9e88" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestAppListComplete">
+			<body kind="om">
+				<![CDATA[private.queue.InputAppList = JSONAppList;
+LoadElementToQueue(private.queue.InputAppList, private.queue.Iterator);]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="4">
+			<object access-modifier="private" uuid="5cf3a30c-ad72-4a61-8bf4-eacad5eb40be" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+		</init>
+	</object>
+	<object access-modifier="private" name="CurrentRightsJson" display-name="CurrentRightsJson" uuid="10bdf6e2-b67c-4488-a17e-7b0045d31b66" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<do access-modifier="private" name="AddRights" display-name="AddRights" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[// каждое отмеченный item, но не AppNode. добавить в коллекцию 
+//для добавления нужно привести в виду {AppName: value , TokenName:value, TokenType:value,TokenValueAllow:value, TokenValueDeny:value }
+var outData = {};
+outData.data = [];
+try {	// блок определения выбранных прав
+	var appNodesEnum = JSON.parse(TokensTree.EnumChildrenJSON(""));
+	for (var i = 0; i < appNodesEnum.length; i++ ) { 	//перебор узлов приложений
+		var currentAppNode = JSON.parse(TokensTree.EnumChildrenJSON(appNodesEnum[i]));
+		for (var j = 0; j < currentAppNode.length; j++ ){
+			var itemToken = currentAppNode[j];
+			if (TokensTree.GetItemData(itemToken,2) != "root" && TokensTree.GetItemData(itemToken,5) == "yes"){
+				var right = {};
+				var currentTokenType = TokensTree.GetItemData(itemToken,2);
+				right.AppName = TokensTree.GetItemData(itemToken,1);
+				right.TokenName = TokensTree.GetItemData(itemToken,3);
+				if (currentTokenType == "bool"){
+					right.Type = "1";
+					right.TokenValueAllow = "TRUE";	//по умолчанию значение "разрешено"
+					right.TokenValueDeny = "FALSE";
+				} else if (currentTokenType == "string"){
+					right.Type = "0";
+					right.TokenValueAllow = TokensDefinition.GetDefaultStringValue(right.AppName,currentTokenType,right.TokenName);
+					right.TokenValueDeny = "";
+				}
+				outData.data.push(right);
+			}
+		}
+	}
+} catch {
+	return JSON.stringify(outData);
+}
+
+try{
+	var currentRights = JSON.parse(CurrentRightsJson).data;
+} catch {
+	var currentRights = [];
+}
+//проверка на дублирование
+for (var i = 0; i<currentRights.length; i++) {
+	outData.data = outData.data.filter(right => (right.AppName == currentRights[i].appName) ? (right.TokenName != currentRights[i].tokenName? 1:0):1);
+}
+
+return JSON.stringify(outData);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="DeleteRights" display-name="DeleteRights" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[// каждое отмеченный item, но не AppNode. добавить в коллекцию 
+//для удаления нужно привести в виду {AppName: value , TokenName:value}
+var outData = {};
+outData.data = [];
+try {
+	var appNodesEnum = JSON.parse(TokensTree.EnumChildrenJSON(""));
+	for (var i = 0; i < appNodesEnum.length; i++ )		//перебор узлов приложений
+	{
+		var currentAppNode = JSON.parse(TokensTree.EnumChildrenJSON(appNodesEnum[i]));
+		for (var j = 0; j < currentAppNode.length; j++ ){
+			var itemToken = currentAppNode[j];
+			if (TokensTree.GetItemData(itemToken,2) != "root" && TokensTree.GetItemData(itemToken,5) == "yes"){
+				var right = {}
+				right.AppName =  TokensTree.GetItemData(itemToken,1);
+				right.TokenName =  TokensTree.GetItemData(itemToken,3);
+				outData.data.push(right);
+			}
+		}
+	}
+} catch {
+	outData.data = [];
+}
+return JSON.stringify(outData);
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="private" display-name="private" uuid="ece2b66b-f802-4197-9bb2-790f80fd0d12" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="0" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="false" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="0" ver="3"/>
+		<designed target="Height" value="0" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="4278190080" ver="3"/>
+		<designed target="BrushStyle" value="0" ver="3"/>
+		<object access-modifier="private" name="queue" display-name="queue" uuid="d1456e8e-b9b1-4fb4-9d23-f7f02a06bd6b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="0" ver="4"/>
+			<designed target="Height" value="0" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="0xffffffff" ver="4"/>
+			<designed target="PenStyle" value="0" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="BrushColor" value="0xffffffff" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<object access-modifier="private" name="Iterator" display-name="Iterator" uuid="efa00e39-1321-48f9-9afc-44e837f86e22" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[if (value !=0 && InputAppList != "") {
+	LoadElementToQueue(InputAppList,value);
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="InputAppList" display-name="InputAppList" uuid="92b1b9e7-446c-4210-be06-5d2738b90a43" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="javascript">
+						<![CDATA[if (value != ""){
+	try{
+		var appList = JSON.parse(value).data;
+	} catch {
+		var appList = [];
+	}
+	Application.NumOfAllApps = appList.length;
+}]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+	</object>
+	<object access-modifier="private" name="OutputData" display-name="OutputData" uuid="b959f9bb-dd47-4d60-9b12-9a86dd93a3eb" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="modeDelete" display-name="modeDelete" uuid="f3df31d6-29cb-45b2-b5bf-99671ac9dcbb" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[TokensDefinition.Init();
+if (value) {
+	if (CurrentRightsJson != "") {LoadCurrentRights(CurrentRightsJson);}
+	ApplyButton.Text = "Удалить";
+} else {
+	SecurityManager.RequestAppList();
+	ApplyButton.Text = "Добавить";
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="doExcuteAction" display-name="doExcuteAction" uuid="1a48ca86-3bfc-4474-92af-7a30562b3428" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="TokensTree" display-name="TokensTree" uuid="f9a7fa19-fa61-4691-83ac-3c0011b6016f" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="750" ver="4"/>
+		<designed target="Height" value="360" ver="4"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameVisible" value="true" ver="4"/>
+		<designed target="ColumnCount" value="7" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//настройка дерева
+
+SetColumnName("Право", 0); //
+SetColumnWidth(0,250);
+
+
+SetColumnName("Приложение", 1);
+SetColumnHidden(1, true); 
+
+SetColumnName("TokenType", 2);
+SetColumnHidden(2, true); 
+
+SetColumnName("TokenName", 3);
+SetColumnHidden(3, true); 
+
+SetColumnName("Описание", 4);
+SetColumnHidden(4, false); 
+
+SetColumnName("select", 5);
+SetColumnHidden(5, true); 
+
+SetColumnName("parent", 6);
+SetColumnHidden(6, true); ]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemClicked">
+			<body kind="om">
+				<![CDATA[if (private.queue.Iterator == Application.NumOfAllApps)
+	ChangeStateSelect(itemId);]]>
+			</body>
+		</do-on>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="CurrentItem" value="" ver="5"/>
+	</object>
+	<init target="modeDelete" ver="4" value="false"/>
+	<do access-modifier="private" name="LoadCurrentRights" display-name="LoadCurrentRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var rightsData = [];
+var appList = [];
+var outData ={};
+try {
+	var rightsList = JSON.parse(inputJSON).data;
+} catch {
+	var rightsList = [];
+}
+
+if (rightsList.length > 0){
+	rightsList = rightsList.filter(value => value != "");		//удаляем пустые элементы (что бы не выводились пустые узлы)
+	rightsList = rightsList.sort((a, b) => a.tokenName.toString().toLowerCase() > b.tokenName.toString().toLowerCase() ? 1 : -1);
+	for (var i = 0; i < rightsList.length; i++) {
+		if ((appList.indexOf(rightsList[i].appName) === -1) ){
+			appList.push(rightsList[i].appName);
+		}
+	}
+	
+	appList = appList.sort();
+	
+	for (var i = 0; i < appList.length; i++){
+		for (var j = 0; j < rightsList.length; j++){
+			if (appList[i] == rightsList[j].appName){
+				var right = {};
+				right.tokenType = rightsList[j].tokenType;
+				right.tokenName = rightsList[j].tokenName;
+				right.tokenDescription = rightsList[j].tokenDescription;
+				rightsData.push(right);
+			}
+		}
+		if (rightsData.length > 0) {
+			var outData ={};
+			outData.data = rightsData
+			LoadDataToTree(appList[i], JSON.stringify(outData));
+			rightsData = [];
+		}
+	}
+}
+]]>
+		</body>
+		<param access-modifier="private" name="inputJSON" display-name="" uuid="e983e87a-f050-416e-b2bf-2d33a899ee22" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="LoadElementToQueue" display-name="LoadElementToQueue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[//фунция добавления приложения в очередь на загрузку
+//парсинг, перебор, команда на загрузку в ApplicationManager
+if (JSONAppList != "") {
+	var appsList = JSON.parse(JSONAppList).data;
+	appsList = appsList.sort((a, b) => a.applicationName.toString().toLowerCase() > b.applicationName.toString().toLowerCase() ? 1 : -1);
+	if (number<appsList.length){	
+		Application.Load(appsList[number].applicationName);
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="JSONAppList" display-name="" uuid="6ab26b86-1532-401c-a5c9-fe7a2c49b759" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="number" display-name="" uuid="c3fcc1f5-c481-4849-b0f4-19a5e4108472" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+	</do>
+	<do access-modifier="private" name="LoadDataToTree" display-name="LoadDataToTree" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[//фунция заполнения дерева данными( для добавления используется очередь queue и queue.Iterator, в случае удаления ролей используется LoadCurrentRoles
+try {
+	var tokenListData = JSON.parse(JSONTokenList).data;
+} catch (err) {
+	var tokenListData =[];
+}
+
+if (tokenListData.length > 0){
+	var appNode = TokensTree.AddItem("", AppId);
+	TokensTree.SetItemData(appNode,"root", 2);
+	TokensTree.SetItemData(appNode, "no", 5);
+	TokensTree.SetItemData(appNode, "", 6);
+	TokensTree.SetItemIconPath(appNode,"Security_Icons/Checkbox_unchecked.png",0);
+	for (var i = 0; i < tokenListData.length; i++) {
+		var curremtItem = TokensTree.AddItem(appNode, tokenListData[i].tokenName);
+		TokensTree.SetItemData(curremtItem, AppId, 1);
+		TokensTree.SetItemData(curremtItem, tokenListData[i].tokenType, 2);
+		TokensTree.SetItemData(curremtItem, tokenListData[i].tokenName, 3);
+		TokensTree.SetItemText(curremtItem, tokenListData[i].tokenDescription, 4);// используется только для отображения 
+		TokensTree.SetItemData(curremtItem, "no", 5);	//по умолчанию не выбранно ничего
+		TokensTree.SetItemData(curremtItem, appNode, 6);
+		//выбор значков в зависимости от типа и имени токена
+		var iconPath = TokensDefinition.GetIconPath(AppId, tokenListData[i].tokenType, tokenListData[i].tokenName);
+		TokensTree.SetItemIconPath(curremtItem, iconPath, 0);
+	}
+}
+
+if (modeDelete == false){ private.queue.Iterator += 1;}
+]]>
+		</body>
+		<param access-modifier="private" name="AppId" display-name="" uuid="b4bf1cb3-d37a-49cf-9546-911d0c881d3c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="JSONTokenList" display-name="" uuid="77096c85-ef78-40a6-a690-6a066d408a63" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="ChangeStateSelect" display-name="ChangeStateSelect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[//механизм выбора элементов дерева - вариант 2
+//s - кол-во выбранных, m - всего элементов
+
+//узел приложения выбран s=m
+function setNodeStatesFullSelection(itemId){
+	TokensTree.SetItemData(itemId,"yes",5);
+	TokensTree.SetItemIconPath(itemId,"Security_Icons/Checkbox_checked.png",0);
+}
+//узел приложения частично выбран 0<s<m
+function setNodeStatesPartialSelection(itemId){
+	TokensTree.SetItemData(itemId,"part",5);
+	TokensTree.SetItemIconPath(itemId,"Security_Icons/Checkbox_threestate.png",0);
+}
+//узел приложения не выбран s=0
+function setNodeStatesNoSelection(itemId){
+	TokensTree.SetItemData(itemId,"no",5);
+	TokensTree.SetItemIconPath(itemId,"Security_Icons/Checkbox_unchecked.png",0);
+}
+
+//методы изменения состояния дочерних узлов
+function setSelection(itemId){
+	TokensTree.SetItemData(itemId,"yes",5);
+	TokensTree.SetItemIconPath(itemId,"Security_Icons/Checkbox_checked.png",0);
+	
+}
+function resetSelection(itemId){
+	TokensTree.SetItemData(itemId,"no",5);
+	var iconPath = TokensDefinition.GetIconPath(TokensTree.GetItemData(itemId,1), TokensTree.GetItemData(itemId,2), TokensTree.GetItemData(itemId,3));
+	TokensTree.SetItemIconPath(itemId, iconPath,0);
+}
+//методы проверки состояния
+function getItemState(itemId){
+	if (TokensTree.GetItemData(itemId, 2) != "root"){
+		return TokensTree.GetItemData(itemId, 5);
+	}
+}
+function getNodeState(itemId){
+	if (TokensTree.GetItemData(selectItemId, 2) == "root"){
+		return TokensTree.GetItemData(itemId, 5);
+	}
+}
+
+//получение кол-ва выбранных элементов
+function getCountSelecedItem(itemId){
+	try { 
+		var ChildEnum = JSON.parse(TokensTree.EnumChildrenJSON(itemId));
+	} catch {return;}
+	var countSelectedItems = 0;		//кол-во выбранных элементов
+	for (var i = 0; i < ChildEnum.length;i++){
+		if (getItemState(ChildEnum[i]) == "yes"){countSelectedItems++;}
+	}
+	return countSelectedItems
+}
+
+//обновление состояния родительского узла
+function updateNodeState(parentId){
+	var countSelectedItems = getCountSelecedItem(parentId);		//кол-во выбранных элементов
+	if (countSelectedItems == 0){
+		setNodeStatesNoSelection(parentId);
+	}else if (countSelectedItems > 0 && (countSelectedItems < TokensTree.ChildCount(parentId))) {
+		setNodeStatesPartialSelection(parentId);
+	} else if (countSelectedItems == TokensTree.ChildCount(parentId)) {
+		setNodeStatesFullSelection(parentId);
+	}
+	ApplyButton.Enabled = (countSelectedItems > 0);
+}
+
+//Основная часть
+var parentThisItem = TokensTree.GetItemData(selectItemId, 6);
+if (parentThisItem != ""){	//если нажали на роль
+	if (getItemState(selectItemId) == "no"){ 
+		setSelection(selectItemId);
+		setNodeStatesPartialSelection(parentThisItem);
+	} else if (getItemState(selectItemId) == "yes"){ 
+		resetSelection(selectItemId);
+	}
+	updateNodeState(parentThisItem);
+} else {	//если нажали на приложение
+	if (getNodeState(selectItemId) == "yes" || getNodeState(selectItemId) == "part"){ setNodeStatesNoSelection(selectItemId);} 
+		else if (getNodeState(selectItemId) == "no"){setNodeStatesFullSelection(selectItemId);}
+	try { //обновление состояния дочерних элементов
+		var ChildEnum = JSON.parse(TokensTree.EnumChildrenJSON(selectItemId));
+	} catch (err) {return;}
+	for (var i = 0; i < ChildEnum.length;i++){
+		if (getNodeState(selectItemId) == "yes"){setSelection(ChildEnum[i]);}
+			else if (getNodeState(selectItemId) == "no"){resetSelection(ChildEnum[i]);}
+	}
+	ApplyButton.Enabled = (getCountSelecedItem(selectItemId) > 0);
+}
+]]>
+		</body>
+		<param access-modifier="private" name="selectItemId" display-name="" uuid="34830908-ea43-4b46-ae43-08ecd16c1cf9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="SetItemIcon" display-name="SetItemIcon" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (appName == "Alpha.Security"){
+	if (tokenType == "bool"){
+		TokensTree.SetItemIconPath(itemId,"Security_Icons/Boolean.png",0);
+	}	else if (tokenType == "string" ){
+		if (tokenName == "PasswordComplexity"){
+			TokensTree.SetItemIconPath(itemId,"Security_Icons/BooleanArray.png",0);
+		} else if (tokenName == "PasswordAge"){
+			TokensTree.SetItemIconPath(itemId,"Security_Icons/Int32Array.png",0);
+		} else {
+			TokensTree.SetItemIconPath(itemId,"Security_Icons/Int32.png",0);
+		}
+	}
+}else {
+	if (tokenType == "bool") {
+		TokensTree.SetItemIconPath(itemId,"Security_Icons/Boolean.png",0);
+	}	else if (tokenType == "string"){
+		TokensTree.SetItemIconPath(itemId,"Security_Icons/String.png",0);
+	}
+} 
+]]>
+		</body>
+		<param access-modifier="private" name="itemId" display-name="" uuid="7bc947ac-ea9c-4772-9ead-aeb2a6c1108a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="appName" display-name="" uuid="ef68ca76-31c8-47e0-b1a0-952e7b495bbb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="f65011d0-b16a-40ea-8247-f9683dde1add" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="4b77babf-f7e5-4e34-810a-b3f7e0b56ef3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;
+UpdateLayout();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[TokensTree.Width = WindowWidth;
+TokensTree.Height = WindowHeight-40;
+
+CancelButton.X = WindowWidth - CancelButton.Width - 10;
+CancelButton.Y = WindowHeight - CancelButton.Height - 10;
+
+ApplyButton.X = CancelButton.X - ApplyButton.Width - 10;
+ApplyButton.Y = WindowHeight - ApplyButton.Height - 10;]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="TokensDefinition" display-name="TokensDefinition" uuid="c6186df4-264e-4ba2-94ba-edcd198d09d9" base-type="TokensDefinition" base-type-id="2d057de8-3722-4426-b142-42fa7ada0520" ver="4">
+		<designed target="X" value="410" ver="4"/>
+		<designed target="Y" value="-80" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="CloseRequested">
+		<body kind="om">
+			<![CDATA[CancelButton.incomCloseRequest = true;]]>
+		</body>
+	</do-on>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

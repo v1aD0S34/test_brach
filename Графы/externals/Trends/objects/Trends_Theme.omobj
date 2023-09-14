@@ -1,0 +1,43 @@
+<type access-modifier="public" name="Trends_Theme" display-name="Тема оформления" uuid="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="">
+	<object access-modifier="private" name="Font" display-name="Шрифт" uuid="4a10052b-9a9b-449e-b6d2-80d8c344397c" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="AxisFont" display-name="Шрифт осей" uuid="a348542f-62fe-4412-bcca-fcee8cecda06" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<init target="AxisFont" ver="5" value="Tahoma,10,-1,5,50,0,0,0,0,0,Обычный"/>
+	<init target="Font" ver="5" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный"/>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings = JSON.parse(base.GetViewSettings());
+
+settings.Font = Font.Value;
+settings.AxisFont = AxisFont.Value;
+settings.AxisFormat = AxisFormat.Value;
+settings.ChartFieldColor = ColorToHex(ChartFieldColor.Value);
+
+function ColorToHex(color)
+{
+	var hex = Number(color).toString(16);
+	while (hex.length < 8)
+		hex = "0" + hex;
+	return "0x" + hex;
+}
+
+return JSON.stringify(settings, null, 2);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[base.UpdateView(json);
+
+var settings = JSON.parse(json);
+if (settings.Font != undefined) Font.Value = settings.Font;
+if (settings.AxisFont != undefined) AxisFont.Value = settings.AxisFont;
+if (settings.AxisFormat != undefined) AxisFormat.Value = settings.AxisFormat;
+if (settings.ChartFieldColor != undefined) ChartFieldColor.Value = parseInt(settings.ChartFieldColor);]]>
+		</body>
+		<param access-modifier="private" name="json" display-name="" uuid="29c91926-93c3-4fe4-bc82-fefb407eb134" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="AxisFormat" display-name="Формат меток осей" uuid="affa6f51-73c1-40a1-88bf-fbc2e4ca8e85" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ChartFieldColor" display-name="Цвет поля графиков" uuid="2449634c-4009-4306-8df4-e18ef5445ee0" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+	<init target="ChartFieldColor" ver="5" value="0xffffffff"/>
+	<init target="AxisFormat" ver="5" value="%.5g"/>
+</type>
+

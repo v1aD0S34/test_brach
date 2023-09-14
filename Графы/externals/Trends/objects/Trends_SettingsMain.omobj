@@ -1,0 +1,459 @@
+<type access-modifier="private" name="Trends_SettingsMain" display-name="Trends_SettingsMain" uuid="73f343c2-cdfc-4c21-b5ea-f00c75151521" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="730" ver="2"/>
+	<designed target="Height" value="475" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="260" ver="2"/>
+	<designed target="WindowHeight" value="230" ver="2"/>
+	<designed target="WindowCaption" value="Параметры" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="1" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="Data" display-name="Data" uuid="cc9b68c6-d456-4a49-a737-d4c75e4431fa" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="false" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<object access-modifier="private" name="bToolBarBtnVisible" display-name="bToolBarBtnVisible" uuid="6a8b6dda-4847-435b-8bcb-c356b28a5a26" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4" cardinal="22"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[bToolBarBtnVisible[0] = pToolBar.btnOperMode.IsVisible;
+bToolBarBtnVisible[1] = pToolBar.btnOpen.IsVisible;
+bToolBarBtnVisible[2] = pToolBar.btnSave.IsVisible;
+bToolBarBtnVisible[3] = pToolBar.btnExport.IsVisible;
+bToolBarBtnVisible[4] = pToolBar.btnPrint.IsVisible;
+bToolBarBtnVisible[5] = pToolBar.btnScreenshot.Accessed;
+bToolBarBtnVisible[6] = pToolBar.btnTreeVisible.IsVisible;
+bToolBarBtnVisible[7] = pToolBar.btnMiniTrends.IsVisible;
+bToolBarBtnVisible[8] = pToolBar.btnShowLegend.IsVisible;
+bToolBarBtnVisible[9] = pToolBar.btnIndiZoom.IsVisible;
+bToolBarBtnVisible[10] = pToolBar.btnAutoRange.IsVisible;
+bToolBarBtnVisible[11] = pToolBar.btnChartPoints.IsVisible;
+bToolBarBtnVisible[12] = pToolBar.btnReperAdd.IsVisible;
+bToolBarBtnVisible[13] = pToolBar.btnHand.IsVisible;
+bToolBarBtnVisible[14] = pToolBar.btnZoom.IsVisible;
+bToolBarBtnVisible[15] = pToolBar.btnHome.IsVisible;
+bToolBarBtnVisible[16] = pToolBar.btnZoomIn.IsVisible;
+bToolBarBtnVisible[17] = pToolBar.btnXZoom.IsVisible;
+bToolBarBtnVisible[18] = pToolBar.btnPause.Accessed;
+bToolBarBtnVisible[19] = pToolBar.RecHistory.btnPrevPeriod.Accessed;
+bToolBarBtnVisible[20] = pToolBar.RecHistory.btnRequest.Accessed;
+bToolBarBtnVisible[21] = pToolBar.RecHistory.EditAccessed;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Apply" display-name="Apply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[pToolBar.btnOperMode.IsVisible = bToolBarBtnVisible[0];
+pToolBar.btnHistMode.IsVisible = bToolBarBtnVisible[0];
+pToolBar.btnOpen.IsVisible = bToolBarBtnVisible[1];
+pToolBar.btnOpenDrop.IsVisible = bToolBarBtnVisible[1];
+pToolBar.btnSave.IsVisible = bToolBarBtnVisible[2];
+pToolBar.btnSaveDrop.IsVisible = bToolBarBtnVisible[2];
+pToolBar.btnExport.IsVisible = bToolBarBtnVisible[3];
+pToolBar.btnPrint.IsVisible = bToolBarBtnVisible[4];
+pToolBar.btnScreenshot.Accessed = bToolBarBtnVisible[5];
+pToolBar.btnTreeVisible.IsVisible = bToolBarBtnVisible[6];
+pToolBar.btnMiniTrends.IsVisible = bToolBarBtnVisible[7];
+pToolBar.btnShowLegend.IsVisible = bToolBarBtnVisible[8];
+pToolBar.btnIndiZoom.IsVisible = bToolBarBtnVisible[9];
+pToolBar.btnAutoRange.IsVisible = bToolBarBtnVisible[10];
+pToolBar.btnChartPoints.IsVisible = bToolBarBtnVisible[11];
+pToolBar.btnReperAdd.IsVisible = bToolBarBtnVisible[12];
+pToolBar.btnReperDel.IsVisible = bToolBarBtnVisible[12];
+pToolBar.btnReperDelDrop.IsVisible = bToolBarBtnVisible[12];
+pToolBar.btnHand.IsVisible = bToolBarBtnVisible[13];
+pToolBar.btnZoom.IsVisible = bToolBarBtnVisible[14];
+pToolBar.btnHome.IsVisible = bToolBarBtnVisible[15];
+pToolBar.btnZoomIn.IsVisible = bToolBarBtnVisible[16];
+pToolBar.btnZoomOut.IsVisible = bToolBarBtnVisible[16];
+pToolBar.btnXZoom.IsVisible = bToolBarBtnVisible[17];
+pToolBar.btnYZoom.IsVisible = bToolBarBtnVisible[17];
+pToolBar.btnPause.Accessed = bToolBarBtnVisible[18];
+pToolBar.RecHistory.btnPrevPeriod.Accessed = bToolBarBtnVisible[19];
+pToolBar.RecHistory.btnNextPeriod.Accessed = bToolBarBtnVisible[19];
+pToolBar.RecHistory.btnRequest.Accessed = bToolBarBtnVisible[20];
+pToolBar.RecHistory.EditAccessed	= Data.bToolBarBtnVisible[21];
+
+bChanged = false;
+pToolBar.Update();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="TestChanged" display-name="TestChanged" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<body kind="om">
+				<![CDATA[return (bToolBarBtnVisible[0] != pToolBar.btnOperMode.IsVisible) ||
+	(bToolBarBtnVisible[1] != pToolBar.btnOpen.IsVisible) ||
+	(bToolBarBtnVisible[2] != pToolBar.btnSave.IsVisible) ||
+	(bToolBarBtnVisible[3] != pToolBar.btnExport.IsVisible) ||
+	(bToolBarBtnVisible[4] != pToolBar.btnPrint.IsVisible) ||
+	(bToolBarBtnVisible[5] != pToolBar.btnScreenshot.Accessed) ||
+	(bToolBarBtnVisible[6] != pToolBar.btnTreeVisible.IsVisible) ||
+	(bToolBarBtnVisible[7] != pToolBar.btnMiniTrends.IsVisible) ||
+	(bToolBarBtnVisible[8] != pToolBar.btnShowLegend.IsVisible) ||
+	(bToolBarBtnVisible[9] != pToolBar.btnIndiZoom.IsVisible) ||
+	(bToolBarBtnVisible[10] != pToolBar.btnAutoRange.IsVisible) ||
+	(bToolBarBtnVisible[11] != pToolBar.btnChartPoints.IsVisible) ||
+	(bToolBarBtnVisible[12] != pToolBar.btnReperAdd.IsVisible) ||
+	(bToolBarBtnVisible[13] != pToolBar.btnHand.IsVisible) ||
+	(bToolBarBtnVisible[14] != pToolBar.btnZoom.IsVisible) ||
+	(bToolBarBtnVisible[15] != pToolBar.btnHome.IsVisible) ||
+	(bToolBarBtnVisible[16] != pToolBar.btnZoomIn.IsVisible) ||
+	(bToolBarBtnVisible[17] != pToolBar.btnXZoom.IsVisible) ||
+	(bToolBarBtnVisible[18] != pToolBar.btnPause.IsVisible) ||
+	(bToolBarBtnVisible[19] != pToolBar.RecHistory.btnPrevPeriod.Accessed) ||
+	(bToolBarBtnVisible[20] != pToolBar.RecHistory.btnRequest.Accessed) ||
+	(bToolBarBtnVisible[21] != pToolBar.RecHistory.EditAccessed);]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="pTrends" display-name="pTrends" uuid="6ab96a70-d90f-4681-ac4d-39b83265c9ea" base-type="Trends_Core" base-type-id="f0fa79fc-d3d2-43f0-9eed-88d0f13b0fa0" base-const="true" base-ref="true" ver="2"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="b185d22c-236d-48ae-b5ab-af61728e3dbf" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="btnOK" display-name="btnOK" uuid="cd3360dc-f561-4d57-a923-062878fa53f4" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="450" ver="2"/>
+		<designed target="Y" value="440" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="80" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="Text" value="OK" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="Tahoma,8.25,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="2"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="2"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="0xff808080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[Data.Apply();
+pSaveSettings.Invoke();
+Close();]]>
+			</body>
+		</do-on>
+		<designed target="DisabledFontColor" value="0xff808080" ver="3"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checked" value="false" ver="4"/>
+	</object>
+	<object access-modifier="private" name="btnCancel" display-name="btnCancel" uuid="50cc5a8c-6c48-4bd0-b11d-5126b28eef85" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="540" ver="2"/>
+		<designed target="Y" value="440" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="80" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="Text" value="Отмена" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="Tahoma,8.25,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="2"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="2"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="0xff808080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[Close();]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="DisabledFontColor" value="0xff808080" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<designed target="Checked" value="false" ver="4"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[//WindowCaption = Str.ToString(event.KeyCode);
+if (event.KeyCode==75) btnCancel.Click();
+if (event.KeyCode==82) btnOK.Click();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Data.Init();		// Обновление буфера данных из основного объекта
+
+Tree_Section.SetColumnName("Разделы", 0);		// Создание спсика разделов в дереве
+firstItem:string = Tree_Section.AddItem("", "Панель инструментов");
+
+Tree_Section.SetSelect(firstItem);
+
+Focus = true;]]>
+		</body>
+	</do-on>
+	<init target="Focus" ver="3" value="true"/>
+	<object access-modifier="private" name="btnApply" display-name="btnApply" uuid="9ffecdff-be9b-492f-9b4d-cd37621b942c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="630" ver="2"/>
+		<designed target="Y" value="440" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="90" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="Text" value="Применить" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="Tahoma,8.25,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="2"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="2"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="0xff808080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[Data.Apply();
+pSaveSettings.Invoke();
+]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="DisabledFontColor" value="0xff808080" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[bChanged]]>
+			</body>
+		</do-trace>
+		<designed target="Checked" value="false" ver="4"/>
+	</object>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="Tree_Section" display-name="Tree_Section" uuid="63ff26a2-bd07-437e-adc4-bd0709b6000e" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="4">
+		<designed target="X" value="5" ver="4"/>
+		<designed target="Y" value="5" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="175" ver="4"/>
+		<designed target="Height" value="425" ver="4"/>
+		<designed target="Font" value="Segoe UI,9,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameVisible" value="true" ver="4"/>
+		<designed target="ColumnCount" value="1" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemPressed">
+			<body kind="om">
+				<![CDATA[Tree_Section.SetSelect(itemId);
+]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="SetSelect" display-name="SetSelect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var EnumChilds = EnumChildrenJSON(""); // получаем список элементов ветки
+EnumChilds = JSON.parse(EnumChilds); // преобразуем список в массив
+var i = 0;
+
+while (i < EnumChilds.length)		// Перебираем все элементы 
+{ 
+	if (EnumChilds[i] == itemID){
+		SetItemBackgroundColor(EnumChilds[i], 0xff4993dc, 0);
+		SetItemTextColor(EnumChilds[i], 0xffffffff, 0);
+		RecBorder.Text_Caption = GetItemText(itemID, 0);
+	}else{
+		SetItemBackgroundColor(EnumChilds[i], 0xffffffff, 0);
+		SetItemTextColor(EnumChilds[i], 0xff000000, 0);
+	} 
+	i = i + 1;
+}
+
+var caption = GetItemText(itemID, 0);
+//DebugTool_1.Log("Selected parameters for " + caption);
+
+if (caption == "Панель инструментов") Open_ToolBarSection.Invoke();]]>
+			</body>
+			<param access-modifier="private" name="itemID" display-name="" uuid="d85d5c54-4cc9-4c49-81a7-aa0f5abb79ea" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<designed target="HeaderVisible" value="false" ver="5"/>
+		<designed target="CurrentItem" value="" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Open_ToolBarSection" display-name="Open_ToolBarSection" uuid="f5af5bd2-222b-4083-a061-ecae0a8b7ebb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="Frame_1" form-action="open-in-frame" form-by-id="false">
+			<object access-modifier="private" uuid="9d2e1060-8582-4876-94b8-d221b49df14f" base-type="Trends_Settings_ToolBar" base-type-id="36f4eff5-c44b-426c-abe8-cd2b5bbd5f99" ver="4">
+				<init target="pSettingsMain" ver="5" ref="here"/>
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+			</object>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="RecBorder" display-name="RecBorder" uuid="5396edd5-19e2-4c81-9eeb-3d02671880e9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="185" ver="4"/>
+		<designed target="Y" value="5" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="540" ver="4"/>
+		<designed target="Height" value="425" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff808080" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="Text_Caption" display-name="Text_Caption" uuid="e52854eb-9556-4ebb-ab64-3061ad20fcae" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+			<designed target="X" value="10" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="500" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Text" value="Название раздела" ver="4"/>
+			<designed target="Font" value="Tahoma,12,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+			<designed target="FontColor" value="0xff000000" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Frame_1" display-name="Frame_1" uuid="40ec5fc7-5d7f-49a8-9570-2389c38fb4d5" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="4">
+		<designed target="X" value="187" ver="4"/>
+		<designed target="Y" value="35" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="535" ver="4"/>
+		<designed target="Height" value="393" ver="4"/>
+		<designed target="PenColor" value="0xffadadad" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<designed target="OverrideScaling" value="false" ver="4"/>
+		<designed target="ShowScrollBars" value="true" ver="4"/>
+		<designed target="MoveByMouse" value="false" ver="4"/>
+	</object>
+	<object access-modifier="private" name="bChanged" display-name="bChanged" uuid="a913d850-2610-4a55-b6b5-01c0ed70e482" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<init target="bChanged" ver="5" value="false"/>
+	<object access-modifier="private" name="pToolBar" display-name="pToolBar" uuid="79194881-ac32-447e-b794-a78dd252631f" base-type="Trends_ToolBar" base-type-id="c5a94cf9-44f5-45cc-b455-7d86479be8ca" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="09f1c40e-679d-425c-bffc-ade35d57e933" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="Trends_Icons/Options16.png" ver="5"/>
+	<object access-modifier="private" name="pSaveSettings" display-name="pSaveSettings" uuid="b9f6ca7a-2ed5-4751-adbe-0eea7590f4fc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

@@ -1,0 +1,1892 @@
+<type access-modifier="public" name="Trends" display-name="Trends" uuid="81673f92-ac48-4244-bfe3-ddbdcc98167a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="900" ver="2"/>
+	<designed target="Height" value="600" ver="2"/>
+	<designed target="RoundingRadius" value="0" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="1" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4278190080" ver="2"/>
+	<designed target="BrushStyle" value="0" ver="2"/>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="e19ee752-1d1a-4b52-b667-f9d9f7be9db0" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="2">
+		<designed target="Orientation" value="2" ver="2"/>
+		<designed target="Gap" value="0" ver="2"/>
+	</object>
+	<object access-modifier="private" name="Initializer_1" display-name="Initializer_1" uuid="70efc10e-6752-43f6-9c2b-d1fe098ea60c" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[if (!private.bConfigLoaded)  // Если загрузка конфигурации не была выполнена пользователем
+	LoadConfiguration(ConfigurationPath); // Выполняем загрузку конфигурации автоматически]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="07b423d2-0a1d-42a0-851a-3d69fc163b7e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="ApSource_Trends" display-name="ApSource_Trends" uuid="9219da98-6462-4d16-8af0-99d26f9411f4" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="2">
+		<designed target="Active" value="true" ver="2"/>
+		<init target="Timeout" ver="2" value="0"/>
+		<init target="ConnectionEstablishTimeout" ver="2" value="0"/>
+		<init target="MaxBufferPoolSize" ver="2" value="0"/>
+		<init target="ParentSource" ver="2" ref="int_AP"/>
+		<designed target="Path" value="" ver="4"/>
+		<designed target="ReAdvise" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="FileManager" display-name="FileManager" uuid="32b1deb1-3f44-474a-b231-e2e9884e13de" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="2">
+		<designed target="RootPath" value="/" ver="4"/>
+	</object>
+	<object access-modifier="private" name="LowRange" display-name="Нижний предел значений по Y" uuid="56563643-bebc-49a7-a678-2afd7473ba6c" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="2"/>
+	<object access-modifier="private" name="HighRange" display-name="Верхний предел значений по Y" uuid="a9bd199c-391e-40f5-91fe-025c8aba8f95" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="2"/>
+	<object access-modifier="private" name="ActiveMode" display-name="Активный режим" uuid="c625cfff-1cbb-4180-be5c-383f225af57e" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("ActiveMode.ValueChanged " + String.ToString(Value));
+if (Core.ActiveMode != Value)
+	Core.ActiveMode = Value;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AutoRange" display-name="Автоматическое определение диапазона значений для всех сигналов" uuid="3491ba60-8a33-4a2a-ad96-ef26a1357351" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("AutoRange.ValueChanged " + String.ToString(Value));
+Core.private.NowParams.ResetUserScale();
+if (Core.AutoRange != Value)
+	Core.AutoRange = Value;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="GlobalRanges" display-name="Общий диапазон значений для всех сигналов" uuid="de1a8296-7df3-40a4-a468-fd2544e3d531" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("GlobalRanges.ValueChanged " + String.ToString(Value));
+Core.private.NowParams.ResetUserScale();
+if (Core.GlobalRanges != Value)
+	Core.GlobalRanges = Value;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="GraphicThickness" display-name="Толщина графиков" uuid="91fc36bb-951a-419e-a80f-188e84245940" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="2"/>
+	<object access-modifier="private" name="DeltaLineWidth" display-name="Утолщение выделенного графика" uuid="158dcbfa-af6f-4c91-80b4-c4088b57d902" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="2"/>
+	<object access-modifier="private" name="InterpolationLine" display-name="Режим интерполяции" uuid="047b9ab0-4afd-47a7-b6f7-78981828c295" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="ShowDialogPrintAndExport" display-name="Показывать диалог печати и экспорта" uuid="e02a181e-b1d5-4e85-8d19-c232d87d8895" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="TicksCountAxisX" display-name="Количество делений на оси X" uuid="d2a763b4-69dd-4dda-9203-90ce43666a3d" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="4"/>
+	<object access-modifier="private" name="TicksCountAxisY" display-name="Количество делений на оси Y" uuid="7a6b63d4-d7c6-40c1-8c47-fd70d2141af5" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="4"/>
+	<object access-modifier="private" name="YAxisPrecision" display-name="Точность отображения значений" uuid="de7b2872-4a5b-4df8-9bcc-dd51482d0df8" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2"/>
+	<object access-modifier="private" name="ShowEU" display-name="Видимость единиц измерений" uuid="c5818f83-73e5-4e15-9dd2-277024de6e36" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="ShowMarkerLabels" display-name="Видимость выносок реперов" uuid="14c7db4a-fe86-4c52-b1fb-ff6fe7309282" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="ShowDataPoints" display-name="Видимость точек на графиках" uuid="f61224b3-e0f6-4554-9975-e85c94b8e385" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("ShowDataPoints.ValueChanged " + String.ToString(Value));
+if (Core.ShowDataPoints != Value)
+	Core.ShowDataPoints = Value;]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="int_AP" display-name="int_AP" uuid="ccf5cf75-446e-47b6-9153-3e5280b78f3f" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="2"/>
+	<param access-modifier="private" name="DataUpdatePeriod" display-name="Период обновления данных, мс" uuid="8d6d28c1-c72b-4d99-aa00-b022caf9cc9f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+	<do access-modifier="private" name="ForcedAddItem" display-name="ForcedAddItem" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="path" display-name="" uuid="2a330e59-588d-434c-b646-85d6f5e5e709" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.AddItem(path, eUnit, description) > 0;]]>
+		</body>
+		<param access-modifier="private" name="eUnit" display-name="" uuid="4cb4bcbf-7de2-4094-bbf0-a54bb9b569db" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="description" display-name="" uuid="0757a0e9-bf70-408e-a3eb-2bdbcc28e689" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+	</do>
+	<do access-modifier="private" name="RemoveItem" display-name="RemoveItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="path" display-name="" uuid="f9066ccd-4821-480e-857f-a852a3f84360" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[Core.RemoveItem(path);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicThickness" display-name="SetGraphicThickness" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="52f435be-7089-4119-9d97-91fb7691673a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="thick" display-name="" uuid="5f83ef11-0f4e-40b8-be6c-b9da54c6cfa5" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.SetGraphicThickness(tag, thick);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicMarkerLabelVisible" display-name="SetGraphicMarkerLabelVisible" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Core.SetGraphicMarkerLabelVisible(tag, markerLabelVisible);
+]]>
+		</body>
+		<param access-modifier="private" name="tag" display-name="" uuid="a31e74c2-7c67-46be-99e6-19a8978f49fd" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="markerLabelVisible" display-name="" uuid="f25d5251-c479-476d-89c5-6af56a1e3ed4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	</do>
+	<do access-modifier="private" name="AddLevel" display-name="AddLevel" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="path" display-name="" uuid="f7287d61-9250-4e12-9a06-ec35c80ef4cf" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.AddLevel(path, lineStyle);]]>
+		</body>
+		<param access-modifier="private" name="lineStyle" display-name="" uuid="c77a0407-6357-47bb-a94a-ba6f50777c93" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+	</do>
+	<do access-modifier="private" name="ClearData" display-name="ClearData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Core.ClearData();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicColor" display-name="SetGraphicColor" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="4c633d25-4999-4de6-89d4-e79dbb6ae537" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="R" display-name="" uuid="43273ffa-0d64-4e0c-8d1f-805e45b87b82" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.SetGraphicColor(tag, R, G, B);]]>
+		</body>
+		<param access-modifier="private" name="G" display-name="" uuid="69dc5f6f-69ba-4dce-b63a-351474b723b0" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+		<param access-modifier="private" name="B" display-name="" uuid="1dc87948-5577-4f36-bda0-803b6345b92d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+	</do>
+	<do access-modifier="private" name="SetGraphicColorU4" display-name="SetGraphicColorU4" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="65465370-aa3d-43fa-b98e-7650aa17614b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="color" display-name="" uuid="2fd63aab-c65e-40b1-85c6-9ad1443ce56c" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.SetGraphicColorU4(tag, color);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetAxisColor" display-name="SetAxisColor" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="76e5f167-1ee6-4359-a7a9-5fbbe98e3165" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="R" display-name="" uuid="a5c33a39-c0ca-4b08-9691-22632f62553d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.SetAxisColor(tag, R, G, B);]]>
+		</body>
+		<param access-modifier="private" name="G" display-name="" uuid="816bdd1e-d8b9-484e-9448-3287a20de932" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+		<param access-modifier="private" name="B" display-name="" uuid="ef96d6a8-8182-4d88-a5eb-93e1225071f8" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+	</do>
+	<do access-modifier="private" name="SetAxisColorU4" display-name="SetAxisColorU4" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="axisName" display-name="" uuid="dd0b3623-441e-4dfa-97e1-8623acb25146" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="color" display-name="" uuid="e4e74c1e-8fd3-4c08-9326-3bfb98ca756a" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.SetAxisColorU4(axisName, color);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetOperativInterval" display-name="SetOperativInterval" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="nMinutes" display-name="" uuid="c7dbadf0-a462-42ea-b76a-5b3c2add3790" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<param access-modifier="private" name="nUpdateRate" display-name="" uuid="f442124a-0764-4c6b-ac54-857d93070177" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<body kind="om">
+			<![CDATA[Core.SetOperativInterval(nMinutes, nUpdateRate);]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="ShowToolbar" display-name="Видимость панели инструментов" uuid="d6cde7a9-87c5-4e3d-a63c-6d2d3169afd1" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[here.private.LayoutUpdate();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowLegend" display-name="Видимость легенды" uuid="e2e42267-3c49-4b73-a6e9-d62a51040f0f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[WS.RS.LayoutUpdate();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowSources" display-name="Видимость дерева сигналов" uuid="4d9dc435-589f-4c39-a412-aed80ebafc86" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("ShowSources changed = " + String.ToString(value));
+if (WS.ItemsTree.Visible != Value)
+{
+	WS.ItemsTree.Visible = Value;
+	WS.Splitter.Visible = Value;
+	WS.LayoutUpdate();
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowStatus" display-name="Видимость строки статуса" uuid="f4a353c4-917a-4aa3-a516-9001a32d5f0a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[here.private.LayoutUpdate();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowMiniTrends" display-name="Видимость минитрендов" uuid="ffead676-9ce8-4ee0-bb60-830c1e9d7252" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (ToolBar.ShowMiniTrends != Value)
+{
+	ToolBar.ShowMiniTrends = Value;
+	Core.ShowMiniTrends = Value;
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="MaxLineLegendShow" display-name="Максимальное количество строк в легенде" uuid="59a3fd68-8945-452e-9c92-8899303b50b6" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[WS.RS.LayoutUpdate();]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="ShowToolbar" ver="2" value="true"/>
+	<init target="ShowLegend" ver="2" value="false"/>
+	<init target="MaxLineLegendShow" ver="2" value="4"/>
+	<init target="DataUpdatePeriod" ver="2" value="1000"/>
+	<init target="ShowDataPoints" ver="2" value="true"/>
+	<init target="ShowMarkerLabels" ver="2" value="false"/>
+	<init target="ShowEU" ver="2" value="true"/>
+	<init target="AutoRange" ver="2" value="true"/>
+	<object access-modifier="private" name="PreloadHistoryToOperativeMode" display-name="Предзагрузка истории в оперативном режиме" uuid="4b5c294f-b34c-438e-9ba7-601f9c8f93c0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="OperativeStoredInterval" display-name="Хранимый интервал оперативного режима, мин" uuid="f156b2f5-b15e-4a6e-b3c0-2e5db8b89f31" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="2"/>
+	<object access-modifier="private" name="OperativeDisplayedInterval" display-name="Отображаемый интервал оперативного режима, мин" uuid="523d6377-a5df-4141-bfba-1011d65280bd" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="2"/>
+	<init target="ShowSources" ver="2" value="true"/>
+	<init target="ShowDescriptionInTree" ver="2" value="false"/>
+	<object access-modifier="private" name="UseRedLine" display-name="Использовать красную линию" uuid="ed2522ba-09a9-40db-ac64-fe3500f65553" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2" cardinal="1"/>
+	<object access-modifier="private" name="RedLineShift" display-name="Сдвиг красной линии, %" uuid="a6207bc1-bfe4-40a0-a5e3-4a51afaa528b" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ShowMilliseconds" display-name="Показывать миллисекунды" uuid="9b282a45-cb6a-4286-a4d0-61f5cf136568" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<do access-modifier="private" name="SetGraphicAxis" display-name="SetGraphicAxis" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="tag" display-name="" uuid="7d37dad2-0394-49db-aedc-3c2e4b7ce9fe" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="axisTag" display-name="" uuid="fd00baa3-5f78-4b4d-b551-e7231e578804" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[Core.SetGraphicAxis(tag, axisTag);]]>
+		</body>
+	</do>
+	<init target="GraphicThickness" ver="2" value="2"/>
+	<init target="DeltaLineWidth" ver="2" value="0"/>
+	<init target="ShowDialogPrintAndExport" ver="2" value="true"/>
+	<object access-modifier="private" name="AccessPrinterSelect" display-name="Разрешить выбор принтера" uuid="7d71e380-4b09-4727-b411-46f034afcfc0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<init target="GlobalRanges" ver="2" value="false"/>
+	<init target="AccessPrinterSelect" ver="2" value="true"/>
+	<init target="PreloadHistoryToOperativeMode" ver="2" value="true"/>
+	<init target="OperativeStoredInterval" ver="2" value="60"/>
+	<init target="YAxisPrecision" ver="2" value="4"/>
+	<init target="InterpolationLine" ver="2" value="false"/>
+	<do access-modifier="private" name="SetIndividualRange" display-name="SetIndividualRange" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Core.SetIndividualRange(tag, lowRange, highRange);]]>
+		</body>
+		<param access-modifier="private" name="tag" display-name="" uuid="fc2e2996-e696-48c8-977d-4b8f21bac555" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="lowRange" display-name="" uuid="b98cdc78-db77-4514-9a11-29c4e7533142" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2"/>
+		<param access-modifier="private" name="highRange" display-name="" uuid="9121dcc5-1c84-4206-87c2-e8f4e22f8f31" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2"/>
+	</do>
+	<do access-modifier="private" name="FitToScreen" display-name="FitToScreen" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Core.FitToScreen();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetHistoricalInterval" display-name="SetHistoricalInterval" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[if (dtTo <= dtFrom)
+	return false;
+
+Core.SetHistoricalInterval(dtFrom, dtTo);
+Core.ReloadHistoricalData();
+return true;]]>
+		</body>
+		<param access-modifier="private" name="dtFrom" display-name="" uuid="0bd10ad6-91ae-4efb-aba9-918d6b79f94a" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+		<param access-modifier="private" name="dtTo" display-name="" uuid="0f8cc67f-925b-4da4-897d-9ff6eb3af383" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+	</do>
+	<do access-modifier="private" name="ReloadHistoricalData" display-name="ReloadHistoricalData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Core.ReloadHistoricalData();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SaveSignalsList" display-name="SaveSignalsList" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[filePath: string = private.GetAbsolutePath(unit.ProductInfo.GetProgramDataFolder(), fileName);
+return Core.SaveSignalsList(filePath);]]>
+		</body>
+		<param access-modifier="private" name="fileName" display-name="" uuid="b461587f-1f21-4c46-9454-ba454c2327a5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<do access-modifier="private" name="LoadSignalsList" display-name="LoadSignalsList" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[filePath: string = private.GetAbsolutePath(unit.ProductInfo.GetProgramDataFolder(), fileName);
+return Core.LoadSignalsList(filePath);]]>
+		</body>
+		<param access-modifier="private" name="fileName" display-name="" uuid="4d065baf-d06e-4119-b908-e898e1f964f9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<object access-modifier="private" name="AccessSettings" display-name="Доступ к настройкам" uuid="53f3f8da-a94c-44f1-8728-53a572f2f07f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[ToolBar.btnSettings.IsVisible = value;]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="UseRedLine" ver="3" value="false"/>
+	<init target="ShowMilliseconds" ver="3" value="false"/>
+	<init target="OperativeDisplayedInterval" ver="3" value="10"/>
+	<object access-modifier="private" name="ControlLineWidth" display-name="Ширина реперных линий" uuid="e22dece1-bd70-4d31-a72e-edf3aac5eaea" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="3"/>
+	<object access-modifier="private" name="ControlLineSelectWidth" display-name="Ширина выделенной реперной линии" uuid="5f6fddac-69ea-4baf-8a0c-cd14bca8c40c" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3"/>
+	<object access-modifier="private" name="ControlLineColor" display-name="Цвет реперных линий" uuid="b0feaf6a-7217-4ed5-a3ec-eab081f0fcfb" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3"/>
+	<object access-modifier="private" name="ControlLineSelectColor" display-name="Цвет выделенной реперной линии" uuid="f69d3d32-5eb6-41ca-887f-5b29c3bb7f9d" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3"/>
+	<init target="ControlLineWidth" ver="3" value="1.5"/>
+	<init target="ControlLineSelectWidth" ver="3" value="2"/>
+	<init target="ControlLineColor" ver="3" value="0xff000000"/>
+	<init target="ControlLineSelectColor" ver="3" value="0xffff0000"/>
+	<object access-modifier="private" name="Core" display-name="Core" uuid="2bd8c7d4-0a31-48c3-8e0f-5cc7b832a00b" base-type="Trends_Core" base-type-id="f0fa79fc-d3d2-43f0-9eed-88d0f13b0fa0" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<do-trace access-modifier="private" target="LowRange" ver="5">
+			<body>
+				<![CDATA[here.LowRange]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="HighRange" ver="5">
+			<body>
+				<![CDATA[here.HighRange]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="GraphicThickness" ver="5">
+			<body>
+				<![CDATA[here.GraphicThickness]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="InterpolationLine" ver="5">
+			<body>
+				<![CDATA[here.InterpolationLine]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="YAxisPrecision" ver="5">
+			<body>
+				<![CDATA[here.YAxisPrecision]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="OperativeDisplayedInterval" ver="5">
+			<body>
+				<![CDATA[here.OperativeDisplayedInterval]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="UseRedLine" ver="5">
+			<body>
+				<![CDATA[here.UseRedLine]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="SynchronizeColor" ver="5">
+			<body>
+				<![CDATA[here.SynchronizeColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ShowRelativeTag" ver="5">
+			<body>
+				<![CDATA[here.ShowRelativeTag]]>
+			</body>
+		</do-trace>
+		<init target="init_AP" ver="5" ref="ApSource_Trends"/>
+		<init target="pTree" ver="5" ref="WS.ItemsTree"/>
+		<init target="pChart_Oper_1" ver="5" ref="WS.RS.Chart_Operative"/>
+		<init target="DataUpdatePeriod" ver="5" ref="here.DataUpdatePeriod"/>
+		<do-trace access-modifier="private" target="SynchroColorMarker" ver="5">
+			<body>
+				<![CDATA[here.SynchroColorMarker]]>
+			</body>
+		</do-trace>
+		<init target="pLegend" ver="5" ref="WS.RS.Legend"/>
+		<init target="pToolBar" ver="5" ref="ToolBar"/>
+		<init target="pStatusLine" ver="5" ref="Status"/>
+		<do-trace access-modifier="private" target="UseServerTime" ver="5">
+			<body>
+				<![CDATA[here.UseServerTime]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ModeTimeSourceServer" ver="5">
+			<body>
+				<![CDATA[here.ModeTimeSourceServer]]>
+			</body>
+		</do-trace>
+		<init target="OnSaveTable" ver="5" ref="here.private.DoOnSaveTable"/>
+		<init target="OnDoPrintSettings" ver="5" ref="here.private.DoOnPrintSettings"/>
+		<init target="OnPrint" ver="5" ref="here.private.DoOnPrint"/>
+		<init target="OnSaveSignalList" ver="5" ref="here.private.DoOnSaveSignalList"/>
+		<init target="pLayoutUpdate" ver="5" ref="WS.RS.DoLayoutUpdate"/>
+		<do-trace access-modifier="private" target="ShowMilliseconds" ver="5">
+			<body>
+				<![CDATA[here.ShowMilliseconds]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="AccessPrinterSelect" ver="5">
+			<body>
+				<![CDATA[here.AccessPrinterSelect]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ExportImportFolderPath" ver="5">
+			<body>
+				<![CDATA[here.ExportImportFolderPath]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FileSystemAccess" ver="5">
+			<body>
+				<![CDATA[here.FileSystemAccess]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.private.Theme"/>
+		<init target="pChart_Hist_1" ver="5" ref="WS.RS.Chart_History"/>
+		<do-trace access-modifier="private" target="TicksCountAxisX" ver="5">
+			<body>
+				<![CDATA[here.TicksCountAxisX]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="TicksCountAxisY" ver="5">
+			<body>
+				<![CDATA[here.TicksCountAxisY]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="EnableManualColor" ver="5">
+			<body>
+				<![CDATA[here.EnableManualColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="DefaultManualColor" ver="5">
+			<body>
+				<![CDATA[here.DefaultManualColor]]>
+			</body>
+		</do-trace>
+		<init target="EnableManualColor" ver="5" value="false"/>
+		<do-trace access-modifier="private" target="RedLineShift" ver="5">
+			<body>
+				<![CDATA[here.RedLineShift]]>
+			</body>
+		</do-trace>
+		<init target="OnSaveSettings" ver="5" ref="here.private.DoSaveSettings"/>
+	</object>
+	<object access-modifier="private" name="ToolBar" display-name="ToolBar" uuid="4a2c8598-56d9-4182-bca5-96d928fd14b6" base-type="Trends_ToolBar" base-type-id="c5a94cf9-44f5-45cc-b455-7d86479be8ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<init target="pCore" ver="5" ref="Core"/>
+		<init target="OnClickTreeVisible" ver="5" ref="WS.ItemsTree.SwitchVisible"/>
+		<init target="OnClickShowLegend" ver="5" ref="WS.RS.Legend.SwitshVisible"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[here.ShowToolbar ]]>
+			</body>
+		</do-trace>
+		<init target="OnClickOpenSettingsForm" ver="5" ref="here.private.Open_SettingsForm"/>
+		<do-trace access-modifier="private" target="ShowDialogPrintAndExport" ver="5">
+			<body>
+				<![CDATA[here.ShowDialogPrintAndExport]]>
+			</body>
+		</do-trace>
+		<init target="OnClickMiniTrendsVisible" ver="5" ref="here.private.DoOnMiniTrendsVisible"/>
+		<init target="pTheme" ver="5" ref="here.private.Theme"/>
+		<do-trace access-modifier="private" target="ShowLegend" ver="5">
+			<body>
+				<![CDATA[here.ShowLegend]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ShowSources" ver="5">
+			<body>
+				<![CDATA[here.ShowSources]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[ShowToolbar]]>
+			</body>
+		</do-trace>
+		<designed target="Height" value="31" ver="5"/>
+		<designed target="Width" value="1000" ver="5"/>
+		<init target="OnClickScreenshot" ver="5" ref="here.WS.RS.DoOnScreenshot"/>
+		<init target="OnClickExport" ver="5" ref="here.private.DoOnExport"/>
+	</object>
+	<object access-modifier="private" name="Timer_SaveConfig" display-name="Timer_SaveConfig" uuid="c33453cb-a482-4164-abcb-8685039bd2e7" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="3">
+		<designed target="Period" value="2000" ver="3"/>
+		<designed target="Active" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+			<body kind="om">
+				<![CDATA[Timer_SaveConfig.Active = false;
+private.SaveConfiguration();]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="ShowStatus" ver="3" value="true"/>
+	<object access-modifier="private" name="ControlLineMultipleAdd" display-name="Множественное добавление реперов" uuid="f60afa6b-a10b-4a51-9dda-d3accf7c6c0e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="ShowDescriptionInTree" display-name="Показывать описание в дереве сигналов" uuid="ef9025a2-bdf7-40f2-bc33-1f35b27977fc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="UseCustomTree" display-name="Пользовательское дерево сигналов" uuid="65555994-dd06-4df4-848b-f6c68b994c9a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[// обрабатываем это событие только после инициализации,
+// до инициализации дерево загрузится при срабатывании ValueChanged у UseCustomTree
+if (Core.private.bInit)
+{
+	if (value)
+	{
+		if (FileUserSignalTree != "")
+		{
+			filePath: string = private.GetAbsolutePath(FileManager.ProjectFolder, FileUserSignalTree); // дополнение относительного пути
+			WS.ItemsTree.LoadFromFile(filePath);
+		}
+	}
+	else
+	{
+		if (ApSource_Trends.ConnectionState == unit.Const.stADVISED_OK)
+			WS.ItemsTree.Browse();
+	}
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="FileUserSignalTree" display-name="Файл пользовательского дерева сигналов" uuid="dca0b2bf-51f6-459f-aa11-8c9869a6ee88" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (UseCustomTree && FileUserSignalTree != "")
+{
+	filePath: string = private.GetAbsolutePath(FileManager.ProjectFolder, FileUserSignalTree); // дополнение относительного пути
+	WS.ItemsTree.LoadFromFile(filePath);
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="UseCustomTree" ver="3" value="false"/>
+	<object access-modifier="private" name="ModeTimeSourceServer" display-name="Режим времени Источник-Сервер" uuid="616bfebb-ba25-4929-b2a5-14ca44c1bd5e" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="3"/>
+	<init target="ModeTimeSourceServer" ver="3" value="0"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<object access-modifier="private" name="ConfigurationPath" display-name="Путь к файлам конфигурации" uuid="5def1c99-96df-424e-9953-9400d10843d7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	<do access-modifier="private" name="LoadConfiguration" display-name="LoadConfiguration" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[private.bConfigLoaded = true; // Запоминем что начальная загрузка конфигурации состоялась
+Core.private.Initializer(); // инициализатор выполняется только один раз 
+
+ConfigurationPath = folder;
+
+// предположим, что результат будет успешным
+result: bool = true;
+
+// определение пути к папке с конфигурацией
+configurationPath: string = private.GetAbsolutePath(unit.ProductInfo.GetProgramDataFolder(), folder);
+
+// загружаем настройки
+if (!private.LoadSettings(configurationPath))
+	result = false;
+
+// загружаем настройки легенды
+if (!WS.RS.Legend.LoadSettings(configurationPath))
+	result = false;
+
+// принудительно скрываем/отображаем столбец с цветом оси
+WS.RS.Legend.SetColumnVisible(unit.Const.cn.CL_AXIS, !SynchronizeColor.Value);
+
+// обновляем разметку
+private.LayoutUpdate();
+
+return result;]]>
+		</body>
+		<param access-modifier="private" name="folder" display-name="" uuid="aa3002ad-bf4d-4f17-bd8d-873ffd71bd10" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<object access-modifier="private" name="ExportImportFolderPath" display-name="Папка для экспорта и импорта" uuid="333af793-686a-478b-9546-b5ba8156fd14" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3"/>
+	<object access-modifier="private" name="FileSystemAccess" display-name="Доступность файловой системы" uuid="2510b671-233d-4f52-a716-ee6faf870633" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3"/>
+	<object access-modifier="private" name="SynchronizeColor" display-name="Синхронизировать цвет графика и оси" uuid="fb15ab60-cad4-4647-904d-34bcfa3ba9b2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<init target="ShowMiniTrends" ver="3" value="true"/>
+	<object access-modifier="private" name="WS" display-name="WS" uuid="6a1cba2d-acdd-42d8-827a-2dfe0e27452d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="31" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="1000" ver="4"/>
+		<designed target="Height" value="550" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="ItemsTree" display-name="ItemsTree" uuid="76ddf633-46c2-403e-8571-d54ae3d34fe8" base-type="Trends_ItemsTree" base-type-id="2d934a44-5181-41f0-94db-e0e63af54d68" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Width" value="300" ver="4"/>
+			<designed target="Height" value="545" ver="4"/>
+			<object access-modifier="private" name="treeWidth" display-name="treeWidth" uuid="835769f1-169e-4e46-8c71-0ec1bebd3520" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+			<object access-modifier="private" name="DoOnSelectItem" display-name="DoOnSelectItem" uuid="6f2cd50f-804f-44fc-b864-65d93db155ba" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[if (SelectedItem != "")
+{
+	// это свойство должно содержать данные в виде массива из одного элемента
+	var info = JSON.parse(SelectedItem).data[0];
+	//log("В дереве сигналов выбран " + info.tag);
+	var itemIndex = Core.AddItem(info.tag, info.eunits, info.description);
+	
+	// в историческом режиме загружаем данные добавленного графика
+	if (itemIndex > 0 && Core.ActiveMode == unit.Const.amHISTORY)
+	{
+		Core.pChart_Hist_1.RequestCounter = 0;
+		Core.pChart_Hist_1.Chart.Timer_ValueQuery.Active = true;
+		Core.pChart_Hist_1.HistoryRequest(itemIndex);
+	}
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="ApSource" ver="5" ref="ApSource_Trends"/>
+			<init target="pOnSelectItem" ver="5" ref="DoOnSelectItem"/>
+			<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="7a3ca1fc-c101-44cd-a462-643cd3945570" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+				<designed target="Weight" value="300" ver="4"/>
+			</object>
+			<init target="treeWidth" ver="5" value="250"/>
+			<object access-modifier="private" name="SwitchVisible" display-name="SwitchVisible" uuid="d68c37ba-422d-46b7-b2d8-9dfe1c93d212" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[here.ShowSources = !here.ShowSources;
+]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="SearchBarVisible" ver="5">
+				<body>
+					<![CDATA[here.ShowSources && here.TreeFindEnable]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DescriptionPreferred" ver="5">
+				<body>
+					<![CDATA[here.ShowDescriptionInTree]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="here.private.Theme"/>
+		</object>
+		<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="1c62ff0a-86ba-4516-b4ca-06dd76f5893a" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="300" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="3" ver="4"/>
+			<designed target="Height" value="545" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="BrushColor" value="0xffffffff" ver="4"/>
+			<designed target="BrushStyle" value="1" ver="4"/>
+			<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="1c7aa8bd-b545-4ffe-a60e-be945898b655" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+				<body kind="om">
+					<![CDATA[if (bPressed)
+{
+	ItemsTree.treeWidth += MouseX;
+	if (ItemsTree.treeWidth < 50)
+		ItemsTree.treeWidth = 50;		
+	if (ItemsTree.treeWidth > here.Width - 100)
+		ItemsTree.treeWidth = here.Width - 100;
+
+	WS.LayoutUpdate();
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
+				<body kind="om">
+					<![CDATA[bPressed = true;
+]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+				<body kind="om">
+					<![CDATA[if (bPressed)
+{
+	bPressed = false;
+	private.SaveConfiguration();
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+				<body kind="om">
+					<![CDATA[BrushColor = unit.Const.clHIGH_LIGHT;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
+				<body kind="om">
+					<![CDATA[BrushColor = pTheme.BackgroundColor;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="6c8d3cb9-4f4d-4b4e-afca-fa093e9e8c19" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+				<designed target="MinWidth" value="3" ver="5"/>
+				<designed target="MinHeight" value="0" ver="5"/>
+				<designed target="MaxWidth" value="3" ver="5"/>
+				<designed target="MaxHeight" value="16777215" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="RS" display-name="RS" uuid="cd0d8c63-fbcd-47e2-8d74-63688e07271c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="303" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="800" ver="4"/>
+			<designed target="Height" value="550" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="dae4ffa3-d533-4101-b406-a8084455fa68" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+				<designed target="Weight" value="800" ver="4"/>
+			</object>
+			<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="e2d2f0ff-a443-40de-ba75-38c88b5238b1" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+				<designed target="Orientation" value="2" ver="4"/>
+				<designed target="Gap" value="0" ver="4"/>
+			</object>
+			<object access-modifier="private" name="Chart_Operative" display-name="Chart_Operative" uuid="9f316d5e-1940-40f2-9cdf-7daeafe31d10" base-type="Trends_Chart_Operative" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" ver="4">
+				<designed target="X" value="0" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Width" value="600" ver="4"/>
+				<designed target="Height" value="400" ver="4"/>
+				<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="01aea010-152e-447b-8253-7640be2d16cf" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+					<designed target="Weight" value="0" ver="4"/>
+				</object>
+				<init target="pCore" ver="5" ref="Core"/>
+				<init target="initCore" ver="5" ref="Core"/>
+				<do-trace access-modifier="private" target="ShowMiniTrends" ver="5">
+					<body>
+						<![CDATA[here.ShowMiniTrends]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineWidth" ver="5">
+					<body>
+						<![CDATA[here.ControlLineWidth]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineSelectWidth" ver="5">
+					<body>
+						<![CDATA[here.ControlLineSelectWidth]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineColor" ver="5">
+					<body>
+						<![CDATA[here.ControlLineColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineSelectColor" ver="5">
+					<body>
+						<![CDATA[here.ControlLineSelectColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowEU" ver="5">
+					<body>
+						<![CDATA[here.ShowEU]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowMarkerLabels" ver="5">
+					<body>
+						<![CDATA[here.ShowMarkerLabels]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowDataPoints" ver="5">
+					<body>
+						<![CDATA[here.ShowDataPoints]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="DeltaLineWidth" ver="5">
+					<body>
+						<![CDATA[here.DeltaLineWidth]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowMilliseconds" ver="5">
+					<body>
+						<![CDATA[here.ShowMilliseconds]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="SynchroColorMarker" ver="5">
+					<body>
+						<![CDATA[here.SynchroColorMarker]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TicksCountAxisX" ver="5">
+					<body>
+						<![CDATA[here.TicksCountAxisX]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TicksCountAxisY" ver="5">
+					<body>
+						<![CDATA[here.TicksCountAxisY]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="PreloadHistory" ver="5">
+					<body>
+						<![CDATA[PreloadHistoryToOperativeMode]]>
+					</body>
+				</do-trace>
+				<init target="pTheme" ver="5" ref="here.private.Theme"/>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[(Core.ActiveMode==unit.Const.amOPERATIVE)]]>
+					</body>
+				</do-trace>
+				<init target="ChartMode" ver="5" value="0"/>
+				<do-trace access-modifier="private" target="ControlLineMultipleAdd" ver="5">
+					<body>
+						<![CDATA[here.ControlLineMultipleAdd]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="OperativeStoredInterval" ver="5">
+					<body>
+						<![CDATA[here.OperativeStoredInterval]]>
+					</body>
+				</do-trace>
+				<init target="pParams" ver="5" ref="Core.private.NowParams"/>
+				<do-trace access-modifier="private" target="UseRedLine" ver="5">
+					<body>
+						<![CDATA[here.UseRedLine]]>
+					</body>
+				</do-trace>
+				<init target="pOnMouseRightClick" ver="5" ref="ContextMenu.DoOnRightClick"/>
+			</object>
+			<object access-modifier="private" name="Chart_History" display-name="Chart_History" uuid="ea301ad2-09b4-4bdb-b100-419d017817a2" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" ver="4">
+				<designed target="X" value="0" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Width" value="600" ver="4"/>
+				<designed target="Height" value="400" ver="4"/>
+				<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="25acac80-1969-48f8-b32c-7b51ee500ee0" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+					<designed target="Weight" value="0" ver="4"/>
+				</object>
+				<init target="pCore" ver="5" ref="Core"/>
+				<init target="initCore" ver="5" ref="Core"/>
+				<do-trace access-modifier="private" target="ShowMiniTrends" ver="5">
+					<body>
+						<![CDATA[here.ShowMiniTrends]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineSelectWidth" ver="5">
+					<body>
+						<![CDATA[here.ControlLineSelectWidth]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineColor" ver="5">
+					<body>
+						<![CDATA[here.ControlLineColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ControlLineSelectColor" ver="5">
+					<body>
+						<![CDATA[here.ControlLineSelectColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowEU" ver="5">
+					<body>
+						<![CDATA[here.ShowEU]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowMarkerLabels" ver="5">
+					<body>
+						<![CDATA[here.ShowMarkerLabels]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowDataPoints" ver="5">
+					<body>
+						<![CDATA[here.ShowDataPoints]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="DeltaLineWidth" ver="5">
+					<body>
+						<![CDATA[here.DeltaLineWidth]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="ShowMilliseconds" ver="5">
+					<body>
+						<![CDATA[here.ShowMilliseconds]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TicksCountAxisX" ver="5">
+					<body>
+						<![CDATA[here.TicksCountAxisX]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="TicksCountAxisY" ver="5">
+					<body>
+						<![CDATA[here.TicksCountAxisY]]>
+					</body>
+				</do-trace>
+				<init target="pTheme" ver="5" ref="here.private.Theme"/>
+				<do-trace access-modifier="private" target="Visible" ver="5">
+					<body>
+						<![CDATA[(Core.ActiveMode==unit.Const.amHISTORY)]]>
+					</body>
+				</do-trace>
+				<init target="ChartMode" ver="5" value="1"/>
+				<do-trace access-modifier="private" target="ControlLineMultipleAdd" ver="5">
+					<body>
+						<![CDATA[here.ControlLineMultipleAdd]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="SynchroColorMarker" ver="5">
+					<body>
+						<![CDATA[here.SynchroColorMarker]]>
+					</body>
+				</do-trace>
+				<init target="pParams" ver="5" ref="Core.private.NowParams"/>
+				<init target="UseRedLine" ver="5" value="false"/>
+				<init target="pOnMouseRightClick" ver="5" ref="ContextMenu.DoOnRightClick"/>
+				<do-trace access-modifier="private" target="ControlLineWidth" ver="5">
+					<body>
+						<![CDATA[here.ControlLineWidth]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="Splitter" display-name="Splitter" uuid="c8b275d3-c8ae-4310-9505-080a930ea34f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+				<designed target="X" value="241.214905548244" ver="4"/>
+				<designed target="Y" value="20" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="3" ver="4"/>
+				<designed target="Height" value="3" ver="4"/>
+				<designed target="RoundingRadius" value="0" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="1" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="BrushColor" value="0xffffffff" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="65567a63-8234-4391-bb5a-c0c16b1802ea" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+					<body kind="om">
+						<![CDATA[if (bPressed)
+{
+	Legend.legendHeight -= MouseY;
+	if (Legend.legendHeight < 20)
+		Legend.legendHeight = 20;		
+	Legend.bAutosize = false;
+	RS.LayoutUpdate();
+}]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
+					<body kind="om">
+						<![CDATA[bPressed = true;
+]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+					<body kind="om">
+						<![CDATA[if (bPressed)
+{
+	bPressed = false;
+}]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+					<body kind="om">
+						<![CDATA[BrushColor = unit.Const.clHIGH_LIGHT;]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
+					<body kind="om">
+						<![CDATA[BrushColor = pTheme.BackgroundColor;]]>
+					</body>
+				</do-on>
+				<do-trace access-modifier="private" target="BrushColor" ver="5">
+					<body>
+						<![CDATA[pTheme.BackgroundColor]]>
+					</body>
+				</do-trace>
+				<do-trace access-modifier="private" target="PenColor" ver="5">
+					<body>
+						<![CDATA[pTheme.BorderColor]]>
+					</body>
+				</do-trace>
+				<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="f0b83223-8332-4efa-81ae-a84a5748b784" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+					<designed target="MinWidth" value="0" ver="5"/>
+					<designed target="MinHeight" value="3" ver="5"/>
+					<designed target="MaxWidth" value="16777215" ver="5"/>
+					<designed target="MaxHeight" value="3" ver="5"/>
+				</object>
+			</object>
+			<object access-modifier="private" name="Legend" display-name="Legend" uuid="2d29630b-be84-46ea-b981-4ec3e9306d29" base-type="Trends_Legend" base-type-id="12a9628e-5f57-42ef-afe7-6a7cf5b34b8d" ver="4">
+				<designed target="X" value="0" ver="4"/>
+				<designed target="Y" value="400" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Width" value="600" ver="4"/>
+				<designed target="Height" value="100" ver="4"/>
+				<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="561add59-328c-4efd-913e-7d447f3d8977" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+					<designed target="Weight" value="150" ver="4"/>
+				</object>
+				<init target="pCore" ver="5" ref="Core"/>
+				<object access-modifier="private" name="SwitshVisible" display-name="SwitshVisible" uuid="ad5b4330-56a7-4029-8ba8-1e7f653493c8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[here.ShowLegend = !here.ShowLegend;]]>
+						</body>
+					</do-on>
+				</object>
+				<init target="pSaveConfig" ver="5" ref="DoSaveConfig"/>
+				<init target="pTheme" ver="5" ref="here.private.Theme"/>
+				<do-trace access-modifier="private" target="ShowFullDescription" ver="5">
+					<body>
+						<![CDATA[here.ShowFullDescription]]>
+					</body>
+				</do-trace>
+				<object access-modifier="private" name="RowsChanged" display-name="RowsChanged" uuid="03da6a79-a9ad-4950-9e60-c879e2e01e5f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[RS.LayoutUpdate();]]>
+						</body>
+					</do-on>
+				</object>
+				<init target="pRowsChanged" ver="5" ref="RowsChanged"/>
+				<do-trace access-modifier="private" target="ShowMilliseconds" ver="5">
+					<body>
+						<![CDATA[here.ShowMilliseconds]]>
+					</body>
+				</do-trace>
+				<object access-modifier="private" name="legendHeight" display-name="legendHeight" uuid="1dd40e5b-a2d6-4bdb-bb68-d1989e51afdd" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+				<init target="legendHeight" ver="5" value="250"/>
+				<object access-modifier="private" name="bAutosize" display-name="bAutosize" uuid="685ec39f-7614-4e90-a910-8d6d5ae3cce1" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+				<init target="bAutosize" ver="5" value="true"/>
+			</object>
+			<do access-modifier="private" name="LayoutUpdate" display-name="LayoutUpdate" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[//DebugTool_1.Log("WS.RS.LayoutUpdate");
+
+splitterWidth: double = ShowLegend ? 3 : 0;
+Splitter.SizeLimits.MinHeight = splitterWidth;
+Splitter.SizeLimits.MinHeight = splitterWidth;
+
+legendHeight:double = 0;
+if (ShowLegend)
+{
+	if (Legend.bAutosize)
+	{
+		lines: int4 = Legend.Table_1.GetRowCount();
+		if (lines < 1)
+			lines = 1;	
+		else if (MaxLineLegendShow > 0 && lines > MaxLineLegendShow)
+			lines = MaxLineLegendShow;
+		legendHeight = lines * Legend.Table_1.RowHeight + Legend.Table_1.HeaderHeight + 20;
+		Legend.legendHeight = legendHeight;
+	}
+	else
+	{
+		legendHeight = Legend.legendHeight;
+	}
+}
+
+if (Legend.Visible != ShowLegend)	Legend.Visible = ShowLegend;
+if (Legend.LayoutWeight_1 != legendHeight) Legend.LayoutWeight_1 = legendHeight;
+
+vf: double = WS.Height - Legend.LayoutWeight_1 - splitterWidth;
+if (vf < 0) vf = 0;
+if (Core.ActiveMode == unit.Const.amOPERATIVE)
+{
+	if (Chart_Operative.LayoutWeight_1 != vf) Chart_Operative.LayoutWeight_1 = vf;
+	if (Chart_History.LayoutWeight_1 != 0) Chart_History.LayoutWeight_1 = 0;
+}
+else
+{
+	if (Chart_Operative.LayoutWeight_1 != 0) Chart_Operative.LayoutWeight_1 = 0;
+	if (Chart_History.LayoutWeight_1 != vf) Chart_History.LayoutWeight_1 = vf;
+}]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="DoLayoutUpdate" display-name="DoLayoutUpdate" uuid="b64b598e-658a-4741-84ad-f94174b1ebba" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[LayoutUpdate();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="DoSaveConfig" display-name="DoSaveConfig" uuid="70511776-25e9-46cc-ba9a-6d00446bce73" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Timer_SaveConfig.Active = true;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="DragNDrop_1" display-name="DragNDrop_1" uuid="97d9f799-4301-452a-879f-1b5699af578e" base-type="DragNDrop" base-type-id="c4ddb32f-3653-44c8-be57-3a595e10c2fb" ver="4">
+				<designed target="DragEnabled" value="true" ver="4"/>
+				<designed target="DropEnabled" value="true" ver="4"/>
+				<designed target="Image" value="" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDrop">
+					<body kind="javascript">
+						<![CDATA[var json = data.GetText();
+var itemsData = JSON.parse(json).data;
+
+var i = 0;
+var addedItems = [];
+while (i < itemsData.length)
+{
+	var tag = itemsData[i].tag;
+	if (tag != null)		// поле tag должно быть обязательно
+	{
+		var itemIndex = Core.AddItem(tag, itemsData[i].eunits, itemsData[i].description);
+		if (itemIndex > 0)
+		{
+			addedItems.push(itemIndex);
+			
+			if (itemsData[i].Color != null)
+				SetGraphicColorU4(tag, itemsData[i].Color);
+			
+			var axisName;
+			if (itemsData[i].Axis != null)
+				axisName = itemsData[i].Axis;
+			else axisName = tag;
+			SetGraphicAxis(tag, axisName);
+	
+			if (itemsData[i].AxisColor != null)
+				SetAxisColorU4(axisName, itemsData[i].Color);
+	
+			if (itemsData[i].LowRange != null && itemsData[i].HighRange != null)
+				SetIndividualRange(tag, itemsData[i].LowRange, itemsData[i].HighRange);
+		}
+	}
+	i += 1;
+}
+
+// в историческом режиме загружаем данные добавленных графиков
+if (Core.ActiveMode == unit.Const.amHISTORY)
+{
+	Core.pChart_Hist_1.RequestCounter = 0;
+	Core.pChart_Hist_1.Chart.Timer_ValueQuery.Active = true;
+
+	for (var i in addedItems)
+		Core.pChart_Hist_1.HistoryRequest(addedItems[i]);
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ContextMenu" display-name="ContextMenu" uuid="ea33a01f-cea0-4056-afe0-b92ceaec2581" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+				<designed target="X" value="0" ver="4"/>
+				<designed target="Y" value="0" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="false" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="06d2f936-d146-4d8b-888a-04367eb84a9b" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="4"/>
+				<object access-modifier="private" name="mX" display-name="mX" uuid="ab2e975a-d24e-4144-a58a-398eec4bed67" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+				<object access-modifier="private" name="mY" display-name="mY" uuid="c61250d7-b454-49c8-bf70-67e4125141d0" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+				<object access-modifier="private" name="ShowChartMenu" display-name="ShowChartMenu" uuid="58762ad3-b703-4a1d-9f71-5261bd2aceb7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+						<object access-modifier="private" uuid="cd988170-de4f-4085-bb17-c000f1938368" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="4">
+							<init target="pResult" ver="5" ref="MenuResult"/>
+							<init target="pTheme" ver="5" ref="here.pTheme"/>
+							<init target="WindowX" ver="5">
+								<expr>
+									<![CDATA[mX]]>
+								</expr>
+							</init>
+							<init target="WindowY" ver="5">
+								<expr>
+									<![CDATA[mY]]>
+								</expr>
+							</init>
+							<init target="pAction" ver="5" ref="ChartMenuClick"/>
+							<init target="Items" ver="5">
+								<expr>
+									<![CDATA[GetChartMenuItems()]]>
+								</expr>
+							</init>
+						</object>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="ChartMenuClick" display-name="ChartMenuClick" uuid="98092b6e-1239-468b-aef2-2946fde1855a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[cmd: string = MenuResult.Id;
+
+if (cmd == "PAUSE")
+{
+	Core.private.SetPause(true);
+}
+else if (cmd == "PLAY")
+{
+	Core.private.SetPause(false);
+}
+else if (cmd == "TREE")
+{
+	ShowSources = !ShowSources;
+}
+else if (cmd == "TOOLBAR")
+{
+	ShowToolbar = !ShowToolbar;
+}
+else if (cmd == "LEGEND")
+{
+	ShowLegend = !ShowLegend;
+}
+else if (cmd == "ONLY")
+{
+	shownOnlyChart: bool = !ShowToolbar && !ShowLegend && !ShowSources;
+	// если отображаются только графики, то показываем все панели, иначе скрываем их
+	ShowToolbar = shownOnlyChart;
+	ShowLegend = shownOnlyChart;
+	ShowSources = shownOnlyChart;
+}
+else if (cmd == "SCREENSHOT")
+{
+	WS.RS.DoOnScreenshot.Invoke();
+}
+else if (cmd == "OPTIONS")
+{
+	private.Open_SettingsForm.Invoke();
+}
+]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="GetChartMenuItems" display-name="GetChartMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+					<body kind="javascript">
+						<![CDATA[var iconsPath = "Trends_Icons/";
+
+var items = [];
+
+if (Core.ActiveMode == unit.Const.amOPERATIVE)
+{
+	if (Core.private.Play.Value)
+		items.push({'id':"PAUSE", 'title':"Приостановить", 'icon':iconsPath+"Pause16.png"});
+	else	items.push({'id':"PLAY", 'title':"Продолжить", 'icon':iconsPath+"Play16.png"});
+	items.push({'title':"-"});
+}
+
+var viewItem = {'id':"VIEW", 'title':"Вид"};
+viewItem.items = [];
+viewItem.items.push({'id':"TREE", 		'title':"Дерево сигналов", 			'checked':ShowSources.Value});
+viewItem.items.push({'id':"TOOLBAR",	'title':"Панель инструментов",	'checked':ShowToolbar.Value});
+viewItem.items.push({'id':"LEGEND",		'title':"Легенда", 							'checked':ShowLegend.Value});
+items.push(viewItem);
+
+var shownOnlyChart = !ShowToolbar.Value && !ShowLegend.Value && !ShowSources.Value;
+items.push({'id':"ONLY", 'title':"Отобразить только графики", 'checked':shownOnlyChart});
+
+if (ToolBar.Runtime.WorkMode==unit.Const.rwmDESIGNER)
+{
+	items.push({'title':"-"});
+	items.push({'id':"SCREENSHOT", 'title':"Сохранить текущее изображение в файл...", 'icon': iconsPath + "Camera16.png" });
+}
+
+if (AccessSettings.Value)
+{
+	items.push({'title':"-"});
+	items.push({'id':"OPTIONS", 'title':"Параметры", 'icon': iconsPath + "Options16.png" });
+}
+
+return JSON.stringify(items);]]>
+					</body>
+				</do>
+				<object access-modifier="private" name="DoOnRightClick" display-name="DoOnRightClick" uuid="6c9559bd-2ed4-4348-ba77-8e29bb534f93" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (Core.ActiveMode == unit.Const.amOPERATIVE)
+{
+	mX = WS.RS.Chart_Operative.MousePressedX;
+	mY = WS.RS.Chart_Operative.MousePressedY;
+}
+else
+{
+	mX = WS.RS.Chart_History.MousePressedX;
+	mY = WS.RS.Chart_History.MousePressedY;
+}
+ShowChartMenu.Invoke();]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<object access-modifier="private" name="DoOnScreenshot" display-name="DoOnScreenshot" uuid="a31a4727-9cd0-48cd-b770-6f9d4d6354a3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[// Делаем скриншот трендов и легенды
+if (Screenshot.ShotRegion(ScreenX(0, 0), ScreenY(0, 0), TypeConvert.ToInt4(Width), TypeConvert.ToInt4(Height)))
+{
+	// Предлагаем сохранить
+	ShowSaveDialog.Invoke();
+}
+else
+{
+	Core.ShowError.message = "Не удалось подготовить текущее изображение";
+	Core.ShowError.Invoke();
+}]]>
+					</body>
+				</do-on>
+				<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="0ea8cc5d-8c1e-4f22-aaab-49c0461579f6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="2">
+					<designed target="Enabled" value="true" ver="2"/>
+					<designed target="InvokeTrigger" value="false" ver="2"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+						<object access-modifier="private" uuid="75c0762b-82ef-4dd8-a345-b5a156b1c388" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="4">
+							<init target="pTheme" ver="4" ref="here.pTheme"/>
+							<init target="EditSettingsAllowed" ver="4" value="false"/>
+							<init target="OnComplete" ver="4" ref="SaveFile"/>
+							<init target="FileTypeFilter" ver="4" value="PNG (*.png)|*.png"/>
+							<init target="Result" ver="5" ref="DialogResult"/>
+							<init target="RootPath" ver="5">
+								<expr>
+									<![CDATA[Core.private.ExportPath.Root]]>
+								</expr>
+							</init>
+							<init target="DefaultFileType" ver="5" value="0"/>
+							<init target="DefaultPath" ver="5">
+								<expr>
+									<![CDATA[Core.private.ExportPath]]>
+								</expr>
+							</init>
+						</object>
+					</do-on>
+					<object access-modifier="private" name="SaveFile" display-name="SaveFile" uuid="3f92e99b-9143-4a68-9d75-d6d3930e75dc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+						<designed target="Enabled" value="true" ver="4"/>
+						<designed target="InvokeTrigger" value="false" ver="4"/>
+						<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+							<body kind="om">
+								<![CDATA[Screenshot.Save(DialogResult.FilePath);
+Screenshot.Clear();]]>
+							</body>
+						</do-on>
+					</object>
+					<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="472640a8-6b21-44dd-a26c-33d40e6f90a4" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="5"/>
+				</object>
+				<object access-modifier="private" name="Screenshot" display-name="Screenshot" uuid="3ea928e1-ef4d-400f-ba64-ccf50d93e574" base-type="Screenshot" base-type-id="ee8cdf0b-f2a3-445d-94f7-d61c8ba6f853" ver="5"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="7ae1c65c-4757-4a8c-9c68-13add5cc8797" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+			<designed target="Orientation" value="1" ver="4"/>
+			<designed target="Gap" value="0" ver="4"/>
+		</object>
+		<do access-modifier="private" name="LayoutUpdate" display-name="LayoutUpdate" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[splitterWidth: double = ShowSources ? 3 : 0;
+Splitter.SizeLimits.MinWidth = splitterWidth;
+Splitter.SizeLimits.MaxWidth = splitterWidth;
+ItemsTree.LayoutWeight_1 = ShowSources ? ItemsTree.treeWidth : 0;
+RS.LayoutWeight_1 = here.Width - ItemsTree.LayoutWeight_1 - splitterWidth;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Weight" display-name="Weight" uuid="fa7eeffd-8240-4bd0-a8d5-45a21e497f00" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="5" description="" cardinal="1">
+			<designed target="Weight" value="1000" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Status" display-name="Status" uuid="f67a192e-1ba0-4ef2-a953-71bf69d251d3" base-type="Trends_Status" base-type-id="60ec2e95-2b2d-4f82-9cbe-d981c7cd7032" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="575" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ShowStatus]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="here.private.Theme"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[ShowStatus]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="1000" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<init target="init_ApSource" ver="5" ref="here.int_AP"/>
+	</object>
+	<init target="HighRange" ver="5" value="100"/>
+	<init target="LowRange" ver="5" value="0"/>
+	<init target="ActiveMode" ver="5" value="0"/>
+	<init target="AccessSettings" ver="5" value="true"/>
+	<object access-modifier="private" name="TreeFindEnable" display-name="Разрешить поиск в дереве сигналов" uuid="91431337-956d-41a1-9384-c8ef4fc362a2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="SynchroColorMarker" display-name="Синхронизировать цвет графика и выноски" uuid="ce08c89a-ae7b-469a-a25d-97d71764b479" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="ShowRelativeTag" display-name="Показывать относительный тег" uuid="87370a93-6495-488e-9614-724e6107b618" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<init target="ShowRelativeTag" ver="5" value="false"/>
+	<object access-modifier="private" name="ShowFullDescription" display-name="Показывать полное описание" uuid="ef81f7ce-6ecd-4a91-9443-fb930aaa94e2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="UseServerTime" display-name="Загружать метку времени сервера" uuid="7646af19-1d5c-4e59-a696-aadd87e096dd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<init target="UseServerTime" ver="5" value="false"/>
+	<do access-modifier="private" name="OpenPrint" display-name="OpenPrint" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Core.OpenPrint();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="EnableManualColor" display-name="Включать индикацию ручного ввода" uuid="e661ea0e-b36b-4238-9f50-3af62f4589f8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="DefaultManualColor" display-name="Цвет ручного ввода по умолчанию" uuid="93dfe85c-8159-4528-a95c-ef5c64a02a14" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="OnSaveTable" display-name="OnSaveTable" uuid="a8860de5-9aa7-412b-8acd-35e090f09451" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnDoPrintSettings" display-name="OnDoPrintSettings" uuid="4ded39fc-4ac2-4133-9993-a8cd46883e5d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnPrint" display-name="OnPrint" uuid="39edf662-70f0-405f-a9a5-fb70393e12b1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnExport" display-name="OnExport" uuid="f9fdf2e5-34cd-423a-82b4-ff4161e897ce" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnSaveSignalList" display-name="OnSaveSignalList" uuid="364bc60f-d55d-4067-a70e-b79f1f192073" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="GetEventParam" display-name="GetEventParam" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Core.GetEventParam(numParam);]]>
+		</body>
+		<param access-modifier="private" name="numParam" display-name="" uuid="cd2174dd-debf-4173-bb58-2f32a4bdb470" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+	</do>
+	<object access-modifier="private" name="private" display-name="private" uuid="c63682c6-6fd0-4b6d-a83c-f6a32e02ae47" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="3">
+		<designed target="X" value="550" ver="3"/>
+		<designed target="Y" value="600" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="false" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<do access-modifier="private" name="GetAbsolutePath" display-name="GetAbsolutePath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[// если путь абсолютный, то его и возвращаем
+if (String.Length(path) > 1 && (String.SubString(path, 0, 1) == "/" || String.SubString(path, 1, 1) == ":"))
+	return path;
+
+// относительный путь относительно папки
+return FileManager.CombinePath(root, path);]]>
+			</body>
+			<param access-modifier="private" name="root" display-name="" uuid="084508d4-ae05-4560-97a6-cb7fbde29e29" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="path" display-name="" uuid="2603889c-431a-44c2-abf2-aee32e2dbd14" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SaveConfiguration" display-name="SaveConfiguration" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// определение пути к папке с конфигурацией
+configurationPath: string = private.GetAbsolutePath(unit.ProductInfo.GetProgramDataFolder(), ConfigurationPath);
+
+// при необходимости создаем папку
+if (!FileManager.Exists(configurationPath))	
+	FileManager.CreateRecursiveFolder(configurationPath);
+	
+// сохраняем настройки
+SaveSettings(configurationPath);
+
+// сохраняем настройки легенды
+WS.RS.Legend.SaveSettings(configurationPath);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Open_SettingsForm" display-name="Open_SettingsForm" uuid="3897b3c4-7c27-4465-a789-9fbb745907d3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="b06c5aef-552a-45b1-a1af-dafd93d7b473" base-type="Trends_SettingsMain" base-type-id="73f343c2-cdfc-4c21-b5ea-f00c75151521" ver="4">
+					<init target="pToolBar" ver="5" ref="ToolBar"/>
+					<init target="pTrends" ver="5" ref="Core"/>
+					<init target="pTheme" ver="5" ref="here.private.Theme"/>
+					<init target="pSaveSettings" ver="5" ref="DoSaveSettings"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoOnSaveTable" display-name="DoOnSaveTable" uuid="9de9dfb7-bdda-4139-a30d-e1c7446f3bd2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[OnSaveTable.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoOnSaveTrends" display-name="DoOnSaveTrends" uuid="9eeb2d99-401b-485b-91db-f80dfe97b498" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[here.OnExport.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoOnPrintSettings" display-name="DoOnPrintSettings" uuid="19e1ed60-2408-4ddd-91aa-6b9bc7bb2460" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[OnDoPrintSettings.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoOnPrint" display-name="DoOnPrint" uuid="97efb451-7a68-4142-a4f4-77597de3f016" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[OnPrint.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoOnExport" display-name="DoOnExport" uuid="15798d58-a43f-4edd-9096-572794c337e2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (ShowDialogPrintAndExport)
+{
+	if (Core.ActiveMode == unit.Const.amOPERATIVE)
+		Open_TableTrendsOperative.Invoke();
+	else
+		Open_TableTrendsHistory.Invoke();
+}
+else
+{
+	if (Core.ActiveMode == unit.Const.amOPERATIVE)
+		WS.RS.Chart_Operative.Exporter.StartExport();
+	else
+		WS.RS.Chart_History.Exporter.StartExport();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoOnSaveSignalList" display-name="DoOnSaveSignalList" uuid="4426a734-c7db-4f3f-8aaa-8fcfbcd393db" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[OnSaveSignalList.Invoke();]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="LayoutUpdate" display-name="LayoutUpdate" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[WS.LayoutUpdate();
+WS.RS.LayoutUpdate();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SaveSettings" display-name="SaveSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="folder" display-name="" uuid="f0dda406-69e2-4a06-bba1-00f93435adfb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			<body kind="javascript">
+				<![CDATA[var filePath = FileManager.CombinePath(folder, "settings.json");
+//log("Сохранение настроек в файл "  + filePath);
+try
+{
+	var settings = {};
+	
+	settings.ToolBar = {
+		"btnModeVisible": ToolBar.btnOperMode.IsVisible.Value,
+		"btnOpenVisible": ToolBar.btnOpen.IsVisible.Value,
+		"btnSaveVisible": ToolBar.btnSave.IsVisible.Value,
+		"btnExportVisible": ToolBar.btnExport.IsVisible.Value,
+		"btnPrintVisible": ToolBar.btnPrint.IsVisible.Value,
+		"btnScreenshotVisible": ToolBar.btnScreenshot.Accessed.Value,
+		"btnTreeVisible": ToolBar.btnTreeVisible.IsVisible.Value,
+		"btnMiniTrendsVisible": ToolBar.btnMiniTrends.IsVisible.Value,
+		"btnShowLegendVisible": ToolBar.btnShowLegend.IsVisible.Value,
+		"btnIndiZoomVisible": ToolBar.btnIndiZoom.IsVisible.Value,
+		"btnAutoRangeVisible": ToolBar.btnAutoRange.IsVisible.Value,
+		"btnChartPointsVisible": ToolBar.btnChartPoints.IsVisible.Value,
+		"btnReperVisible": ToolBar.btnReperAdd.IsVisible.Value,
+		"btnHandVisible": ToolBar.btnHand.IsVisible.Value,
+		"btnZoomVisible": ToolBar.btnZoom.IsVisible.Value,
+		"btnHomeVisible": ToolBar.btnHome.IsVisible.Value,
+		"btnZoomInOutVisible": ToolBar.btnZoomIn.IsVisible.Value,
+		"btnXYZoomVisible": ToolBar.btnXZoom.IsVisible.Value,
+		"btnPauseVisible": ToolBar.btnPause.Accessed.Value,
+		"btnPrevNextVisible": ToolBar.RecHistory.btnPrevPeriod.Accessed.Value,
+		"btnHistRequestVisible": ToolBar.RecHistory.btnRequest.Accessed.Value,
+		"cbxHistInterval": ToolBar.RecHistory.EditAccessed
+	};
+	
+	settings.ItemsTree = {
+		"Width": WS.ItemsTree.treeWidth
+	};
+	
+	settings.Print = {
+		"EnableTitlePrint": Core.EnableTitlePrint,
+		"TitlePrint": Core.TitlePrint
+	}
+
+	settings.ColorPalette = [];
+	var i = 0;
+	while (i < Core.private.ColorPalette.Length)
+	{
+		settings.ColorPalette.push("0x" + Core.private.ColorPalette[i].toString(16));
+		i += 1;
+	}
+	
+	if (Core.private.CustomColors != "")
+		settings.CustomColors = JSON.parse(Core.private.CustomColors);
+	
+	var json = JSON.stringify(settings, null, 2);
+	FileManager.WriteTextFile(filePath, json);
+}
+catch(error)
+{
+	log("Не удалось сохранить настройки в "  + filePath + "\n" + error.message);
+}]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="LoadSettings" display-name="LoadSettings" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+			<param access-modifier="private" name="folder" display-name="" uuid="59902175-4116-499e-96cb-38cc96535af2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			<body kind="javascript">
+				<![CDATA[var filePath = FileManager.CombinePath(folder, "settings.json");
+if (FileManager.Exists(filePath))
+{
+	//log("Загрузка настроек из файла "  + filePath);
+	try
+	{
+		var json = FileManager.ReadTextFile(filePath);
+		var settings = JSON.parse(json);
+	
+		if (settings.ToolBar != undefined)
+		{																								
+			ToolBar.btnOperMode.IsVisible = settings.ToolBar.btnModeVisible;			// Прямое управление видимостью
+			ToolBar.btnHistMode.IsVisible = settings.ToolBar.btnModeVisible;							
+			ToolBar.btnChartPoints.IsVisible = settings.ToolBar.btnChartPointsVisible;
+			ToolBar.btnHand.IsVisible = settings.ToolBar.btnHandVisible;
+			ToolBar.btnZoom.IsVisible = settings.ToolBar.btnZoomVisible;
+			ToolBar.btnReperAdd.IsVisible = settings.ToolBar.btnReperVisible || settings.ToolBar.btnReperAddVisible;
+			ToolBar.btnReperDel.IsVisible = settings.ToolBar.btnReperVisible || settings.ToolBar.btnReperDelVisible;
+			ToolBar.btnReperDelDrop.IsVisible = settings.ToolBar.btnReperVisible || settings.ToolBar.btnReperDelVisible;
+			ToolBar.btnIndiZoom.IsVisible = settings.ToolBar.btnIndiZoomVisible;
+			ToolBar.btnAutoRange.IsVisible = settings.ToolBar.btnAutoRangeVisible;
+			ToolBar.btnTreeVisible.IsVisible = settings.ToolBar.btnTreeVisible;
+			ToolBar.btnMiniTrends.IsVisible = settings.ToolBar.btnMiniTrendsVisible;
+			ToolBar.btnOpen.IsVisible = settings.ToolBar.btnOpenVisible;
+			ToolBar.btnOpenDrop.IsVisible = settings.ToolBar.btnOpenVisible;
+			ToolBar.btnSave.IsVisible = settings.ToolBar.btnSaveVisible;
+			ToolBar.btnSaveDrop.IsVisible = settings.ToolBar.btnSaveVisible;
+			ToolBar.btnPrint.IsVisible = settings.ToolBar.btnPrintVisible;
+			ToolBar.btnScreenshot.Accessed = settings.ToolBar.btnScreenshotVisible != false;
+			ToolBar.btnExport.IsVisible = settings.ToolBar.btnExportVisible || settings.ToolBar.btnsettingsVisible;
+			ToolBar.btnHome.IsVisible = settings.ToolBar.btnHomeVisible;
+			ToolBar.btnZoomIn.IsVisible = settings.ToolBar.btnZoomInOutVisible;
+			ToolBar.btnZoomOut.IsVisible = settings.ToolBar.btnZoomInOutVisible;
+			ToolBar.btnShowLegend.IsVisible = settings.ToolBar.btnShowLegendVisible || settings.ToolBar.btnZoomLegendVisible;
+			ToolBar.btnXZoom.IsVisible = settings.ToolBar.btnXYZoomVisible;
+			ToolBar.btnYZoom.IsVisible = settings.ToolBar.btnXYZoomVisible;
+			ToolBar.btnPause.Accessed = settings.ToolBar.btnPauseVisible;	// Управление видимостью через флаг доступности кнопки, если существуют доп.условия
+			ToolBar.RecHistory.btnPrevPeriod.Accessed = settings.ToolBar.btnPrevNextVisible;
+			ToolBar.RecHistory.btnNextPeriod.Accessed = settings.ToolBar.btnPrevNextVisible;
+			ToolBar.RecHistory.btnRequest.Accessed = settings.ToolBar.btnHistRequestVisible;
+			ToolBar.RecHistory.EditAccessed = settings.ToolBar.cbxHistInterval;
+			ToolBar.Update();
+		}
+	
+		var itemsTree = settings.ItemsTree;
+		if (itemsTree != undefined)
+		{
+			WS.ItemsTree.treeWidth = itemsTree.Width;
+		}
+		
+		var settingsPrint = settings.Print;
+		if (settingsPrint != undefined)
+		{
+			Core.EnableTitlePrint = settingsPrint.EnableTitlePrint;
+			Core.TitlePrint = settingsPrint.TitlePrint
+		}
+
+		var colorPalette = settings.ColorPalette;
+		if (colorPalette != undefined)
+		{				
+			var i = 0;
+			while (i < Core.private.ColorPalette.Length)
+			{
+				if (colorPalette[i] != null)
+					Core.private.ColorPalette[i] = parseInt(colorPalette[i], 16);
+				i += 1;
+			}
+		}
+	
+		var customColors = settings.CustomColors;
+		if (customColors != undefined)
+		{				
+			Core.private.CustomColors = JSON.stringify(customColors, 0, 2);
+		}
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить настройки из "  + filePath + "\n" + err.message);
+		return false;
+	}
+}
+else
+{
+	ToolBar.btnPause.Accessed = true;
+	ToolBar.RecHistory.btnPrevPeriod.Accessed = true;
+	ToolBar.RecHistory.btnNextPeriod.Accessed = true;
+	ToolBar.RecHistory.btnRequest.Accessed = true;
+	ToolBar.RecHistory.EditAccessed = true;
+}
+
+return true;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="DoOnMiniTrendsVisible" display-name="DoOnMiniTrendsVisible" uuid="4a099b1e-b70e-4289-b995-7cc742117aba" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[ShowMiniTrends = !ShowMiniTrends;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="DoSaveSettings" display-name="DoSaveSettings" uuid="d693da9f-199f-4b8b-8e76-5bcc695f5bde" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[// определение пути к папке с конфигурацией
+configurationPath: string = GetAbsolutePath(unit.ProductInfo.GetProgramDataFolder(), ConfigurationPath);
+
+if (FileManager.Exists(configurationPath))	
+	FileManager.CreateRecursiveFolder(configurationPath);
+
+SaveSettings(configurationPath);]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="bConfigLoaded" display-name="bConfigLoaded" uuid="014b1ab3-6ac1-4d49-a505-7643a136add3" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<object access-modifier="private" name="Theme" display-name="Theme" uuid="9c688735-8081-4e5c-867c-4e562e04eb7f" base-type="Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" ver="4">
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BorderColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="SelectionColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+				<body>
+					<![CDATA[here.pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+			<init target="DisabledBorderColor" ver="5" value="0xffa0a0a0"/>
+			<do-trace access-modifier="private" target="AxisFont" ver="5">
+				<body>
+					<![CDATA[here.pTheme.AxisFont]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[here.pTheme.Font]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ChartFieldColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ChartFieldColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="AxisFormat" ver="5">
+				<body>
+					<![CDATA[here.pTheme.AxisFormat]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Open_TableTrendsHistory" display-name="Open_TableTrendsHistory" uuid="1d59b48f-7b98-4374-97a2-97b74888a7d6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="efa02ba6-72b1-441b-ac50-5ed259e8d3eb" base-type="Trends_Table" base-type-id="2eaa655b-e7df-43ce-a704-693e19fb182e" ver="4">
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="bShowDialog" ver="5">
+						<expr>
+							<![CDATA[ShowDialogPrintAndExport]]>
+						</expr>
+					</init>
+					<init target="pCore" ver="5" ref="Core"/>
+					<init target="init_Chart" ver="5" ref="Core.pChart_Hist_1.Chart"/>
+					<init target="tLeftBorderInterval" ver="5" ref="Core.private.NowParams.tHistRangeStart"/>
+					<init target="tRightBorderInterval" ver="5" ref="Core.private.NowParams.tHistRangeEnd"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Open_TableTrendsOperative" display-name="Open_TableTrendsOperative" uuid="e3b4758e-7e47-4591-ba1c-4f8ff1782621" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="bb0f3748-d191-44c7-a013-0e67686a9c12" base-type="Trends_Table" base-type-id="2eaa655b-e7df-43ce-a704-693e19fb182e" ver="4">
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="bShowDialog" ver="5">
+						<expr>
+							<![CDATA[ShowDialogPrintAndExport]]>
+						</expr>
+					</init>
+					<init target="pCore" ver="5" ref="Core"/>
+					<init target="init_Chart" ver="5" ref="Core.pChart_Oper_1.Chart"/>
+					<init target="tLeftBorderInterval" ver="5" ref="Core.private.LeftBorderStoryInterval"/>
+					<init target="tRightBorderInterval" ver="5" ref="Core.private.RightBorderStoryInterval"/>
+				</object>
+			</do-on>
+		</object>
+	</object>
+	<init target="TicksCountAxisX" ver="5" value="7"/>
+	<init target="TicksCountAxisY" ver="5" value="11"/>
+	<do access-modifier="private" name="ConfigureGraphic" display-name="ConfigureGraphic" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="f48640d4-3adc-4a86-91b9-ba7749ebc233" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="sJsonConfiguration" display-name="" uuid="8c6fd3b9-55a5-44b2-bd01-c1e2ba2c5668" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[return Core.ConfigureGraphic(tag, sJsonConfiguration);]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="aa2bfe54-44b8-4a2c-bbcb-dda33e29cbaa" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" base-const="true" base-ref="true" ver="4"/>
+	<init target="ControlLineMultipleAdd" ver="5" value="true"/>
+	<init target="FileSystemAccess" ver="5" value="true"/>
+	<init target="SynchronizeColor" ver="5" value="true"/>
+	<init target="SynchroColorMarker" ver="5" value="false"/>
+	<init target="EnableManualColor" ver="5" value="false"/>
+	<init target="DefaultManualColor" ver="5" value="0xff00bfff"/>
+	<init target="RedLineShift" ver="5" value="1"/>
+	<init target="ShowFullDescription" ver="5" value="false"/>
+	<do access-modifier="private" name="AddControlLine" display-name="Добавить реперную линию" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[
+if (Core.ActiveMode == unit.Const.amOPERATIVE)
+{
+	lb:uint8 = Variant.ToUint8(WS.RS.Chart_Operative.Chart.Axis_X.Min, 0);		// Левая граница отображаемого интервала
+	rb:uint8 = Variant.ToUint8(WS.RS.Chart_Operative.Chart.Axis_X.Max, 0);		// Правая граница отображаемого интервала
+	time:uint8 = TypeConvert.ToUint8(lb + (rb - lb) * 0.5);
+	WS.RS.Chart_Operative.AddControlLineAtTime(time);
+}
+else
+{
+	lb:uint8 = Variant.ToUint8(WS.RS.Chart_History.Chart.Axis_X.Min, 0);		// Левая граница отображаемого интервала
+	rb:uint8 = Variant.ToUint8(WS.RS.Chart_History.Chart.Axis_X.Max, 0);		// Правая граница отображаемого интервала
+	time:uint8 = TypeConvert.ToUint8(lb + (rb - lb) * 0.5);
+	WS.RS.Chart_History.AddControlLineAtTime(time);
+}
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="OnClickScreenshot" display-name="OnClickScreenshot" uuid="57ef5d1b-5497-48b2-bf05-516ea952f22f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+</type>
+

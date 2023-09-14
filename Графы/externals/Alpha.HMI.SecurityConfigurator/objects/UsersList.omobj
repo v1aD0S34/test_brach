@@ -1,0 +1,451 @@
+<type access-modifier="private" name="UsersList" display-name="UsersList" uuid="a9102f11-aedf-44ca-a9c0-2fb9b31ee30d" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="845" ver="2"/>
+	<designed target="Height" value="400" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="845" ver="2"/>
+	<designed target="WindowHeight" value="400" ver="2"/>
+	<designed target="WindowCaption" value="MainForm" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="true" ver="2"/>
+	<designed target="ShowWindowMaximize" value="true" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="1" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="0" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="48b43183-ea63-4962-b868-3f9d211cd2f9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="false" ver="4"/>
+		<designed target="Opacity" value="0" ver="4"/>
+		<designed target="Enabled" value="false" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="0" ver="4"/>
+		<designed target="Height" value="0" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="UpdateView" display-name="UpdateView" uuid="c65a69c6-d675-4007-8906-0220e1490a2c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	SystemCommands.DoUpdateLayout = false;
+	here.WindowWidth = TypeConvert.ToInt4(SystemCommands.DoUpdateLayout.Width);
+	here.WindowHeight = TypeConvert.ToInt4(SystemCommands.DoUpdateLayout.Height);
+	
+	here.Width = here.WindowWidth;
+	here.Height = here.WindowHeight;
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="RemoveSelectedUserHandler" display-name="RemoveSelectedUserHandler" uuid="59a20e3c-0259-4144-90c6-9612987b124f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoRemoveSelected = false;
+	if ( private.CurrentUserId != "") {
+		if (CurrentUserLogin == SecurityContext.CurrentUser){
+			ShowForbiddenMessage.message = "Пользователя '" + CurrentUserLogin + "', нельзя удалить - его сессия активна";
+			ShowForbiddenMessage.Invoke();
+		} else 
+			ShowRemoveDialog.Invoke();	
+	}
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowRemoveDialog" display-name="ShowRemoveDialog" uuid="1d878a31-c4cf-4e24-b705-45d10fae6ef3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="2918e963-faec-48f3-be8e-59df4ab121da" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<designed target="WindowCaption" value="Удалить пользователя" ver="4"/>
+						<init target="Icon" ver="4" value="1"/>
+						<init target="Buttons" ver="4" value="2"/>
+						<init target="YesAction" ver="4" ref="RemoveSelectedUser"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA["Вы действительно хотите удалить пользователя '" + CurrentUserLogin + "'?"]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ShowForbiddenMessage" display-name="ShowForbiddenMessage" uuid="7f4b9d01-4d83-409c-a292-9902378040ab" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<object access-modifier="private" name="message" display-name="message" uuid="6394ee73-7ebb-4c45-9be2-ae0efba12360" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="52c76077-08d1-40bb-bbd2-fc897347ed34" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<designed target="WindowCaption" value="Удалить пользователя" ver="4"/>
+						<init target="Icon" ver="4" value="2"/>
+						<init target="Buttons" ver="4" value="0"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA[message]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="RemoveSelectedUser" display-name="RemoveSelectedUser" uuid="be17f066-9d87-4373-839a-ec5f89917f93" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (private.CurrentUserId != "")
+	SecurityManager.DeleteUser(private.CurrentUserId);]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<do-trace access-modifier="private" target="RemoveSelectedUserHandler" ver="5">
+			<body>
+				<![CDATA[Commands.DoRemoveSelected]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="CurrentUserId" display-name="CurrentUserId" uuid="c8311ca1-043c-4d99-a2f3-c4a65206b152" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value != ""){
+	SystemCommands.GoTo.sendData = value;
+	Commands.DoRemoveSelected.CanExecute = true;
+} else {
+	Commands.DoRemoveSelected.CanExecute = false;
+	SystemCommands.GoTo.sendData = "";
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="CurrentUserLogin" display-name="CurrentUserLogin" uuid="30fd2f59-e254-4e8a-bd4d-d3dea471a94a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[ if (value != ""){
+ 	Commands.DoRemoveSelected.CanExecute = true;
+ } else {
+ 	Commands.DoRemoveSelected.CanExecute = false;;
+ }]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="UpdateView" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoUpdateLayout]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="5c3fcc14-4589-4a18-8465-48733a23d489" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="0" ver="4"/>
+		</object>
+		<do access-modifier="private" name="EditSelectedUser" display-name="EditSelectedUser" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (private.CurrentUserId != ""){
+	SystemCommands.GoTo.sendData = private.CurrentUserId;
+	SystemCommands.GoTo.frameCode = 6;
+	SystemCommands.GoTo = true;
+}
+]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="ShowErrorWindow" display-name="ShowErrorWindow" uuid="f94bc62e-69b5-4d45-8ecb-086b23e3657b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="961912a1-c5ad-47ab-87b0-b7cfadf6de00" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+					<init target="Message" ver="4" ref="message"/>
+					<init target="Buttons" ver="4" value="0"/>
+					<init target="Icon" ver="4" value="3"/>
+					<designed target="WindowCaption" value="Ошибка" ver="4"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="cf59e7c1-a21c-4e75-a82d-df6159ec83f4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="f7025263-41d3-4e2b-8069-e118de68110d" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="b4806a19-1a05-4741-8104-8683c906f33e" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestUsersListComplete">
+			<body kind="javascript">
+				<![CDATA[//обновление списка пользователей
+Table_1.TableModel.Clear();
+
+try {
+	var users = JSON.parse(JSONUsersList).data;
+} catch {
+	SystemCommands.GoTo.doUnblockingControll();
+	return;
+}
+
+if (TableModel_1.GetColumnCount() == 0) {TableModel_1.Init();}
+if (users.length > 0) {
+	for (let i = 0; i < users.length; i++){
+		Table_1.TableModel.AddRow();
+		Table_1.TableModel.SetCellData(i, 0, users[i].uid);
+		Table_1.TableModel.SetCellData(i, 1, users[i].symbolicId);
+	}
+	Table_1.Table_Login.SortingEnabled = true;
+	Table_1.Table_Login.SortOrder = 0;
+	Table_1.ApplySort();
+	UserList.BeginUpdate();//Обновляем список пользователей для получения имён
+} else {
+	SystemCommands.GoTo.doUnblockingControll();
+}
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="DeleteUserComplete">
+			<body kind="om">
+				<![CDATA[SecurityManager.RequestUsersList();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="RequestUsersListFailed">
+			<body kind="om">
+				<![CDATA[private.ShowErrorWindow.message = GetErrorDescriptionByCode(FailReason);
+private.ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="4" ref="here.SecurityContext"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="DeleteUserFailed">
+			<body kind="om">
+				<![CDATA[private.ShowErrorWindow.message = GetErrorDescriptionByCode(FailReason);
+private.ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="UserList" display-name="UserList" uuid="f3467315-06f2-40ef-8ccf-60f3fa828734" base-type="UserList" base-type-id="7d9c142e-8718-4caa-82be-60ea2ec65981" ver="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="UpdateFinished">
+			<body kind="om">
+				<![CDATA[i: uint8 = 0;
+while(i < Count)
+{
+	login: string = GetLoginName(i);
+	j: int4 = 0;
+	while(j < TableModel_1.GetRowCount())
+	{
+		if(Variant.ToString(TableModel_1.GetCellData(j, 1), "") == login)
+		{
+			TableModel_1.SetCellData(j, 2, GetDisplayName(i));
+			break;
+		}
+		j +=1;
+	}
+	
+	i += 1;
+}
+
+
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="4" ref="here.SecurityContext"/>
+	</object>
+	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="debe2cc8-05de-4af8-915a-64aeae66fd47" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="845" ver="2"/>
+		<designed target="Height" value="400" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="1" ver="2"/>
+		<designed target="HeaderHeight" value="21" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="30" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<designed target="LatestRowTracking" value="false" ver="3"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="3"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<object access-modifier="private" name="Table_UserID" display-name="Table_UserID" uuid="af4d8cf9-f7bf-4de3-89da-c45e15ce2f90" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="UserID" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="uid" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="20" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="true" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Table_Login" display-name="Table_Login" uuid="11fb7d77-dd1c-45ca-b2f8-40f70c09ca82" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Логин" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="login" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="100" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[private.EditSelectedUser();]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseTitleClick">
+				<body kind="om">
+					<![CDATA[
+// меняем направление сортировки: прямая -> обратная -> отключена и т.д.
+if (SortingEnabled)
+{
+	if (SortOrder == 0)
+		SortOrder = 1; // меняем направление сортировки
+	else SortingEnabled = false; // отключаем сортировку
+}
+else
+{
+	// включаем сортировку
+	SortOrder = 0;
+	SortingEnabled = true;
+}
+
+// сортируем таблицу
+ApplySort();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Table_DisplayName" display-name="Table_DisplayName" uuid="faba7e19-4f67-4e12-a84b-2211fdd40508" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Отображаемое имя" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="symbolicId" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="200" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[private.EditSelectedUser();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="TableModel" ver="4" ref="TableModel_1"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[if (row >= 0 && row < GetRowCount())
+{
+	private.CurrentUserId = GetCellData(row, 0);
+	private.CurrentUserLogin = GetCellData(row, 1);
+}
+else
+{
+	private.CurrentUserId = "";
+	private.CurrentUserLogin = "";
+
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="bd2cd322-bbaa-44e8-8cf5-404cd8680e48" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="1" ver="4"/>
+		</object>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[TableModel_1.Init();
+SecurityManager.RequestUsersList();
+SystemCommands.GoTo.doBlockingControll();
+
+Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="ae49d8aa-bbc4-4fb3-bb21-4734dc84173b" base-type="MainCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="6a9435f7-a5d1-4cad-8425-b9b6c786488f" base-type="InMemoryTable" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="2">
+		<designed target="MaxRowCount" value="100000" ver="2"/>
+		<designed target="Frozen" value="false" ver="3"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Table_1.TableModel.Reset();
+Table_1.TableModel.AddColumn("uid","","","","string",false,true);
+Table_1.TableModel.AddColumn("login","","","","string",false,true);
+Table_1.TableModel.AddColumn("symbolicId","","","","string",false,true);
+]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="8996f187-d614-415c-b302-a3296cc51ae2" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+		<designed target="Orientation" value="1" ver="4"/>
+		<designed target="Gap" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="ba32585c-e6b7-433c-b066-0e3e6035c1bd" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="0cb94c26-ad9a-46d9-88eb-6db58b03798a" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

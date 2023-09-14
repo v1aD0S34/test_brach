@@ -1,0 +1,705 @@
+<type ver="2" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" base-type="Form" uuid="3a63182a-45e8-4259-a203-84dcd20232b8" display-name="Alarms_FilterRequestForm" name="Alarms_FilterRequestForm" access-modifier="private">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="420" ver="2"/>
+	<designed target="Height" value="175" ver="2"/>
+	<designed target="PenColor" value="0xff000000" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="420" ver="2"/>
+	<designed target="WindowHeight" value="175" ver="2"/>
+	<designed target="WindowCaption" value="Фильтр запроса" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="8f9ecc19-6d9b-4190-866c-5ac473ba4577" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="SeverityLabel" display-name="SeverityLabel" uuid="f50c2391-8453-4fd2-8e24-fa16570b3c00" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="10" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="115" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Важность" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="130" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Width" ver="5">
+			<body>
+				<![CDATA[labelWidth]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Severity" display-name="Severity" uuid="c9c25859-7264-4650-b1a2-d9339a06a801" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="120" ver="2"/>
+		<designed target="Y" value="10" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="290" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="RoundingRadius" value="0" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="BrushColor" value="4278190080" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="100f45f5-4dd8-4aa9-9914-a09bf5ae966c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="290" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="0xffff0000" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="2" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[Error != ""]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Editor" display-name="Editor" uuid="20838765-1bd3-4ece-8ed8-27d5513f058e" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+			<designed target="X" value="0" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="290" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+			<designed target="FontColor" value="0xff000000" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="HideInput" value="false" ver="2"/>
+			<designed target="PlaceholderText" value="" ver="2"/>
+			<designed target="ReadOnly" value="false" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[Error]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+				<body kind="om">
+					<![CDATA[filter: string = Link_Alarms.Main_panel.private.JSONstringForFilter(text, "severity", 1, false);
+if (String.StartsWith(filter, "Error: "))
+{
+	Filter = "";
+	Error = String.SubString(filter, 7);
+}
+else
+{
+	Filter = filter;
+	Error = "";
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Error" display-name="Error" uuid="a40512e6-b4c7-4313-87e1-8dfd811b0c7a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<object access-modifier="private" name="Filter" display-name="Filter" uuid="dc82319d-85f3-49e5-a5fd-e1f680b9ff36" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do-trace access-modifier="private" target="X" ver="5">
+			<body>
+				<![CDATA[labelWidth + 5]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="MessageLabel" display-name="MessageLabel" uuid="2cd0b639-d666-4edf-bd4e-66e3bd24877a" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="40" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="115" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Сообщение" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="130" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Width" ver="5">
+			<body>
+				<![CDATA[labelWidth]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Message" display-name="Message" uuid="96fdcbc0-6b9d-4b08-b90c-7328f965954f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="120" ver="2"/>
+		<designed target="Y" value="40" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="290" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="RoundingRadius" value="0" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="BrushColor" value="4278190080" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="3357e84e-395c-458f-b139-dec32607a2b5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="290" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="0xffff0000" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="2" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[Error != ""]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Editor" display-name="Editor" uuid="7b3fc42b-43b7-4691-9654-c6cbc4a3eb39" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+			<designed target="X" value="0" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="290" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+			<designed target="FontColor" value="0xff000000" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="HideInput" value="false" ver="2"/>
+			<designed target="PlaceholderText" value="" ver="2"/>
+			<designed target="ReadOnly" value="false" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[Error]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+				<body kind="om">
+					<![CDATA[filter: string = Link_Alarms.Main_panel.private.JSONstringForFilter(text, "message", 1, false);
+if (String.StartsWith(filter, "Error: "))
+{
+	Filter = "";
+	Error = String.SubString(filter, 7);
+}
+else
+{
+	Filter = filter;
+	Error = "";
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Error" display-name="Error" uuid="836069e0-0563-4573-b09c-64060de037e6" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<object access-modifier="private" name="Filter" display-name="Filter" uuid="6e26a349-041d-4930-abb9-9849da311b56" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do-trace access-modifier="private" target="X" ver="5">
+			<body>
+				<![CDATA[labelWidth + 5]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="SourceLabel" display-name="SourceLabel" uuid="d750990e-853b-4a0c-803a-69f99209edb1" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="70" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="115" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Источник события" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="130" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Width" ver="5">
+			<body>
+				<![CDATA[labelWidth]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Source" display-name="Source" uuid="fd0adf91-f572-4ba8-a05f-9755da83083c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="120" ver="2"/>
+		<designed target="Y" value="70" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="290" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="RoundingRadius" value="0" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="BrushColor" value="4278190080" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="1b0af28b-9d1b-4d3c-9804-bfc85f185793" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="290" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="0xffff0000" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="2" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[Error != ""]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Editor" display-name="Editor" uuid="7f79843e-1bd8-4bef-b93f-c5b782f4f239" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+			<designed target="X" value="0" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="290" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+			<designed target="FontColor" value="0xff000000" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="HideInput" value="false" ver="2"/>
+			<designed target="PlaceholderText" value="" ver="2"/>
+			<designed target="ReadOnly" value="false" ver="2"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[Error]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+				<body kind="om">
+					<![CDATA[filter: string = Link_Alarms.Main_panel.private.JSONstringForFilter(text, "source", 1, false);
+if (String.StartsWith(filter, "Error: "))
+{
+	Filter = "";
+	Error = String.SubString(filter, 7);
+}
+else
+{
+	Filter = filter;
+	Error = "";
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Error" display-name="Error" uuid="c96a068e-2d0a-431b-962f-d782bd1d9f52" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<object access-modifier="private" name="Filter" display-name="Filter" uuid="928f705c-9d69-44b5-baff-57cda4b4db23" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do-trace access-modifier="private" target="X" ver="5">
+			<body>
+				<![CDATA[labelWidth + 5]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="AcknowledgedLabel" display-name="AcknowledgedLabel" uuid="81ca7202-4b19-450f-900d-cb927f80188f" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="100" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="115" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Квитировано" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="130" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Width" ver="5">
+			<body>
+				<![CDATA[labelWidth]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Acknowledged" display-name="Acknowledged" uuid="69fcb9ca-b505-4e57-a73d-a93d2017cb90" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="120" ver="2"/>
+		<designed target="Y" value="100" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="290" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="RoundingRadius" value="0" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="0" ver="2"/>
+		<designed target="BrushColor" value="4278190080" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<object access-modifier="private" name="Editor" display-name="Editor" uuid="f11dad0c-2d07-4f49-b6a8-45a087158fcc" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="2">
+			<designed target="X" value="0" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="290" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Editable" value="false" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="SelectedIndex" value="-1" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+			<designed target="FontColor" value="0xff000000" ver="2"/>
+			<designed target="MaxVisibleItems" value="10" ver="2"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[AddItem("Все");
+AddItem("Неквитированные");
+AddItem("Квитированные");
+
+acknow: string = Link_Alarms.Main_panel.private.RequestFilter.acknow;
+if (acknow == "Квитированные") 
+	SelectedIndex = 2;
+else if (acknow == "Неквитированные")
+	SelectedIndex = 1;
+else
+	SelectedIndex = 0;]]>
+				</body>
+			</do>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (SelectedIndex == 1)
+	Filter = "{\"acked\":false}";
+else if (SelectedIndex == 2)
+	Filter = "{\"acked\":true}";
+else Filter = "";]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Filter" display-name="Filter" uuid="51885dd7-1b03-488e-8f13-7feee6d679e4" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do-trace access-modifier="private" target="X" ver="5">
+			<body>
+				<![CDATA[labelWidth + 5]]>
+			</body>
+		</do-trace>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[SeverityLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Severity.GetTitle();
+MessageLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Message.GetTitle();
+SourceLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Source.GetTitle();
+AcknowledgedLabel.Text = Link_Alarms.Main_panel.private.TableView.Static.Column_Ack.GetTitle();
+
+Severity.Editor.Text = Link_Alarms.Main_panel.private.RequestFilter.severity;
+Message.Editor.Text = Link_Alarms.Main_panel.private.RequestFilter.message;
+Source.Editor.Text = Link_Alarms.Main_panel.private.RequestFilter.source;
+Acknowledged.Editor.Initialize();
+
+UpdateLayout();
+Severity.Editor.Focus = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 82) // Enter
+	ApplyButton.Click();
+else if (event.KeyCode == 75) // Escape
+	Close();]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="ApplyButton" display-name="ApplyButton" uuid="5718c2c7-2f6b-47f5-8eb7-3ebb720917f1" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="240" ver="2"/>
+		<designed target="Y" value="140" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="90" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="Text" value="Применить" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="javascript">
+				<![CDATA[var filter = {};
+filter['AND'] = [];
+
+if (Severity.Filter != "") 
+{
+	var severityFilter = JSON.parse(Severity.Filter);
+	filter['AND'].push(severityFilter);
+}
+
+if (Message.Filter != "")
+{
+	var messageFilter = JSON.parse(Message.Filter);
+	filter['AND'].push(messageFilter);
+}
+
+if (Source.Filter != "")
+{
+	var sourceFilter = JSON.parse(Source.Filter);
+	filter['AND'].push(sourceFilter);
+}
+
+if (Acknowledged.Filter != "") 
+{
+	var acknowledgedFilter = JSON.parse(Acknowledged.Filter);
+	filter['AND'].push(acknowledgedFilter);
+}
+
+// Если было заполнено только одно поле фильтра - выводим это поле, иначе - массив полей.
+var jsonFilter;
+if (filter['AND'].length > 1)
+	jsonFilter = JSON.stringify(filter);
+else jsonFilter = JSON.stringify(filter['AND'][0]);
+
+// Выполняем запрос данных с учетом фильтра
+try
+{
+	Link_Alarms.Main_tables_Historical.SetRequestFilter(jsonFilter);
+	Link_Alarms.Main_panel.private.LoadHistory();
+	applyError = "";
+}
+catch(err)
+{
+	Link_Alarms.Main_tables_Historical.SetRequestFilter("");
+	applyError = err.toString();
+}
+
+if (applyError == "")
+{
+	// запоминаем поля фильтра
+	Link_Alarms.Main_panel.private.RequestFilter.severity = Severity.Editor.Text;
+	Link_Alarms.Main_panel.private.RequestFilter.message = Message.Editor.Text;
+	Link_Alarms.Main_panel.private.RequestFilter.source = Source.Editor.Text;
+	Link_Alarms.Main_panel.private.RequestFilter.acknow = Acknowledged.Editor.GetItem(Acknowledged.Editor.SelectedIndex);
+	
+	Close();
+}
+else
+	onError.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+		<designed target="DisabledFontColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="OnClickBrushStyle" value="1" ver="4"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="0xff000000" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[Severity.Error == "" &&
+Message.Error == "" &&
+Source.Error == ""]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="onError" display-name="onError" uuid="a828b769-0aa6-45d9-b6c0-a1f01a8bf98a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="0140daf4-30a7-436b-a15d-1f36dd78637e" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+					<init target="Icon" ver="5" value="3"/>
+					<init target="Buttons" ver="5" value="0"/>
+					<designed target="WindowCaption" value="Ошибка" ver="4"/>
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA[applyError]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="applyError" display-name="applyError" uuid="2dfef202-721f-49dc-9d2f-9b0f0dcbc35a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="9017d77e-4899-48c7-970d-f4c2efbc328c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="340" ver="2"/>
+		<designed target="Y" value="140" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Отмена" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+		<designed target="BrushColor" value="4293980400" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+		<designed target="OnClickBrushStyle" value="1" ver="4"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+	</object>
+	<object access-modifier="private" name="Link_Alarms" display-name="Link_Alarms" uuid="9d764a16-3cdd-4c82-8f51-e6e34c5233c4" base-type="Alarms" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[// подбираем ширину заголовков
+symbols: int4 = String.Length(SeverityLabel.Text);
+symbols = Math.Max(symbols, String.Length(MessageLabel.Text));
+symbols = Math.Max(symbols, String.Length(SourceLabel.Text));
+symbols = Math.Max(symbols, String.Length(AcknowledgedLabel.Text));
+labelWidth = 10 + 6.2*symbols;
+
+width: double = labelWidth + 5 + Severity.Width + 10;
+WindowWidth = TypeConvert.ToInt4(width);
+Width =  WindowWidth;
+
+CancelButton.X = Width - CancelButton.Width - 10;
+ApplyButton.X = CancelButton.X - ApplyButton.Width - 10;]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="labelWidth" display-name="labelWidth" uuid="d1219af1-daa7-407b-8377-944bb37a2ee1" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="f9d53a20-cc54-4cf7-acf2-55b8acbc436a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

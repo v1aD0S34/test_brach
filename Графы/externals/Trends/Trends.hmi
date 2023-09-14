@@ -1,0 +1,23 @@
+<unit uuid="72b64e83-d5d7-4895-8c46-faeddc82ceb8" name="Trends" main-form-id="ca01f9c2-25ba-4948-b34b-4b6c540074ad">
+	<object file="Trends.omobj" filter=""/>
+	<object file="Trends_App.omobj" filter=""/>
+	<object file="Trends_TestForm.omobj" filter=""/>
+	<object file="Trends_SettingsMain.omobj" filter=""/>
+	<object file="Trends_Settings_ToolBar.omobj" filter=""/>
+	<object file="Trends_ItemsTree.omobj" filter=""/>
+	<object file="Trends_Chart.omobj" filter=""/>
+	<object file="Trends_Core.omobj" filter=""/>
+	<object file="Trends_Legend.omobj" filter=""/>
+	<object file="Trends_ToolBar.omobj" filter=""/>
+	<object file="Trends_Status.omobj" filter=""/>
+	<object file="Trends_GraphicSettings.omobj" filter=""/>
+	<object file="Trends_Table.omobj" filter=""/>
+	<object file="Trends_Print.omobj" filter=""/>
+	<object file="Trends_Parameters.omobj" filter=""/>
+	<object file="Const.omobj" filter=""/>
+	<object file="ProductInfo.omobj" filter=""/>
+	<unit-link name="CommonLib" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="CommonLib" ver="5"/>
+	<object file="Trends_Theme.omobj" filter=""/>
+	<object file="Trends_Exporter.omobj" filter=""/>
+</unit>
+

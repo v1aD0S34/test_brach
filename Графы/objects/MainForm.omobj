@@ -1,0 +1,422 @@
+<type access-modifier="private" name="MainForm" display-name="MainForm" uuid="52ba4c07-f54c-4d06-9300-cc4a2c258280" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Flip" value="0" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1000" ver="5"/>
+	<designed target="Height" value="1000" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="1920" ver="5"/>
+	<designed target="WindowHeight" value="1080" ver="5"/>
+	<designed target="WindowCaption" value="MainForm" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="2" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="1" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="Chart_1" display-name="Chart_1" uuid="8842c825-03f6-4758-93df-d3be1c563370" base-type="Chart" base-type-id="447c3e77-56f5-497c-950c-067da367ad6a" ver="5" description="" cardinal="1">
+		<designed target="X" value="50" ver="5"/>
+		<designed target="Y" value="31" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="500" ver="5"/>
+		<designed target="Height" value="500" ver="5"/>
+		<designed target="CursorPointSize" value="4" ver="5"/>
+		<designed target="CursorLineWidth" value="2" ver="5"/>
+		<designed target="CursorMode" value="0" ver="5"/>
+		<designed target="BrushColor" value="4294967295" ver="5"/>
+		<designed target="CursorColor" value="4288716964" ver="5"/>
+		<designed target="ActiveControllineColor" value="4294901760" ver="5"/>
+		<designed target="ActiveControllineWidth" value="3" ver="5"/>
+		<designed target="ControlLineAxisLabelsLocation" value="0" ver="5"/>
+		<designed target="CursorLineBrushStyle" value="2" ver="5"/>
+		<designed target="ShowTimeLine" value="false" ver="5"/>
+		<designed target="ShowLegend" value="true" ver="5"/>
+		<designed target="AlignLegend" value="0" ver="5"/>
+		<designed target="Extrapolation" value="false" ver="5"/>
+		<designed target="RightExtrapolationLimit" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+		<designed target="MinTimeline" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+		<designed target="MaxTimeline" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+		<designed target="MovePointLabels" value="true" ver="5"/>
+		<designed target="Font" value="" ver="5"/>
+		<designed target="ZoomX" value="5" ver="5"/>
+		<designed target="ZoomY" value="5" ver="5"/>
+		<designed target="EnableScaleAxisX" value="false" ver="5"/>
+		<designed target="AutoUpdate" value="true" ver="5"/>
+		<designed target="Padding" value="50,50,50,50" ver="5"/>
+		<designed target="ShowWinOptions" value="false" ver="5"/>
+		<object access-modifier="private" name="DataSource_1" display-name="DataSource_1" uuid="35f12968-5908-4fd9-8fc0-3854ce8e3942" base-type="DataSource" base-type-id="22b9b931-37d6-455b-b200-df50e9527bc8" ver="5" description="" cardinal="1">
+			<designed target="LengthReserved" value="100" ver="5"/>
+			<designed target="LoadColumns" value="true" ver="5"/>
+			<designed target="Sort" value="true" ver="5"/>
+			<designed target="SortColumnNumber" value="1" ver="5"/>
+			<object access-modifier="private" name="SqlQuery_1" display-name="SqlQuery_1" uuid="5cacf196-0fc8-4412-85e9-5726bcaa293d" base-type="SqlQuery" base-type-id="18184150-650f-4039-bafd-fb9161a71168" ver="5" description="" cardinal="1">
+				<designed target="ConnectionString" value="DSN=PostgreSQL35W;Uid=dduser; Pwd=dduser;" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<init target="ConnectionString" ver="5" value="DSN=PostgreSQL35W;Uid=dduser; Pwd=dduser;"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+					<body kind="om">
+						<![CDATA[if ( state == 0 )
+	Text_1.Text += "ConnectError : " + stateAsString + "\n";
+else if ( state == 1 )
+	Text_1.Text += "Connected!\n";
+]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnOperationFinished">
+					<body kind="om">
+						<![CDATA[if ( operationResult == 0 )
+{
+	Text_1.Text = "Success: ";
+	affectedRows: var = Str.ToUint4( message, 0 );;
+	if ( affectedRows > 0 )
+		Text_1.Text = message + " rows affected\n";
+	else
+		Text_1.Text = message + "\n";
+}
+else
+	Text_1.Text = "Error: " + message + "\n";]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ReadFinished">
+				<body kind="om">
+					<![CDATA[// КОСТЫЛЬ
+//MinMax();
+//Chart_1.Axis_X.Min = 0.01;
+
+]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Axis_X" display-name="Axis_X" uuid="2fceda26-5255-437f-940e-6c2fbf9bf7c6" base-type="Axis" base-type-id="790efceb-e3a3-4c3f-b766-9557ba52a4d3" ver="5" description="" cardinal="1">
+			<designed target="Color" value="4286611584" ver="5"/>
+			<designed target="Type" value="1" ver="5"/>
+			<designed target="Align" value="1" ver="5"/>
+			<designed target="DataType" value="0" ver="5"/>
+			<designed target="Ticks" value="15" ver="5"/>
+			<designed target="ShowBoundaryValues" value="true" ver="5"/>
+			<designed target="Scale" value="0" ver="5"/>
+			<designed target="ScaleLog" value="false" ver="5"/>
+			<designed target="Unit" value="Ед" ver="5"/>
+			<designed target="UnitPos" value="1" ver="5"/>
+			<designed target="Format" value="%.4g" ver="5"/>
+			<designed target="FormatT" value="hh:mm:ss.zzz
+yyyy-MM-dd" ver="5"/>
+			<designed target="Min" value="0.01" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+			<designed target="Max" value="30" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+			<designed target="AxisName" value="x" ver="5"/>
+			<designed target="ShowUnit" value="true" ver="5"/>
+			<designed target="AxisNamePos" value="2" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Font" value="" ver="5"/>
+			<designed target="Zoom" value="5" ver="5"/>
+			<designed target="AutoWidth" value="true" ver="5"/>
+			<designed target="AxisWidth" value="65" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Axis_Y" display-name="Axis_Y" uuid="1027ad16-b9ad-45fb-aec9-ac39bd897db5" base-type="Axis" base-type-id="790efceb-e3a3-4c3f-b766-9557ba52a4d3" ver="5" description="" cardinal="1">
+			<designed target="Color" value="4286611584" ver="5"/>
+			<designed target="Type" value="2" ver="5"/>
+			<designed target="Align" value="1" ver="5"/>
+			<designed target="DataType" value="0" ver="5"/>
+			<designed target="Ticks" value="15" ver="5"/>
+			<designed target="ShowBoundaryValues" value="true" ver="5"/>
+			<designed target="Scale" value="0" ver="5"/>
+			<designed target="ScaleLog" value="false" ver="5"/>
+			<designed target="Unit" value="Ед" ver="5"/>
+			<designed target="UnitPos" value="1" ver="5"/>
+			<designed target="Format" value="%.4g" ver="5"/>
+			<designed target="FormatT" value="hh:mm:ss.zzz
+yyyy-MM-dd" ver="5"/>
+			<designed target="Min" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+			<designed target="Max" value="30" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+			<designed target="AxisName" value="У" ver="5"/>
+			<designed target="ShowUnit" value="true" ver="5"/>
+			<designed target="AxisNamePos" value="2" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Font" value="" ver="5"/>
+			<designed target="Zoom" value="5" ver="5"/>
+			<designed target="AutoWidth" value="true" ver="5"/>
+			<designed target="AxisWidth" value="65" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Line_1" display-name="Line_1" uuid="352e69b8-1d25-4fc1-9509-661a76357a20" base-type="Line" base-type-id="3337f550-4fea-4eff-8ef4-2e7b87f33711" ver="5" description="" cardinal="1">
+			<designed target="Color" value="4278190335" ver="5"/>
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Unit" value="" ver="5"/>
+			<designed target="LineWidth" value="1" ver="5"/>
+			<designed target="PointSize" value="5" ver="5"/>
+			<designed target="LineBrushStyle" value="1" ver="5"/>
+			<designed target="BrushOpacity" value="1" ver="5"/>
+			<designed target="PointSymbolCode" value="0" ver="5"/>
+			<designed target="PointVisible" value="true" ver="5"/>
+			<designed target="PointSymbolFont" value="" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="zOrder" value="100" ver="5"/>
+			<designed target="drawingType" value="0" ver="5"/>
+			<designed target="ColumnNumberTime" value="1" ver="5"/>
+			<designed target="ColumnNumberValue" value="2" ver="5"/>
+			<designed target="StringTagsYValue" value="0" ver="5" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409"/>
+			<designed target="SortByServerTimeColumn" value="true" ver="5"/>
+			<designed target="ShowActiveControllineLabels" value="true" ver="5"/>
+			<designed target="Tag" value="" ver="5"/>
+			<init target="AxisX" ver="5" ref="Axis_X"/>
+			<init target="AxisY" ver="5" ref="Axis_Y"/>
+			<init target="DataSource" ver="5" ref="DataSource_1"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Text_1" display-name="Text_1" uuid="0d424df8-2601-40ed-8f11-73943a695a66" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="239" ver="5"/>
+		<designed target="Y" value="826" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Flip" value="0" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="493" ver="5"/>
+		<designed target="Height" value="43" ver="5"/>
+		<designed target="Text" value="" ver="5"/>
+		<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="TextAlignment" value="33" ver="5"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Graph_Data();
+Table_Data();
+]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="Graph_Data" display-name="Graph_Data" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//Chart_1.DataSource_1.Clear();
+
+Chart_1.DataSource_1.SqlQuery_1.Connect();
+//Chart_1.DataSource_1.SqlQuery_1.Text = "SELECT * FROM ""Locat"" ORDER BY id ASC" ;
+Chart_1.DataSource_1.SqlQuery_1.Text = "SELECT id, ""X""  , ""Y""  FROM ""Locat"" ORDER BY id ASC" ;
+Chart_1.DataSource_1.SqlQuery_1.Execute( );
+Chart_1.DataSource_1.BeginReadAsync();
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="9b8ba2ce-4c0a-4627-915a-eb547efa44ee" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
+		<designed target="X" value="635" ver="5"/>
+		<designed target="Y" value="34" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="302.00000000000011" ver="5"/>
+		<designed target="Height" value="497" ver="5"/>
+		<designed target="BackgroundColor" value="4294967295" ver="5"/>
+		<designed target="FrameColor" value="4278190080" ver="5"/>
+		<designed target="GridColor" value="4292401368" ver="5"/>
+		<designed target="HeaderHeight" value="21" ver="5"/>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="RowHeight" value="30" ver="5"/>
+		<designed target="RowOrder" value="0" ver="5"/>
+		<designed target="SelectionBehavior" value="0" ver="5"/>
+		<designed target="SelectionMode" value="3" ver="5"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="fafb0ed8-4cc2-4939-9e7c-ce92b35b78a0" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5" description="" cardinal="1">
+			<designed target="Frozen" value="false" ver="5"/>
+			<designed target="MaxRowCount" value="10000" ver="5"/>
+			<designed target="OptOfProcessingEvents" value="0" ver="5"/>
+			<object access-modifier="private" name="SqlQuery_1" display-name="SqlQuery_1" uuid="6ef69603-24b9-4fe0-965a-5baabd2647d2" base-type="SqlQuery" base-type-id="18184150-650f-4039-bafd-fb9161a71168" ver="5" description="" cardinal="1">
+				<designed target="ConnectionString" value="DSN=PostgreSQL35W;Uid=dduser; Pwd=dduser;" ver="5"/>
+				<designed target="Text" value="" ver="5"/>
+				<init target="ConnectionString" ver="5" value="DSN=PostgreSQL35W;Uid=dduser; Pwd=dduser;"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+					<body kind="om">
+						<![CDATA[if ( state == 0 )
+	Text_1.Text += "ConnectError : " + stateAsString + "\n";
+else if ( state == 1 )
+	Text_1.Text += "Connected!\n";
+]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnOperationFinished">
+					<body kind="om">
+						<![CDATA[if ( operationResult == 0 )
+{
+	Text_1.Text = "Success: ";
+	affectedRows: var = Str.ToUint4( message, 0 );;
+	if ( affectedRows > 0 )
+		Text_1.Text = message + " rows affected\n";
+	else
+		Text_1.Text = message + "\n";
+}
+else
+	Text_1.Text = "Error: " + message + "\n";]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="TableColumn_1" display-name="TableColumn_1" uuid="dfb0b5b7-42bd-4654-8472-9e09eceda3f1" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="id" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="BackgroundColor" value="4293980400" ver="5"/>
+			<designed target="ForegroundColor" value="4278190080" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="5"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="5"/>
+			<designed target="TitleFont" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%g" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_2" display-name="TableColumn_2" uuid="ff293f60-2cb8-4f29-82ae-090a9ced5d43" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="X" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="BackgroundColor" value="4293980400" ver="5"/>
+			<designed target="ForegroundColor" value="4278190080" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="5"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="5"/>
+			<designed target="TitleFont" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%g" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_3" display-name="TableColumn_3" uuid="82d44bfb-da6e-4d1f-8e41-240e0d35e244" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="Y" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="BackgroundColor" value="4293980400" ver="5"/>
+			<designed target="ForegroundColor" value="4278190080" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="5"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="5"/>
+			<designed target="TitleFont" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%g" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+		</object>
+		<init target="TableModel" ver="5" ref="TableModel_1"/>
+	</object>
+	<do access-modifier="private" name="Table_Data" display-name="Table_Data" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Table_1.TableModel_1.Clear();
+Table_1.TableModel_1.SqlQuery_1.Connect();
+Table_1.TableColumn_2.Id = "X";
+Table_1.TableColumn_3.Id = "Y";
+
+Table_1.TableModel_1.SqlQuery_1.Text = "SELECT id,""X""  ,""Y""   FROM ""Locat"" ORDER BY ""X"" ASC" ;
+//Table_1.TableModel_1.SqlQuery_1.Text = "SELECT id FROM ""Locat"" ORDER BY id ASC" ;
+Table_1.TableModel_1.SqlQuery_1.Execute( );
+Table_1.TableModel_1.BeginReadAsync();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Timer_1" display-name="Timer_1" uuid="bcb04376-2ba1-46db-9cd3-758d9b85bfe4" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5" description="" cardinal="1">
+		<designed target="Period" value="8000" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+			<body kind="om">
+				<![CDATA[// обновлнеие данных графика и таблицы
+
+Graph_Data();
+Table_Data();
+ ]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="db6a53ea-2ae8-4b29-b904-99cd774bc6f8" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<do access-modifier="private" name="MinMax" display-name="MinMax" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[// Идея - норм но не работает тк "график: данные" не дает получить данные из него как из таблицы.(тут костыль ввиде Таблица: данные)
+size:int4 = Table_1.GetRowCount();
+minVal:double = String.ToDouble(Table_1.TableColumn_2.GetCellData(0),0);
+maxVal:double = String.ToDouble(Table_1.TableColumn_2.GetCellData(0),0);
+/* Цикл прохода по элементам  для поиска экстремумов*/
+DebugTool_1.Log("size" + String.ToString(size));
+
+for(i:int4 = 0; i < size; i += 1 ){
+ 	znach:double = String.ToDouble(Table_1.TableColumn_2.GetCellData(i),0);
+	if  (znach > maxVal) 
+	{
+		maxVal = znach;
+	}
+		if  (znach < minVal) 
+	{
+		minVal = znach;
+	}
+}
+
+Chart_1.Axis_X.Max = maxVal;
+Chart_1.Axis_X.Min = minVal;
+
+]]>
+		</body>
+	</do>
+</type>
+

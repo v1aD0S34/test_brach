@@ -1,0 +1,13 @@
+{
+    "Name": "DevStudio",
+    "Tokens": [{
+            "Type": "Boolean",
+            "Name": "EditOptions",
+            "Description": "Редактирование настроек"
+        }, {
+            "Type": "Boolean",
+            "Name": "Deployment",
+            "Description": "Изменение конфигурации исполняющих компонент"
+        }
+    ]
+}

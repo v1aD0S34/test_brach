@@ -1,0 +1,1600 @@
+<type access-modifier="private" name="Alarms_SettingsEvents" display-name="Alarms_SettingsEvents" uuid="00182cb1-80f3-4d3a-b705-fed91c28b6fd" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="640" ver="2"/>
+	<designed target="Height" value="560" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="640" ver="2"/>
+	<designed target="WindowHeight" value="560" ver="2"/>
+	<designed target="WindowCaption" value="Настройка событий" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="1" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="DecoratorTable" display-name="DecoratorTable" uuid="189d236e-83f7-40f0-9184-5581197d1904" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="5" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="540" ver="2"/>
+		<designed target="Height" value="250" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="1" ver="2"/>
+		<object access-modifier="private" name="Column_Activity" display-name="Column_Activity" uuid="210b2ca6-a790-4552-ab5a-4235cb96ebee" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Активность" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="activity" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="75" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Column_Subcondition" display-name="Column_Subcondition" uuid="eb77609a-cdca-431a-9d57-6b8c335c1687" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="4">
+			<designed target="Title" value="Подусловие" ver="4"/>
+			<designed target="Description" value="" ver="4"/>
+			<designed target="Id" value="subcondition" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="4"/>
+			<designed target="ForegroundColor" value="4278190080" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="4"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="4"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="Width" value="70" ver="4"/>
+			<designed target="WidthResizeMode" value="3" ver="4"/>
+			<designed target="Emptiable" value="true" ver="4"/>
+			<designed target="Hidden" value="false" ver="4"/>
+			<designed target="NumberFormat" value="%d" ver="4"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="4"/>
+			<designed target="JsonFilter" value="" ver="4"/>
+			<designed target="SortingEnabled" value="false" ver="4"/>
+			<designed target="SortOrder" value="0" ver="4"/>
+			<designed target="SortPriority" value="0" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="WordWrap" value="true" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Column_Severity" display-name="Column_Severity" uuid="85a033bd-7629-4868-8e9d-26a28c6b2f48" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Важность" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="severity" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="70" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Column_Group" display-name="Column_Group" uuid="63ed5e91-3be4-497c-9eee-2f320492194d" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Группа важности" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="group" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="120" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Column_Message" display-name="Column_Message" uuid="a64e4fad-5d86-4124-a453-1e436e9f6998" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Собщение" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="example" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="65" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%u" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Column_Ack" display-name="Column_Ack" uuid="73e1dfba-4316-4b42-bf79-a806ff269a4c" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Квитирование" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="ack" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="65" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%u" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Column_Blinking" display-name="Column_Blinking" uuid="4e1e3218-f2f6-434b-a8ff-dffdf3f2d885" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Мигание" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="blinking" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="65" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="HeaderHeight" value="25" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="25" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<designed target="LatestRowTracking" value="false" ver="3"/>
+		<object access-modifier="private" name="Column_id" display-name="Column_id" uuid="14b1836f-1c3e-4f9e-b320-e09743702722" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Id" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="id" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="20" ver="2"/>
+			<designed target="WidthResizeMode" value="3" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="true" ver="2"/>
+			<designed target="NumberFormat" value="%u" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenEditForm.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="7540a754-b600-47f2-887c-216c65cf3719" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="3">
+			<designed target="JsonDecorator" value="" ver="3"/>
+		</object>
+		<designed target="SelectionOverlayEnabled" value="true" ver="4"/>
+		<designed target="HorizontalScrollMode" value="1" ver="4"/>
+		<designed target="VerticalScrollMode" value="1" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<init target="TableModel" ver="5" ref="pDecoratorSettings"/>
+		<object access-modifier="private" name="curRow" display-name="curRow" uuid="354fdf8c-449e-4631-a89b-54e351938059" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[curRow = row;
+UpdateButtonEnable();]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="UpdateDecorator" display-name="UpdateDecorator" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//Применение декоратора для таблицы настройки событий
+var Object = {};
+Object.Decorating = [];
+Object.StyleDictionary = [];
+
+for (let i = 0; i < GetRowCount(); i++)
+{
+	var backgroundColor = '#'+ TableModel.GetCellData(i,4).toString(16);
+	var textColor = '#'+ TableModel.GetCellData(i,5).toString(16);
+	var blinkBackColor = '#'+ TableModel.GetCellData(i,8).toString(16);
+	var blinkTextColor = '#'+ TableModel.GetCellData(i,9).toString(16);
+	var ackBackgroundColor = '#'+ TableModel.GetCellData(i,11).toString(16);
+	var ackTextColor = '#'+ TableModel.GetCellData(i,12).toString(16);
+
+	//Заполняем объект - массив Decorating
+	let decorating = {};
+	decorating[`decoration_rule_name`] = "rule_" + i;
+	decorating[`decoration_rule`] = {'==':{'data:id':i}};
+	decorating[`columnstyle`] = {};
+	decorating[`columnstyle`][`example`] = "exampleStyle_" + i;
+	decorating[`columnstyle`][`blinking`] = "blinkStyle_" + i;
+	decorating[`columnstyle`][`ack`] = "ackStyle_" + i;
+	Object.Decorating.push(decorating);
+	
+	//Заполняем объект - массив StyleDictionary
+	let exampleStyle = {};
+	exampleStyle[`style_name`] = "exampleStyle_" + i;
+	exampleStyle[`style`] = {};
+	exampleStyle[`style`][`background_color`] = backgroundColor;
+	exampleStyle[`style`][`color`] = textColor;
+	Object.StyleDictionary.push(exampleStyle);
+
+	let blinkStyle = {};
+	blinkStyle[`style_name`] = "blinkStyle_" + i;
+	blinkStyle[`style`] = {};
+	blinkStyle[`style`][`background_color`] = backgroundColor;
+	blinkStyle[`style`][`color`] = textColor;
+	var blinkingTime = "0";
+	switch (TableModel.GetCellData(i,7))
+	{
+		case "0.5 сек":
+			blinkingTime = "500";
+			break;
+		case "1 сек":
+			blinkingTime = "1000";
+			break;
+		case "2 сек":
+			blinkingTime = "2000";
+			break;
+	}
+	if (blinkingTime != "0")
+	{
+		blinkStyle[`style`][`blinker`] = {};
+		blinkStyle[`style`][`blinker`][`blinker_color`] = blinkTextColor;
+		blinkStyle[`style`][`blinker`][`blinker_background_color`] = blinkBackColor;
+		blinkStyle[`style`][`blinker`][`blinker_period`] = blinkingTime;
+	}
+	Object.StyleDictionary.push(blinkStyle);
+	
+	let ackStyle = {};
+	ackStyle[`style_name`] = "ackStyle_" + i;
+	ackStyle[`style`] = {};
+	ackStyle[`style`][`background_color`] = ackBackgroundColor;
+	ackStyle[`style`][`color`] = ackTextColor;
+	Object.StyleDictionary.push(ackStyle);
+}
+
+Object.Formatting = [];
+Object.Formatting.push({'formatting_rule_name':'example','formatting_column':'example','text':'Пример'});
+Object.Formatting.push({'formatting_rule_name':'ack','formatting_column':'ack','text':'Пример'});
+
+//log(JSON.stringify(Object, null, 2));
+Decorator.JsonDecorator = JSON.stringify(Object);
+]]>
+			</body>
+		</do>
+		<designed target="BackgroundColor" value="0xffffffff" ver="4"/>
+		<designed target="FrameColor" value="0xff000000" ver="4"/>
+		<designed target="GridColor" value="0xffd8d8d8" ver="4"/>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<designed target="ZValue" value="0" ver="3"/>
+	<object access-modifier="private" name="OpenEditForm" display-name="OpenEditForm" uuid="a76820a0-7443-4f31-9db2-e1af0a7d4fc2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="InvokeTrigger" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="ae4745aa-9fe2-473b-aed9-f2123d934078" base-type="SettingsEventsEdit" base-type-id="4443683c-71c1-4d42-9aa6-83a9842cf6a9" ver="3">
+				<designed target="WindowPosition" value="2" ver="3"/>
+				<init target="pSettingsEvents" ver="5" ref="here"/>
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+			</object>
+		</do-on>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[if (pSettingsForm.Settings.Events.BlinkAllColumns)
+	BlinkAllColumns.State = true;
+else BlinkSomeColumns.State = true;
+
+DecoratorTable.UpdateDecorator();
+UpdateButtonEnable();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="pSettingsForm" display-name="pSettingsForm" uuid="a8c4256d-5f8d-42cb-9a2b-4abc1e59c53d" base-type="Alarms_SettingsForm" base-type-id="82dc7618-130c-486c-840d-5d302f40306b" base-const="true" base-ref="true" ver="3"/>
+	<object access-modifier="private" name="AddButton" display-name="AddButton" uuid="a6c28c3b-a770-4a80-b2f9-cb584170c472" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="3">
+		<designed target="X" value="550" ver="3"/>
+		<designed target="Y" value="10" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="80" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="Checkable" value="false" ver="3"/>
+		<designed target="Text" value="Добавить" ver="3"/>
+		<designed target="TextAlignment" value="132" ver="3"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+		<designed target="FontColor" value="4278190080" ver="3"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="3"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="3"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="3"/>
+		<designed target="BrushStyle" value="1" ver="3"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="3"/>
+		<designed target="OnClickBrushStyle" value="1" ver="3"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="3"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="1" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="3"/>
+		<designed target="OnClickPenStyle" value="1" ver="3"/>
+		<designed target="OnClickPenWidth" value="1" ver="3"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="3"/>
+		<designed target="OnHoverPenStyle" value="1" ver="3"/>
+		<designed target="OnHoverPenWidth" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[DecoratorTable.TableModel.AddRow();
+row: int4 = DecoratorTable.TableModel.GetRowCount() - 1;
+DecoratorTable.TableModel.SetCellData(row,0, "Все"); // activity
+DecoratorTable.TableModel.SetCellData(row,1, ""); // subcondition
+DecoratorTable.TableModel.SetCellData(row,2, "1"); // severity
+DecoratorTable.TableModel.SetCellData(row,3, ""); // group
+DecoratorTable.TableModel.SetCellData(row,4, pSettingsForm.Settings.Events.DefColBackground); // background
+DecoratorTable.TableModel.SetCellData(row,5, pSettingsForm.Settings.Events.DefColText); // text
+DecoratorTable.TableModel.SetCellData(row,6, ""); // example
+DecoratorTable.TableModel.SetCellData(row,7, "Нет"); // blinking
+DecoratorTable.TableModel.SetCellData(row,8, 0xff000000); // blinkingBackground
+DecoratorTable.TableModel.SetCellData(row,9, 0xffffffff); // blinkingText
+DecoratorTable.TableModel.SetCellData(row,10, row); // id
+DecoratorTable.TableModel.SetCellData(row,11, pSettingsForm.Settings.Events.AckColBackground); // ackBackground
+DecoratorTable.TableModel.SetCellData(row,12, pSettingsForm.Settings.Events.AckColText); // ackText
+
+pSettingsForm.Settings.Events.OnEdited();
+DecoratorTable.UpdateDecorator();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DeleteButton" display-name="DeleteButton" uuid="5a489736-d463-4cde-b9ef-2579aa3b4786" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="3">
+		<designed target="X" value="550" ver="3"/>
+		<designed target="Y" value="40" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="80" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="Checkable" value="false" ver="3"/>
+		<designed target="Text" value="Удалить" ver="3"/>
+		<designed target="TextAlignment" value="132" ver="3"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+		<designed target="FontColor" value="0xff000000" ver="3"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="3"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="3"/>
+		<designed target="DisabledFontColor" value="0xff808080" ver="3"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="3"/>
+		<designed target="BrushStyle" value="1" ver="3"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="3"/>
+		<designed target="OnClickBrushStyle" value="1" ver="3"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="3"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="PenColor" value="0xff000000" ver="3"/>
+		<designed target="PenStyle" value="1" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="3"/>
+		<designed target="OnClickPenStyle" value="1" ver="3"/>
+		<designed target="OnClickPenWidth" value="1" ver="3"/>
+		<designed target="OnHoverPenColor" value="0xff000000" ver="3"/>
+		<designed target="OnHoverPenStyle" value="1" ver="3"/>
+		<designed target="OnHoverPenWidth" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[DecoratorTable.TableModel.RemoveRow(DecoratorTable.curRow);
+pSettingsForm.Settings.Events.OnEdited();
+
+// обновляем индексы
+i: int4 = 0;
+while (i < DecoratorTable.GetRowCount())
+{
+	DecoratorTable.TableModel.SetCellData(i, 10, i);
+	i += 1;
+}
+DecoratorTable.UpdateDecorator();]]>
+			</body>
+		</do-on>
+	</object>
+	<designed target="Opacity" value="1" ver="3"/>
+	<param access-modifier="private" name="pDecoratorSettings" display-name="pDecoratorSettings" uuid="1dae4649-3491-4fc0-992a-1975ad9c5216" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="DefaultColor" display-name="DefaultColor" uuid="cc545302-3515-4787-a0e4-8a35f8af6c5d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="10" ver="3"/>
+		<designed target="Y" value="270" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="450" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="4278190080" ver="3"/>
+		<designed target="BrushStyle" value="0" ver="3"/>
+		<object access-modifier="private" name="Title" display-name="Title" uuid="60bcb723-5ed9-482f-b14f-c15dfc8e2ea9" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="0" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="150" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Text" value="По умолчанию" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Background" display-name="Background" uuid="6f0a75d2-717c-4ce3-9757-9cfd691f7852" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="220" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="25" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xffffffff" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="12cab2b6-e1bd-4a6b-abb5-2ec1b82934d9" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenX(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenY(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<designed target="WindowPosition" value="0" ver="4"/>
+					<init target="OkAction" ver="5" ref="ChangeColor"/>
+					<init target="SelectedColor" ver="5">
+						<expr>
+							<![CDATA[parent.BrushColor]]>
+						</expr>
+					</init>
+					<init target="Result" ver="5" ref="pSettingsForm.Settings.ChooseColorResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="Label" display-name="Label" uuid="25a641bd-1afa-412f-9f26-664b2b21c874" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="-50" ver="3"/>
+				<designed target="Y" value="0" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="45" ver="3"/>
+				<designed target="Height" value="25" ver="3"/>
+				<designed target="Text" value="Фон:" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="130" ver="3"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.DefColBackground]]>
+				</body>
+			</do-trace>
+			<designed target="Opacity" value="1" ver="3"/>
+			<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="88c16965-2b15-4ea1-b82f-859d60bcb988" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pSettingsForm.Settings.Events.DefColBackground = pSettingsForm.Settings.ChooseColorResult.Color;
+pSettingsForm.Settings.Events.OnEdited();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="Text" display-name="Text" uuid="79fb47c9-afa4-46b9-9df6-235d35fc632e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="300" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="25" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xff000000" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<object access-modifier="private" name="Label" display-name="Label" uuid="5eba9253-3d34-483e-aa01-b7503b2816a1" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="-51" ver="3"/>
+				<designed target="Y" value="1" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="45" ver="3"/>
+				<designed target="Height" value="25" ver="3"/>
+				<designed target="Text" value="Текст:" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="130" ver="3"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.DefColText]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="5eb4af8d-1b01-4310-9beb-086d6d5f6f90" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenX(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenY(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<designed target="WindowPosition" value="0" ver="4"/>
+					<init target="OkAction" ver="5" ref="ChangeColor"/>
+					<init target="SelectedColor" ver="5">
+						<expr>
+							<![CDATA[parent.BrushColor]]>
+						</expr>
+					</init>
+					<init target="Result" ver="5" ref="pSettingsForm.Settings.ChooseColorResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<designed target="Opacity" value="1" ver="3"/>
+			<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="43c7bd4f-71e7-4209-99d7-b8e54d6446b5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pSettingsForm.Settings.Events.DefColText = pSettingsForm.Settings.ChooseColorResult.Color;
+pSettingsForm.Settings.Events.OnEdited();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="Example" display-name="Example" uuid="bfc97e2e-b7d3-447d-b5d6-ccfca55e24c9" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="360" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="80" ver="2"/>
+			<designed target="Height" value="22" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="0xffcccccc" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xffffffff" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.DefColBackground]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="example" display-name="example" uuid="d061815f-6ef7-411e-a8d5-721637e820de" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="0" ver="3"/>
+				<designed target="Y" value="0" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="80" ver="3"/>
+				<designed target="Height" value="22" ver="3"/>
+				<designed target="Text" value="Пример" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="132" ver="3"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pSettingsForm.Settings.Events.DefColText]]>
+					</body>
+				</do-trace>
+				<designed target="Opacity" value="1" ver="4"/>
+			</object>
+			<designed target="Opacity" value="1" ver="4"/>
+		</object>
+		<designed target="Opacity" value="1" ver="4"/>
+	</object>
+	<object access-modifier="private" name="AckColor" display-name="AckColor" uuid="685996af-17cc-4729-b84c-ecbe89a22e37" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="10" ver="3"/>
+		<designed target="Y" value="300" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="450" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="4278190080" ver="3"/>
+		<designed target="BrushStyle" value="0" ver="3"/>
+		<object access-modifier="private" name="Title" display-name="Title" uuid="cfe9a6d8-d030-442b-bada-41e92cee458c" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="0" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="150" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Text" value="Квитированное сообщение" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Background" display-name="Background" uuid="4a5a8030-e068-456d-915a-0492f88ca8d7" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="220" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="25" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xffcccccc" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="57233b60-f933-42fa-80b9-bdb86a45a901" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenX(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenY(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<designed target="WindowPosition" value="0" ver="4"/>
+					<init target="OkAction" ver="5" ref="ChangeColor"/>
+					<init target="SelectedColor" ver="5">
+						<expr>
+							<![CDATA[parent.BrushColor]]>
+						</expr>
+					</init>
+					<init target="Result" ver="5" ref="pSettingsForm.Settings.ChooseColorResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="Text_1" display-name="Text_1" uuid="4cb1c253-e312-412e-93e8-8c49870859df" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="-50" ver="3"/>
+				<designed target="Y" value="0" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="45" ver="3"/>
+				<designed target="Height" value="25" ver="3"/>
+				<designed target="Text" value="Фон:" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="130" ver="3"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.AckColBackground]]>
+				</body>
+			</do-trace>
+			<designed target="Opacity" value="1" ver="4"/>
+			<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="6fef9792-470c-4133-ac54-2c0d13b9bc99" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pSettingsForm.Settings.Events.AckColBackground = pSettingsForm.Settings.ChooseColorResult.Color;
+pSettingsForm.Settings.Events.OnEdited();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="Text" display-name="Text" uuid="a0845a67-66bb-48a4-abab-377f9f69fbd5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="300" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="25" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xff000000" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<object access-modifier="private" name="Text_1" display-name="Text_1" uuid="9d07c848-5e17-4930-acc7-f8071d81b9dc" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="-51" ver="3"/>
+				<designed target="Y" value="1" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="45" ver="3"/>
+				<designed target="Height" value="25" ver="3"/>
+				<designed target="Text" value="Текст:" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="130" ver="3"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pTheme.ForegroundColor]]>
+					</body>
+				</do-trace>
+			</object>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.AckColText]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="9b6ccda2-1c72-4b6e-9af8-880b1e4de840" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenX(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenY(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<designed target="WindowPosition" value="0" ver="4"/>
+					<init target="OkAction" ver="5" ref="ChangeColor"/>
+					<init target="SelectedColor" ver="5">
+						<expr>
+							<![CDATA[parent.BrushColor]]>
+						</expr>
+					</init>
+					<init target="Result" ver="5" ref="pSettingsForm.Settings.ChooseColorResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<designed target="Opacity" value="1" ver="4"/>
+			<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="3ad37cdb-59f5-4ae7-83e5-92f53361ea8f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pSettingsForm.Settings.Events.AckColText = pSettingsForm.Settings.ChooseColorResult.Color;
+pSettingsForm.Settings.Events.OnEdited();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="Example" display-name="Example" uuid="2eb937e4-20c9-448d-ac75-faaeb3f80f8e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="360" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="80" ver="2"/>
+			<designed target="Height" value="22" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="0xffcccccc" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xffcccccc" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.AckColBackground]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="example" display-name="example" uuid="9ebff52a-826e-4d43-a088-8c00a1eb0993" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="0" ver="3"/>
+				<designed target="Y" value="0" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="80" ver="3"/>
+				<designed target="Height" value="22" ver="3"/>
+				<designed target="Text" value="Пример" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="132" ver="3"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pSettingsForm.Settings.Events.AckColText]]>
+					</body>
+				</do-trace>
+				<designed target="Opacity" value="1" ver="4"/>
+			</object>
+			<designed target="Opacity" value="1" ver="4"/>
+		</object>
+		<designed target="Opacity" value="1" ver="4"/>
+	</object>
+	<object access-modifier="private" name="SelectEventColor" display-name="SelectEventColor" uuid="36e563b3-cc52-4b2c-bdea-945a36bf434c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="10" ver="3"/>
+		<designed target="Y" value="330" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="450" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="4278190080" ver="3"/>
+		<designed target="BrushStyle" value="0" ver="3"/>
+		<object access-modifier="private" name="Title" display-name="Title" uuid="4ade3ab4-920e-4aa1-a46f-3e7b8f60b4a0" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="0" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="220" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Text" value="Цвет выделения выбранного события" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Background" display-name="Background" uuid="401fd185-b4c5-4c8c-bbe7-526077247aea" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="220" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="25" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="BrushColor" value="0xff0055ff" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="777fafb8-7eb8-48f4-b6c8-3c348fea506b" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenX(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[TypeConvert.ToInt4(parent.ScreenY(parent.MouseX, parent.MouseY))]]>
+						</expr>
+					</init>
+					<designed target="WindowPosition" value="0" ver="4"/>
+					<init target="OkAction" ver="5" ref="ChangeColor"/>
+					<init target="SelectedColor" ver="5">
+						<expr>
+							<![CDATA[parent.BrushColor]]>
+						</expr>
+					</init>
+					<init target="Result" ver="5" ref="pSettingsForm.Settings.ChooseColorResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.SelectEventColor]]>
+				</body>
+			</do-trace>
+			<designed target="Opacity" value="1" ver="4"/>
+			<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="8ab043a5-36c5-4cce-a0f3-e9a022a58bc7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pSettingsForm.Settings.Events.SelectEventColor = pSettingsForm.Settings.ChooseColorResult.Color;
+pSettingsForm.Settings.Events.OnEdited();]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Example" display-name="Example" uuid="186ad9fe-1864-4c32-bc24-76a0612ba677" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+			<designed target="X" value="360" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="80" ver="2"/>
+			<designed target="Height" value="22" ver="2"/>
+			<designed target="RoundingRadius" value="0" ver="2"/>
+			<designed target="PenColor" value="0xff0055ff" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="2" ver="2"/>
+			<designed target="BrushColor" value="0xffffffff" ver="2"/>
+			<designed target="BrushStyle" value="0" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<object access-modifier="private" name="Back" display-name="Back" uuid="32db89ac-f5b1-42a9-9555-263a915ecdbd" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+				<designed target="X" value="-1" ver="4"/>
+				<designed target="Y" value="1" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="82" ver="4"/>
+				<designed target="Height" value="19" ver="4"/>
+				<designed target="RoundingRadius" value="0" ver="4"/>
+				<designed target="PenColor" value="0xff000000" ver="4"/>
+				<designed target="PenStyle" value="0" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="BrushColor" value="0xffffffff" ver="4"/>
+				<designed target="BrushStyle" value="1" ver="4"/>
+				<do-trace access-modifier="private" target="BrushColor" ver="5">
+					<body>
+						<![CDATA[pSettingsForm.Settings.Events.DefColBackground]]>
+					</body>
+				</do-trace>
+			</object>
+			<object access-modifier="private" name="example" display-name="example" uuid="afee7afb-8d36-423e-a4bf-456f1f3bf934" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+				<designed target="X" value="0" ver="3"/>
+				<designed target="Y" value="0" ver="3"/>
+				<designed target="ZValue" value="0" ver="3"/>
+				<designed target="Rotation" value="0" ver="3"/>
+				<designed target="Scale" value="1" ver="3"/>
+				<designed target="Visible" value="true" ver="3"/>
+				<designed target="Enabled" value="true" ver="3"/>
+				<designed target="Tooltip" value="" ver="3"/>
+				<designed target="Width" value="80" ver="3"/>
+				<designed target="Height" value="22" ver="3"/>
+				<designed target="Text" value="Пример" ver="3"/>
+				<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+				<designed target="FontColor" value="4278190080" ver="3"/>
+				<designed target="TextAlignment" value="132" ver="3"/>
+				<do-trace access-modifier="private" target="FontColor" ver="5">
+					<body>
+						<![CDATA[pSettingsForm.Settings.Events.DefColText]]>
+					</body>
+				</do-trace>
+				<designed target="Opacity" value="1" ver="4"/>
+			</object>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="PenColor" ver="5">
+				<body>
+					<![CDATA[pSettingsForm.Settings.Events.SelectEventColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="AckStyleMode" display-name="AckStyleMode" uuid="1deb7950-da94-4ce4-a03a-c02005ae49a5" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="3">
+		<designed target="X" value="10" ver="3"/>
+		<designed target="Y" value="360" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="360" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="Text" value="Применять стиль квитированного сообщения ко всем столбцам" ver="3"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="3"/>
+		<designed target="FontColor" value="4278190080" ver="3"/>
+		<designed target="State" value="false" ver="3"/>
+		<do-trace access-modifier="private" target="State" ver="5">
+			<body>
+				<![CDATA[pSettingsForm.Settings.Events.AckStyleMode]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+			<body kind="om">
+				<![CDATA[if (Focus)
+	pSettingsForm.Settings.Events.AckStyleMode = state;]]>
+			</body>
+		</do-on>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="BlinkSomeColumns" display-name="BlinkSomeColumns" uuid="538c584a-ca1e-4aa9-85f9-de0ac102fef0" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+		<designed target="X" value="10" ver="4"/>
+		<designed target="Y" value="390" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="180" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Text" value="Мигают выбранные столбцы" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="State" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+			<body kind="om">
+				<![CDATA[if (Focus)
+{
+	if  (!state)
+		State = true; // Не менять состояние повторным кликом
+	else
+	{
+		BlinkAllColumns.State = false;
+		pSettingsForm.Settings.Events.BlinkAllColumns = false;
+	}
+}]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="BlinkColumnsButton" display-name="BlinkColumnsButton" uuid="5fd730d2-070d-4a48-bec8-4aa92271299e" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+		<designed target="X" value="190" ver="4"/>
+		<designed target="Y" value="390" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="110" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Checkable" value="false" ver="4"/>
+		<designed target="Text" value="Выбор столбцов" ver="4"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+		<designed target="FontColor" value="0xff000000" ver="4"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+		<designed target="DisabledFontColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="OnClickBrushStyle" value="1" ver="4"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="0xff000000" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[BlinkSomeColumns.State]]>
+			</body>
+		</do-trace>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="936907f7-17a8-4cc6-91cb-ff0f6e66842d" base-type="Alarms_SelectColumns" base-type-id="3b4031c4-d45e-4596-9232-5120026222ce" ver="4">
+				<init target="CurrentState" ver="5">
+					<expr>
+						<![CDATA[GetColumns()]]>
+					</expr>
+				</init>
+				<init target="Result" ver="5" ref="BlinkColumns"/>
+				<init target="OnComplete" ver="5" ref="SetColumns"/>
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="BlinkColumns" display-name="BlinkColumns" uuid="a0960b11-6ab7-4a05-8cfd-00afa9e87f43" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
+		<object access-modifier="private" name="SetColumns" display-name="SetColumns" uuid="7ae6eac6-eb8d-4220-920c-d116f6df0762" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[var tableColumns=[];
+for (let i = 0; i < pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
+	if (pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
+		tableColumns.push(pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
+
+var blinkingColumns = [];
+
+var columns = JSON.parse(BlinkColumns.Value);
+for(let j = 0; j < tableColumns.length; j++)
+{
+	var tableColumn = tableColumns[j];
+	if (tableColumn != null)
+	{
+		for(let i = 0; i < columns.length; i++)
+		{
+			// в диалог выбора столбцы поступают отсортированные, поэтому идентифицируем их по заголовку
+			//cheat3 использование заголовка для передачи данных нестабильно
+			if (columns[i].Title == tableColumn.Title)
+			{
+				if (columns[i].State)
+					blinkingColumns.push(tableColumn.Id);
+				break;
+			}
+		}
+	}
+}
+
+pSettingsForm.Settings.Events.BlinkingColumnsSet(JSON.stringify(blinkingColumns));]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="GetColumns" display-name="GetColumns" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var tableColumns=[];
+for (let i = 0; i < pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
+	if (pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
+		tableColumns.push(pSettingsForm.pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
+
+var blinkingColumns = JSON.parse(pSettingsForm.Settings.Events.BlinkingColumns == "" ? "[]": pSettingsForm.Settings.Events.BlinkingColumns);
+
+var columns = [];
+for(let i = 0; i < tableColumns.length; i++)
+{
+	var tableColumn = tableColumns[i];
+	if (tableColumn != null)
+	{
+		var column = {};
+		column.Index = tableColumn.GetIndex();
+		column.Title = tableColumn.Title;
+		column.State = blinkingColumns.includes(tableColumn.Id);
+		columns.push(column);
+	}
+}
+
+columns.sort(function (a, b)
+{
+  if (a.Index > b.Index)
+    return 1;
+  else if (a.Index < b.Index)
+    return -1;
+  else return 0;
+});
+
+return JSON.stringify(columns);]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="BlinkAllColumns" display-name="BlinkAllColumns" uuid="75b5bf62-cc03-4fce-a042-c2265f26f0fc" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+		<designed target="X" value="10" ver="4"/>
+		<designed target="Y" value="420" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="130" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Text" value="Мигает вся строка" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="State" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+			<body kind="om">
+				<![CDATA[if (Focus)
+{
+	//Debug.Log("BlinkAllColumns = " + String.ToString(state));
+	pSettingsForm.Settings.Events.BlinkAllColumns = state;
+	
+	if (!state)
+		State = true; //Не менять состояние повторным кликом
+	else	BlinkSomeColumns.State = false;
+}]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<do access-modifier="private" name="UpdateButtonEnable" display-name="UpdateButtonEnable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[isSelected: bool = DecoratorTable.IsRowSelected(DecoratorTable.curRow);
+DeleteButton.Enabled = isSelected;]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="9e79a4bf-7112-4f26-85bf-89acba263e24" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="1e5fd960-e8d6-4b1b-8d18-7712aeffd943" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

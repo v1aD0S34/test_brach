@@ -1,0 +1,8 @@
+<type access-modifier="public" name="InputDialogResult" display-name="InputDialogResult" uuid="cdcda119-652b-45ed-bfc4-8cc21b98730d" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="5">
+	<object access-modifier="private" name="InputText" display-name="Вводимый текст" uuid="b28a982a-9de2-4749-90e5-75a48423bfdd" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="Error" display-name="Описание ошибки" uuid="f333bfc8-5ab8-467c-98ba-6773c1174839" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<init target="Value" ver="5" value=""/>
+	<init target="InputText" ver="5" value=""/>
+	<init target="Error" ver="5" value=""/>
+</type>
+

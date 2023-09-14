@@ -1,0 +1,1105 @@
+<type access-modifier="private" name="Trends_GraphicSettings" display-name="Trends_GraphicSettings" uuid="7f88133f-deaf-4376-a13d-a52efda68de5" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="290" ver="2"/>
+	<designed target="Height" value="375" ver="2"/>
+	<designed target="PenColor" value="0xff000000" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="290" ver="2"/>
+	<designed target="WindowHeight" value="375" ver="2"/>
+	<designed target="WindowCaption" value="Настройка графика" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Focus = true;
+cbStyleGood.Init();
+cbStyleBad.Init();
+MarkerComboBox.Init();
+private.ColorDialogResult.CustomColors = pTrends.private.CustomColors;
+private.changes = false;
+
+private.indexItem = pTrends.private.nSelectedItem;
+
+LineColorRect.BrushColor = pTrends.private.NowParams.Lines[private.indexItem].ColorMain;
+AxisColorRect.BrushColor = pTrends.private.NowParams.Axis[private.indexItem].ColorY;
+ManualColorRect.BrushColor = pTrends.private.NowParams.Lines[private.indexItem].ColorManual;
+SyncroColorMarkerLabels.State = pTrends.private.NowParams.Lines[private.indexItem].bSyncroColorMarkerLabels;
+chbUseColorManual.State = pTrends.private.NowParams.Lines[private.indexItem].bUseColorManual;
+
+editWidthGood.Text = pTrends.private.ValueRound(pTrends.private.NowParams.Lines[private.indexItem].WidthGood, 1);
+editWidthBad.Text = pTrends.private.ValueRound(pTrends.private.NowParams.Lines[private.indexItem].WidthBad, 1);
+
+private.LineStyleGood = pTrends.private.NowParams.Lines[private.indexItem].StyleGood;
+cbStyleGood.SelectedIndex = TypeConvert.ToInt4(private.LineStyleGood);
+
+private.LineStyleBad = pTrends.private.NowParams.Lines[private.indexItem].StyleBad;
+cbStyleBad.SelectedIndex = TypeConvert.ToInt4(private.LineStyleBad);
+
+MarkerComboBox.Text = pTrends.private.NowParams.Lines[private.indexItem].PointSymbol;
+
+editYValue.Text = pTrends.private.ValueRound(pTrends.private.NowParams.Lines[private.indexItem].StringTagYValue, pTrends.YAxisPrecision);
+if (pTrends.private.NowParams.Lines[private.indexItem].ItemCDT != unit.Const.cdt.STRING)
+	editYValue.Visible = false;
+
+editHighRangeIndivid = private.GetAxisMax(private.indexItem);
+editLowRangeIndivid = private.GetAxisMin(private.indexItem);
+
+]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="pTrends" display-name="pTrends" uuid="97a98f4b-146b-4b66-b361-bd1af113f5c1" base-type="Trends_Core" base-type-id="f0fa79fc-d3d2-43f0-9eed-88d0f13b0fa0" base-const="true" base-ref="true" ver="2"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="f2ff249a-de14-4f57-bf88-6f3e389dddcd" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="62fa4fe2-a6b4-4ec6-8384-368a53abc655" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="a67b1d15-0bb9-4acd-a564-9729676c5f78" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="17" ver="2"/>
+		<designed target="Height" value="15" ver="2"/>
+		<designed target="RoundingRadius" value="0" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="BrushColor" value="0xff0000ff" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<object access-modifier="private" name="changes" display-name="changes" uuid="8f62ee5d-b352-4f8e-b2e2-5d8f0704b93c" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+		<object access-modifier="private" name="indexItem" display-name="indexItem" uuid="0fa4c65f-9992-4b64-bbc7-08d9aa55aca4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<object access-modifier="private" name="LineStyleGood" display-name="LineStyleGood" uuid="01b3dcc2-6e4c-4196-b4f2-d8f6d6a82ecc" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<object access-modifier="private" name="LineStyleBad" display-name="LineStyleBad" uuid="f5c09b6a-3c11-4c47-a30a-177a0547b952" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="ColorDialogResult" display-name="ColorDialogResult" uuid="55538bfc-16f1-4e09-9aeb-1b90a03b6ef4" base-type="ColorDialogResult" base-type-id="b51f78e4-f30c-411b-9a81-b57ef602013a" ver="4"/>
+		<object access-modifier="private" name="bInit" display-name="bInit" uuid="f9c107c6-d3d4-4454-b1eb-85854b7c5d1c" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<init target="bInit" ver="5" value="false"/>
+		<do access-modifier="private" name="GetAxisMin" display-name="GetAxisMin" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<param access-modifier="private" name="index" display-name="" uuid="fc0c8c55-f9ad-4e35-87f2-00bd02c8aa42" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<body kind="javascript">
+				<![CDATA[var indexAxis = pTrends.private.NowParams.Lines[index].numAxis;
+var axis;
+if (pTrends.ActiveMode == unit.Const.amOPERATIVE)
+{
+	axis = pTrends.GlobalRanges.Value ? pTrends.pChart_Oper_1.Chart.Axis_Y[0] : pTrends.pChart_Oper_1.Chart.Axis_Y[indexAxis]
+}
+else
+{
+	axis = pTrends.GlobalRanges.Value ? pTrends.pChart_Hist_1.Chart.Axis_Y[0] : pTrends.pChart_Hist_1.Chart.Axis_Y[indexAxis]
+}
+
+var value = axis.Min;
+
+return value.toFixed(pTrends.YAxisPrecision);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetAxisMax" display-name="GetAxisMax" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<param access-modifier="private" name="index" display-name="" uuid="1457c65a-85bd-4757-9e29-5ddbd6aa54cb" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<body kind="javascript">
+				<![CDATA[var indexAxis = pTrends.private.NowParams.Lines[index].numAxis;
+var axis;
+if (pTrends.ActiveMode == unit.Const.amOPERATIVE)
+{
+	axis = pTrends.GlobalRanges.Value ? pTrends.pChart_Oper_1.Chart.Axis_Y[0] : pTrends.pChart_Oper_1.Chart.Axis_Y[indexAxis]
+}
+else
+{
+	axis = pTrends.GlobalRanges.Value ? pTrends.pChart_Hist_1.Chart.Axis_Y[0] : pTrends.pChart_Hist_1.Chart.Axis_Y[indexAxis]
+}
+
+var value = axis.Max;
+
+return value.toFixed(pTrends.YAxisPrecision);]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="bHighMoreLow" display-name="bHighMoreLow" uuid="d9fcd3db-8006-4e56-ba14-1ec41f0faefd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="LineColorRect" display-name="LineColorRect" uuid="44eed47c-7378-4ff5-8ea8-7c18c17612af" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="80" ver="4"/>
+		<designed target="Y" value="10" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="25" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="0xff0000ff" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="915bc8aa-8295-4d15-bfa3-1a6de015c922" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Result" ver="5" ref="here.private.ColorDialogResult"/>
+				<init target="OkAction" ver="5" ref="ChangeColor"/>
+				<init target="PaletteType" ver="5" value="1"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="8f269c2f-21c1-4511-87a5-6a34c553e370" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[BrushColor = private.ColorDialogResult.Color;
+pTrends.private.CustomColors = private.ColorDialogResult.CustomColors;
+]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="380cd702-3259-4466-b833-336ac5ca6c63" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="-70" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="70" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Text" value="Цвет линии" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="AxisColorRect" display-name="AxisColorRect" uuid="0fe60ca7-6651-4ae9-a67d-70db7a0a4646" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="210" ver="4"/>
+		<designed target="Y" value="10" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="25" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="0xff0000ff" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="99a3ba97-e8e9-438d-a3d6-ac66dba4a86e" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Result" ver="5" ref="here.private.ColorDialogResult"/>
+				<init target="OkAction" ver="5" ref="ChangeColor"/>
+				<init target="PaletteType" ver="5" value="1"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="37a0e703-d01d-44da-b2a5-5b69bebe86dc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[BrushColor = private.ColorDialogResult.Color;
+pTrends.private.CustomColors = private.ColorDialogResult.CustomColors;]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[!pTrends.SynchronizeColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="9808e4bc-8dd8-4907-aa44-3e5bc19ea32e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="-80" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="80" ver="3"/>
+			<designed target="Height" value="25" ver="3"/>
+			<designed target="Text" value="Цвет шкалы" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[!pTrends.SynchronizeColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="SyncroColorMarkerLabels" display-name="SyncroColorMarkerLabels" uuid="34c39fb5-dc9b-4b7b-83b9-9f7ff02c8660" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+		<designed target="X" value="10" ver="4"/>
+		<designed target="Y" value="40" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="270" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Text" value="Окрашивать выноски в цвет графика" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="State" value="false" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 75)
+	btnCancel.Click();
+else if (event.KeyCode == 82)
+//	if (btnOK.Enabled)	
+	btnOK.Click();]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="GoodLabel" display-name="GoodLabel" uuid="2724f32d-e2a5-4ab3-a000-5990b9afc585" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="10" ver="2"/>
+		<designed target="Y" value="70" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="280" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Хорошее качество" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="editWidthGood" display-name="editWidthGood" uuid="1699b4dc-626e-4fca-bb4e-ca81fdd6e985" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+		<designed target="X" value="75" ver="2"/>
+		<designed target="Y" value="95" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="55" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="HideInput" value="false" ver="2"/>
+		<designed target="PlaceholderText" value="" ver="2"/>
+		<designed target="ReadOnly" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[InputValidator_1.Input = text;
+]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Value" display-name="Value" uuid="48301c15-65f7-48d3-925f-5f7b5c420b27" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		<object access-modifier="private" name="InputValidator_1" display-name="InputValidator_1" uuid="f9bc1cca-b146-4ce5-9aa0-4d57120927d9" base-type="InputValidator" base-type-id="d3926631-8c96-4ca0-b80c-d1953fff515c" ver="4">
+			<designed target="Input" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+				<body kind="om">
+					<![CDATA[bValid = false;
+FontColor = unit.Const.clRED;
+if (result == 2)
+{
+	newtext:string = String.Replace(Text, ",", ".");
+	Value = Str.ToDouble(newtext, 0);
+	private.changes = true;
+	if (Value>0 && Value<=10)
+	{
+		bValid = true;
+		FontColor = unit.Const.clBLACK;
+	}
+}
+]]>
+				</body>
+			</do-on>
+			<init target="ValidationType" ver="5">
+				<object access-modifier="private" uuid="f6e31818-d21d-4c55-83e9-7450ff7e9afe" base-type="NativeValidationRegex" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="4">
+					<designed target="PartialValidPattern" value="" ver="4"/>
+					<designed target="ValidPattern" value="^[-+]?[0-9]*[,.]?[0-9]+(?:[eE][-+]?[0-9]+)?$" ver="4"/>
+				</object>
+			</init>
+		</object>
+		<object access-modifier="private" name="bValid" display-name="bValid" uuid="eac4e76d-0416-4101-90c1-7994cb966417" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="ce2d0826-f888-40cb-a62e-b88e3276f0bb" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="-70" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="65" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Толщина" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="130" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="cbStyleGood" display-name="cbStyleGood" uuid="0ceea091-ffe5-4735-a2c9-4934cc4ee2a7" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+		<designed target="X" value="180" ver="4"/>
+		<designed target="Y" value="95" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="100" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Editable" value="false" ver="4"/>
+		<designed target="Text" value="" ver="4"/>
+		<designed target="SelectedIndex" value="-1" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="MaxVisibleItems" value="10" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[i: int4 = 0;
+while (i < pTrends.private.LineStyles.Names.Length)
+{
+	AddItem(pTrends.private.LineStyles.Names[i]);
+	i += 1;
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="80ef73a5-1ada-46d6-8185-1fc196dd7650" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="-50" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="45" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Стиль" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="130" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="BadLabel" display-name="BadLabel" uuid="445bfb25-b325-41b7-b3aa-67af7a1ba674" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="10" ver="2"/>
+		<designed target="Y" value="130" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="280" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Плохое качество" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="editWidthBad" display-name="editWidthBad" uuid="889c48ed-a5b3-4b6d-bb7c-e42984983328" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+		<designed target="X" value="75" ver="2"/>
+		<designed target="Y" value="155" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="55" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="HideInput" value="false" ver="2"/>
+		<designed target="PlaceholderText" value="" ver="2"/>
+		<designed target="ReadOnly" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[InputValidator_1.Input = text;
+]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Value" display-name="Value" uuid="4396fac0-66aa-4b21-a387-b9f5b75a7796" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		<object access-modifier="private" name="InputValidator_1" display-name="InputValidator_1" uuid="29e9b7a6-9edb-4fc7-8eb4-885773f75ba0" base-type="InputValidator" base-type-id="d3926631-8c96-4ca0-b80c-d1953fff515c" ver="4">
+			<designed target="Input" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+				<body kind="om">
+					<![CDATA[bValid = false;
+FontColor = unit.Const.clRED;
+if (result == 2)
+{
+	newtext:string = String.Replace(Text, ",", ".");
+	Value = Str.ToDouble(newtext, 0);
+	private.changes = true;
+	if (Value>0 && Value<=10)
+	{
+		bValid = true;
+		FontColor = unit.Const.clBLACK;
+	}
+}
+]]>
+				</body>
+			</do-on>
+			<init target="ValidationType" ver="5">
+				<object access-modifier="private" uuid="3483d583-5bf2-4289-a968-a7507e042fef" base-type="NativeValidationRegex" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="4">
+					<designed target="PartialValidPattern" value="" ver="4"/>
+					<designed target="ValidPattern" value="^[-+]?[0-9]*[,.]?[0-9]+(?:[eE][-+]?[0-9]+)?$" ver="4"/>
+				</object>
+			</init>
+		</object>
+		<object access-modifier="private" name="bValid" display-name="bValid" uuid="381f3f4b-23b9-45cb-8437-5aab31b9a195" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="9b7be4ef-a0ba-4e7b-84b2-038b0b0086a3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="-70" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="65" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Толщина" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="130" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="cbStyleBad" display-name="cbStyleBad" uuid="6243c639-b014-4d53-840b-5a8301a1b8ff" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+		<designed target="X" value="180" ver="4"/>
+		<designed target="Y" value="155" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="100" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Editable" value="false" ver="4"/>
+		<designed target="Text" value="" ver="4"/>
+		<designed target="SelectedIndex" value="-1" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="MaxVisibleItems" value="10" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[i: int4 = 0;
+while (i < pTrends.private.LineStyles.Names.Length)
+{
+	AddItem(pTrends.private.LineStyles.Names[i]);
+	i += 1;
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="1979fbdb-c5b0-4f94-adbc-a862fa48c48e" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="-50" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="45" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Стиль" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="130" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="chbUseColorManual" display-name="chbUseColorManual" uuid="7a16ad47-6349-4858-b0a1-3bfc5d0a2277" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="4">
+		<designed target="X" value="10" ver="4"/>
+		<designed target="Y" value="195" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="170" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Text" value="Индикация ручного ввода" ver="4"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="State" value="false" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="ManualColorRect" display-name="ManualColorRect" uuid="381ab6b3-97da-4832-bf27-e1daa025878c" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="180" ver="4"/>
+		<designed target="Y" value="195" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="25" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="0xff008000" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="a0d912f6-ff9d-4f4e-a198-97706e117700" base-type="ColorDialog" base-type-id="f27fa66f-9637-4bf1-99ca-ec5ee3097a1c" ver="4">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Result" ver="5" ref="here.private.ColorDialogResult"/>
+				<init target="OkAction" ver="5" ref="ChangeColor"/>
+				<init target="PaletteType" ver="5" value="1"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="ChangeColor" display-name="ChangeColor" uuid="bb6b2145-f887-4c57-b040-69677a47dde2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[BrushColor = private.ColorDialogResult.Color;
+pTrends.private.CustomColors = private.ColorDialogResult.CustomColors;]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[chbUseColorManual.State]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="MarkerComboBox" display-name="MarkerComboBox" uuid="410d4760-1b46-46f9-8f98-2757b54a4af5" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+		<designed target="X" value="95" ver="4"/>
+		<designed target="Y" value="230" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="60" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Editable" value="false" ver="4"/>
+		<designed target="Text" value="" ver="4"/>
+		<designed target="SelectedIndex" value="-1" ver="4"/>
+		<designed target="Font" value="Tahoma,9,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="MaxVisibleItems" value="10" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[i: int4 = 0;
+while (i < pTrends.private.Markers.Symbols.Length)
+{
+	AddItem(pTrends.private.Markers.Symbols[i]);
+	i += 1;
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="fea72b60-26a9-48c6-9540-c8833056f862" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="-85" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="85" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Маркер точек" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="RangeLabel" display-name="RangeLabel" uuid="9d9ef63a-f51d-4d4d-a5e9-ab9bacd4ebc3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="10" ver="2"/>
+		<designed target="Y" value="265" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="120" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Диапазон значений" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="editLowRangeIndivid" display-name="editLowRangeIndivid" uuid="32abbd94-8656-40e4-b197-d8d518c6c5d1" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+		<designed target="X" value="130" ver="2"/>
+		<designed target="Y" value="265" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="HideInput" value="false" ver="2"/>
+		<designed target="PlaceholderText" value="" ver="2"/>
+		<designed target="ReadOnly" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[InputValidator_1.Input = text;
+]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Value" display-name="Value" uuid="9baaadfe-142f-4411-978a-c5faa811d858" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		<object access-modifier="private" name="InputValidator_1" display-name="InputValidator_1" uuid="765b5cd7-b74a-4b95-860a-f24baf179a52" base-type="InputValidator" base-type-id="d3926631-8c96-4ca0-b80c-d1953fff515c" ver="4">
+			<designed target="Input" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+				<body kind="om">
+					<![CDATA[bValid = false;
+private.bHighMoreLow = false;
+if (result == 2)
+{
+	newtext:string = String.Replace(Text, ",", ".");
+	Value = Str.ToDouble(newtext, 0);
+	private.changes = true;
+	bValid = true;
+	if (Focus) bChanged = true;
+	if (editHighRangeIndivid.Value > editLowRangeIndivid.Value)
+		private.bHighMoreLow = true;
+}
+]]>
+				</body>
+			</do-on>
+			<init target="ValidationType" ver="5">
+				<object access-modifier="private" uuid="bc9f75b8-e68a-42fd-a2e6-048edecd2114" base-type="NativeValidationRegex" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="4">
+					<designed target="PartialValidPattern" value="" ver="4"/>
+					<designed target="ValidPattern" value="^[-+]?[0-9]*[,.]?[0-9]+(?:[eE][-+]?[0-9]+)?$" ver="4"/>
+				</object>
+			</init>
+		</object>
+		<object access-modifier="private" name="bValid" display-name="bValid" uuid="34321d41-36af-4adc-8951-0fd23ed1b581" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="bChanged" display-name="bChanged" uuid="f70ef034-ae90-4f96-b129-c5b0b9432ff9" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<init target="bChanged" ver="5" value="false"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[(private.bHighMoreLow && bValid) ?
+unit.Const.clBLACK :
+unit.Const.clRED]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="editHighRangeIndivid" display-name="editHighRangeIndivid" uuid="564942b6-a6a3-418c-a2ce-4876a9ded95e" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+		<designed target="X" value="210" ver="2"/>
+		<designed target="Y" value="265" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="HideInput" value="false" ver="2"/>
+		<designed target="PlaceholderText" value="" ver="2"/>
+		<designed target="ReadOnly" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[InputValidator_1.Input = text;
+
+]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Value" display-name="Value" uuid="b0229cfc-1e5d-4038-80ea-b899facd75c1" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		<object access-modifier="private" name="InputValidator_1" display-name="InputValidator_1" uuid="cad0cd14-0260-4fe0-a231-a865b70938bd" base-type="InputValidator" base-type-id="d3926631-8c96-4ca0-b80c-d1953fff515c" ver="4">
+			<designed target="Input" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+				<body kind="om">
+					<![CDATA[bValid = false;
+private.bHighMoreLow = false;
+if (result == 2)
+{
+	newtext:string = String.Replace(Text, ",", ".");
+	Value = Str.ToDouble(newtext, 0);
+	private.changes = true;
+	bValid = true;
+	if (Focus) bChanged = true;
+	if (editHighRangeIndivid.Value > editLowRangeIndivid.Value)
+		private.bHighMoreLow = true;
+}
+]]>
+				</body>
+			</do-on>
+			<init target="ValidationType" ver="5">
+				<object access-modifier="private" uuid="6bbc5062-abe1-4055-b517-22cdc202dbe9" base-type="NativeValidationRegex" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="4">
+					<designed target="PartialValidPattern" value="" ver="4"/>
+					<designed target="ValidPattern" value="^[-+]?[0-9]*[,.]?[0-9]+(?:[eE][-+]?[0-9]+)?$" ver="4"/>
+				</object>
+			</init>
+		</object>
+		<object access-modifier="private" name="bValid" display-name="bValid" uuid="a9ee2a53-59d3-4e6c-8b7f-d9afc677d4c3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="bChanged" display-name="bChanged" uuid="759810ec-4b79-40ca-9caf-7407bc0e5f12" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<init target="bChanged" ver="5" value="false"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[(private.bHighMoreLow && bValid) ?
+unit.Const.clBLACK :
+unit.Const.clRED]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="editYValue" display-name="editYValue" uuid="9e67a4fa-fd09-4dc7-8bc2-19982efb964f" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+		<designed target="X" value="210" ver="2"/>
+		<designed target="Y" value="300" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="HideInput" value="false" ver="2"/>
+		<designed target="PlaceholderText" value="" ver="2"/>
+		<designed target="ReadOnly" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+			<body kind="om">
+				<![CDATA[InputValidator_1.Input = text;]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="d2fd454b-efbf-4a3a-b8b7-978250124cd3" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="-200" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="200" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Значение Y для строкового сигнала" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="InputValidator_1" display-name="InputValidator_1" uuid="e8049cf0-4c4b-4290-8904-5e729a77d341" base-type="InputValidator" base-type-id="d3926631-8c96-4ca0-b80c-d1953fff515c" ver="4">
+			<designed target="Input" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ResultChanged">
+				<body kind="om">
+					<![CDATA[if (result == 2)
+{
+	FontColor = unit.Const.clBLACK;
+	Value = Str.ToDouble(Text, 0);
+	bValid = true;
+}
+else
+{
+	FontColor = unit.Const.clRED;
+	bValid = false;
+}
+]]>
+				</body>
+			</do-on>
+			<init target="ValidationType" ver="5">
+				<object access-modifier="private" uuid="e61381b7-2055-4773-ad2b-7e5c741d54b2" base-type="NativeValidationRegex" base-type-id="aa199343-4d4b-4a86-ba57-076fd145fe99" ver="4">
+					<designed target="PartialValidPattern" value="" ver="4"/>
+					<designed target="ValidPattern" value="^[-+]?[0-9]*[,.]?[0-9]+(?:[eE][-+]?[0-9]+)?$" ver="4"/>
+				</object>
+			</init>
+		</object>
+		<object access-modifier="private" name="bValid" display-name="bValid" uuid="fccbddcd-351f-4378-9ead-81e555bfa623" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="Value" display-name="Value" uuid="6bb91a84-35b9-46a0-b1eb-873498b29844" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		<init target="bValid" ver="5" value="true"/>
+	</object>
+	<object access-modifier="private" name="btnOK" display-name="btnOK" uuid="9cc9f11f-fcf1-4623-967d-59ebc15a0d1f" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="110" ver="2"/>
+		<designed target="Y" value="340" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="80" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="Text" value="OK" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+		<designed target="BrushColor" value="0xffe8e8e8" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="0xffe8e8e8" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="0xffe8e8e8" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="0xff808080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="0xff00aaff" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[if (private.changes == true)			// Если изменения были
+{
+	tag:string = pTrends.private.NowParams.Lines[private.indexItem].Tag;	// определяем тэг редактируемого графика
+
+	pTrends.private.NowParams.Lines[private.indexItem].WidthGood = TypeConvert.ToFloat(editWidthGood.Value);
+	pTrends.private.NowParams.Lines[private.indexItem].WidthBad = TypeConvert.ToFloat(editWidthBad.Value);
+	if (cbStyleGood.SelectedIndex >= 0)
+		pTrends.private.NowParams.Lines[private.indexItem].StyleGood = pTrends.private.LineStyles.Values[cbStyleGood.SelectedIndex];
+	if (cbStyleBad.SelectedIndex >= 0)
+		pTrends.private.NowParams.Lines[private.indexItem].StyleBad = pTrends.private.LineStyles.Values[cbStyleBad.SelectedIndex];
+	if (MarkerComboBox.SelectedIndex >= 0)
+	{
+		pTrends.private.NowParams.Lines[private.indexItem].PointSymbol = pTrends.private.Markers.Symbols[MarkerComboBox.SelectedIndex];
+		pTrends.private.NowParams.Lines[private.indexItem].PointSymbolCode = pTrends.private.Markers.Codes[MarkerComboBox.SelectedIndex];
+	}
+
+	pTrends.private.NowParams.Lines[private.indexItem].bSyncroColorMarkerLabels = SyncroColorMarkerLabels.State;
+	pTrends.private.NowParams.Lines[private.indexItem].ColorMain = LineColorRect.BrushColor;
+	if (pTrends.SynchronizeColor)	
+		pTrends.private.NowParams.Axis[private.indexItem].ColorY = LineColorRect.BrushColor;
+	else	
+		pTrends.private.NowParams.Axis[private.indexItem].ColorY = AxisColorRect.BrushColor;			// меняем цвет индивидуальной оси
+
+	pTrends.private.NowParams.Lines[private.indexItem].bUseColorManual = chbUseColorManual.State;
+	pTrends.private.NowParams.Lines[private.indexItem].ColorManual = ManualColorRect.BrushColor;
+	pTrends.private.NowParams.Lines[private.indexItem].StringTagYValue = editYValue.Value;	
+	pTrends.private.Lines.Update();
+
+	if (pTrends.private.LegendIsUse)
+		pTrends.pLegend.Update();		// обновляем панель легенды
+
+	if (editLowRangeIndivid.bChanged || editHighRangeIndivid.bChanged)
+	{
+		axisIndex:int4 = pTrends.GlobalRanges ? 0 : pTrends.private.NowParams.Lines[private.indexItem].numAxis;
+		pTrends.pChart_Oper_1.SetYRange(axisIndex, editLowRangeIndivid.Value, editHighRangeIndivid.Value);
+		pTrends.pChart_Hist_1.SetYRange(axisIndex, editLowRangeIndivid.Value, editHighRangeIndivid.Value);
+	}
+}
+pTrends.OnSaveSettings.Invoke();
+Close();]]>
+			</body>
+		</do-on>
+		<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[editWidthGood.bValid &&
+editWidthBad.bValid &&
+editYValue.bValid && 
+editHighRangeIndivid.bValid && 
+editLowRangeIndivid.bValid &&
+private.bHighMoreLow]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="btnCancel" display-name="btnCancel" uuid="49115e66-4271-42c4-a0fe-eda3e41eaede" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="200" ver="2"/>
+		<designed target="Y" value="340" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="80" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="Text" value="Отмена" ver="2"/>
+		<designed target="TextAlignment" value="132" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+		<designed target="BrushColor" value="0xffe8e8e8" ver="2"/>
+		<designed target="BrushStyle" value="1" ver="2"/>
+		<designed target="OnClickBrushColor" value="0xffe8e8e8" ver="2"/>
+		<designed target="OnClickBrushStyle" value="1" ver="2"/>
+		<designed target="OnHoverBrushColor" value="0xffe8e8e8" ver="2"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+		<designed target="PenColor" value="0xff808080" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+		<designed target="OnClickPenStyle" value="1" ver="2"/>
+		<designed target="OnClickPenWidth" value="1" ver="2"/>
+		<designed target="OnHoverPenColor" value="0xff00aaff" ver="2"/>
+		<designed target="OnHoverPenStyle" value="1" ver="2"/>
+		<designed target="OnHoverPenWidth" value="1" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[Close();]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+		<designed target="DisabledBrushStyle" value="1" ver="3"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+		<designed target="DisabledPenStyle" value="1" ver="3"/>
+		<designed target="DisabledPenWidth" value="1" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Checked" value="false" ver="4"/>
+	</object>
+	<designed target="WindowIconPath" value="Trends_Icons/Trends.ico" ver="5"/>
+</type>
+

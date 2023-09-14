@@ -1,0 +1,33 @@
+<unit uuid="961dc1a7-4f37-4e1b-870e-1a85055e04dd" name="SecurityConfigurator" main-form-id="5bd02e6e-72d8-47c1-8f17-67355b6bdfd0">
+	<object file="SecurityConfigurator.omobj" filter=""/>
+	<object file="UsersList.omobj" filter="Users"/>
+	<object file="EditTokenDialog.omobj" filter="App"/>
+	<object file="ChangeUserGroup.omobj" filter="Users"/>
+	<object file="ChangeRights.omobj" filter="RightsEditor"/>
+	<object file="ChangePassComplexity.omobj" filter="RightsEditor"/>
+	<object file="RoleEdit.omobj" filter="Roles"/>
+	<object file="GroupList.omobj" filter="Group"/>
+	<object file="GroupEdit.omobj" filter="Group"/>
+	<object file="RightsTable.omobj" filter=""/>
+	<object file="UserEdit.omobj" filter="Users"/>
+	<object file="AppEdit.omobj" filter="App"/>
+	<object file="ListCommands.omobj" filter=""/>
+	<object file="ApplicationCommands.omobj" filter=""/>
+	<object file="AccountCommands.omobj" filter=""/>
+	<object file="UserCommands.omobj" filter=""/>
+	<object file="GroupCommands.omobj" filter=""/>
+	<object file="AppListCommands.omobj" filter=""/>
+	<object file="AppList.omobj" filter="App"/>
+	<object file="TokensDefinition.omobj" filter=""/>
+	<object file="ChangedRightsResult.omobj" filter=""/>
+	<object file="ChangeIntegerRight.omobj" filter="RightsEditor"/>
+	<object file="ChangePasswordAge.omobj" filter="RightsEditor"/>
+	<object file="SetPasswordDialog.omobj" filter="Users"/>
+	<object file="RoleCommands.omobj" filter=""/>
+	<object file="ChangeStringRight.omobj" filter="RightsEditor"/>
+	<object file="ChangeRoles.omobj" filter="Roles"/>
+	<object file="SystemCommands.omobj" filter=""/>
+	<object file="ProductInfo.omobj" filter=""/>
+	<unit-link name="CommonLib" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="CommonLib" ver="5"/>
+</unit>
+

@@ -1,0 +1,355 @@
+<type access-modifier="private" name="Alarms_ViewFilterControl" display-name="Alarms_ViewFilterControl" uuid="ba1146f2-fa2e-4554-a774-5c6c50f19d52" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<designed target="Width" value="420" ver="4"/>
+	<designed target="Height" value="370" ver="4"/>
+	<designed target="RoundingRadius" value="0" ver="4"/>
+	<designed target="PenColor" value="4278190080" ver="4"/>
+	<designed target="PenStyle" value="0" ver="4"/>
+	<designed target="PenWidth" value="1" ver="4"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+	<designed target="BrushStyle" value="1" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="TablePanel" display-name="TablePanel" uuid="de0f1095-5331-461a-a8cc-ab909097bc5a" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="420" ver="5"/>
+		<designed target="Height" value="362" ver="5"/>
+		<designed target="BackgroundColor" value="0x00000000" ver="5"/>
+		<designed target="FrameColor" value="0x00000000" ver="5"/>
+		<designed target="GridColor" value="0x00000000" ver="5"/>
+		<designed target="HeaderHeight" value="21" ver="5"/>
+		<designed target="HeaderVisible" value="false" ver="5"/>
+		<designed target="RowHeight" value="30" ver="5"/>
+		<designed target="RowOrder" value="0" ver="5"/>
+		<designed target="SelectionBehavior" value="0" ver="5"/>
+		<designed target="SelectionMode" value="0" ver="5"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="1" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<object access-modifier="private" name="Column1" display-name="Column1" uuid="148988fe-1b62-40c0-a993-ae6c14a6d771" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" description="" cardinal="1">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="BackgroundColor" value="4293980400" ver="5"/>
+			<designed target="ForegroundColor" value="4278190080" ver="5"/>
+			<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="5"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="5"/>
+			<designed target="TitleFont" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="Width" value="300" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%g" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+		</object>
+		<init target="TableModel" ver="5">
+			<object access-modifier="private" uuid="5cca99c5-7020-47d4-96d9-8d54034df62a" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
+				<designed target="Frozen" value="false" ver="5"/>
+				<designed target="MaxRowCount" value="10000" ver="5"/>
+			</object>
+		</init>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[TableModel.Reset();
+TableModel.AddColumn("field-id","","","","string",false,true);]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ScrollMove">
+			<body kind="om">
+				<![CDATA[scrolled();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Items" display-name="Items" uuid="b5af10a4-c3c9-49c2-ae2c-05b00c354233" base-type="Alarms_ViewFilterItem" base-type-id="04671730-1304-4817-9ba6-884fd76da06c" ver="5" description="" cardinal="18">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<init target="ppTheme" ver="5" ref="iTheme"/>
+		<init target="pVFControl" ver="5" ref="here"/>
+	</object>
+	<object access-modifier="private" name="labelWidth" display-name="labelWidth" uuid="11712ae6-dc80-4556-b7a8-8966d157cdb5" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+	<object access-modifier="private" name="editorWidth" display-name="editorWidth" uuid="b0d0d484-79e1-4614-bb30-373f74d32561" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+	<object access-modifier="private" name="TestTable" display-name="TestTable" uuid="d5d59bb4-c36e-4ce4-b8c4-f89c98d8f59b" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="3">
+		<designed target="X" value="0" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="false" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Width" value="10" ver="3"/>
+		<designed target="Height" value="10" ver="3"/>
+		<designed target="HeaderHeight" value="21" ver="3"/>
+		<designed target="HeaderVisible" value="false" ver="3"/>
+		<designed target="RowHeight" value="30" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<designed target="SelectionBehavior" value="0" ver="3"/>
+		<designed target="SelectionMode" value="3" ver="3"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="3"/>
+		<designed target="LatestRowTracking" value="false" ver="3"/>
+		<init target="TableModel" ver="5">
+			<object access-modifier="private" uuid="cd7dce83-c702-4c4d-8185-1f5a16b3f20c" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+				<designed target="Frozen" value="false" ver="3"/>
+				<designed target="MaxRowCount" value="2147483647" ver="3"/>
+			</object>
+		</init>
+		<object access-modifier="private" name="TestColumn" display-name="TestColumn" uuid="044f6152-25ea-4389-898c-8aa903b033af" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="3">
+			<designed target="Title" value="" ver="3"/>
+			<designed target="Description" value="" ver="3"/>
+			<designed target="Id" value="" ver="3"/>
+			<designed target="BackgroundColor" value="4281545523" ver="3"/>
+			<designed target="ForegroundColor" value="4293388263" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="TitleBackgroundColor" value="4281545523" ver="3"/>
+			<designed target="TitleForegroundColor" value="4293388263" ver="3"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="Width" value="100" ver="3"/>
+			<designed target="WidthResizeMode" value="0" ver="3"/>
+			<designed target="Emptiable" value="true" ver="3"/>
+			<designed target="Hidden" value="false" ver="3"/>
+			<designed target="NumberFormat" value="%g" ver="3"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+		</object>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<do access-modifier="private" name="CheckJSON" display-name="CheckJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[try
+{
+	// Попытка установить json-фильтр
+	TestTable.TestColumn.JsonFilter = jsonStr;
+	return "";
+}
+catch (err)
+{
+	return err.toString();
+}]]>
+			</body>
+			<param access-modifier="private" name="jsonStr" display-name="" uuid="4b5f87ac-c90e-4f38-b571-a44f56015e83" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		</do>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameColor" value="4278190080" ver="4"/>
+		<designed target="GridColor" value="4292401368" ver="4"/>
+	</object>
+	<object access-modifier="private" name="pAlarms" display-name="pAlarms" uuid="d94458cc-d1d6-40a4-a181-f9467a4a5df7" base-type="Alarms" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="b8cc76e7-8eeb-47dc-b9ef-5220e57a2db9" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="Opened" display-name="Opened" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[TablePanel.Initialize();
+var n = 0;
+var ids = JSON.parse(pAlarms.Main_panel.private.ViewFilter.GetColumns());
+for (let i = 0; i<ids.length && n<Items.Length; i++)
+{
+	var id = ids[i];
+	var pos = pAlarms.Main_panel.private.TableView.GetColPos(id);
+	var title = pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[pos].Title;
+	{
+		if (id==pAlarms.Main_panel.private.TableView.Static.Column_Time.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_ActiveTime.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_DeactiveTime.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_AckTime.Id)
+			Items[n].Setup(id, title, "time",false, true, "");
+		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Severity.Id)
+			Items[n].Setup(id, title, "severity",false, true, "");
+		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Group.Id)
+			Items[n].Setup(id, title, "message",true, true, "");
+		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Message.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_Actor.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_Comment.Id)
+			Items[n].Setup(id, title, "message",false, true, "");
+		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Source.Id)
+			Items[n].Setup(id, title, "source",false, true, "");
+		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Ack.Id)
+			Items[n].Setup(id, title, "",false, false, "[\"Все\",\"Неквитированные\",\"Квитированные\"]");
+		else if (id==pAlarms.Main_panel.private.TableView.Static.Column_Active.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_AckRequired.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_Quality.Id ||
+			id==pAlarms.Main_panel.private.TableView.Static.Column_Value.Id)
+			n -=1;//пропускаем некоторые столбцы, как и раньше
+		else
+		{
+			var data_type = pAlarms.Main_panel.private.TableView.modelType[pos];
+			var filter_type = "severity";
+			if (data_type == "timestamp") filter_type = "time";
+			else if (data_type == "string" || data_type == "variant") filter_type = "message";
+//test-f настройки пользовательских столбцов для фильтров надо сделать умнее (kind:int4 но фильтруется как message)
+			Items[n].Setup(id, title, filter_type,false, true, "");
+		}
+		n +=1;
+	}
+}
+var vsb = n;
+//неиспользованные контролы скрываем
+while (n<Items.Length)
+{
+	Items[n].Visible = false; //Items[n].Rect.columnId==""
+	n +=1;
+}
+//правим дизайн
+var maxVisibleRows = Math.trunc((maxHeight/*370*/-10)/30);//12
+var rows = Math.min(vsb, maxVisibleRows);
+Height = 10 + rows*30;//Height = 10 + vsb*30 + 10;
+TablePanel.Height = rows*30 + 2/*scroll deffect*/;
+
+TablePanel.TableModel.Clear();
+for (let i = 0; i < vsb; i++)
+	TablePanel.TableModel.AddRow();
+scrolled();
+
+Items[0].Rect.Editor.Focus = true;]]>
+		</body>
+		<param access-modifier="private" name="maxHeight" display-name="" uuid="e337edbe-bc8c-4483-b91f-8441f5c578fe" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetRequiredWidth" display-name="GetRequiredWidth" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[return TypeConvert.ToInt4(5 + GetRequiredLabelWidth() + /*design value*/290 + 10 +20/*scroll*/);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetWidth" display-name="SetWidth" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="width" display-name="" uuid="356d3b19-f434-4a03-8ea8-2cfc0a013cdd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		<body kind="om">
+			<![CDATA[label_rw:double = GetRequiredLabelWidth();
+label_w:double = width-5-290/*designed Severity.Width 290*/-10-20/*scroll*/;
+if (label_w<50) label_w=50;
+if (label_w>label_rw) label_w = label_rw;
+labelWidth = label_w;
+
+editors_w:double = width-5-labelWidth-10-20/*scroll*/;
+if (editors_w<50) editors_w=50;
+editorWidth = editors_w;
+
+
+i: int4 = 0;
+while (i < Items.Length)
+{
+	Items[i].SetWidth(labelWidth,editorWidth);
+	i +=1;
+}
+
+
+Width = width;
+TablePanel.Width = width;
+TablePanel.Column1.Width = width-20/*scroll*/;
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetRequiredLabelWidth" display-name="GetRequiredLabelWidth" ver="5" type="float8" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409">
+		<body kind="om">
+			<![CDATA[symbols: int4 = 0;
+
+i: int4 = 0;
+while (i < Items.Length)
+{
+	symbols = Math.Max(symbols, Items[i].GetLabelLength());
+	i +=1;
+}
+
+return 10 + 6.2*symbols;]]>
+		</body>
+	</do>
+	<param access-modifier="private" name="iTheme" display-name="iTheme" uuid="2b4e888f-7f35-4315-b889-5ce4744e6d75" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="DataChanged" display-name="DataChanged" uuid="622fb7a8-2f4a-4f0d-a56e-469da912425a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="cdb084d2-5971-47ad-87a6-ebcf79151884" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="HaveError" display-name="HaveError" uuid="db1016fa-ef53-40e1-af38-fe287d37bc20" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[e: bool = false;
+i: int4 = 0;
+while (i < Items.Length)
+{
+	if (Items[i].Error != "") e = true;
+	i +=1;
+}
+
+HaveError = e;]]>
+			</body>
+		</do>
+	</object>
+	<do access-modifier="private" name="ChangedInvoke" display-name="ChangedInvoke" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[DataChanged.Invoke();//вызов на ОМ не вызывает исключения если ссылка не задана]]>
+		</body>
+		<param access-modifier="private" name="id" display-name="" uuid="ea2b6965-0c81-4c72-a733-855052cae510" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="SetFilterJson" display-name="SetFilterJson" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="jsonString" display-name="" uuid="83941cc8-0875-41ca-9fec-e3f593be03a0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<body kind="javascript">
+			<![CDATA[if (jsonString == "")
+{
+	for (let i = 0; i < Items.Length; i++)
+		Items[i].SetText("");
+}
+else
+{
+	var object = JSON.parse(jsonString);
+	for (let i = 0; i < Items.Length; i++)
+		Items[i].SetText(object[Items[i].GetId()]);
+}
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetFilterJson" display-name="GetFilterJson" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var object = {};
+for (let i = 0; i < Items.Length; i++)
+	object[Items[i].GetId()] = Items[i].GetText();
+return JSON.stringify(object);]]>
+		</body>
+	</do>
+	<init target="labelWidth" ver="5" value="115"/>
+	<init target="editorWidth" ver="5" value="290"/>
+	<do access-modifier="private" name="scrolled" display-name="scrolled" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var scroll = TablePanel.GetRowTop(0);
+for (let i = 0; i < Items.Length; i++)
+{
+	var offset = i*30 + scroll;
+	Items[i].Y = 10 + offset;
+	Items[i].Visible = (Items[i].Rect.columnId != "") && (offset>=0) && (Items[i].Y+Items[i].Rect.Editor.Height<TablePanel.Y+TablePanel.Height);
+}
+]]>
+		</body>
+	</do>
+</type>
+

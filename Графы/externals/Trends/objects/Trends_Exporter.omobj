@@ -1,0 +1,280 @@
+<type access-modifier="private" name="Trends_Exporter" display-name="Trends_Exporter" uuid="0ef355d8-dbf1-4bae-bc8a-c8cbf5f0598e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="false" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="100" ver="5"/>
+	<designed target="Height" value="100" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="4a25e2a9-4112-4d02-9769-e53fdbebd93e" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+		<designed target="Frozen" value="false" ver="3"/>
+		<designed target="MaxRowCount" value="2147483647" ver="3"/>
+		<object access-modifier="private" name="Exporter" display-name="Exporter" uuid="a60fd1d3-7031-41ed-8af5-cc80d3c8b0a9" base-type="Exporter" base-type-id="2a508563-364d-4472-b86f-4a1a2242c583" ver="3">
+			<designed target="Sort" value="true" ver="3"/>
+			<designed target="SortColumnNumber" value="3" ver="3"/>
+			<designed target="Parameters" value="" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="DataExportFailed">
+				<body kind="om">
+					<![CDATA[if (errorMessage != "")
+{
+	ShowError.message = errorMessage;	
+	ShowError.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<init target="Chart" ver="5" ref="init_Chart"/>
+		</object>
+		<do access-modifier="private" name="Load" display-name="Load" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// загружаем данные
+Exporter.Reload();
+BeginReadAsync();	]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ReadFinished">
+			<body kind="om">
+				<![CDATA[//DebugTool.Log("TableModel_1.ReadFinished");
+// подготавливаем папку для сохранения
+folder: string = SaveFileDialogResult.FolderPath;
+if (!pFiles.Exists(folder))
+	pFiles.CreateRecursiveFolder(folder);
+
+// выполняем сохранение
+filePath: string = SaveFileDialogResult.FilePath;
+if (SaveFileDialogResult.FileType == 0)
+	Table_1.Save(filePath,"csv");
+else if (SaveFileDialogResult.FileType == 1)
+	Table_1.Save(filePath,"xlsx");
+else if (SaveFileDialogResult.FileType == 2)
+	Table_1.Save(filePath,"pdf");
+
+// уведомляем о том, что сохранение выполнено
+pChart.pCore.private.EventParams[0] = filePath;
+pChart.pCore.OnSaveTable.Invoke();
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="3f857e09-d493-475f-a5cc-897b4ee6924d" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="false" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="249" ver="2"/>
+		<designed target="Height" value="100" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="3" ver="2"/>
+		<object access-modifier="private" name="TableColumns" display-name="TableColumns" uuid="7c5db438-e358-468b-bb48-97a175a221d2" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="8">
+			<designed target="Title" value="" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="214" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%g" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="LatestRowTracking" value="false" ver="2"/>
+		<designed target="HeaderHeight" value="40" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="25" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[timeFormat: string = pChart.ShowMilliseconds ? "hh:mm:ss.zzz yyyy-MM-dd" : "hh:mm:ss yyyy-MM-dd";
+
+// Режим список точек
+	TableColumns[0].Title = "График";
+	TableColumns[0].Id = "line";
+	TableColumns[0].Width = 200;
+	TableColumns[0].Hidden = false;
+	
+	TableColumns[1].Title = "Тег сигнала";
+	TableColumns[1].Id = "tag";
+	TableColumns[1].Width = 200;
+	TableColumns[1].Hidden = false;
+	
+	TableColumns[2].Title = "Значение";
+	TableColumns[2].Id = "value";
+	TableColumns[2].Width = 70;
+	TableColumns[2].NumberFormat = "%g";
+	TableColumns[2].Hidden = false;
+	
+	TableColumns[3].Title = "Единицы";
+	TableColumns[3].Id = "unit";
+	TableColumns[3].Width = 70;
+	TableColumns[3].Hidden = false;
+	
+	TableColumns[4].Title = "Время";
+	TableColumns[4].Id = "timestamp";
+	TableColumns[4].Width = 150;
+	TableColumns[4].TimeFormat = timeFormat;
+	TableColumns[4].Hidden = false;
+	TableColumns[4].SortPriority = 0;
+	TableColumns[4].SortingEnabled = true;
+	
+	if (UseServerTime)
+	{
+		TableColumns[5].Title = "Время сервера";	
+		TableColumns[5].Id = "server_timestamp";
+		TableColumns[5].Width = 150;
+		TableColumns[5].TimeFormat = timeFormat;
+		TableColumns[5].Hidden = false;
+	}
+	else
+	{
+		TableColumns[5].Hidden = true;
+	}
+	
+	TableColumns[6].Title = "Качество";
+	TableColumns[6].Id = "quality";
+	TableColumns[6].Width = 70;
+	TableColumns[6].NumberFormat = "%d";
+	TableColumns[6].Hidden = false;
+	
+	i:int4 = 7;
+	while (i < TableColumns.Length)
+	{
+		TableColumns[i].Id = "";
+		TableColumns[i].Hidden = true;
+		TableColumns[i].SortPriority = 0;
+		TableColumns[i].SortingEnabled = false;
+		i += 1;
+	}
+
+
+// применяем новую сортировку
+//SortPriorityCount = 0;
+//ApplySort();]]>
+			</body>
+		</do>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameColor" value="4278190080" ver="4"/>
+		<designed target="GridColor" value="4292401368" ver="4"/>
+		<init target="TableModel" ver="5" ref="TableModel_1"/>
+	</object>
+	<param access-modifier="private" name="init_Chart" display-name="Использовать время сервера" uuid="e204c24d-ff24-4a62-98fc-9473c2ac4f6b" base-type="Chart" base-type-id="447c3e77-56f5-497c-950c-067da367ad6a" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="e8be7a27-92db-4636-bcd7-df9a99f398d5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="InvokeTrigger" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+			<object access-modifier="private" uuid="a0232df1-5dc0-4df4-a927-35275d140dde" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="3">
+				<init target="OnComplete" ver="5" ref="Reload"/>
+				<init target="FileTypeFilter" ver="5" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx|Файл Adobe PDF (*.pdf)|*.pdf"/>
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Result" ver="5" ref="SaveFileDialogResult"/>
+				<init target="DefaultPath" ver="5">
+					<expr>
+						<![CDATA[ExportPath]]>
+					</expr>
+				</init>
+				<init target="RootPath" ver="5" ref="pChart.pCore.private.ExportPath.Root"/>
+			</object>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Reload" display-name="Reload" uuid="3da7e2b2-a5ad-489a-8713-612cc7dcc72b" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="3">
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="InvokeTrigger" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+			<body kind="om">
+				<![CDATA[// удаляем все данные
+TableModel_1.Reset();
+
+// настраиваем столбцы таблицы
+Table_1.Initialize();
+
+// Загружаем данные в таблицу
+TableModel_1.Exporter.Reload();
+TableModel_1.BeginReadAsync();	]]>
+			</body>
+		</do-on>
+	</object>
+	<do access-modifier="private" name="StartExport" display-name="StartExport" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (!pFiles.Exists(ExportPath))
+	pFiles.CreateRecursiveFolder(ExportPath);
+ShowSaveDialog.Invoke();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="SaveFileDialogResult" display-name="SaveFileDialogResult" uuid="2b9d7d37-cb70-48d9-9caf-e8d575c1b81e" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="b8a478d7-fc21-478a-ad11-427784ed007e" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="DebugTool" display-name="DebugTool" uuid="8139c637-8fb4-4f30-93e2-667acd52693e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="8288c43b-5c22-4199-8eff-1957b9c0d3af" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="5b0627d1-224b-4a90-9b63-c8fb09d95c16" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Icon" ver="5" value="3"/>
+				<init target="Buttons" ver="5" value="0"/>
+				<init target="Message" ver="5">
+					<expr>
+						<![CDATA[message]]>
+					</expr>
+				</init>
+				<designed target="WindowCaption" value="Ошибка" ver="4"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="bd6bc9fa-8d39-4f1a-8599-7cd6fe19ae63" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ExportPath" display-name="Путь Экспорта" uuid="8ec87643-78ed-4334-9665-b6638a63946d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="47d6ad06-b052-4172-ba2f-2b1a57c40657" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="UseServerTime" display-name="Использовать время сервера" uuid="a4607f74-2376-41c6-8c01-64672cbdfffc" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="pFiles" display-name="pFiles" uuid="0b06318f-651b-44a8-b31d-4e899d8a8ea4" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pChart" display-name="pChart" uuid="0a0967f3-2803-4583-8f91-c657d2096ad5" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

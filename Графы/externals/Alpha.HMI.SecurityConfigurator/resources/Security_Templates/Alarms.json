@@ -1,0 +1,57 @@
+{
+    "Name": "Alarms",
+    "Tokens": [{
+            "Type": "Boolean",
+            "Name": "Acknowledgment",
+            "Description": "Квитирование"
+        }, {
+            "Type": "Boolean",
+            "Name": "ClearCurrentEvents",
+            "Description": "Очистка списка оперативных сообщений"
+        }, {
+            "Type": "Boolean",
+            "Name": "EditSettings",
+            "Description": "Редактирование настроек"
+        }, {
+            "Type": "Boolean",
+            "Name": "EventTableSortAvailability",
+            "Description": "Сортировка в таблице сообщений"
+        }, {
+            "Type": "Boolean",
+            "Name": "ExportDataAvailability",
+            "Description": "Экспорт в Excel"
+        }, {
+            "Type": "Boolean",
+            "Name": "FileSystemAccess",
+            "Description": "Доступ к файловой системе"
+        }, {
+            "Type": "Boolean",
+            "Name": "Filtering",
+            "Description": "Фильтрация"
+        }, {
+            "Type": "Boolean",
+            "Name": "Printing",
+            "Description": "Вывод на принтер"
+        }, {
+            "Type": "Boolean",
+            "Name": "SoundPlaybackManagment",
+            "Description": "Управление звуками"
+        }, {
+            "Type": "Boolean",
+            "Name": "TakeCurrentEventsSnapshot",
+            "Description": "Снимок оперативных сообщений"
+        }, {
+            "Type": "Boolean",
+            "Name": "ViewCurrentEvents",
+            "Description": "Просмотр оперативных сообщений"
+        }, {
+            "Type": "Boolean",
+            "Name": "ViewEventHistory",
+            "Description": "Просмотр исторических сообщений"
+        }, {
+            "Type": "Boolean",
+            "Name": "Suppression",
+            "Description": "Подавление и блокирование"
+        }
+    ]
+}

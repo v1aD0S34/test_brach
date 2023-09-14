@@ -1,0 +1,160 @@
+<type access-modifier="public" name="ConnectionIndicator" display-name="ConnectionIndicator" uuid="931aa326-7fd9-496c-acaa-61370986249f" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="24" ver="5"/>
+	<designed target="Height" value="24" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<param access-modifier="private" name="init_ApSource" display-name="init_ApSource" uuid="a7e020e5-8245-4125-90f1-3b85b9210909" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="Icon" display-name="Icon" uuid="07867f2a-1857-4e42-b3cf-2f2c167e1f97" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+		<designed target="X" value="3" ver="5"/>
+		<designed target="Y" value="3" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="16" ver="5"/>
+		<designed target="Height" value="16" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="ImageFile" value="CommonLib_Icons/Disconnected16.png" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="CurrentFrameNumber" value="0" ver="5"/>
+		<designed target="Speed" value="1" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="582e09bb-5e31-4815-9f5d-268319286d19" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="4" ver="5"/>
+			<designed target="Bottom" value="4" ver="5"/>
+			<designed target="Left" value="4" ver="5"/>
+			<designed target="Right" value="4" ver="5"/>
+		</object>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="d8482159-5cd8-4c7b-96f6-ac3d11b5f5e2" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="16" ver="5"/>
+			<designed target="MinHeight" value="16" ver="5"/>
+			<designed target="MaxWidth" value="16" ver="5"/>
+			<designed target="MaxHeight" value="16" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="8e454dc8-cca8-466e-bf3b-beaa29c9226d" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="2b536537-22ef-47a0-91fe-051cda09f651" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="0b3cbc29-fbc9-4fcf-bdb5-fa4b3bd7e074" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="2d90510b-3b13-4372-b04a-da71aaac3bf9" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+			<designed target="Location" value="" ver="5"/>
+			<designed target="Port" value="4388" ver="5"/>
+			<designed target="HistoryPort" value="4950" ver="5"/>
+			<designed target="Path" value="" ver="5"/>
+			<designed target="Active" value="true" ver="5"/>
+			<designed target="ReAdvise" value="0" ver="5"/>
+			<designed target="ClientDisplayName" value="HMI" ver="5"/>
+			<designed target="ClientId" value="HMI" ver="5"/>
+			<init target="ParentSource" ver="5" ref="init_ApSource"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+				<body kind="om">
+					<![CDATA[if (oldConnectionState != connectionState)
+{
+	Update(oldConnectionState, connectionState);
+	oldConnectionState = connectionState;	
+}]]>
+				</body>
+			</do-on>
+			<do access-modifier="private" name="GetAddress" display-name="GetAddress" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="javascript">
+					<![CDATA[var location = "";
+var source = this;
+try
+{
+	while (source.Location != undefined)
+	{
+		location = source.Location;
+		if (source.Port != 4388)
+			location += ":" + source.Port;
+		
+		source = source.ParentSource;
+	}
+}
+catch(error)
+{
+	// исключение возникает при обращении к свойству источника по ссылке, которая не указывает на источник
+	// пока нет другого способа узнать, что ссылка не указывает на источник
+	//log(error);
+}
+return location;]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="oldConnectionState" display-name="oldConnectionState" uuid="245469b5-9f8e-418d-8580-1d81bb1ec683" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		</object>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[icon: string;
+description: string;
+importance: string = "debug";
+
+// при подключении к серверу обновляем его адрес
+if (newConnectionState == 1 || newConnectionState == 2)
+	actualAddress = ApSource.GetAddress();
+
+if (newConnectionState == 0)
+{
+	icon = "Disconnected16.png";
+	if (oldConnectionState == 3)
+	{
+		description = "Выполнено отключение от сервера "+ actualAddress;
+		importance = "info";
+	}
+	else
+	{
+		description = "Прервано соединение с сервером "+ actualAddress;
+		importance = "error";
+	}
+}
+else if (newConnectionState == 1)
+{
+	icon = "Connecting16.png";
+	description = "Выполняется подключение к серверу "+ actualAddress;
+}
+else if (newConnectionState == 2)
+{
+	icon = "Connected16.png";
+	description = "Установлено соединение с сервером "+ actualAddress;
+	importance = "info";
+}
+else if (newConnectionState == 3)
+{
+	icon = "Connecting16.png";
+	description = "Выполняется отключение от сервера "+ actualAddress;
+}
+
+Icon.Visible = icon != "";
+Icon.ImageFile = "CommonLib_Icons/" + icon;
+
+if (here.Tooltip != description)
+{
+	here.Tooltip = description;
+	StateInfo = "{\"importance\":\"" + importance + "\",\"description\":\"" + description + "\"}";
+}]]>
+			</body>
+			<param access-modifier="private" name="oldConnectionState" display-name="" uuid="7952396b-0fb6-481b-92d8-e04d70b37737" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+			<param access-modifier="private" name="newConnectionState" display-name="" uuid="e4e43111-4d01-4221-b99f-81dcdeb69f68" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5"/>
+		</do>
+		<object access-modifier="private" name="actualAddress" display-name="actualAddress" uuid="b447cce8-242e-4b3c-8c6a-dd29aacbe08f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="StateInfo" display-name="Описание состояния" uuid="2fe14a6c-91aa-43a9-98f1-173ddf850290" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+</type>
+

@@ -1,0 +1,436 @@
+<type access-modifier="private" name="FileDialog" display-name="FileDialog" uuid="29986250-295b-4615-96f2-ca366bec24d1" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="550" ver="5"/>
+	<designed target="Height" value="350" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="550" ver="5"/>
+	<designed target="WindowHeight" value="350" ver="5"/>
+	<designed target="WindowCaption" value="Открыть файл" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="1" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="2" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<object access-modifier="private" name="FolderPanel" display-name="FolderPanel" uuid="50df20d0-d68a-4f0c-8766-3959c2e959c1" base-type="FolderLine" base-type-id="cd134757-b096-415f-a4e4-f4d36ee92075" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="550" ver="5"/>
+		<designed target="Height" value="45" ver="5"/>
+		<do-trace access-modifier="private" target="RootPath" ver="5">
+			<body>
+				<![CDATA[here.RootPath]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FolderPath" ver="5">
+			<body>
+				<![CDATA[BrowsePanel.FileList.BrowsedPath]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="browsedPath" display-name="browsedPath" uuid="610fbfc1-bd66-44f1-b50c-f445b73da107" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[// этой проверкой разрываем зацикливание перекладок между списком деревом и строкой ппути
+if (value != oldValue)
+{
+	//Debug.Log("FolderPath changed: " + value);
+	oldValue = value;	
+	BrowsePanel.FileList.BrowsedPath = value;
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="3510a44c-1fc8-4be2-b024-2aa51f3b5cf6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<init target="browsedPath" ver="5" value=""/>
+		<do-trace access-modifier="private" target="browsedPath" ver="5">
+			<body>
+				<![CDATA[FolderPath]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="CreateFolderAllowed" ver="5">
+			<body>
+				<![CDATA[here.CreateFolderAllowed]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="BrowsePanel.theme"/>
+		<object access-modifier="private" name="FolderCreated" display-name="FolderCreated" uuid="464d9252-f236-4f0c-bb4f-7f352cfafde0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[BrowsePanel.FileTree.Select(FolderPath);
+// так как это новая папка, то нужно обновить дерево
+BrowsePanel.FileTree.Refresh("");]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="OnFolderCreated" ver="5" ref="FolderCreated"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[ChangeFolderAllowed]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="BrowsePanel" display-name="BrowsePanel" uuid="78d8d77b-0189-4ed4-b76f-e88c5906c858" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="45" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="550" ver="5"/>
+		<designed target="Height" value="220" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="FileTree" display-name="FileTree" uuid="9670d5a3-7c78-451a-ab7a-3a0cbae38160" base-type="FileTree" base-type-id="7f2c00af-a320-48da-9e05-65caeb65f06b" ver="5">
+			<designed target="X" value="2" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="198" ver="5"/>
+			<designed target="Height" value="220" ver="5"/>
+			<do-trace access-modifier="private" target="RootPath" ver="5">
+				<body>
+					<![CDATA[here.RootPath]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="browsedPath" display-name="browsedPath" uuid="d1cc359a-2016-4fb1-a0c6-67b994c19d37" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[if (value != "")
+	FileList.BrowsedPath = value;]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="browsedPath" ver="5">
+				<body>
+					<![CDATA[SelectedPath]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="theme"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChangeFolderAllowed]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Separator" display-name="Separator" uuid="37ecef5a-de82-4c5d-9d6c-0117c75b3359" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+			<designed target="X" value="200" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="4" ver="5"/>
+			<designed target="Height" value="220" ver="5"/>
+			<designed target="RoundingRadius" value="0" ver="5"/>
+			<designed target="PenColor" value="4278190080" ver="5"/>
+			<designed target="PenStyle" value="0" ver="5"/>
+			<designed target="PenWidth" value="1" ver="5"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="BrushStyle" value="1" ver="5"/>
+			<object access-modifier="private" name="isPressed" display-name="isPressed" uuid="7a1bba3c-bd0d-4870-a386-62c03bc64d58" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseMove">
+				<body kind="om">
+					<![CDATA[if (isPressed)
+{
+	position: double = X + MouseX;
+	if (position < 10)
+		position = 10;
+	if (position > here.Width - Width - 10)
+		position = here.Width - Width - 10;
+	
+	FileTree.Width = position;
+	X = position;
+	FileList.X = X + Width;
+	FileList.Width = here.Width - FileList.X - 2;
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MousePress">
+				<body kind="om">
+					<![CDATA[isPressed = true;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseRelease">
+				<body kind="om">
+					<![CDATA[isPressed = false;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseEnter">
+				<body kind="om">
+					<![CDATA[BrushColor = theme.SelectionColor;]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseLeave">
+				<body kind="om">
+					<![CDATA[BrushColor = theme.BackgroundColor;
+isPressed = false;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="BrushColor" ver="5">
+				<body>
+					<![CDATA[theme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[ChangeFolderAllowed]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="FileList" display-name="FileList" uuid="a6f683f9-e6e4-4cc1-8647-658332b66665" base-type="FileList" base-type-id="a9ce36e2-4d7b-4f98-9635-145865b1e336" ver="5">
+			<designed target="X" value="204" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Width" value="344" ver="5"/>
+			<designed target="Height" value="220" ver="5"/>
+			<do-trace access-modifier="private" target="RootPath" ver="5">
+				<body>
+					<![CDATA[here.RootPath]]>
+				</body>
+			</do-trace>
+			<init target="OnPathChosen" ver="5" ref="here.OnPathChosen"/>
+			<init target="pTheme" ver="5" ref="theme"/>
+			<do-trace access-modifier="private" target="ChangeFolderAllowed" ver="5">
+				<body>
+					<![CDATA[here.ChangeFolderAllowed]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ShowFileProperties" ver="5">
+				<body>
+					<![CDATA[here.ShowFileProperties]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[FileTree.Height = Height;
+
+Separator.Height = Height;
+Separator.X = FileTree.Width;
+
+FileList.Height = Height;
+FileList.X = ChangeFolderAllowed ? FileTree.Width + Separator.Width : 1;
+FileList.Width = Width - FileList.X - 2;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="theme" display-name="theme" uuid="670751a5-5f81-425e-b4d0-709f91711852" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5">
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="SelectionColor" ver="5">
+				<body>
+					<![CDATA[pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="WindowUtils" display-name="WindowUtils" uuid="2abad1a6-e4dd-4248-b351-5bab99f6f2a1" base-type="WindowUtils" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
+		<init target="pForm" ver="5" ref="here"/>
+	</object>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="3e322591-b901-4499-babb-8f32419d6db6" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[BrowsePanel.FileTree.Refresh("");]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="5210dde2-20ff-4ac6-b69d-2a0224adbe63" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<param access-modifier="private" name="OnPathChosen" display-name="OnPathChosen" uuid="489e4214-7f3d-4c74-a322-525451d94489" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="c104929d-377c-461b-b5be-4c4ae7f5f3f1" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+		<do-trace access-modifier="private" target="RootPath" ver="5">
+			<body>
+				<![CDATA[here.RootPath]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="0bf55493-eb35-4528-a193-142fa3c10aa1" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="DefaultPath" display-name="Путь по умолчанию" uuid="b10b8e60-8613-44b1-8503-c813152dbbcb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="FileTypeFilter" display-name="Фильтр типа файлов" uuid="a4e62e42-843a-417f-a70f-9ffca8539421" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[WindowUtils.CorrectPosition();
+
+if (DefaultPath != "")
+{
+	FolderPanel.FolderPath = GetFolderPath(DefaultPath);
+	
+	// если путь по умолчанию совпадает с корневым путем, то нужно принудительно обновить список файлов
+	if (FolderPanel.FolderPath == "")
+		BrowsePanel.FileList.BrowsedPath = FolderPanel.FolderPath;
+}
+
+// переводим на форму фокус ввода, чтобы обрабатывать нажатия клавиш
+Focus = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[//Debug.Log("Key pressed: " + String.ToString(event.KeyCode));
+if (event.KeyCode == 75) // Escape
+	Close();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="DefaultFileType" display-name="Индекс типа в фильтре" uuid="12f0e2cd-4adb-418f-84e8-5ed1d02849de" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	<object access-modifier="private" name="ShowFileProperties" display-name="Показывать свойства файлов" uuid="cd53859b-94e4-4596-a544-a0f7485c22d2" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="ChangeFolderAllowed" display-name="Разрешена смена папки" uuid="3f7e424e-f009-4fac-b84a-461c22135956" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="CreateFolderAllowed" display-name="Разрешено создание папок" uuid="092d6a06-3369-44e6-a0b6-b2083310112c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<init target="CreateFolderAllowed" ver="5" value="true"/>
+	<object access-modifier="private" name="ShowBrowsePanel" display-name="Отображать панель просмотра" uuid="88331473-dc9e-4517-a9d7-3e3a275a9223" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != Value)
+{
+	oldValue = Value;	
+	
+	height: double = bottomPanelHeight;
+	if (ShowBrowsePanel)
+		height += BrowsePanel.Height;
+	if (ChangeFolderAllowed)
+		height += FolderPanel.Height;
+	windowHeight: int4 = TypeConvert.ToInt4(height);
+	
+	if (WindowHeight != windowHeight)
+	{
+		//Debug.Log("Update window height to " + String.ToString(windowHeight));
+		WindowHeight = windowHeight;
+	}
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="4d28e8bb-d94b-4315-82c2-e6caf20d23a3" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<init target="oldValue" ver="5" value="true"/>
+		<object access-modifier="private" name="bottomPanelHeight" display-name="bottomPanelHeight" uuid="2bb024d2-fbbe-4648-8ccc-2470388c8c90" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description="" cardinal="1"/>
+		<init target="bottomPanelHeight" ver="5" ref="BottomPanelHeight"/>
+	</object>
+	<object access-modifier="private" name="Result" display-name="Result" uuid="f2e675bb-287e-4185-863f-1225bde9f36c" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="393c1fe9-8280-4a52-8438-b82e9fe22a62" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="CoerseFileName" display-name="CoerseFileName" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[if (fileName != "")
+{
+	// меняем расширение файла, если оно отсутствует или соответствует предыдущему фильтру
+	i: int4 = String.LastIndexOf(fileName, ".");
+	if (i == -1)
+	{
+		fileName += newExt;
+	}
+	else
+	{
+		if (String.EndsWith(fileName, oldExt))
+			fileName = String.SubString(fileName, 0, i) + newExt;
+	}
+}
+return fileName;]]>
+		</body>
+		<param access-modifier="private" name="fileName" display-name="" uuid="eedd77bf-42ec-4af6-8164-cf3ad0265db4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="oldExt" display-name="" uuid="198b9f8f-a75f-444a-925a-376ee6edc98f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="newExt" display-name="" uuid="1595ec69-071b-40f2-b50c-5cdb86a0ce71" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetFolderPath" display-name="GetFolderPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[folder: string;
+
+relativePath: string = Files.RelativePath(filePath);
+if (Files.Exists(relativePath))
+{
+	if (Files.IsDirectory(relativePath))
+		folder = relativePath;
+	else folder = Files.ParentPath(relativePath);
+}
+else
+{
+	// папка может отсутствовать, тогда проверим завершение пути разделителем 
+	if (String.EndsWith(filePath, "/") || String.EndsWith(filePath, "\\"))
+		folder = relativePath;
+	else folder = Files.ParentPath(relativePath);
+}
+
+if (folder == ".") // корень файловой системы, доступный для просмотра
+	folder = "";
+	
+return Files.ToNative(folder);]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="de6c0bc4-598b-4a23-8d94-4f0393d493cc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<init target="ChangeFolderAllowed" ver="5" value="true"/>
+	<param access-modifier="private" name="BottomPanelHeight" display-name="BottomPanelHeight" uuid="ab1db5ff-1c44-4815-8e64-0e4f1e34d828" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5" description=""/>
+	<init target="ShowBrowsePanel" ver="5" value="true"/>
+</type>
+

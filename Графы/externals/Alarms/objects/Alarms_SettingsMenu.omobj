@@ -1,0 +1,168 @@
+<type access-modifier="private" name="Alarms_SettingsMenu" display-name="Alarms_SettingsMenu" uuid="b96a65b9-614d-49d4-a479-da1c09e65348" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="640" ver="5"/>
+	<designed target="Height" value="560" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="640" ver="5"/>
+	<designed target="WindowHeight" value="560" ver="5"/>
+	<designed target="WindowCaption" value="Контекстное меню" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="2" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="2" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="603eb228-dea3-4ffd-b1a2-baec12a64919" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="javascript">
+			<![CDATA[var items = JSON.parse(pSettingsForm.pAlarms.Main_panel.private.ContextMenu.AddDesign(false));
+var data = JSON.parse(pSettingsForm.Settings.ContextMenu.Data);
+var enabled = {};
+for (let i = 0; i < data.length; i++) enabled[data[i].id] = data[i].enabled;
+
+for (let i = 0; i < Math.max(items.length,Checkbox.Length); i++)
+{
+	if (i < Checkbox.Length && i < items.length)
+	{
+		Id[i] = items[i].id;
+		Checkbox[i].Text = items[i].title;
+		Checkbox[i].State = enabled[items[i].id];
+		Checkbox[i].Visible = true;
+		Checkbox[i].Y = Checkbox.Y + i*25;
+		Image[i].Y = Image.Y + i*25;
+		Image[i].ImageFile = undefined;
+		Image2[i].Y = Image2.Y + i*25;
+		Image2[i].ImageFile = undefined;
+		if (items[i].icon != undefined)
+		{
+			var icons = items[i].icon.split(",");
+			Image[i].ImageFile = icons[0];
+			if (icons.length >= 2)
+			{
+				Image[i].X = Image.X - 10;
+				Image2[i].X = Image.X + 10;
+				Image2[i].ImageFile = icons[1];
+			}
+		}
+	}
+	else if (i < Checkbox.Length)
+	{
+		Id[i] = "";
+		Checkbox[i].Visible = false;
+		Checkbox[i].Y = Checkbox.Y + i*25;
+		Image[i].Y = Image.Y + i*25;
+		Image[i].ImageFile = undefined;
+		Image2[i].Y = Image2.Y + i*25;
+		Image2[i].ImageFile = undefined;
+	}
+}
+// Разрешение на обработку формами своих значений
+bInit = true;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="pSettingsForm" display-name="pSettingsForm" uuid="d0b5e6d1-b844-4f29-a83a-b6e4cfc4b464" base-type="SettingsForm" base-type-id="82dc7618-130c-486c-840d-5d302f40306b" base-const="true" base-ref="true" ver="2"/>
+	<object access-modifier="private" name="Checkbox" display-name="Checkbox" uuid="c1d3d8d9-1428-4ed0-9c55-424c5d3f0163" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="5" cardinal="20">
+		<designed target="X" value="50" ver="5"/>
+		<designed target="Y" value="10" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="500" ver="5"/>
+		<designed target="Height" value="17" ver="5"/>
+		<designed target="Text" value="Checkbox" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="4278190080" ver="5"/>
+		<designed target="State" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+			<body kind="javascript">
+				<![CDATA[if (!bInit) return;
+
+var items = [];
+for (let i = 0; i < Checkbox.Length; i++)
+	if (Id[i] != "")
+		items.push({'id':Id[i], 'enabled':Checkbox[i].State});
+
+pSettingsForm.Settings.ContextMenu.Data = JSON.stringify(items);
+pSettingsForm.Settings.ContextMenu.OnEdited();
+]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Image" display-name="Image" uuid="988dafe5-2cb5-446a-ae76-62abf679d31d" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3" cardinal="20">
+		<designed target="X" value="20" ver="3"/>
+		<designed target="Y" value="10" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="16" ver="3"/>
+		<designed target="Height" value="16" ver="3"/>
+		<designed target="PenColor" value="0xff000000" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="ImageFile" value="Alarms_Icons/Attention16.png" ver="3"/>
+		<designed target="Active" value="true" ver="3"/>
+		<designed target="CurrentFrameNumber" value="0" ver="3"/>
+		<designed target="Speed" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+	</object>
+	<object access-modifier="private" name="Id" display-name="Id" uuid="3baebbcc-c456-4c93-a9d6-35aeb5afd7ef" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" cardinal="20"/>
+	<object access-modifier="private" name="bInit" display-name="bInit" uuid="785147b3-57f8-4b4f-8c30-30360a24d8e8" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<object access-modifier="private" name="Image2" display-name="Image2" uuid="19729cd7-149d-40d7-bcb0-7b006ed277db" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3" cardinal="20">
+		<designed target="X" value="20" ver="3"/>
+		<designed target="Y" value="10" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="16" ver="3"/>
+		<designed target="Height" value="16" ver="3"/>
+		<designed target="PenColor" value="0xff000000" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="ImageFile" value="Alarms_Icons/Attention16.png" ver="3"/>
+		<designed target="Active" value="true" ver="3"/>
+		<designed target="CurrentFrameNumber" value="0" ver="3"/>
+		<designed target="Speed" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+	</object>
+</type>
+

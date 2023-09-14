@@ -1,0 +1,471 @@
+<type access-modifier="public" name="Menu" display-name="Menu" uuid="07bb4545-980a-4140-bbaa-4d1397447864" base-type="Popup" base-type-id="346ea4f8-f80d-44c4-904b-258f28be2b43" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Width" value="50" ver="5"/>
+	<designed target="Height" value="50" ver="5"/>
+	<designed target="WindowWidth" value="51" ver="5"/>
+	<designed target="WindowHeight" value="51" ver="5"/>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowActivationChanged">
+		<body kind="om">
+			<![CDATA[//Debug.Log("Menu active changed: " + String.ToString(WindowActive));
+if (!WindowActive && private.Submenu.opened < 1)
+{
+	// в WebViewer это событие срабатывает при смене фокуса перед кликом мышкой по элементу меню
+	// поэтому будем закрывать меню, только если деактивация произошла, когда мышка была за пределами меню
+	if (!private.mouseOverMenuItem)
+		Close();
+}]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="MenuItems" display-name="MenuItems" uuid="99a7a0af-f88b-42d2-8490-67766f819d2a" base-type="MenuItem" base-type-id="064f06d5-fe3b-471e-a8d5-8914807aa060" ver="5" cardinal="30">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="50" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<object access-modifier="private" name="id" display-name="id" uuid="91f65d56-161f-440f-9dbb-543fbe54ea2d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="checkable" display-name="checkable" uuid="ef9b4fea-e1ac-4a31-aa8d-067fe569cab8" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Mouse click on " + Title);
+if (Active && Items == "")
+	DoAction();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="staysOpen" display-name="staysOpen" uuid="59e5308f-5e63-4904-9d2e-5714f72fd605" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[private.mouseOverMenuItem = true;
+Selected = true;
+
+if (Items != "")
+{
+	//Debug.Log("Start opening submenu " + Items);
+	private.Submenu.itemIndex = Index;
+	private.OpenSubmenuTimer.Active = true;
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[Selected = false;
+private.OpenSubmenuTimer.Active = false;
+private.mouseOverMenuItem = false;]]>
+			</body>
+		</do-on>
+		<init target="pTheme" ver="5" ref="theme"/>
+		<do access-modifier="private" name="DoAction" display-name="DoAction" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (checkable)
+	Checked = !Checked;
+
+// подготавливаем результат
+pResult.Id = id;
+pResult.StaysOpen = staysOpen;
+
+// выполняем команду
+pAction.Invoke();
+//Debug.Log("Invoke menu command with id: " + id);
+
+// если не нужно оставлять меню открытым, то закрываем это меню
+if (!staysOpen)
+	Close();
+else
+{
+	// возвращаем фокус на форму, это нужно для корректной работы в WebViewer
+	here.Focus = true;
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="selected" display-name="selected" uuid="0cf381b6-da43-4d5b-99ad-6b3183fb7d6c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (Value)
+{
+	//Debug.Log("Selected item: " + String.ToString(Index));	
+	i: int4 = 0;
+	while (i < here.Items.Count)
+	{
+		if (Index != i && MenuItems[i].Selected)
+			MenuItems[i].Selected = false;
+		i += 1;
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="selected" ver="5">
+			<body>
+				<![CDATA[Selected]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Separators" display-name="Separators" uuid="87a6be34-db78-45d0-8b8b-83ab04146889" base-type="MenuSeparator" base-type-id="0534e401-a222-4f5a-b162-477d316aa696" ver="5" cardinal="10">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="50" ver="5"/>
+		<designed target="Height" value="5" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<init target="pTheme" ver="5" ref="theme"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
+			<body kind="om">
+				<![CDATA[private.mouseOverMenuItem = true;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[private.mouseOverMenuItem = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[here.Focus = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="IsSubmenu" display-name="IsSubmenu" uuid="57b1e528-e2ca-4ba9-84fb-dd75139c8a49" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Items" display-name="Items" uuid="20feddff-0fb0-4305-9ac7-ebf1ac6bcc84" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue == value)
+	return;
+
+oldValue = value;
+ParseItemsJson(value);]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="579d1f3f-ed72-4ab1-b013-995180228535" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="Count" display-name="Count" uuid="be436ab4-a53e-412a-b694-779fa9361f05" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="pResult" display-name="pResult" uuid="66d4cf63-8a37-4266-bbb3-c9ae26922c62" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pAction" display-name="pAction" uuid="c7ed7e1b-e1ac-4325-81c5-a27087c472fb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pPrevMenu" display-name="pPrevMenu" uuid="b2eea1d1-bb9f-4acd-b9ee-4a89b668f706" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pNextMenu" display-name="pNextMenu" uuid="e6870c2a-e8c7-4305-afc7-66dd92619970" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pOnClosed" display-name="pOnClosed" uuid="3f8603ce-9729-4be5-b7fe-6fcc35e2f3b4" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="582f1c20-a828-4872-93c2-9e62a8f0513b" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+		<object access-modifier="private" name="OpenSubmenuTimer" display-name="OpenSubmenuTimer" uuid="22e4449f-f8e6-4c83-b277-cce8689210f2" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5">
+			<designed target="Period" value="300" ver="5"/>
+			<designed target="Active" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+				<body kind="om">
+					<![CDATA[Active = false;
+Submenu.Open();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Submenu" display-name="Submenu" uuid="e1c633c2-274b-4899-a0a0-eb9a94c01ca7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="add94ffc-a550-4240-8cd5-cff991d44819" base-type="ContextMenu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="pResult" ver="5" ref="here.pResult"/>
+					<init target="pAction" ver="5" ref="parent.OnAction"/>
+					<init target="pOnClosed" ver="5" ref="parent.OnClosed"/>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[mY]]>
+						</expr>
+					</init>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[mX]]>
+						</expr>
+					</init>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[items]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="here.theme"/>
+					<init target="PointHeight" ver="5" value="-25"/>
+					<init target="IsSubmenu" ver="5" value="true"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="itemIndex" display-name="itemIndex" uuid="4de1104f-89a6-488c-9a8e-9fffe44d52e7" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="5"/>
+			<object access-modifier="private" name="mX" display-name="mX" uuid="69ba5608-f846-42b8-b4fd-68391c898e58" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="mY" display-name="mY" uuid="4bed596c-d20f-41f8-99a6-65b8dd04cd4d" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="items" display-name="items" uuid="2f5846e2-45e2-401d-9009-45d4e777f754" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<object access-modifier="private" name="opened" display-name="opened" uuid="5e6e342b-616a-4f0c-9ef8-46996d1e1310" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<object access-modifier="private" name="OnAction" display-name="OnAction" uuid="0fe06316-aeaf-4370-82eb-41d2fde231da" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[//Debug.Log("Submenu action = " + pResult.Value);
+pAction.Invoke();
+
+// если была выполнена команда с закрытием меню, то закрываем и это меню тоже
+if (!pResult.StaysOpen)
+	Close();]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="OnClosed" display-name="OnClosed" uuid="58ebaa53-e9f9-4223-af6a-6f633195806a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[// уменьшаем количество открытых подменю
+opened -= 1;
+
+if (!WindowActive && opened < 1)
+{
+	//Debug.Log("Close menu after submenu closed");
+	Close();
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="Open" display-name="Open" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// Для признака наличия подменю используется счетчик вместо флага из-за того,
+// что событие закрытия предыдущего подменю возникает после события открытия нового подменю.
+
+// проверяем, что нет открытых подменю или открытое подменю отличается от того, что нужно открыть
+if (opened < 1 || items != MenuItems[itemIndex].Items)
+{
+	// запоминаем элементы подменю
+	items = MenuItems[itemIndex].Items;
+	
+	// определяем позицию подменю
+	mX = MenuItems[itemIndex].ScreenX(Width - 5, 0);
+	mY = MenuItems[itemIndex].ScreenY(0, 0);
+	
+	// если подменю не помещается по горизонтали, то размещаем его с другой стороны
+	m: int4 = WindowUtilities.Monitors.GetMonitor(mX, mY);
+	if (m > -1)
+	{
+		submenuWidth: CalculateWidth(items);
+		right: int4 = WindowUtilities.Monitors.GetX(m) + WindowUtilities.Monitors.GetResolutionX(m);
+		if (mX + submenuWidth > right)
+			mX = MenuItems[itemIndex].ScreenX(5, 0) - submenuWidth;
+	}
+	
+	//Debug.Log("Open submenu " + items);
+	Invoke();
+	
+	// подсчитываем количество открытых подменю, чтобы не открывать их повторно
+	// и для проверки наличия открытых подменю перед закрытием этого
+	opened += 1;
+}]]>
+				</body>
+			</do>
+		</object>
+		<do access-modifier="private" name="GetSelected" display-name="GetSelected" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[i: int4 = 0;
+while (i < Items.Count)
+{
+	if (MenuItems[i].Selected)
+		return i;
+		
+	i += 1;
+}
+return -1;]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="mouseOverMenuItem" display-name="mouseOverMenuItem" uuid="3e69641c-ca89-40bc-abaa-aeeb8a99164d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[//Debug.Log("Menu closed");
+pOnClosed.Invoke();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="ParseItemsJson" display-name="ParseItemsJson" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var items = JSON.parse(value);
+//log(JSON.stringify(items, null, 2));
+
+var y = 0;
+
+var miIndex = 0;
+var sIndex = 0;
+var i = 0;
+while(i < items.length)
+{
+	var item = items[i];
+	if (item.title == "-")
+	{
+		if (sIndex < Separators.Length)
+		{
+			// добавляем разделительную линию
+			Separators[sIndex].Y = y;
+			Separators[sIndex].Visible = true;		
+			y += Separators[sIndex].Height;
+			
+			sIndex += 1;
+		}
+	}
+	else
+	{
+		if (miIndex < MenuItems.Length)
+		{
+			// добавляем элемент меню
+			MenuItems[miIndex].id = item.id;
+			MenuItems[miIndex].Y = y;
+			MenuItems[miIndex].Title = item.title;
+			MenuItems[miIndex].IconFile = item.icon;
+			MenuItems[miIndex].Active = item.active != false;
+			MenuItems[miIndex].checkable = item.checked != null;
+			MenuItems[miIndex].Checked = item.checked == true;
+			MenuItems[miIndex].staysOpen = item.staysOpen == true;
+			if (item.items != null)
+				MenuItems[miIndex].Items = JSON.stringify(item.items);
+			MenuItems[miIndex].Visible = true;
+			y += MenuItems[miIndex].Height;
+
+			miIndex += 1;
+		}
+	}
+	
+	i += 1;
+}
+
+// количество элементов меню будет определено по последнему увеличенному индексу
+Items.Count = miIndex;
+
+var width = CalculateWidth(value);
+var height = y;
+
+// рамка увеличивает размер на 1 пиксель снизу и справа
+WindowHeight = height + 1;
+WindowWidth = width + 1;
+
+// после задания размеров у окна задаем размер формы, чтобы не возникало появление полос прокрутки
+Height = height;
+Width = width;
+
+// обновляем размеры элементов меню
+for (var j = 0; j < MenuItems.Length; j++)
+{
+	MenuItems[j].Width = width;
+	MenuItems[j].UpdateLayout();
+}
+for (var j = 0; j < Separators.Length; j++)
+{
+	Separators[j].Width = width;
+	Separators[j].UpdateLayout();
+}
+
+// в подменю выделяем первый элемент
+if (IsSubmenu && Items.Count > 0)
+	MenuItems[0].Selected = true;]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="7d009634-7605-48c6-bbe5-71dc837b7984" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="CalculateWidth" display-name="CalculateWidth" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="javascript">
+			<![CDATA[var items = JSON.parse(value);
+
+var i = 0;
+var maxTitleLength = 0;
+while(i < items.length)
+{
+	var item = items[i];
+	if (item.title.length > maxTitleLength)
+		maxTitleLength = item.title.length;
+	
+	i += 1;
+}
+
+// к ширине заголовка нужно добавить на иконку слева и стрелочку вправо
+return Math.trunc(50 + maxTitleLength * 6.1);]]>
+		</body>
+		<param access-modifier="private" name="value" display-name="" uuid="0f927775-164c-4757-b55d-d52600c802fa" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[//Debug.Log("KeyPress: " + String.ToString(event.KeyCode));
+
+if (event.KeyCode == 105) // стрелка вверх
+{
+	// определяем текущий выделенный элемент
+	index: int4 = private.GetSelected();
+
+	// определяем предыдущий элемент меню
+	index -= 1;
+	if (index <= -1)
+		index = Items.Count - 1;
+
+	// выделяем элемент меню с новым индексом
+	MenuItems[index].Selected = true;
+}
+else if (event.KeyCode == 107) // стрелка вниз
+{
+	// определяем текущий выделенный элемент
+	index: int4 = private.GetSelected();
+
+	// определяем следующий элемент меню
+	index += 1;
+	if (index >= Items.Count)
+		index = 0;
+	
+	// выделяем элемент меню с новым индексом
+	MenuItems[index].Selected = true;
+}
+else if (event.KeyCode == 82) // Enter
+{
+	// определяем текущий выделенный элемент
+	index: int4 = private.GetSelected();
+	
+	// выполняем команду меню, если она активна
+	if (index > -1)
+	{
+		if (MenuItems[index].Active)
+		{
+			if (MenuItems[index].Items == "")
+				MenuItems[index].DoAction();
+			else
+			{
+				// открываем подменю
+				private.Submenu.itemIndex = index;
+				private.Submenu.Open();
+			}
+		}
+	}
+}
+else if (event.KeyCode == 106) // стрелка вправо
+{
+	// определяем текущий выделенный элемент
+	index: int4 = private.GetSelected();
+	
+	if (index > -1)
+	{
+		if (MenuItems[index].Items != "")
+		{
+			// открываем подменю
+			private.Submenu.itemIndex = index;
+			private.Submenu.Open();
+		}
+		else
+			pNextMenu.Invoke(); // переход к следующему меню
+	}
+	else
+		pNextMenu.Invoke(); // переход к следующему меню
+}
+else if (event.KeyCode == 108) // стрелка влево
+{
+	// если это подменю, то закрываем его, иначе переходим к предыдущему меню
+	if (IsSubmenu)
+		Close();
+	else
+		pPrevMenu.Invoke();
+}
+else if (event.KeyCode == 75) // Escape
+{
+	// закрываем меню
+	Close();
+}]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_7" display-name="Handler_7" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Focus = true;]]>
+		</body>
+	</do-on>
+</type>
+

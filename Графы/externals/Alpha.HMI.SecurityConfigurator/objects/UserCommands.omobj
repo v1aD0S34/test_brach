@@ -1,0 +1,12 @@
+<type access-modifier="private" name="UserCommands" display-name="UserCommands" uuid="91ff024c-1b48-4ec4-852f-40d7e1879ef3" base-type="AccountCommands" base-type-id="c21b8c44-f27d-4da7-8fd4-6d0473cf7a51" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<object access-modifier="private" name="DoChangePassword" display-name="DoChangePassword" uuid="54f21143-421a-4f21-98d8-05b140de8a62" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="2b56827c-dc39-4423-a62f-c644e1a69fb4" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoLogout" display-name="DoLogout" uuid="366dae20-5a49-4228-935a-abe2f4e14556" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="bd160383-ec50-42b3-8c21-cd440d0fc197" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+</type>
+

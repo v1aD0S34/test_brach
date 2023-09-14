@@ -1,0 +1,12 @@
+<type access-modifier="private" name="GroupCommands" display-name="GroupCommands" uuid="9bb6d28c-2cbf-4d1e-88e3-643d738838dc" base-type="AccountCommands" base-type-id="c21b8c44-f27d-4da7-8fd4-6d0473cf7a51" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<object access-modifier="private" name="DoAddUsersToGroup" display-name="DoAddUsersToGroup" uuid="d8b40483-ef6e-4ed1-b490-edd22c30141c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="1827182b-ed97-4195-81f8-7260f09f4a34" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoRemoveUsersFromGroup" display-name="DoRemoveUsersFromGroup" uuid="993b3680-7c93-493a-82ab-ca5e83af686f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="a35bede0-776a-4adf-beff-b287d768c8bc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+</type>
+

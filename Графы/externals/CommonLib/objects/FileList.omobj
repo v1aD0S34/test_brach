@@ -1,0 +1,310 @@
+<type access-modifier="private" name="FileList" display-name="FileList" uuid="a9ce36e2-4d7b-4f98-9635-145865b1e336" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="28959d7e-d4a3-452d-9209-bd1ccde2c3fb" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="a4f9a635-89e8-447f-99ab-bed25820781f" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+		<do-trace access-modifier="private" target="RootPath" ver="5">
+			<body>
+				<![CDATA[here.RootPath]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Table" display-name="Table" uuid="364644b3-afca-4242-bae9-8554f5fb8e0c" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="400" ver="5"/>
+		<designed target="Height" value="200" ver="5"/>
+		<designed target="HeaderHeight" value="21" ver="5"/>
+		<designed target="HeaderVisible" value="false" ver="5"/>
+		<designed target="RowHeight" value="21" ver="5"/>
+		<designed target="RowOrder" value="0" ver="5"/>
+		<designed target="SelectionBehavior" value="1" ver="5"/>
+		<designed target="SelectionMode" value="1" ver="5"/>
+		<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<object access-modifier="private" name="Columns" display-name="Columns" uuid="b096e1fd-7694-4204-a3f6-f6c1d05ef556" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="5">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="" ver="5"/>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="BackgroundColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="TextAlignment" value="129" ver="5"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<designed target="Width" value="100" ver="5"/>
+			<designed target="WidthResizeMode" value="1" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<designed target="Hidden" value="true" ver="5"/>
+			<designed target="NumberFormat" value="%d" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[path: string = Table.GetCellData(row, 3);
+//Debug.Log("Double click on " + path);	
+
+if (Files.IsDirectory(path))
+{
+	if (ChangeFolderAllowed)
+		BrowsedPath = Files.ToNative(path);
+}
+else
+	OnPathChosen.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="SortMode" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseTitleClick">
+				<body kind="om">
+					<![CDATA[// меняем направление сортировки: прямая -> обратная -> отключена и т.д.
+if (SortingEnabled)
+{
+	if (SortOrder == 0)
+		SortOrder = 1; // меняем направление сортировки
+	else SortingEnabled = false; // отключаем сортировку
+}
+else
+{
+	// включаем сортировку
+	SortOrder = 0;
+	SortingEnabled = true;
+}
+
+// eсли сортировка по новому столбцу, то увеличиваем приоритет
+if (SortingEnabled && SortPriority != sortPriorityCount)
+{
+	sortPriorityCount += 1;
+	SortPriority = sortPriorityCount;
+}
+
+// сортируем таблицу
+ApplySort();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Hidden" ver="5">
+				<body>
+					<![CDATA[!(Index == 0 || Index < 3 && ShowFileProperties)]]>
+				</body>
+			</do-trace>
+		</object>
+		<init target="TableModel" ver="5" ref="Model"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[if (row >= 0 && row < GetRowCount())
+	SelectedPath = Files.ToNative(GetCellData(row, 3));]]>
+			</body>
+		</do-on>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameColor" value="4278190080" ver="5"/>
+		<designed target="GridColor" value="4292401368" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="GridColor" ver="5">
+			<body>
+				<![CDATA[pTheme.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="HeaderVisible" ver="5">
+			<body>
+				<![CDATA[ShowFileProperties]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="3b3bf371-7a39-4629-bc5f-b4d7a31bdec4" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[Columns[0].Id = "name";
+Columns[0].Title = "Имя";
+Columns[0].WidthResizeMode = 1;
+
+Columns[1].Id = "modified";
+Columns[1].Title = "Дата изменения";
+Columns[1].WidthResizeMode = 3;
+
+Columns[2].Id = "size";
+Columns[2].Title = "Размер";
+Columns[2].WidthResizeMode = 3;
+
+Columns[3].Id = "id";
+Columns[3].Title = "Путь";
+
+Columns[4].Id = "ext";
+Columns[4].Title = "Расширение";]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Decorator" display-name="Decorator" uuid="09c7d557-ca13-499f-9ffa-6888fa71e7dd" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5" description="" cardinal="1">
+			<designed target="JsonDecorator" value="" ver="5"/>
+			<do-trace access-modifier="private" target="JsonDecorator" ver="5">
+				<body>
+					<![CDATA[GetJsonDecorator(selectionColor)]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var decorator = {
+    StyleDictionary: [{
+            'style_name': "selected_style",
+            'style': { 'background_color': '#' + selectionColor.toString(16) }
+        },
+    ],
+    Decorating: [{
+            'decoration_rule_name': "selected_rule",
+            'decoration_rule': { 'row:isSelected': true },
+            'rowstyle': "selected_style"
+        }
+    ]
+}
+
+return JSON.stringify(decorator);]]>
+			</body>
+			<param access-modifier="private" name="selectionColor" display-name="" uuid="6482a75d-a78d-4d3e-b341-127c7efc5fe0" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		</do>
+		<object access-modifier="private" name="sortPriorityCount" display-name="sortPriorityCount" uuid="81251d3a-898f-44a2-b798-00304b6fd2a8" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="extColumnIdex" display-name="extColumnIdex" uuid="7f8b34c6-6268-4109-ad74-e9a01d631437" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<init target="extColumnIdex" ver="5" value="4"/>
+		<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="c3b041fa-98f4-4332-9adb-529687acbafc" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+		<init target="selectionColor" ver="5" value="0xffcde8ff"/>
+		<do-trace access-modifier="private" target="selectionColor" ver="5">
+			<body>
+				<![CDATA[pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<designed target="Width" value="400" ver="5"/>
+	<designed target="Height" value="200" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="1ebf7bdb-f3c5-4699-928f-e08905c616db" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Model" display-name="Model" uuid="234bec62-d3e7-4d4d-81e3-617e9f7ad09b" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
+		<designed target="Frozen" value="false" ver="5"/>
+		<designed target="MaxRowCount" value="10000" ver="5"/>
+		<object access-modifier="private" name="Browser" display-name="Browser" uuid="3bfd0896-3939-4e01-9e5b-eba957551a61" base-type="FileSystemBrowser" base-type-id="7c964f97-1fe6-4502-9603-a3ede434dbd1" ver="5">
+			<designed target="Recursive" value="false" ver="5"/>
+			<designed target="WithExtension" value="true" ver="5"/>
+			<designed target="IncludeFolders" value="true" ver="5"/>
+			<designed target="IncludeFiles" value="true" ver="5"/>
+			<designed target="IncludeSymLinks" value="false" ver="5"/>
+			<designed target="Filter" value="" ver="5"/>
+			<init target="FileSystem" ver="5" ref="Files"/>
+			<designed target="ShowHiddenObjects" value="false" ver="5"/>
+			<designed target="ShowSystemObjects" value="false" ver="5"/>
+			<do-trace access-modifier="private" target="IncludeFolders" ver="5">
+				<body>
+					<![CDATA[ChangeFolderAllowed]]>
+				</body>
+			</do-trace>
+		</object>
+		<do access-modifier="private" name="Browse" display-name="Browse" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//Debug.Log("List browse folder: " + path);
+Model.Clear();
+Model.Browser.Browse(path);
+Model.BeginReadAsync();]]>
+			</body>
+			<param access-modifier="private" name="path" display-name="" uuid="e0a9c65d-6e9d-4710-93bc-9392414f77d3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ReadFinished">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Readed rows: " + String.ToString(rowsRead));]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="4f9ce3b7-131b-4240-8a0f-b4c9286e8c63" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="BrowsedPath" display-name="Отображаемая папка" uuid="146dcfdc-8af2-46cd-bdb5-2fce98790d87" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//Debug.Log("BrowsedPath changed: " + value);
+Model.Browse(value);
+SelectedPath = value;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowFileProperties" display-name="Показывать свойства файлов" uuid="e7e2a11e-15d9-493c-bfde-0aa4b1ee501e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="ChangeFolderAllowed" display-name="Разрешена смена папки" uuid="dbb14cdf-9c47-48f6-8d39-11f780570891" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<object access-modifier="private" name="SelectedPath" display-name="Выделенный путь" uuid="1a432c23-82e7-4aee-8d33-a3a2a9de9670" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (value != "")
+{
+	//Debug.Log("List selected path changed: " + value);
+	if (Files.IsFile(value))
+		SelectedFileName = Files.FileName(value);
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SelectedFileName" display-name="Выделенный файл" uuid="1c11d4ab-5769-4ef5-881e-e127eb8b8776" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="OnPathChosen" display-name="OnPathChosen" uuid="8b9761b3-5934-4990-b5bd-f8c5d15d7adc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="3949d912-4b61-42d2-aecc-b78bb8c647c1" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="Filter" display-name="Filter" uuid="daeee22a-7b4b-4f05-a882-69a1a962d2ae" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[extIndex: int4 = String.IndexOf(value, ".");
+filter: string = String.SubString(value, extIndex);
+Table.Columns[Table.extColumnIdex].JsonFilter = "{\"or\":[{\"data\":\"" + filter + "\"},{\"data\":\"\"}]}";]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="ChangeFolderAllowed" ver="5" value="true"/>
+</type>
+

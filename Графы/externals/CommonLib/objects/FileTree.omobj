@@ -1,0 +1,373 @@
+<type access-modifier="private" name="FileTree" display-name="FileTree" uuid="7f2c00af-a320-48da-9e05-65caeb65f06b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="200" ver="5"/>
+	<designed target="Height" value="200" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="69419f62-0b9d-4ce2-9c3f-09b70f106b8b" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="4e2de93a-37c4-421c-9410-47e1ec0a6b89" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+		<do-trace access-modifier="private" target="RootPath" ver="5">
+			<body>
+				<![CDATA[here.RootPath]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="8a9aa4c1-3b63-425d-bc4b-9a030d23d057" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="SelectedPath" display-name="Выделенный путь" uuid="44536105-1d77-42c2-9835-cc69aeef09b4" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="Tree" display-name="Tree" uuid="d418f65b-ae91-40d6-8911-4affe2a0d4ad" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="200" ver="5"/>
+		<designed target="Height" value="200" ver="5"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameVisible" value="false" ver="5"/>
+		<designed target="ColumnCount" value="0" ver="5"/>
+		<object access-modifier="private" name="DataSource" display-name="DataSource" uuid="9310aa29-7362-4a77-8a0f-668fe38ae166" base-type="TreeDataSource" base-type-id="be3b13bc-c755-41ae-bc8c-867e6c690575" ver="5">
+			<object access-modifier="private" name="NameColumn" display-name="NameColumn" uuid="18a0aa96-9c55-4df1-84e2-81f67a74a9da" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5">
+				<designed target="Name" value="Папки" ver="5"/>
+				<designed target="Id" value="name" ver="5"/>
+				<designed target="Type" value="1" ver="5"/>
+			</object>
+			<object access-modifier="private" name="IdColumn" display-name="IdColumn" uuid="39637268-0df5-49fd-87d4-0132056aa920" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5">
+				<designed target="Name" value="id" ver="5"/>
+				<designed target="Id" value="id" ver="5"/>
+				<designed target="Type" value="2" ver="5"/>
+			</object>
+			<object access-modifier="private" name="ParentColumn" display-name="ParentColumn" uuid="2889deef-1019-4579-bd9e-48f0feb05632" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5">
+				<designed target="Name" value="parent_id" ver="5"/>
+				<designed target="Id" value="parent_id" ver="5"/>
+				<designed target="Type" value="3" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Expandable" display-name="Expandable" uuid="d617ea16-5ffe-4b0e-a932-75f8c50f801d" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5">
+				<designed target="Name" value="expandable" ver="5"/>
+				<designed target="Id" value="expandable" ver="5"/>
+				<designed target="Type" value="6" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Browser" display-name="Browser" uuid="74664cb1-de58-49c2-800a-fb30b5eb10c8" base-type="FileSystemBrowser" base-type-id="7c964f97-1fe6-4502-9603-a3ede434dbd1" ver="5">
+				<designed target="Recursive" value="false" ver="5"/>
+				<designed target="WithExtension" value="false" ver="5"/>
+				<designed target="IncludeFolders" value="true" ver="5"/>
+				<designed target="IncludeFiles" value="false" ver="5"/>
+				<designed target="IncludeSymLinks" value="false" ver="5"/>
+				<designed target="Filter" value="" ver="5"/>
+				<init target="FileSystem" ver="5" ref="Files"/>
+				<do-trace access-modifier="private" target="IncludeFiles" ver="5">
+					<body>
+						<![CDATA[here.ShowFiles]]>
+					</body>
+				</do-trace>
+				<designed target="ShowHiddenObjects" value="false" ver="5"/>
+				<designed target="ShowSystemObjects" value="false" ver="5"/>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnNodeReceived">
+				<body kind="om">
+					<![CDATA[SetChildrenIcons(browsedItemId);
+
+if (selectedPath != "")
+	TrySelectItem();]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="browsedItemId" display-name="browsedItemId" uuid="03d6f18c-24e9-4b2d-8315-554a236b12b6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="6b46c9ac-4c7c-415f-b325-ab2ed93c9d01" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+				<body kind="om">
+					<![CDATA[SetColumnHidden(1, true);
+SetColumnHidden(2, true);
+SetColumnHidden(3, true);]]>
+				</body>
+			</do-on>
+		</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemExpanded">
+			<body kind="om">
+				<![CDATA[SetItemIcon(itemId, true);
+BrowseNext(itemId);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ItemClicked">
+			<body kind="om">
+				<![CDATA[SelectedPath = Files.ToNative(GetItemText(itemId, 1));]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ItemCollapsed">
+			<body kind="om">
+				<![CDATA[SetItemIcon(itemId, false);]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="SetItemIcon" display-name="SetItemIcon" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[icon: string = GetItemIconPath(itemId, isExpanded);
+SetItemIconPath(itemId, icon, 0);]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="8f288b87-ecb0-4c0f-bdda-0c94fa737827" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="isExpanded" display-name="" uuid="a1793f48-a650-442a-ade2-46fd2b5c0d79" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetItemIconPath" display-name="GetItemIconPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[path : string = GetItemText(itemId, 1);
+
+fileName: string;
+if (Files.IsDirectory(path))
+{
+	if (Files.ParentPath(path) == "." && String.Length(path) > 1 && String.SubString(path, 1, 1) == ":")
+		fileName = "Drive16.png";
+	else fileName = isExpanded ? "FolderOpened.png" : "FolderClosed.png";
+}
+else
+	fileName = "File.png";
+
+return "CommonLib_Icons/" + fileName;]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="daf70569-513b-4de6-8a6a-51724c89c51c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="isExpanded" display-name="" uuid="8daeaf2e-e5cc-4b71-a339-40782b182dec" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetChildrenIcons" display-name="SetChildrenIcons" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[// Обработка элементов узла
+var childrenJson = EnumChildrenJSON(parentId);
+if (childrenJson != "")
+{
+	var children = JSON.parse(childrenJson);
+
+	// Устанавливаем иконку для каждого элемента
+	for (let i = 0; i < children.length; i++)
+		SetItemIcon(children[i], false);
+}]]>
+			</body>
+			<param access-modifier="private" name="parentId" display-name="" uuid="62a16ea3-3378-4856-89f7-c5c2f6df7ad3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="BrowseNext" display-name="BrowseNext" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Browse next " + itemId + ", ChildCount=" + String.ToString(ChildCount(itemId)));
+if (Files.IsDirectory(itemId) && ChildCount(itemId) == 0)
+{
+	DataSource.browsedItemId = itemId;
+	DataSource.Browser.Browse(itemId);
+}]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="8319daf1-5e17-46bd-9b17-7daf853f5bf5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetItemId" display-name="GetItemId" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[//Debug.Log("FileTree.GetItemId for " + path);
+var pathSeparator  = Files.PreferredSeparator();
+
+// подготовим массив имен узлов, по которым нужно будет делать поиск
+var trace = [];
+
+// абсолютный путь может начинаться с имени диска, его нужно выделить специальным образом
+var colon = path.indexOf(":" + pathSeparator);
+if (colon > 0)
+{
+	trace.push(path.substring(0, colon + 2));
+	path = path.substring(colon + 2);
+}
+
+// добавляем остальные части пути
+var steps = path.split(pathSeparator);
+for (let i = 0; i < steps.length; i++)
+	trace.push(steps[i]);
+
+// получаем список дочерних идентификаторов
+var childrenJson = EnumChildrenJSON("");
+while(childrenJson != "")
+{
+	// разбираем идентификаторы
+	var children = JSON.parse(childrenJson);
+	
+	// обнуляем список, чтобы выйти из цикла, если не будет найден следующий узел в пути
+	childrenJson = "";
+	
+	for (let i = 0; i < children.length; i++)
+	{
+		var itemId = children[i];
+		if (GetItemText(itemId, 0) == trace[0])
+		{
+			// нашли следующий узел в пути
+			//log("нашли " + trace[0]);
+			if (trace.length == 1)
+				return itemId; // это последний узел, поэтому возвращаем идентификатор
+			else
+			{
+				// убираем найденный узел из пути и ищем дальше
+				trace.shift();
+				childrenJson = EnumChildrenJSON(itemId);
+				break;
+			}
+		}		
+	}
+}
+
+// не нашли узел по заданному пути
+//log("не нашли " + path);
+return "";]]>
+			</body>
+			<param access-modifier="private" name="path" display-name="" uuid="7b92f7d5-5629-4f9c-866b-ea370f899bda" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<object access-modifier="private" name="selectedPath" display-name="selectedPath" uuid="63fefb03-1c8c-4f6a-8502-cd5a0dbf356c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<do access-modifier="private" name="TrySelectItem" display-name="TrySelectItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//Debug.Log("After browse try select " + selectedPath);
+var path = selectedPath;
+
+// подготовим массив имен узлов, по которым нужно будет делать поиск
+var trace = [];
+
+var pathSeparator  = Files.PreferredSeparator();
+
+// абсолютный путь может начинаться с имени диска, его нужно выделить специальным образом
+var colon = path.indexOf(":" + pathSeparator);
+if (colon > 0)
+{
+	trace.push(path.substring(0, colon + 2));
+	path = path.substring(colon + 2);
+}
+
+// добавляем остальные части пути
+var steps = path.split(pathSeparator);
+for (let i = 0; i < steps.length; i++)
+	trace.push(steps[i]);
+
+var nextItemId;
+
+// получаем список дочерних идентификаторов
+var childrenJson = EnumChildrenJSON("");
+while(childrenJson != "")
+{
+	// разбираем идентификаторы
+	var children = JSON.parse(childrenJson);
+	
+	// обнуляем список, чтобы выйти из цикла, если не будет найден следующий узел в пути
+	childrenJson = "";
+	
+	for (let i = 0; i < children.length; i++)
+	{
+		var itemId = children[i];
+		if (GetItemText(itemId, 0) == trace[0])
+		{
+			// нашли следующий узел в пути
+			if (trace.length == 1)
+			{
+				// это последний узел, больше искать не нужно
+				selectedPath = "";
+	
+				// выделяем найденный узел дерева
+				SetCurrentItem(itemId);
+				//log("FileTree.SetCurrentItem = " + itemId);
+				SelectedPath = Files.ToNative(GetItemText(itemId, 1));				
+				
+				// и выходим
+				return;
+			}
+			else
+			{
+				// убираем найденный узел из пути и ищем дальше
+				trace.shift();
+				nextItemId = itemId;
+				childrenJson = EnumChildrenJSON(itemId);
+				break;
+			}
+		}		
+	}
+}
+
+// не нашли узел по заданному пути
+if (nextItemId != null)
+{
+	// пробуем просмотреть последний найденный узел
+	BrowseNext(nextItemId);
+}]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="ItemDoubleClicked">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Double click on " + SelectedPath);
+if (SelectedPath != "")
+	OnPathChosen.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<designed target="HeaderVisible" value="false" ver="5"/>
+		<designed target="CurrentItem" value="" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="86e56517-491b-4952-af12-1fc63e146ef7" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="1" ver="5"/>
+			<designed target="Bottom" value="1" ver="5"/>
+			<designed target="Left" value="1" ver="5"/>
+			<designed target="Right" value="1" ver="5"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="61446bab-3eb0-49f3-8242-18ddb6b3a9f1" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ShowFiles" display-name="Показывать файлы" uuid="8f6b981b-a4e0-448f-8ed5-5c70a9904050" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<do access-modifier="private" name="Refresh" display-name="Refresh" ver="5" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" type="void">
+		<body kind="om">
+			<![CDATA[path = Files.ToNative(path);
+//Debug.Log("FileTree.Refresh " + path);
+Tree.RemoveChildren(path);
+Tree.DataSource.browsedItemId = Tree.GetItemId(path);
+Tree.DataSource.Browser.Browse(path);]]>
+		</body>
+		<param access-modifier="private" name="path" display-name="" uuid="5c93caef-4da2-4996-bd8b-b687e7ab51ac" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="Select" display-name="Select" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[path = Files.ToNative(path);
+itemId: string = Tree.GetItemId(path);
+if (itemId != "")
+{
+	//Debug.Log("Выделяем найденный узел дерева: " + itemId);
+	Tree.SetCurrentItem(itemId);
+	SelectedPath = path;
+}
+else
+{
+	// если узлы дерева еще не успели загрузиться, то запоминаем нужный путь,
+	// а после окончании загрузки попытаемся выделить узел еще раз
+	//Debug.Log("После загрузки попытаемся выделить " + path);	
+	Tree.selectedPath = path;
+}]]>
+		</body>
+		<param access-modifier="private" name="path" display-name="" uuid="6ec1f524-68ee-4007-9924-23ed6d09851c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="OnPathChosen" display-name="OnPathChosen" uuid="653ab041-1c21-4cc0-9bc5-7590ab51fe16" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="918068c5-93af-4286-86e4-517e98ae30d5" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+</type>
+

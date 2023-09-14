@@ -1,0 +1,165 @@
+<type access-modifier="private" name="UnacknowledgedEventsButton" display-name="UnacknowledgedEventsButton" uuid="10500900-7ec0-4eed-a752-ecadc74566bc" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="75" ver="5"/>
+	<designed target="Height" value="23" ver="5"/>
+	<designed target="Checkable" value="false" ver="5"/>
+	<designed target="Checked" value="false" ver="5"/>
+	<designed target="Text" value="UEButton" ver="5"/>
+	<designed target="TextAlignment" value="132" ver="5"/>
+	<designed target="Font" value="MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0" ver="5"/>
+	<designed target="FontColor" value="4278190080" ver="5"/>
+	<designed target="OnClickFontColor" value="4278190080" ver="5"/>
+	<designed target="OnHoverFontColor" value="4278190080" ver="5"/>
+	<designed target="DisabledFontColor" value="4278190080" ver="5"/>
+	<designed target="BrushColor" value="4293980400" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="OnClickBrushColor" value="4288716960" ver="5"/>
+	<designed target="OnClickBrushStyle" value="1" ver="5"/>
+	<designed target="OnHoverBrushColor" value="4294967295" ver="5"/>
+	<designed target="OnHoverBrushStyle" value="1" ver="5"/>
+	<designed target="DisabledBrushColor" value="4288716960" ver="5"/>
+	<designed target="DisabledBrushStyle" value="1" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="OnClickPenColor" value="4278190080" ver="5"/>
+	<designed target="OnClickPenStyle" value="1" ver="5"/>
+	<designed target="OnClickPenWidth" value="1" ver="5"/>
+	<designed target="OnHoverPenColor" value="4278190080" ver="5"/>
+	<designed target="OnHoverPenStyle" value="1" ver="5"/>
+	<designed target="OnHoverPenWidth" value="1" ver="5"/>
+	<designed target="DisabledPenColor" value="4288716960" ver="5"/>
+	<designed target="DisabledPenStyle" value="1" ver="5"/>
+	<designed target="DisabledPenWidth" value="1" ver="5"/>
+	<object access-modifier="private" name="ApAlarmQuery_1" display-name="ApAlarmQuery_1" uuid="1ede3126-ae4f-419c-b895-c4543b032379" base-type="ApAlarmQuery" base-type-id="f66d4d41-8e9d-4eee-8b83-702143b5768d" ver="4">
+		<designed target="Mode" value="3" ver="4"/>
+		<designed target="HistoricalRangeStart" value="0" ver="4"/>
+		<designed target="HistoricalRangeEnd" value="0" ver="4"/>
+		<designed target="Filter" value="" ver="4"/>
+		<designed target="HistoricalFilter" value="" ver="4"/>
+		<designed target="Active" value="true" ver="4"/>
+		<designed target="RemoveAckedInactive" value="false" ver="4"/>
+		<designed target="RefreshAtStart" value="true" ver="4"/>
+		<designed target="HistoryPreloadInterval" value="0" ver="4"/>
+		<designed target="HistoryExpandInterval" value="0" ver="4"/>
+		<designed target="HistoricalEventsChronology" value="0" ver="4"/>
+		<init target="Source" ver="5" ref="ApSourceRef"/>
+	</object>
+	<object access-modifier="private" name="DataAggregator_1" display-name="DataAggregator_1" uuid="45af6b7f-e653-4290-bf89-1c6907d546ba" base-type="DataAggregator" base-type-id="7d485f82-e1cb-4cab-8a7c-6cc9febb2948" ver="4">
+		<init target="InputRowsetProvider" ver="4" ref="ApAlarmQuery_1"/>
+		<designed target="Query" value="" ver="4"/>
+		<designed target="NotificationInterval" value="1000" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="4" event="OnDataChanged">
+			<body kind="om">
+				<![CDATA[Group1Count = Variant.ToInt4(DataAggregator_1.GetData("rule1"), 0);
+Group2Count = Variant.ToInt4(DataAggregator_1.GetData("rule2"), 0);
+UnacknowledgedEventsChanged.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="FilterUpdateInterval" value="1000" ver="4"/>
+	</object>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="4124a61f-7fb7-4d5e-8e91-a57fb0723096" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="javascript">
+				<![CDATA[var query = {aggregate:[], condition:{AND:[ {'ack': false}, {'>=': {active_time: 'now-'+`${ControlInterval}`+'s'}}]}}
+//query.aggregate.push({rule1:{count:{condition:{AND:[{'>=': {severity:1}},{'<=':{severity:333}}]}}}});
+//query.aggregate.push({rule2:{count:{condition:{AND:[{'>=': {severity:334}},{'<=':{severity:1000}}]}}}});
+query.aggregate.push({rule1:{count:{condition:JSON.parse(MakeRequestJSON(Group1Severity))}}});
+query.aggregate.push({rule2:{count:{condition:JSON.parse(MakeRequestJSON(Group2Severity))}}});
+DataAggregator_1.Query = JSON.stringify(query);
+
+// Формируем запрос событий
+ApAlarmQuery_1.Mode = 2;
+ApAlarmQuery_1.RefreshAtStart = true;
+ApAlarmQuery_1.HistoryPreloadInterval = ControlInterval;
+ApAlarmQuery_1.Reload();
+DataAggregator_1.Execute();]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="ApSourceRef" display-name="ApSourceRef" uuid="519f6a72-ce5f-4414-8600-cda02964e919" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="Group1Count" display-name="Group1Count" uuid="582c5193-41e3-4bfd-b0b4-4658f7038715" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="Group2Count" display-name="Group2Count" uuid="1e0a2a0b-5824-4eae-978b-66a03e37761d" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="UnacknowledgedEventsChanged" display-name="UnacknowledgedEventsChanged" uuid="01547f3e-c27b-42ad-abb8-93aed1e4e112" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="ControlInterval" display-name="ControlInterval" uuid="8805131d-af34-4aa8-ad5a-7bb2416095e7" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<do access-modifier="private" name="MakeRequestJSON" display-name="MakeRequestJSON" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[//Функция преобразует исходную строку в формат JSON
+//определяются логические операторы и происходит поэтапное формирование логических выражений из элементов массива и происходит формирование строки в JSON формате
+var str = inputString;
+var objectInfo = {};
+var JSONStr = '';
+var tempArray = [];
+var AND = [];
+
+//Если пустая строка, то возвращаем "0" для того, чтобы в очередь не попадали значения
+if (inputString == "") return '{"severity": 0 }';
+
+//Шаблон диапазона
+var gapPattern = /\d+[-]\d+/;
+
+//Заполняем массив символами строки
+var commonArray = str.split(",");
+
+//Фукнция получения выражения вида ">": { "severity": 10 }"
+function MakeExpression(str,gap)
+{
+	let argument = str.match(/\d+/g);
+	let expression = {};
+	//Если имеем дело с диапазоном
+	if (argument==null || argument.length==0) expression = {'data:severity':0};
+	else if (gap != "") expression = {[gap]: {'severity':parseInt(argument[0])}};
+	else expression = {'severity':parseInt(argument[0])};
+	return expression
+}
+
+//Если элемент всего один и не диапазон
+if (commonArray.length == 1 && !gapPattern.test(commonArray[0])) 
+{
+	JSONStr = JSON.stringify(MakeExpression(commonArray[0],""));
+	return JSONStr;
+}
+
+//Формирование JSON-строки
+for (let i = 0; i < commonArray.length; i++)
+{
+	let tempObject = {};
+	tempObject[`AND`] = [];
+	if (gapPattern.test(commonArray[i]))
+	{
+		tempArray = commonArray[i].match(/\d+/g);
+		tempObject[`AND`].push(MakeExpression(tempArray[0],">="));
+		tempObject[`AND`].push(MakeExpression(tempArray[1],"<="));
+		if (commonArray.length > 1)
+		{
+			if (objectInfo[`OR`] == undefined) objectInfo[`OR`] = [];	
+			objectInfo[`OR`].push(tempObject);
+		}
+		else objectInfo = tempObject;
+	}
+	else
+	{
+		if (objectInfo[`OR`] == undefined) objectInfo[`OR`] = [];	
+		objectInfo[`OR`].push(MakeExpression(commonArray[i],""));
+	}
+}
+//записываем объект в виде строки
+JSONStr = JSON.stringify(objectInfo);
+//log(JSONStr);
+return JSONStr;
+]]>
+		</body>
+		<param access-modifier="private" name="inputString" display-name="" uuid="f8ec74aa-142c-4d79-92d0-2bccd5ea4ffb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="Group1Severity" display-name="Group1Severity" uuid="061c8aeb-4df2-4501-9f5e-7315b4685cb0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="Group2Severity" display-name="Group2Severity" uuid="8d5380d6-509f-4aa1-8f39-c2c286a99854" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+</type>
+

@@ -1,0 +1,325 @@
+<type access-modifier="private" name="FolderLine" display-name="FolderLine" uuid="cd134757-b096-415f-a4e4-f4d36ee92075" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<designed target="Width" value="550" ver="4"/>
+	<designed target="Height" value="45" ver="4"/>
+	<designed target="RoundingRadius" value="0" ver="4"/>
+	<designed target="PenColor" value="4278190080" ver="4"/>
+	<designed target="PenStyle" value="0" ver="4"/>
+	<designed target="PenWidth" value="1" ver="4"/>
+	<designed target="BrushColor" value="4278190080" ver="4"/>
+	<designed target="BrushStyle" value="0" ver="4"/>
+	<object access-modifier="private" name="UpButton" display-name="UpButton" uuid="bd69d070-bd69-459f-b9ec-5af0f76b3059" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+		<designed target="X" value="3" ver="4"/>
+		<designed target="Y" value="10" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="24" ver="4"/>
+		<designed target="Height" value="24" ver="4"/>
+		<designed target="Checkable" value="false" ver="4"/>
+		<designed target="Text" value="" ver="4"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+		<designed target="BrushColor" value="4293980400" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="OnClickBrushStyle" value="0" ver="4"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="0" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="0xff808080" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="0xff808080" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledPenStyle" value="0" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<object access-modifier="private" name="Icon" display-name="Icon" uuid="2e85558a-ebc4-469f-82b9-2a17bc60d873" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="4">
+			<designed target="X" value="4" ver="4"/>
+			<designed target="Y" value="4" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="16" ver="4"/>
+			<designed target="Height" value="16" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="0" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="ImageFile" value="CommonLib_Icons/ArrowUp.png" ver="4"/>
+			<designed target="Active" value="true" ver="4"/>
+			<designed target="CurrentFrameNumber" value="0" ver="4"/>
+			<designed target="Speed" value="1" ver="4"/>
+		</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[BrowseUp();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[CanBrowseUp(FolderPath)]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Opacity" ver="5">
+			<body>
+				<![CDATA[CanBrowseUp(FolderPath) ? 1 : 0.5]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="OnHoverPenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<designed target="Checked" value="false" ver="4"/>
+	</object>
+	<object access-modifier="private" name="FolderEdit" display-name="FolderEdit" uuid="21e7db17-6331-4d07-8bd0-c5f14c86bfcb" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="4">
+		<designed target="X" value="30" ver="4"/>
+		<designed target="Y" value="10" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="490" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="Text" value="" ver="4"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="TextAlignment" value="129" ver="4"/>
+		<designed target="HideInput" value="false" ver="4"/>
+		<designed target="PlaceholderText" value="" ver="4"/>
+		<designed target="ReadOnly" value="false" ver="4"/>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[FolderPath]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="EditFinished">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Folder edited: " + text);
+if (Files.IsDirectory(text))
+	FolderPath = text;
+else ShowError.Invoke();]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="2a00ca39-1c4d-4d20-8cfb-94e35daf36ec" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="4998fcfa-8c2f-4bf7-9890-1c8e474dd253" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+					<init target="Message" ver="5">
+						<expr>
+							<![CDATA["Папка \"" + Text + "\" не найдена, попробуйте указать другой путь"]]>
+						</expr>
+					</init>
+					<init target="Icon" ver="4" value="2"/>
+					<init target="Buttons" ver="4" value="0"/>
+					<designed target="WindowCaption" value="Путь к папке" ver="4"/>
+				</object>
+			</do-on>
+		</object>
+	</object>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[NewFolderButton.X = Width - NewFolderButton.Width - 4;
+
+editWidth: double = Width - FolderEdit.X - 2;
+if (CreateFolderAllowed)
+	editWidth -= NewFolderButton.Width + 4;
+FolderEdit.Width = editWidth;
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="e3e7fc81-58fd-446f-9329-e4d40f28b3cc" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="8d470a11-d60d-4d67-af2d-4c9a4877d8f7" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="4">
+		<designed target="RootPath" value="/" ver="4"/>
+		<do-trace access-modifier="private" target="RootPath" ver="5">
+			<body>
+				<![CDATA[here.RootPath]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="lastError" display-name="lastError" uuid="b2afbece-686c-4b9b-8a11-a9e36fc5457a" base-type="FileSystemError" base-type-id="38147fa1-a364-43d4-bd0b-07ee8556c2f2" ver="5"/>
+		<init target="Error" ver="5" ref="lastError"/>
+	</object>
+	<object access-modifier="private" name="RootPath" display-name="Корневой путь" uuid="d99975e1-fe8e-47c6-ae39-312a0751bf7e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+	<do access-modifier="private" name="BrowseUp" display-name="BrowseUp" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[parent: string = Files.ParentPath(FolderPath);
+if (Files.IsDirectory(parent))
+{
+	//Debug.Log("Browse up from " + FolderPath + " to " + parent);
+	if (parent == ".") // корень файловой системы, доступный для просмотра
+		FolderPath = "";
+	else FolderPath = Files.ToNative(parent);
+}]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="FolderPath" display-name="Путь к папке" uuid="ef99ca50-d264-42d3-8ce7-f1af396a750d" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+	<object access-modifier="private" name="NewFolderButton" display-name="NewFolderButton" uuid="29aeb2b5-5a3f-4d16-85ee-a31188e8033b" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+		<designed target="X" value="522" ver="4"/>
+		<designed target="Y" value="10" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="Новая папка" ver="4"/>
+		<designed target="Width" value="24" ver="4"/>
+		<designed target="Height" value="24" ver="4"/>
+		<designed target="Checkable" value="false" ver="4"/>
+		<designed target="Text" value="" ver="4"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+		<designed target="BrushColor" value="4293980400" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="OnClickBrushStyle" value="0" ver="4"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="0" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="0" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="0xff808080" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="0xff808080" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="DisabledPenStyle" value="0" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<object access-modifier="private" name="Icon" display-name="Icon" uuid="33df7214-cf35-4c96-8645-df0f7b1890fc" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="4">
+			<designed target="X" value="4" ver="4"/>
+			<designed target="Y" value="4" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="16" ver="4"/>
+			<designed target="Height" value="16" ver="4"/>
+			<designed target="PenColor" value="4278190080" ver="4"/>
+			<designed target="PenStyle" value="0" ver="4"/>
+			<designed target="PenWidth" value="1" ver="4"/>
+			<designed target="ImageFile" value="CommonLib_Icons/NewFolder.png" ver="4"/>
+			<designed target="Active" value="true" ver="4"/>
+			<designed target="CurrentFrameNumber" value="0" ver="4"/>
+			<designed target="Speed" value="1" ver="4"/>
+		</object>
+		<object access-modifier="private" name="FolderName" display-name="FolderName" uuid="0e39e4cc-ab92-492f-bb0d-e18c704abc52" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4">
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[InputText == "" ? "Имя папки не должно быть пустым" : ""]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="CreateFolder" display-name="CreateFolder" uuid="05d97a48-3278-45d1-9ff1-87bce7cd1816" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[folderPath: string = Files.CombinePath(FolderPath, FolderName.Value);
+
+// сбрасываем введенное значение, чтобы оно не отображалось при повторном вызове диалога
+FolderName.InputText = "";
+
+if (!Files.IsDirectory(folderPath))
+{
+	Files.CreateRecursiveFolder(folderPath);
+	if (Files.lastError.State)
+		Debug.Log("Create folder error: " + Files.lastError.Text);
+}
+
+if (Files.IsDirectory(folderPath))
+{
+	FolderPath = Files.ToNative(folderPath);
+	OnFolderCreated.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="9aaa6b47-246d-4cd9-802d-27786e817f6e" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+				<designed target="WindowCaption" value="Имя новой папки" ver="4"/>
+				<init target="Result" ver="4" ref="FolderName"/>
+				<init target="OkAction" ver="4" ref="CreateFolder"/>
+				<init target="pTheme" ver="4" ref="here.pTheme"/>
+				<init target="WindowIconPath" ver="5">
+					<expr>
+						<![CDATA[Icon.ImageFile]]>
+					</expr>
+				</init>
+			</object>
+		</do-on>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[here.CreateFolderAllowed]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="OnHoverPenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<designed target="Checked" value="false" ver="5"/>
+	</object>
+	<object access-modifier="private" name="CreateFolderAllowed" display-name="Разрешено создание папок" uuid="b7b7b22c-cf22-4716-ae61-d1e88833e2b3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="8261b25e-6271-42df-82f9-4f85604d5ebe" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="CanBrowseUp" display-name="CanBrowseUp" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[parent: string = Files.ParentPath(folderPath);
+//Debug.Log("Can browse to " + parent + "?");
+return Files.IsDirectory(parent) && parent != "";]]>
+		</body>
+		<param access-modifier="private" name="folderPath" display-name="" uuid="a40dc72c-c8f4-4606-8bd3-555fbc101451" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<object access-modifier="private" name="OnFolderCreated" display-name="OnFolderCreated" uuid="c6c81354-9add-469a-a329-28bded4edbd7" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

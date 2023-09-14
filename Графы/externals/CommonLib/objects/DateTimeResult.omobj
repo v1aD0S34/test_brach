@@ -1,0 +1,4 @@
+<type access-modifier="public" name="DateTimeResult" display-name="DateTimeResult" uuid="eeb829fa-15e3-4693-8f06-a8504de6c239" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="Value" display-name="Value" uuid="3507b47a-b808-463d-b5b3-f5bfd11b76e8" base-type="timestamp" base-type-id="27c3d64b-a025-4ed3-8f63-d47e43a496aa" ver="5" description="" cardinal="1"/>
+</type>
+

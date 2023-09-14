@@ -1,0 +1,100 @@
+<type access-modifier="protected" name="Popup" display-name="Popup" uuid="346ea4f8-f80d-44c4-904b-258f28be2b43" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="50" ver="5"/>
+	<designed target="Height" value="50" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="51" ver="5"/>
+	<designed target="WindowHeight" value="51" ver="5"/>
+	<designed target="WindowCaption" value="" ver="5"/>
+	<designed target="ShowWindowCaption" value="false" ver="5"/>
+	<designed target="ShowWindowMinimize" value="true" ver="5"/>
+	<designed target="ShowWindowMaximize" value="true" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="0" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="0" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="5131c1c4-9a65-4404-b33e-ca81acf1691e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="2810f562-af80-4d3d-bf9c-5c50832811c5" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[theme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[theme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="theme" display-name="theme" uuid="5609aff8-d705-4849-bcdc-494bc2587978" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="4">
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BackgroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.DisabledFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="SelectionColor" ver="5">
+			<body>
+				<![CDATA[pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BorderColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+			<body>
+				<![CDATA[pTheme.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[WindowUtilities.CorrectPositionAboutPoint(WindowX, WindowY, PointHeight);]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="PointHeight" display-name="PointHeight" uuid="131e2cde-4948-4833-ae69-514f5b06a1ad" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+	<object access-modifier="private" name="WindowUtilities" display-name="WindowUtilities" uuid="ccab2a47-52da-4907-8f60-1c517458f3a4" base-type="WindowUtilities" base-type-id="4a818ada-44b1-4070-9b9d-c28dc3447ece" ver="5" description="" cardinal="1">
+		<init target="pForm" ver="5" ref="here"/>
+	</object>
+</type>
+

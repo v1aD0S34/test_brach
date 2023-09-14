@@ -1,0 +1,794 @@
+<type ver="2" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" base-type="Rectangle" uuid="e8a9dba0-e07f-4bfe-95f9-b75887e3f21b" display-name="Alarms" name="Alarms" access-modifier="public">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="1000" ver="2"/>
+	<designed target="Height" value="600" ver="2"/>
+	<designed target="RoundingRadius" value="0" ver="2"/>
+	<designed target="PenColor" value="0xff5f5f5f" ver="2"/>
+	<designed target="PenStyle" value="1" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="Init" display-name="Init" uuid="79d83610-cde9-4716-b9c3-a58e6a44c17a" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[Complete = true;]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="Complete" display-name="Complete" uuid="e25f4d75-5f34-4e56-ad1e-975956f8ade4" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1"/>
+	</object>
+	<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="d2366b3a-0666-4828-93e3-cd14f3d2e21a" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="2">
+		<designed target="Active" value="true" ver="2"/>
+		<init target="ParentSource" ver="5" ref="init_ApSource"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<designed target="Path" value="" ver="5"/>
+		<designed target="ReAdvise" value="0" ver="5"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+	</object>
+	<object access-modifier="private" name="AcknowledgmentDoubleClick" display-name="Квитировать события повторным кликом по выделенной строке" uuid="9194998b-9be5-4a32-b058-1155e4d9e269" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AcknowledgmentDoubleClick != AcknowledgmentDoubleClick)
+	AlarmsTable.AcknowledgmentDoubleClick = AcknowledgmentDoubleClick;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AcknowledgmentAllVisible" display-name="Квитировать только видимые" uuid="2afe4441-8be5-4479-9e50-051c1ce1c59f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AcknowledgmentAllVisible != AcknowledgmentAllVisible)
+	AlarmsTable.AcknowledgmentAllVisible = AcknowledgmentAllVisible;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AllowAckSequence" display-name="Квитировать последовательность событий" uuid="31cbcfd1-ce93-4ff4-83d8-20423d05307e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AllowAckSequence != AllowAckSequence)
+	AlarmsTable.AllowAckSequence = AllowAckSequence;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="RequestAcknowledgmentComment" display-name="Запрашивать комментарий при квитировании" uuid="0b0f12c3-9b9a-45b7-8648-3de8c82dca7a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.RequestAcknowledgmentComment != RequestAcknowledgmentComment)
+	AlarmsTable.RequestAcknowledgmentComment = RequestAcknowledgmentComment;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AllowAddComment" display-name="Разрешить добавлять комментарий" uuid="49bea60c-1c75-401a-ab5c-9593b8a2399a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AllowAddComment != AllowAddComment)
+	AlarmsTable.AllowAddComment = AllowAddComment;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="WriteComputerNameToComment" display-name="Дописывать название АРМ в комментарий квитирования" uuid="49f122b6-be2a-41e1-9d5a-0ea68fb908dd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.WriteComputerNameToComment != WriteComputerNameToComment)
+	AlarmsTable.WriteComputerNameToComment = WriteComputerNameToComment;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AcknowledgmentAvailable" display-name="Доступность функций квитирования" uuid="edeb7143-5c74-46de-9b33-8ebe028f8f47" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AcknowledgmentAvailable != AcknowledgmentAvailable)
+	AlarmsTable.AcknowledgmentAvailable = AcknowledgmentAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AckAllAvailable" display-name="Доступность кнопок квитирования всех сообщений" uuid="e8c22b34-3acd-4e44-b469-aa589ba5aeeb" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AckAllAvailable != AckAllAvailable)
+	AlarmsTable.AckAllAvailable = AckAllAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ClearingCurrentEventsAvailable" display-name="Доступность функций очистки" uuid="d45429a8-3982-4346-b43b-1dec3d6c5f52" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ClearingCurrentEventsAvailable != ClearingCurrentEventsAvailable)
+	AlarmsTable.ClearingCurrentEventsAvailable = ClearingCurrentEventsAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="EditingSettingsAvailable" display-name="Доступность редактирования настроек" uuid="3122a345-1805-41de-a86e-a86fbc4070d9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.EditingSettingsAvailable != EditingSettingsAvailable)
+	AlarmsTable.EditingSettingsAvailable = EditingSettingsAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ExportDataAvailability" display-name="Доступность сохранения данных в табличный файл" uuid="ed7cfed8-4e4b-4916-99b9-9235e1041ec4" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ExportDataAvailability != ExportDataAvailability)
+	AlarmsTable.ExportDataAvailability = ExportDataAvailability;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="FilterAvailable" display-name="Доступность фильтрации" uuid="5ae3de91-ffb9-4d2b-a8b7-92e6ed715211" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.FilterAvailable != FilterAvailable)
+	AlarmsTable.FilterAvailable = FilterAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SoundPlaybackManagmentAvailable" display-name="Доступность кнопок управления проигрыванием звуков" uuid="a197b535-2c80-4bbc-9fff-8e736015c0ca" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.SoundPlaybackManagmentAvailable != SoundPlaybackManagmentAvailable)
+	AlarmsTable.SoundPlaybackManagmentAvailable = SoundPlaybackManagmentAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SnapshotAvailable" display-name="Доступность кнопок функции Снимок" uuid="e69057ad-a565-4e24-adf3-902aec5741ba" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.SnapshotAvailable != SnapshotAvailable)
+	AlarmsTable.SnapshotAvailable = SnapshotAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="CurrentEventsAvailable" display-name="Доступность просмотра оперативных событий" uuid="ebaa37b4-4a70-4f7d-a0ef-2ef0053f13b3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.CurrentEventsAvailable != CurrentEventsAvailable)
+	AlarmsTable.CurrentEventsAvailable = CurrentEventsAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="EventHistoryAvailable" display-name="Доступность просмотра истории событий" uuid="42a6a5db-a3bf-4f28-8482-24956426d108" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.EventHistoryAvailable != EventHistoryAvailable)
+	AlarmsTable.EventHistoryAvailable = EventHistoryAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="PrintingAvailable" display-name="Доступность управления печатью" uuid="debba148-becc-4f79-bf33-674f5c777ce3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.PrintingAvailable != PrintingAvailable)
+	AlarmsTable.PrintingAvailable = PrintingAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="EventTableSortAvailability" display-name="Видимость команд сортировки" uuid="9c8ec7b3-84f7-4c1f-b773-a42249418d61" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.EventTableSortAvailability != EventTableSortAvailability)
+	AlarmsTable.EventTableSortAvailability = EventTableSortAvailability;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AllowActionInSourceColumn" display-name="Разрешить действия в столбце источник события" uuid="49315785-4ac1-464a-a0e1-f54cc2acd0de" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AllowActionInSourceColumn != AllowActionInSourceColumn)
+	AlarmsTable.AllowActionInSourceColumn = AllowActionInSourceColumn;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="objectId" display-name="objectID" uuid="adb0a742-6590-43d2-a071-648751598e9c" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="2"/>
+	<object access-modifier="private" name="UseSecurity" display-name="Использовать сервер безопасности для определения прав" uuid="ca063ec2-885d-4425-a8dc-ba45a7fec7b6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.UseSecurity != UseSecurity)
+	AlarmsTable.UseSecurity = UseSecurity;]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="UseSecurity" ver="5" value="false"/>
+	<param access-modifier="private" name="SecurityApplication" display-name="Имя приложения с правами безопасности" uuid="0b6287c8-a23f-4de0-b78f-7e8d6712e0f7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	<init target="SecurityApplication" ver="5" value="Alarms"/>
+	<object access-modifier="private" name="RequestEventsStart" display-name="Запрашивать активные события при запуске" uuid="06883e11-b7d6-4f8f-85ed-8b5d3c75fc2e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.RequestEventsStart != RequestEventsStart)
+	AlarmsTable.RequestEventsStart = RequestEventsStart;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="FollowLatestEvent" display-name="Принудительное слежение за последним событием" uuid="82da5d62-eeee-4362-9fb2-0dd06a23f72a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.FollowLatestEvent != FollowLatestEvent)
+	AlarmsTable.FollowLatestEvent = FollowLatestEvent;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="LookLatestEvent" display-name="Слежение за последним поступившим событием" uuid="d7a16cd2-050f-413c-9714-320d00ca3474" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.LookLatestEvent != LookLatestEvent)
+	AlarmsTable.LookLatestEvent = LookLatestEvent;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Mute" display-name="Беззвучный режим включен" uuid="493ced34-6ee8-4ae4-b523-856c1f7bf279" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.Mute != Mute)
+	AlarmsTable.Mute = Mute;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="FileSystemAccess" display-name="Доступность файловой системы" uuid="df25a77b-c035-4408-a3d1-0d27b30e423e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.FileSystemAccess != FileSystemAccess)
+	AlarmsTable.FileSystemAccess = FileSystemAccess;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ActiveConditionsList" display-name="Список активных условий" uuid="ba6dcf1a-6890-4772-bcad-e891b3a44449" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ActiveConditionsList != ActiveConditionsList)
+	AlarmsTable.ActiveConditionsList = ActiveConditionsList;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ConfigurationFolder" display-name="Путь к папке с конфигурацией" uuid="709e23ba-4250-4fa8-a248-ab58681aa2e7" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ConfigurationFolder != ConfigurationFolder)
+	AlarmsTable.ConfigurationFolder = ConfigurationFolder;]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="init_ApSource" display-name="Ссылка на источник AP" uuid="d31a6794-b831-437e-a2f4-ab1a96f6917f" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="3"/>
+	<param access-modifier="private" name="ClearSoundQueryTag " display-name="Тег сигнала очистки очереди звуков" uuid="46e9ea22-5ff9-476f-9edf-798a777d4065" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	<init target="ClearSoundQueryTag " ver="5" value=""/>
+	<object access-modifier="private" name="DisplayToolbar" display-name="Показывать панель инструментов" uuid="f4e25228-a1d0-40d7-be9b-9cd5f2acbb43" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.DisplayToolbar != DisplayToolbar)
+	AlarmsTable.DisplayToolbar = DisplayToolbar;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DisplayStatePanel" display-name="Показывать строку состояния" uuid="286f9d8f-f5db-4248-aa37-046d9378e944" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.DisplayStatePanel != DisplayStatePanel)
+	AlarmsTable.DisplayStatePanel = DisplayStatePanel;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DisplayToolbarAtStartup" display-name="Отображать панель инструментов при запуске" uuid="583d8767-b5cf-42e6-80ef-1530311e6e71" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.DisplayToolbarAtStartup != DisplayToolbarAtStartup)
+	AlarmsTable.DisplayToolbarAtStartup = DisplayToolbarAtStartup;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DisplayStatePanelAtStartup" display-name="Отображать строку состояния при запуске" uuid="5111f450-304c-4970-b8a0-487383691e3c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.DisplayStatePanelAtStartup != DisplayStatePanelAtStartup)
+	AlarmsTable.DisplayStatePanelAtStartup = DisplayStatePanelAtStartup;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="HideColumnTitle" display-name="Скрыть заголовки столбцов" uuid="7d60ce7d-0145-4433-a339-b72283662b1b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.HideColumnTitle != HideColumnTitle)
+	AlarmsTable.HideColumnTitle = HideColumnTitle;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="LineTransfer" display-name="Перенос строк" uuid="9754aab9-0b17-454a-b78f-cedb1cec2ea6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.LineTransfer != LineTransfer)
+	AlarmsTable.LineTransfer = LineTransfer;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AlwaysOnTopForm" display-name="Поверх всех окон" uuid="c33b0c41-1ba7-41db-9dfd-515c0445eeaf" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.AlwaysOnTopForm != AlwaysOnTopForm)
+	AlarmsTable.AlwaysOnTopForm = AlwaysOnTopForm;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="HideAckedEvents" display-name="Не отображать неактивные квитированные события" uuid="5431a9a9-1436-42ae-9268-3c6ba6531b05" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.HideAckedEvents != HideAckedEvents)
+	AlarmsTable.HideAckedEvents = HideAckedEvents;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="NotAckOtherEvents" display-name="Не требовать квитирования группы Прочие" uuid="171df994-bb4b-4d85-b68f-c901edae1897" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.NotAckOtherEvents != NotAckOtherEvents)
+	AlarmsTable.NotAckOtherEvents = NotAckOtherEvents;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SubscriptionAdvancedFilter" display-name="Фильтр подписки" uuid="90182cf1-3f3e-46e4-b74c-e9049f60d73b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.SubscriptionAdvancedFilter != SubscriptionAdvancedFilter)
+	AlarmsTable.SubscriptionAdvancedFilter = SubscriptionAdvancedFilter;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowRelativeTag" display-name="Отображать относительный тег источника сообщения" uuid="12533d30-6a9b-4da6-8224-a9cab96e5bd8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ShowRelativeTag != ShowRelativeTag)
+	AlarmsTable.ShowRelativeTag = ShowRelativeTag;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="EnableSortingOnGridHeader" display-name="Доступность сортировки по заголовкам столбцов таблицы" uuid="2f350193-0670-4313-87cb-667b0cf1d8a6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.EnableSortingOnGridHeader != EnableSortingOnGridHeader)
+	AlarmsTable.EnableSortingOnGridHeader = EnableSortingOnGridHeader;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="GUIModificationAvailable" display-name="Возможность изменения вида пользовательского интерфейса" uuid="73821c29-d664-46ec-873b-57d44f9ec85d" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.GUIModificationAvailable != GUIModificationAvailable)
+	AlarmsTable.GUIModificationAvailable = GUIModificationAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowMilliseconds" display-name="Отображать миллисекунды" uuid="f0689160-a153-40cc-a96a-93150b968977" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ShowMilliseconds != ShowMilliseconds)
+	AlarmsTable.ShowMilliseconds = ShowMilliseconds;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="IsFullAccessAllowed" display-name="Разрешить полный доступ" uuid="985f8577-8369-449a-923f-17ca31e2ff25" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.IsFullAccessAllowed != IsFullAccessAllowed)
+	AlarmsTable.IsFullAccessAllowed = IsFullAccessAllowed;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="MultiSelectAvailable" display-name="Доступность выбора нескольких строк в таблице" uuid="f68033d3-6799-4df5-9cc0-a8a836796582" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.MultiSelectAvailable != MultiSelectAvailable)
+	AlarmsTable.MultiSelectAvailable = MultiSelectAvailable;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ActiveMode" display-name="Активный режим работы (оперативный или исторический)" uuid="18ffff07-0a23-4a88-976f-cd9643de2749" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ActiveMode != ActiveMode)
+	AlarmsTable.ActiveMode = ActiveMode;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="MaxVisibleOrdinaryEvents" display-name="Максимальное количество обычных событий" uuid="9117c0d9-fcfa-4c45-95de-13fcf72f0bd8" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.MaxVisibleOrdinaryEvents != MaxVisibleOrdinaryEvents)
+	AlarmsTable.MaxVisibleOrdinaryEvents = MaxVisibleOrdinaryEvents;]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="MaxVisibleOrdinaryEvents" ver="5" value="500"/>
+	<object access-modifier="private" name="DefaultHistoricalInterval" display-name="Интервал запроса истории по умолчанию, час" uuid="1f715126-7f5c-4919-938f-73ed7b822326" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.DefaultHistoricalInterval != DefaultHistoricalInterval)
+	AlarmsTable.DefaultHistoricalInterval = DefaultHistoricalInterval;]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="DefaultHistoricalInterval" ver="5" value="24"/>
+	<object access-modifier="private" name="ExtensionInterval" display-name="Расширяющий интервал (час)" uuid="f8645678-4f7b-4021-b102-6b29f7699207" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ExtensionInterval != ExtensionInterval)
+	AlarmsTable.ExtensionInterval = ExtensionInterval;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="EventsChronology" display-name="Хронология исторических событий" uuid="c68e81f3-c596-4be4-92a8-39333702baae" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.EventsChronology != EventsChronology)
+	AlarmsTable.EventsChronology = EventsChronology;]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="EventsChronology" ver="5" value="0"/>
+	<object access-modifier="private" name="MergeEvents" display-name="Режим сведения событий" uuid="39446858-2a0f-41de-9db4-ec254f03dd76" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.MergeEvents != MergeEvents)
+	AlarmsTable.MergeEvents = MergeEvents;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="HorizontalScrollBarPolicy" display-name="Режим отображения полосы горизонтальной прокрутки" uuid="32ed7f9f-9f0b-4458-8e53-48fc1c176fda" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.HorizontalScrollBarPolicy != HorizontalScrollBarPolicy)
+	AlarmsTable.HorizontalScrollBarPolicy = HorizontalScrollBarPolicy;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="VerticalScrollBarPolicy" display-name="Режим отображения полосы вертикальной прокрутки" uuid="e06d59d1-49e2-4162-9b6f-38a573975343" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.VerticalScrollBarPolicy != VerticalScrollBarPolicy)
+	AlarmsTable.VerticalScrollBarPolicy = VerticalScrollBarPolicy;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ExportFileNameFormat" display-name="Формат имени файла экспорта" uuid="248a09a5-bc83-4339-ae81-1112c61053b1" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.ExportFileNameFormat != ExportFileNameFormat)
+	AlarmsTable.ExportFileNameFormat = ExportFileNameFormat;]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="OnPrint" display-name="OnPrint" uuid="1232077b-01c7-4fd9-b9c9-45f754cc5e56" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnSoundPlayed" display-name="OnSoundPlayed" uuid="d34b7f34-8dc0-4a31-9d74-fc9a8bde6565" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnPlayingSounds" display-name="OnPlayingSounds" uuid="24ce5bb9-3996-4cb3-8036-51e58fb7edda" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnFinishedPlayingSounds" display-name="OnFinishedPlayingSounds" uuid="18e73de1-054a-4423-8662-57864753ee2c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnExport" display-name="OnExport" uuid="cac20ca4-aa70-4a44-bc9b-aa937eed1bb2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnSave" display-name="OnSave" uuid="2dca56e8-0cfe-4a65-941b-105f93e008cb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnAck" display-name="OnAck" uuid="22bde24c-5333-4b11-b6fe-1475ccf781ee" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="LogOn" display-name="LogOn" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.LogOn(userName);]]>
+		</body>
+		<param access-modifier="private" name="userName" display-name="" uuid="2c9126b5-dcca-4a8d-9494-bcc9a42d62ee" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+	</do>
+	<do access-modifier="private" name="LogOff" display-name="LogOff" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.LogOff();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="AckSelected" display-name="AckSelected" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255" form-by-id="true">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.AckSelected();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="AckAll" display-name="AckAll" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255" form-by-id="true">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.AckAll();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ClearOperativeEventList" display-name="ClearOperativeEventList" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.ClearOperativeEventList();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ClearAcknowledgedEvents" display-name="ClearAcknowledgedEvents" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255" form-by-id="true">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.ClearAcknowledgedEvents();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SkipCurrentSound" display-name="SkipCurrentSound" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.SkipCurrentSound();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ClearSoundQueue" display-name="ClearSoundQueue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.ClearSoundQueue();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetAdvancedRequestFilterAsJson" display-name="SetAdvancedRequestFilterAsJson" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="StringJSON" display-name="" uuid="c1b738de-0ce2-4317-87e4-3121deb523bb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[return AlarmsTable.SetAdvancedRequestFilterAsJson(StringJSON);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetHistoricalInterval" display-name="SetHistoricalInterval" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="t1" display-name="" uuid="3e777848-c501-4dd3-93f2-f3b0059bcf5a" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<param access-modifier="private" name="t2" display-name="" uuid="0f7172d4-c9b5-4c74-ac69-1e385c001da9" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<body kind="om">
+			<![CDATA[return AlarmsTable.SetHistoricalInterval(t1, t2);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetAdvancedFilterAsJson" display-name="SetAdvancedFilterAsJson" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.SetAdvancedFilterAsJson(ColumnID, FilterExpr);]]>
+		</body>
+		<param access-modifier="private" name="ColumnID" display-name="" uuid="a63ccc2a-0392-4902-987a-fbc0cfb46c37" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<param access-modifier="private" name="FilterExpr" display-name="" uuid="b7e36755-91ef-4699-9100-2d33839b9541" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<do access-modifier="private" name="RequestRecentEvents" display-name="RequestRecentEvents" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.RequestRecentEvents(intervalDuration, onlyNotAcked, requestAdvancedFilterAsJson);]]>
+		</body>
+		<param access-modifier="private" name="intervalDuration" display-name="" uuid="d8dde72a-007c-4ddd-999d-e04b811a8548" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="3"/>
+		<param access-modifier="private" name="onlyNotAcked" display-name="" uuid="954b3752-2fc7-47d7-a39b-e890c03cba9e" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+		<param access-modifier="private" name="requestAdvancedFilterAsJson" display-name="" uuid="4b941ec5-44dc-40dd-8e20-9b8d58f3c116" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<do access-modifier="private" name="LoadConfiguration" display-name="LoadConfiguration" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" form-by-id="true">
+		<param access-modifier="private" name="configurationFolder" display-name="" uuid="53c6d739-26da-4034-928f-f5f687c196a1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<body kind="om">
+			<![CDATA[return AlarmsTable.LoadConfiguration(configurationFolder);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetSize" display-name="SetSize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
+		<param access-modifier="private" name="coordX" display-name="" uuid="d0b1d9f0-2da6-4635-a795-ce62488d5bc9" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="3"/>
+		<param access-modifier="private" name="coordY" display-name="" uuid="879278c3-08ec-4162-ab67-737aa63b8a50" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="3"/>
+		<param access-modifier="private" name="width" display-name="" uuid="83f33f8a-c929-4a66-b9dd-e9582f92f957" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="3"/>
+		<param access-modifier="private" name="height" display-name="" uuid="ce834cef-bbf9-4200-bd04-38a025909e52" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="3"/>
+		<body kind="om">
+			<![CDATA[X = coordX;
+Y = coordY;
+Width = width;
+Height = height;
+AlarmsTable.SetSize();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetAdvancedFilter" display-name="SetAdvancedFilter" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.SetAdvancedFilter(ColumnID, FilterExpr);]]>
+		</body>
+		<param access-modifier="private" name="ColumnID" display-name="" uuid="85d4f91d-af34-4b23-80b2-f75350036906" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		<param access-modifier="private" name="FilterExpr" display-name="" uuid="498c8e6c-c4ba-4c15-b972-9d074b9e3868" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<do access-modifier="private" name="CancelHistoryQuery" display-name="CancelHistoryQuery" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.CancelHistoryQuery();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="DisplayCurrentEventsSnapshot" display-name="DisplayCurrentEventsSnapshot" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.DisplayCurrentEventsSnapshot();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="DisplayCurrentEvents" display-name="DisplayCurrentEvents" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.DisplayCurrentEvents();]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetEventParam" display-name="GetEventParam" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return AlarmsTable.GetEventParam(numParam);]]>
+		</body>
+		<param access-modifier="private" name="numParam" display-name="" uuid="2b2d2001-323e-435f-afa9-106d1afaa9a2" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+	</do>
+	<do access-modifier="private" name="ReloadHistory" display-name="ReloadHistory" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[AlarmsTable.ReloadHistory();]]>
+		</body>
+	</do>
+	<init target="AcknowledgmentDoubleClick" ver="5" value="true"/>
+	<init target="AcknowledgmentAllVisible" ver="5" value="false"/>
+	<init target="AllowAckSequence" ver="5" value="false"/>
+	<init target="RequestAcknowledgmentComment" ver="5" value="true"/>
+	<init target="AllowAddComment" ver="5" value="true"/>
+	<init target="WriteComputerNameToComment" ver="5" value="true"/>
+	<init target="AcknowledgmentAvailable" ver="5" value="true"/>
+	<init target="AckAllAvailable" ver="5" value="true"/>
+	<init target="ClearingCurrentEventsAvailable" ver="5" value="true"/>
+	<init target="EditingSettingsAvailable" ver="5" value="true"/>
+	<init target="ExportDataAvailability" ver="5" value="true"/>
+	<init target="FilterAvailable" ver="5" value="true"/>
+	<init target="SoundPlaybackManagmentAvailable" ver="5" value="true"/>
+	<init target="SnapshotAvailable" ver="5" value="true"/>
+	<init target="CurrentEventsAvailable" ver="5" value="true"/>
+	<init target="EventHistoryAvailable" ver="5" value="true"/>
+	<init target="PrintingAvailable" ver="5" value="true"/>
+	<init target="EventTableSortAvailability" ver="5" value="true"/>
+	<init target="AllowActionInSourceColumn" ver="5" value="true"/>
+	<init target="RequestEventsStart" ver="5" value="true"/>
+	<init target="FollowLatestEvent" ver="5" value="false"/>
+	<init target="LookLatestEvent" ver="5" value="true"/>
+	<init target="Mute" ver="5" value="false"/>
+	<init target="FileSystemAccess" ver="5" value="true"/>
+	<init target="ActiveConditionsList" ver="5" value="false"/>
+	<init target="ConfigurationFolder" ver="5" value=""/>
+	<init target="DisplayToolbar" ver="5" value="true"/>
+	<init target="DisplayStatePanel" ver="5" value="true"/>
+	<init target="DisplayToolbarAtStartup" ver="5" value="true"/>
+	<init target="DisplayStatePanelAtStartup" ver="5" value="true"/>
+	<init target="HideColumnTitle" ver="5" value="false"/>
+	<init target="LineTransfer" ver="5" value="false"/>
+	<init target="AlwaysOnTopForm" ver="5" value="true"/>
+	<init target="HideAckedEvents" ver="5" value="false"/>
+	<init target="NotAckOtherEvents" ver="5" value="false"/>
+	<init target="SubscriptionAdvancedFilter" ver="5" value=""/>
+	<init target="ShowRelativeTag" ver="5" value="false"/>
+	<init target="EnableSortingOnGridHeader" ver="5" value="true"/>
+	<init target="GUIModificationAvailable" ver="5" value="true"/>
+	<init target="ShowMilliseconds" ver="5" value="true"/>
+	<init target="IsFullAccessAllowed" ver="5" value="true"/>
+	<init target="MultiSelectAvailable" ver="5" value="true"/>
+	<init target="ActiveMode" ver="5" value="0"/>
+	<init target="HorizontalScrollBarPolicy" ver="5" value="0"/>
+	<init target="VerticalScrollBarPolicy" ver="5" value="0"/>
+	<object access-modifier="private" name="AlarmsToolbar" display-name="AlarmsToolbar" uuid="290ee9b3-597f-4956-b57e-18eaac91108d" base-type="Alarms_Toolbar" base-type-id="df35e6da-79f5-47c5-bafc-8f537dac5d59" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="1000" ver="5"/>
+		<designed target="Height" value="32" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.DisplayToolbar]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="SizeLimits_1" display-name="SizeLimits_1" uuid="a469fcca-cb72-452e-988e-275bd8eaad7f" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="32" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="32" ver="5"/>
+			<do-trace access-modifier="private" target="MinHeight" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.DisplayToolbar ? 32 : 0]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.DisplayToolbar ? 32 : 0]]>
+				</body>
+			</do-trace>
+		</object>
+		<init target="pAlarmsTable" ver="5" ref="here.AlarmsTable"/>
+		<init target="pTheme" ver="5" ref="here.pTheme"/>
+	</object>
+	<object access-modifier="private" name="AlarmsTable" display-name="AlarmsTable" uuid="2d876ee5-f363-442e-8bee-f0611d81aaa9" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="1000" ver="5"/>
+		<designed target="Height" value="600" ver="5"/>
+		<init target="init_ApSource" ver="5" ref="here.ApSource"/>
+		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<init target="OnPrint" ver="5" ref="here.OnPrint"/>
+		<init target="OnSoundPlayed" ver="5" ref="here.OnSoundPlayed"/>
+		<init target="OnPlayingSounds" ver="5" ref="here.OnPlayingSounds"/>
+		<init target="OnFinishedPlayingSounds" ver="5" ref="here.OnFinishedPlayingSounds"/>
+		<init target="OnExport" ver="5" ref="here.OnExport"/>
+		<init target="OnSave" ver="5" ref="here.OnSave"/>
+		<init target="OnAck" ver="5" ref="here.OnAck"/>
+		<init target="OnOpenTrends" ver="5" ref="here.OnOpenTrends"/>
+		<init target="OnOpenForm" ver="5" ref="here.OnOpenForm"/>
+	</object>
+	<param access-modifier="private" name="OnOpenTrends" display-name="OnOpenTrends" uuid="3c929673-bf91-43b6-9bc2-796a0f6751bf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="OnOpenForm" display-name="OnOpenForm" uuid="fcba2990-b0af-47e9-ac5b-f168ed779718" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="fcaeddb9-5b14-4725-8c59-2daeac857903" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="ActiveMode" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Init.Complete]]>
+			</condition>
+			<expr>
+				<![CDATA[AlarmsTable.ActiveMode]]>
+			</expr>
+		</conditional-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="Mute" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Init.Complete]]>
+			</condition>
+			<expr>
+				<![CDATA[AlarmsTable.Mute]]>
+			</expr>
+		</conditional-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="objectId" ver="5">
+		<body>
+			<![CDATA[AlarmsTable.objectId]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="DisplayToolbar" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Init.Complete]]>
+			</condition>
+			<expr>
+				<![CDATA[AlarmsTable.DisplayToolbar]]>
+			</expr>
+		</conditional-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="DisplayStatePanel" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Init.Complete]]>
+			</condition>
+			<expr>
+				<![CDATA[AlarmsTable.DisplayStatePanel]]>
+			</expr>
+		</conditional-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="EventsChronology" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Init.Complete]]>
+			</condition>
+			<expr>
+				<![CDATA[AlarmsTable.EventsChronology]]>
+			</expr>
+		</conditional-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="ConfigurationFolder" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Init.Complete]]>
+			</condition>
+			<expr>
+				<![CDATA[AlarmsTable.ConfigurationFolder]]>
+			</expr>
+		</conditional-expr>
+	</do-trace>
+	<object access-modifier="private" name="AlarmsStatusbar" display-name="AlarmsStatusbar" uuid="4f588765-fd63-4e41-bb85-fbc490a18784" base-type="Alarms_Statusbar" base-type-id="6a487b77-c5f0-4cbf-a203-f548d75b5459" ver="5" description="" cardinal="1">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="575" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="1000" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<init target="pAlarmsTable" ver="5" ref="here.AlarmsTable"/>
+		<init target="pTheme" ver="5" ref="here.pTheme"/>
+		<init target="ClearSoundQueryTag" ver="5" ref="here.ClearSoundQueryTag "/>
+		<object access-modifier="private" name="SizeLimits_1" display-name="SizeLimits_1" uuid="02c21c25-3e1b-4e84-a8d6-c6db7aa76ea6" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="25" ver="5"/>
+			<designed target="MaxWidth" value="16777215" ver="5"/>
+			<designed target="MaxHeight" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="MinHeight" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.DisplayStatePanel ? 25 : 0]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="MaxHeight" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.DisplayStatePanel ? 25 : 0]]>
+				</body>
+			</do-trace>
+		</object>
+		<init target="init_ApSource" ver="5" ref="here.ApSource"/>
+	</object>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="9d933dbe-c70b-4863-861a-144fdaee64e4" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="2">
+		<designed target="Orientation" value="2" ver="2"/>
+		<designed target="Gap" value="0" ver="2"/>
+	</object>
+	<init target="ExtensionInterval" ver="5" value="0"/>
+	<object access-modifier="private" name="DisplaySeverityStatistics" display-name="Отображать детальную статистику по важности" uuid="a86a44fa-8990-47b2-b93d-d15d9bcc97a6" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (AlarmsTable.DisplaySeverityStatistics != DisplaySeverityStatistics)
+	AlarmsTable.DisplaySeverityStatistics = DisplaySeverityStatistics;]]>
+			</body>
+		</do-on>
+	</object>
+</type>
+

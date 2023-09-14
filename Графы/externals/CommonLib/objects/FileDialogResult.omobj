@@ -1,0 +1,7 @@
+<type access-modifier="public" name="FileDialogResult" display-name="FileDialogResult" uuid="602926f1-7d01-4d50-a5c0-d8fd35eadc74" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="FolderPath" display-name="FolderPath" uuid="cc766ce2-3133-45f4-bdaf-bd910e7a5a99" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="FileName" display-name="FileName" uuid="6f46249c-af05-4b5a-83e3-63bd47c448e5" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="FilePath" display-name="FilePath" uuid="eb1f400f-9820-4b43-a553-b0045e1de233" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="FileType" display-name="FileType" uuid="2a468553-be56-4184-8284-ffc1c7244b62" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5"/>
+</type>
+

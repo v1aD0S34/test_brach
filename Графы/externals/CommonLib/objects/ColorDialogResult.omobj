@@ -1,0 +1,5 @@
+<type access-modifier="public" name="ColorDialogResult" display-name="ColorDialogResult" uuid="b51f78e4-f30c-411b-9a81-b57ef602013a" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="Color" display-name="Color" uuid="7a9da80f-2acb-457e-9b44-31e2fc7917a3" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="CustomColors" display-name="CustomColors" uuid="ef693910-5de4-42c4-a4d6-fc344109a7d6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+</type>
+

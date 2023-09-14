@@ -1,0 +1,28 @@
+<object access-modifier="private" name="ProductInfo" display-name="ProductInfo" uuid="a0bb5d37-2c0a-48c0-8fb8-8fa66ead89fa" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+	<object access-modifier="private" name="CompanyName" display-name="CompanyName" uuid="c42fec87-8b7f-4c57-9fa9-7f1d41116684" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="CompanyTag" display-name="CompanyTag" uuid="b12c1a53-4591-4592-b12e-9bcdde7aa5db" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="PlatformName" display-name="PlatformName" uuid="af1c75cb-54e3-43fe-8ce2-5d8ddc416305" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="PlatformTag" display-name="PlatformTag" uuid="5e6dec5e-7164-428c-846d-19000d05a5ce" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ProductName" display-name="ProductName" uuid="06798bcb-9cd3-41b7-8b4c-38577375178b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ProductTag" display-name="ProductTag" uuid="ae67a154-4118-4aeb-aff8-02b6a17bfae7" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Version" display-name="Version" uuid="f0e78cc4-8f87-4d1d-9714-3ba39db65523" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<init target="CompanyName" ver="5" value="Automiq Software"/>
+	<init target="CompanyTag" ver="5" value="Automiq"/>
+	<init target="PlatformName" ver="5" value="AlphaPlatform"/>
+	<init target="PlatformTag" ver="5" value="Alpha"/>
+	<init target="ProductName" ver="5" value="HMI.Trends"/>
+	<init target="ProductTag" ver="5" value="HMI.Trends"/>
+	<init target="Version" ver="5" value="1.3.x+add23034.b4.r6165"/>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="765a134e-a671-4a67-85a8-dea2ec17cf24" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5" description="" cardinal="1"/>
+	<do access-modifier="private" name="GetProgramDataFolder" display-name="GetProgramDataFolder" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Files.CombinePath(Files.AllUsersFolder, Files.CombinePath(CompanyTag, ProductName));]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetUserDataFolder" display-name="GetUserDataFolder" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Files.CombinePath(Files.CurrentUserFolder, Files.CombinePath(CompanyTag, ProductName));]]>
+		</body>
+	</do>
+</object>
+

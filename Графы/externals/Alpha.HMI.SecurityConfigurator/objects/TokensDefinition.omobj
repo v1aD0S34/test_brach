@@ -1,0 +1,363 @@
+<type access-modifier="private" name="TokensDefinition" display-name="TokensDefinition" uuid="2d057de8-3722-4426-b142-42fa7ada0520" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="7f249332-9faa-4361-a2ec-fcf75bbcf37c" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="TokenTypeTitle" display-name="TokenTypeTitle" uuid="e5688b9c-5b9c-473a-9dfd-f0245a80e5be" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4" cardinal="5"/>
+	<object access-modifier="private" name="IconPath" display-name="IconPath" uuid="7d3c2fd7-53f0-4266-8bd7-5358b8f478c0" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4" cardinal="5"/>
+	<object access-modifier="private" name="DefaulValue" display-name="DefaulValue" uuid="aa15a69d-4fd2-41bb-bcfb-aaeae89c3571" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4" cardinal="20"/>
+	<do access-modifier="private" name="GetTokenCode" display-name="GetTokenCode" ver="5" type="uint1" type-id="f73099bc-ee13-42cf-82bb-87368b826707">
+		<param access-modifier="private" name="appName" display-name="" uuid="ca7971e6-2a47-41a7-91ef-43844969d726" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="8966bc1d-9f0b-445f-9824-9034a7c04c5f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="819daf39-a8e1-44a5-b1bf-f4415046e5f6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="om">
+			<![CDATA[outValue: uint1 = 0;
+
+if (appName == "Alpha.Security"){
+	if (tokenType == "string") {
+		if (tokenName == "SessionDurationLimit"){
+			outValue = 2;
+		} else if (tokenName == "PasswordMinLength"){
+			outValue = 3;
+		} else if (tokenName == "PasswordsInHistory"){
+			outValue = 4;
+		} else if (tokenName == "PasswordComplexity"){
+			outValue = 5;
+		} else if (tokenName == "PasswordAge"){
+			outValue = 6;
+		} else if (tokenName == "LowerCount"){
+			outValue = 7;
+		} else if (tokenName == "NumbersCount"){
+			outValue = 8;
+		} else if (tokenName == "SpecialCount"){
+			outValue = 9;
+		} else if (tokenName == "UpperCount"){
+			outValue = 10;
+		} else if (tokenName == "AttempsTimeOut"){
+			outValue = 11;
+		} else if (tokenName == "MaxAttempsCount"){
+			outValue = 12;
+		} else if (tokenName == "MaxIdleTime"){
+			outValue = 13;
+		} else if (tokenName == "PasswordNotifyForChange"){
+			outValue = 14;
+		} else {
+			outValue = 0;
+		}
+	} else if (tokenType == "bool"){
+		if (tokenName == "ConfigurationAccess"){
+			outValue = 15;
+		} else if (tokenName == "EditSettings"){
+			outValue = 16;
+		} else if (tokenName == "InteractiveLogon"){
+			outValue = 17;
+		} else if (tokenName == "ViewConfiguration"){
+			outValue = 18;
+		} else if (tokenName == "WinKeysShortcutAccess"){
+			outValue = 19;
+		} else {
+			outValue = 1;
+		}
+	}
+} else {	//other tokens, other Apps
+	if (tokenType == "string") {
+		outValue = 0;
+	} else if (tokenType == "bool") {
+		outValue = 1;
+	}
+}
+
+return outValue;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetTypeTitle" display-name="GetTypeTitle" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<param access-modifier="private" name="appName" display-name="" uuid="ca1f6176-0a17-48b7-982b-20bf1b83cfe8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="0b46f7f2-4926-41f4-ba45-c7ece6f2a2dc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="17caaa28-b2b7-40b6-9d81-91545b0c19d3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="om">
+			<![CDATA[tokenIndex: uint1 = GetTokenCode(appName,tokenType,tokenName);
+outTitle: string = "";
+if (tokenIndex == 0) {					//string
+	outTitle = TokenTypeTitle[0];
+} else if (tokenIndex == 1 || tokenIndex == 15 || tokenIndex == 16 || tokenIndex == 17 || tokenIndex == 18 || tokenIndex == 19) {		//bool
+	outTitle = TokenTypeTitle[1];
+} else if (tokenIndex == 5){		//PasswordComplexity - BooleanArray
+	outTitle = TokenTypeTitle[2];
+} else if (tokenIndex == 6){		//PasswordAge - Int32Array
+	outTitle = TokenTypeTitle[3];
+} else if (tokenIndex == 2 || tokenIndex == 3 || tokenIndex == 4 || tokenIndex == 7 || tokenIndex == 8 || 
+	tokenIndex == 9 || tokenIndex ==10 ||tokenIndex == 11 || tokenIndex == 12 || tokenIndex == 13 ||  tokenIndex == 14){ //other string Alpha security - Int32
+	outTitle = TokenTypeTitle[4];
+}
+return outTitle;
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetIconPath" display-name="GetIconPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<param access-modifier="private" name="appName" display-name="" uuid="168369f7-1e75-4a30-9962-81f504074f1d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="733bc6c1-d36a-4c68-8f95-498f80cdd8f8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="19243d78-e2c7-43b7-8c0c-416c47a0892f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="om">
+			<![CDATA[tokenIndex: uint1 = GetTokenCode(appName,tokenType,tokenName);
+outPath: string = "";
+if (tokenIndex == 0) {					//string
+	outPath = IconPath[0];
+} else if (tokenIndex == 1 || tokenIndex == 15 || tokenIndex == 16 || tokenIndex == 17 || tokenIndex == 18 || tokenIndex == 19) {		//bool
+	outPath = IconPath[1];
+} else if (tokenIndex == 5){		//PasswordComplexity - BooleanArray
+	outPath = IconPath[2];
+} else if (tokenIndex == 6){		//PasswordAge - Int32Array
+	outPath = IconPath[3];
+} else if (tokenIndex == 2 || tokenIndex == 3 || tokenIndex == 4 || tokenIndex == 7 || tokenIndex == 8 || 
+	tokenIndex == 9 || tokenIndex ==10 ||tokenIndex == 11 || tokenIndex == 12 || tokenIndex == 13 ||  tokenIndex == 14){ //other string Alpha security - Int32
+	outPath = IconPath[4];
+}
+return outPath;
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetDefaultStringValue" display-name="GetDefaultStringValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[Index: uint1 = GetTokenCode(appName,tokenType,tokenName);
+return DefaulValue[Index];]]>
+		</body>
+		<param access-modifier="private" name="appName" display-name="" uuid="91f6a95e-b52c-42e5-af7e-542a58024df0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="00732f22-fe7d-4eb4-853f-6f7e6a2f26c5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="6e68a102-da59-48b5-8aa5-d8231047c5fa" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="DetermineRightsValue" display-name="DetermineRightsValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[//функция преобразования данных из представления модели таблицы в значения для отображения в таблице
+
+
+tokenCode: uint1 = GetTokenCode(appName,tokenType,tokenName);
+tokenValue: string = "";
+
+if (tokenType == "bool"){	//у логических, токенов единный формат, перечислть коды логических токенов не надо
+	if (allowValue == "TRUE" && denyValue == "FALSE")
+		tokenValue = "TRUE";
+	else if (allowValue == "FALSE" && denyValue == "TRUE")
+		tokenValue = "FALSE";
+	else if (allowValue == "FALSE" && denyValue == "FALSE")
+		tokenValue = "";
+		
+}else if (tokenType == "string"){
+	if (tokenCode == 2){					//	 SessionDurationLimit
+		tokenValue = String.ToString(TypeConvert.ToInt4(String.ToDouble(allowValue,0)/60));
+	} else if (tokenCode == 5) {		//PasswordComplexity
+		resultValue: string = "";
+		curValue: uint4 = String.ToUint4(allowValue, 0);
+		if ((curValue&1)==1){resultValue = "Цифры";}
+		if ((curValue&2)==2) {	
+			if ((curValue&1)==1){resultValue = resultValue + ";";}
+			resultValue = resultValue + "\nБуквы нижнего регистра";
+		}
+		if ((curValue&4)==4) {
+			if (((curValue&1)==1)||((curValue&2)==2)){resultValue = resultValue + ";";}
+			resultValue = resultValue + "\nБуквы верхнего регистра";
+		}	
+		if ((curValue&8)==8) {	
+			if (((curValue&1)==1)||((curValue&2)==2)||((curValue&4)==4)) {resultValue = resultValue + ";";}	
+			resultValue = resultValue + "\nCпец.символы";
+		}
+		tokenValue = resultValue;
+	} else if (tokenCode == 6){			//PasswordAge
+		firstPart: string = String.ToString(TypeConvert.ToInt4(String.ToDouble(String.SubString(allowValue, 0,String.IndexOf(allowValue,";")),0)/86400));
+		secondPart: string = String.ToString(TypeConvert.ToInt4(String.ToDouble(String.SubString(allowValue, String.IndexOf(allowValue,";")+1,String.Length(allowValue)),0)/86400));
+		tokenValue = "От: "+firstPart+", "+"до: "+secondPart;
+	} else if (tokenCode == 13) {			//MaxIdleTime
+		tokenValue = String.ToString(TypeConvert.ToInt4(String.ToDouble(allowValue,0)/60));
+	} else if (tokenCode == 14) {			//PasswordNotifyForChange
+		tokenValue = String.ToString(TypeConvert.ToInt4(String.ToDouble(allowValue,0)/86400));
+	} else if (tokenCode == 0){ //остальные строковые токены
+		//форматирование строковых значений 
+		formatedAllowValue: string = FormatedStringValue(allowValue);
+		formatedDenyValue: string = FormatedStringValue(denyValue);
+		if (formatedAllowValue != "" && formatedDenyValue == "" ){
+			tokenValue = formatedAllowValue;
+		} else if (formatedAllowValue != "" && formatedDenyValue != ""){
+			tokenValue = formatedAllowValue +"\nкроме: "+"\n"+formatedDenyValue;
+		} else if (formatedAllowValue == "" && formatedDenyValue != "")	{
+			tokenValue = "кроме: "+"\n"+formatedDenyValue;
+		}
+	} else {
+		tokenValue = allowValue; // пока так
+	}
+} else {		//токены других типов данных
+	tokenValue = allowValue;
+}
+//Math.Round, Math.Truncate и тд не отбрасывают дробную часть 
+
+return tokenValue;
+]]>
+		</body>
+		<param access-modifier="private" name="appName" display-name="" uuid="44ea4d71-9590-48e2-87c2-e5fe9b0f3a2d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="514326c9-413a-422d-88e4-0134a9056bd0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="e563b156-2444-46ec-8076-5db1fa5c351c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="allowValue" display-name="" uuid="4ba10ded-b9b8-4baf-b624-b7f258cfc16c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="denyValue" display-name="" uuid="f79d8c57-1705-4e11-8d06-b16294c31a92" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="ConvertToAgentFormat" display-name="ConvertToAgentFormat" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[//функция для приведение значений прав alphaSecurity к формату записи в агент
+
+tokenCode: uint1 = GetTokenCode(appName,tokenType,tokenName);
+tokenValue: string = "";
+//2 - SessionDurationLimit
+//13 - MaxIdleTime
+//14 - PasswordNotifyForChange
+
+if (tokenCode == 2 || tokenCode == 13){ 
+	tokenValue = String.ToString((Str.ToUint4(allowValue, 0)*60));
+} else if (tokenCode == 14)	{
+	tokenValue = String.ToString((Str.ToUint4(allowValue, 0)*86400));
+} else {
+	tokenValue = allowValue;
+}
+
+return tokenValue;]]>
+		</body>
+		<param access-modifier="private" name="appName" display-name="" uuid="53062794-bedf-4b6b-af9a-db8af925eada" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="03e817a6-ab19-4b68-8ab8-d19c3a107539" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="f103ca73-f89e-41ce-bf6a-dc2a27562788" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="allowValue" display-name="" uuid="225ec727-4d38-4e57-b2e8-ec743bec03d8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="denyValue" display-name="" uuid="3edbb346-ae10-4f91-a63a-355ba83535d2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="FormatedStringValue" display-name="FormatedStringValue" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<param access-modifier="private" name="InputString" display-name="" uuid="92198ef8-c9c4-4e62-bfd7-c79a2a13f636" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="om">
+			<![CDATA[//форматирование строковых значений
+resultValue: string = "";
+if (InputString !=""){
+	if (String.StartsWith(InputString,";")){
+		if (String.Length(InputString)==1) {
+			resultValue = "";
+		} else if (String.Length(InputString)>1){
+			resultValue = String.Remove(InputString,0,1);
+		}
+	} else if (String.Length(InputString)>=1) {
+		//resultValue = String.Replace(InputString, ";","\n");
+		resultValue = String.Replace(InputString, ";",",");
+	}
+}
+return resultValue;
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetRangeConstantsForIntegerRights" display-name="SetRangeConstantsForIntegerRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//функция для установки значений MaxIntegerValue и MinIntegerValue в зависимости от токена System.Alpha.Security
+tokenCode: uint1 = GetTokenCode(appName,tokenType,tokenName);
+min: int8 = 0;
+max: int8 = 10000;
+passwordLength: int8 = 50;
+
+if (tokenCode == 2){					//SessionDurationLimit
+	MinIntegerValue = min;
+	MaxIntegerValue = max;
+} else if (tokenCode == 3) {		//PasswordMinLength
+	MinIntegerValue = min;
+	MaxIntegerValue = passwordLength;
+} else if (tokenCode == 4) {		//PasswordsInHistory
+	MinIntegerValue = min;
+	MaxIntegerValue = max;
+} else if (tokenCode == 7) {		//LowerCount
+	MinIntegerValue = min;
+	MaxIntegerValue = passwordLength;
+} else if (tokenCode == 8) {		//NumbersCount
+	MinIntegerValue = min;
+	MaxIntegerValue = passwordLength;
+} else if (tokenCode == 9) {		//SpecialCount
+	MinIntegerValue = min;
+	MaxIntegerValue = passwordLength;
+} else if (tokenCode == 10) {		//UpperCount
+	MinIntegerValue = min;
+	MaxIntegerValue = passwordLength;
+} else if (tokenCode == 11) {		//AttempsTimeOut
+	MinIntegerValue = min;
+	MaxIntegerValue = max;
+} else if (tokenCode == 12) {		//MaxAttempsCount
+	MinIntegerValue = min;
+	MaxIntegerValue = max;
+} else if (tokenCode == 13) {		//MaxIdleTime
+	MinIntegerValue = min;
+	MaxIntegerValue = max;
+} else if (tokenCode == 14) {		//PasswordNotifyForChange		//срок ограничен 5 годами
+	MinIntegerValue = 0;
+	MaxIntegerValue = 1825;
+} else {
+	MinIntegerValue = min;
+	MaxIntegerValue = max;
+}
+]]>
+		</body>
+		<param access-modifier="private" name="appName" display-name="" uuid="6f9ee836-c0b6-4228-9271-5f85aeab2118" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="7cf0b062-9375-46b2-9b80-069307fd5bd2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="1400ea90-cf73-4bde-b8ba-59c6e707fe15" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="IsEqualsSystemIntegerRight" display-name="IsEqualsSystemIntegerRight" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tokenCode" display-name="" uuid="996ccb3a-5804-4032-ba93-761830afb1de" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<body kind="om">
+			<![CDATA[//функция проверки токена на принаджность к системному приложению и "числовому" типу данных
+if (tokenCode == 2 || tokenCode == 3 || tokenCode == 4 || tokenCode == 7 || 
+tokenCode == 8 || tokenCode == 9 || tokenCode == 10 || tokenCode == 11 || tokenCode == 12 || 
+tokenCode == 13 || tokenCode == 14)
+	return true;
+else
+	return false;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//Title initialization
+	TokenTypeTitle[0] = "string";
+	TokenTypeTitle[1] = "bool";
+	TokenTypeTitle[2] = "boolArray";
+	TokenTypeTitle[3] = "int32Array";
+	TokenTypeTitle[4] = "int32";
+
+//IconPath initialization
+basePath: string = "Security_Icons/";
+	IconPath[0] = basePath+"String.png";			//string
+	IconPath[1] = basePath+"Boolean.png";			//bool
+	IconPath[2] = basePath+"BooleanArray.png";	//booleanArray
+	IconPath[3] = basePath+"int32Array.png";			//int32Array
+	IconPath[4] = basePath+"Int32.png";	//int32
+	
+//DefaulValue initialization
+	DefaulValue[0] = "";	//other string tokens
+	DefaulValue[1] = "FALSE";	//other bool tokens
+//AlphaSecirty
+	DefaulValue[2] = "1440";		//SessionDurationLimit
+	DefaulValue[3] = "7";			//PasswordMinLength
+	DefaulValue[4] = "3";			//PasswordsInHistory
+	DefaulValue[5] = "1";			//PasswordComplexity
+	DefaulValue[6] = "172800;7776000";	//PasswordAge
+	DefaulValue[7] = "1";			//LowerCount
+	DefaulValue[8] = "1";			//NumbersCount
+	DefaulValue[9] = "1";			//SpecialCount
+	DefaulValue[10] = "1";			//UpperCount
+	DefaulValue[11] = "60";		//AttempsTimeOut
+	DefaulValue[12] = "5";			//MaxAttempsCount
+	DefaulValue[13] = "1440";	//MaxIdleTime
+	DefaulValue[14] = "432000";	//PasswordNotifyForChange
+	//bool
+	DefaulValue[15] = "FALSE";			//ConfigurationAccess
+	DefaulValue[16] = "FASLE";			//EditSettings
+	DefaulValue[17] = "FALSE";			//InteractiveLogon
+	DefaulValue[18] = "FALSE";			//ViewConfiguration
+	DefaulValue[19] = "FALSE";			//WinKeysShortcutAccess]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="MinIntegerValue" display-name="MinIntegerValue" uuid="371875f4-3379-48d8-bf4d-59b949cffc68" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="4"/>
+	<object access-modifier="private" name="MaxIntegerValue" display-name="MaxIntegerValue" uuid="0ad81879-5870-4253-a737-7a8398f36ed0" base-type="int8" base-type-id="1f8f5a02-c52c-4260-90d1-e3b1b93b3949" ver="4"/>
+	<init target="MinIntegerValue" ver="4" value="0"/>
+	<init target="MaxIntegerValue" ver="4" value="50"/>
+</type>
+

@@ -1,0 +1,172 @@
+<type access-modifier="public" name="LoginButton" display-name="LoginButton" uuid="d8d684bc-471f-4726-912c-02ba8a974892" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<designed target="Width" value="24" ver="4"/>
+	<designed target="Height" value="24" ver="4"/>
+	<designed target="Checkable" value="false" ver="4"/>
+	<designed target="Text" value="" ver="4"/>
+	<designed target="TextAlignment" value="132" ver="4"/>
+	<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+	<designed target="FontColor" value="0xff000000" ver="4"/>
+	<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+	<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+	<designed target="DisabledFontColor" value="0xff000000" ver="4"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+	<designed target="BrushStyle" value="0" ver="4"/>
+	<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+	<designed target="OnClickBrushStyle" value="1" ver="4"/>
+	<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+	<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+	<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="4"/>
+	<designed target="DisabledBrushStyle" value="0" ver="4"/>
+	<designed target="PenColor" value="0xff808080" ver="4"/>
+	<designed target="PenStyle" value="0" ver="4"/>
+	<designed target="PenWidth" value="1" ver="4"/>
+	<designed target="OnClickPenColor" value="0xff808080" ver="4"/>
+	<designed target="OnClickPenStyle" value="1" ver="4"/>
+	<designed target="OnClickPenWidth" value="1" ver="4"/>
+	<designed target="OnHoverPenColor" value="0xff808080" ver="4"/>
+	<designed target="OnHoverPenStyle" value="1" ver="4"/>
+	<designed target="OnHoverPenWidth" value="1" ver="4"/>
+	<designed target="DisabledPenColor" value="0xffa0a0a0" ver="4"/>
+	<designed target="DisabledPenStyle" value="0" ver="4"/>
+	<designed target="DisabledPenWidth" value="1" ver="4"/>
+	<object access-modifier="private" name="Icon" display-name="Icon" uuid="f38119bc-cdf9-495b-92cf-e545be22c7a7" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="4">
+		<designed target="X" value="4" ver="4"/>
+		<designed target="Y" value="4" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="16" ver="4"/>
+		<designed target="Height" value="16" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="ImageFile" value="CommonLib_Icons/UserGuest.png" ver="4"/>
+		<designed target="Active" value="true" ver="4"/>
+		<designed target="CurrentFrameNumber" value="0" ver="4"/>
+		<designed target="Speed" value="1" ver="4"/>
+	</object>
+	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="781250c1-feae-4571-83c5-a024e4db8c72" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentUserChanged">
+			<body kind="om">
+				<![CDATA[UserChanged();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="PasswordExpiration">
+			<body kind="om">
+				<![CDATA[UserChanged();]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="UserChanged" display-name="UserChanged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[here.Tooltip = CurrentUserDisplayName;
+
+fileName: string;
+if (GuestMode)
+	fileName = "UserGuest.png";
+else	if (PasswordExpiresSoon)
+	fileName = "UserWarning.png";
+else	fileName = "User.png";
+
+Icon.ImageFile = "CommonLib_Icons/" + fileName;]]>
+			</body>
+		</do>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+		<object access-modifier="private" uuid="3b7ba0ad-3fbd-4db4-8b33-1dc7c40160b8" base-type="LoginDialog" base-type-id="eb8d4a9b-7cd2-4fcf-81e1-67eed3b5c0d4" ver="4">
+			<init target="ChangePassword" ver="4" ref="here.ChangePassword"/>
+			<init target="Result" ver="4" ref="LoginResult"/>
+			<init target="AlwaysOnTop" ver="5">
+				<expr>
+					<![CDATA[here.ShowDialogOnTop]]>
+				</expr>
+			</init>
+			<init target="pTheme" ver="4" ref="here.pTheme"/>
+		</object>
+	</do-on>
+	<object access-modifier="private" name="ChangePassword" display-name="ChangePassword" uuid="7dc0815a-0a8e-417e-bbbb-08389e395a6c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="6261204d-1ee0-4aa7-9bf6-1fbfd3b20939" base-type="ChangePasswordDialog" base-type-id="bc08353b-5b47-467f-aa5f-1d3f7ab7119b" ver="4">
+				<init target="UserId" ver="5">
+					<expr>
+						<![CDATA[LoginResult.UserId]]>
+					</expr>
+				</init>
+				<init target="UserDisplayName" ver="5">
+					<expr>
+						<![CDATA[LoginResult.UserDisplayName]]>
+					</expr>
+				</init>
+				<init target="AlwaysOnTop" ver="5">
+					<expr>
+						<![CDATA[here.ShowDialogOnTop]]>
+					</expr>
+				</init>
+				<init target="pTheme" ver="4" ref="here.pTheme"/>
+			</object>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="LoginResult" display-name="LoginResult" uuid="321cb9e2-1558-4378-9141-6534939ae73f" base-type="AuthentificationResult" base-type-id="5a70987d-09be-4ae7-90b3-76a00c6721bb" ver="4"/>
+	<designed target="Checked" value="false" ver="4"/>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (Width >= 16 && Height >= 16)
+{
+	Icon.Width = 16;
+	Icon.Height = 16;
+	
+	Icon.X = (Width - Icon.Width) / 2;
+	Icon.Y = (Height - Icon.Height) / 2;
+}
+else
+{
+	Icon.Width = 0;
+	Icon.Height = 0;	
+}]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="8af03022-457d-49cd-a498-0dbbb0ee6da4" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[UpdateLayout();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowDialogOnTop" display-name="Показывать диалог поверх всех окон" uuid="f1e793ac-e388-437f-974f-846917c5302c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="492cb8e5-c972-4e7d-8199-d16d4257bdbb" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnHoverPenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnHoverBrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.EditorBrushColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnClickBrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.EditorBrushColor]]>
+		</body>
+	</do-trace>
+</type>
+

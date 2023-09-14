@@ -1,0 +1,101 @@
+<type access-modifier="private" name="Alarms_SettingsQueryProcessing" display-name="Alarms_SettingsQueryProcessing" uuid="de176bc0-81c9-497c-b046-38623e102530" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="640" ver="5"/>
+	<designed target="Height" value="560" ver="5"/>
+	<designed target="PenColor" value="4278190080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="WindowX" value="0" ver="5"/>
+	<designed target="WindowY" value="0" ver="5"/>
+	<designed target="WindowWidth" value="640" ver="5"/>
+	<designed target="WindowHeight" value="560" ver="5"/>
+	<designed target="WindowCaption" value="Механизмы очистки" ver="5"/>
+	<designed target="ShowWindowCaption" value="true" ver="5"/>
+	<designed target="ShowWindowMinimize" value="false" ver="5"/>
+	<designed target="ShowWindowMaximize" value="false" ver="5"/>
+	<designed target="ShowWindowClose" value="true" ver="5"/>
+	<designed target="AlwaysOnTop" value="false" ver="5"/>
+	<designed target="WindowSizeMode" value="0" ver="5"/>
+	<designed target="WindowBorderStyle" value="2" ver="5"/>
+	<designed target="WindowState" value="0" ver="5"/>
+	<designed target="WindowScalingMode" value="0" ver="5"/>
+	<designed target="MonitorNumber" value="0" ver="5"/>
+	<designed target="WindowPosition" value="2" ver="5"/>
+	<designed target="WindowCloseMode" value="0" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pSettingsForm" display-name="pSettingsForm" uuid="8ec6107a-83b1-4cdd-b62d-90c8b70099ea" base-type="SettingsForm" base-type-id="82dc7618-130c-486c-840d-5d302f40306b" base-const="true" base-ref="true" ver="2"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="874fb813-5c80-46fa-9b7e-74c62b4f568a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="PathLabel" display-name="PathLabel" uuid="b9dab4d0-ab84-4608-a261-3eaaaa6e09af" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="5.5" ver="2"/>
+		<designed target="Y" value="5.5" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="342" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Продолжительность отображения оперативных событий, час" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="4">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Alarms_StorageDuration" display-name="Alarms_StorageDuration" uuid="c254f0ca-ea58-4703-92ca-3bd79ba43b23" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="5">
+		<designed target="X" value="338" ver="5"/>
+		<designed target="Y" value="6.5" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="50" ver="5"/>
+		<designed target="Height" value="25" ver="5"/>
+		<init target="Minimum" ver="5" value="0"/>
+		<init target="Maximum" ver="5" value="2400"/>
+		<init target="Value" ver="5" value="0"/>
+		<object access-modifier="private" name="DurationChanged" display-name="DurationChanged" uuid="1bb0b0c6-5ca5-4b25-8485-7bc83561a77c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[if (bInit)
+{
+	pSettingsForm.Settings.QueryProcessing.StorageDuration = Alarms_StorageDuration.Value;
+	pSettingsForm.Settings.QueryProcessing.OnEdited();
+}
+]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="ValueChanged" ver="5" ref="DurationChanged"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Alarms_StorageDuration.SetValue(pSettingsForm.Settings.QueryProcessing.StorageDuration);
+Alarms_StorageDuration.Focus = true;
+
+// Разрешение на обработку формами своих значений
+bInit = true;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="bInit" display-name="bInit" uuid="3dcf6c22-ab79-4273-9abc-9043f795dfd5" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="80fa9dec-5fad-4d3c-b08e-2f1353fec057" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+</type>
+

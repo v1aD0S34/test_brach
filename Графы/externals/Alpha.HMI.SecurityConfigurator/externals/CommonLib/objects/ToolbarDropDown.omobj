@@ -1,0 +1,264 @@
+<type access-modifier="public" name="ToolbarDropDown" display-name="ToolbarDropDown" uuid="0e258e56-d922-4a8f-b8c3-7d577d177609" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<object access-modifier="private" name="Checked" display-name="Checked" uuid="df1d66ca-af60-4e0d-ae84-dc166a371026" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[pButton.Checked = value;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Active" display-name="Active" uuid="814bf9f0-c6bb-459f-a348-83c85cdd879f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="3544e7d1-3847-4d7a-9d63-80702efeae5b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != value)
+{
+	oldValue = value;
+
+	if	(value)
+	{
+		Margins.Top = private.margin;
+		Margins.Bottom = private.margin;
+		Margins.Left = -1;
+		Margins.Right = private.margin;
+		SizeLimits.MinWidth = 12 - private.margin;
+		SizeLimits.MinHeight = private.height - 2 * private.margin;
+		SizeLimits.MaxWidth = 12 - private.margin;
+		SizeLimits.MaxHeight = private.height - 2 * private.margin;
+	}
+	else
+	{
+		Margins.Top = 0;
+		Margins.Bottom = 0;
+		Margins.Left = 0;
+		Margins.Right = 0;
+		SizeLimits.MinWidth = 0;
+		SizeLimits.MinHeight = 0;
+		SizeLimits.MaxWidth = 0;
+		SizeLimits.MaxHeight = 0;
+	}
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="597a0f1c-8202-44d7-a58a-e6adc03a45d8" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<init target="oldValue" ver="4" value="true"/>
+	</object>
+	<do-trace access-modifier="private" target="Enabled" ver="5">
+		<body>
+			<![CDATA[Active]]>
+		</body>
+	</do-trace>
+	<init target="Checked" ver="4" value="false"/>
+	<init target="Active" ver="4" value="true"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
+		<body kind="om">
+			<![CDATA[private.MouseIsOver = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseLeave">
+		<body kind="om">
+			<![CDATA[private.MouseIsOver = false;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Arrow" display-name="Arrow" uuid="0adfc136-72cc-43ef-9ba6-034c42336ab8" base-type="Line" base-type-id="4dd08b15-1502-453f-a174-2c0a5aa850ba" ver="4">
+		<designed target="X" value="1" ver="4"/>
+		<designed target="Y" value="12" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="8" ver="4"/>
+		<designed target="Height" value="4" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="0.5" ver="4"/>
+		<designed target="BrushColor" value="0xff000000" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<object access-modifier="private" name="Point_1" display-name="Point_1" uuid="e8018a91-4c34-4ca0-91ce-3196dc5a4ddd" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="4">
+			<designed target="X" value="4" ver="4"/>
+			<designed target="Y" value="4" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Point_2" display-name="Point_2" uuid="5f75ad8d-9e92-4d6f-ad95-fe92e875062a" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="4">
+			<designed target="X" value="8" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Point_3" display-name="Point_3" uuid="08c323af-952f-406c-911f-014c57725104" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+		</object>
+		<do-trace access-modifier="private" target="BrushStyle" ver="5">
+			<body>
+				<![CDATA[TypeConvert.ToUint2(Active ? 1 : 0)]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="PenColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BrushColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="Point_4" display-name="Point_4" uuid="2e56ac28-6140-4b8d-8355-ffbb9a792605" base-type="Point" base-type-id="467f1af0-7bb4-4a61-b6fb-06e7bfd530d6" ver="4">
+			<designed target="X" value="4" ver="4"/>
+			<designed target="Y" value="4" ver="4"/>
+		</object>
+		<init target="X" ver="5" ref="Margin"/>
+		<init target="Y" ver="5">
+			<expr>
+				<![CDATA[(ButtonHeight - 2 * Margin - 4) / 2]]>
+			</expr>
+		</init>
+	</object>
+	<object access-modifier="private" name="pButton" display-name="pButton" uuid="ea9d9b6d-d086-40ee-a4ff-31c194023a65" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" base-const="true" base-ref="true" ver="4"/>
+	<init target="IsVisible" ver="4" value="true"/>
+	<designed target="Width" value="11" ver="5"/>
+	<designed target="Height" value="28" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0x00000000" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="Margins" display-name="Margins" uuid="6b08db23-911b-4309-9416-c5bb72e36327" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+		<designed target="Top" value="1" ver="5"/>
+		<designed target="Bottom" value="1" ver="5"/>
+		<designed target="Left" value="-1" ver="5"/>
+		<designed target="Right" value="1" ver="5"/>
+		<init target="Top" ver="5" ref="Margin"/>
+		<init target="Bottom" ver="5" ref="Margin"/>
+		<init target="Right" ver="5" ref="Margin"/>
+	</object>
+	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="b5e1e215-fc69-434c-9913-cb7dbbaea735" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+		<designed target="MinWidth" value="11" ver="5"/>
+		<designed target="MinHeight" value="0" ver="5"/>
+		<designed target="MaxWidth" value="11" ver="5"/>
+		<designed target="MaxHeight" value="18" ver="5"/>
+		<init target="MinHeight" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight - 2 * Margin]]>
+			</expr>
+		</init>
+		<init target="MaxHeight" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight - 2 * Margin]]>
+			</expr>
+		</init>
+		<init target="MinWidth" ver="5">
+			<expr>
+				<![CDATA[12 - Margin]]>
+			</expr>
+		</init>
+		<init target="MaxWidth" ver="5">
+			<expr>
+				<![CDATA[12 - Margin]]>
+			</expr>
+		</init>
+	</object>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[Active && (Checked || private.MouseIsOver || pButton.private.MouseIsOver) ? private.theme.BorderColor : 0]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="PenStyle" ver="5">
+		<body>
+			<![CDATA[TypeConvert.ToUint2(Active && (Checked || private.MouseIsOver || pButton.private.MouseIsOver) ? 1 : 0)]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Active && Checked]]>
+			</condition>
+			<expr>
+				<![CDATA[private.theme.SelectionColor]]>
+			</expr>
+		</conditional-expr>
+		<conditional-expr>
+			<condition>
+				<![CDATA[Active && (private.MouseIsOver || pButton.private.MouseIsOver)]]>
+			</condition>
+			<expr>
+				<![CDATA[private.theme.EditorBrushColor]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[0x00000000]]>
+			</expr>
+		</default-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="Visible" ver="5">
+		<body>
+			<![CDATA[IsVisible]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="1bf02b59-9627-4656-9318-37571bcca238" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<param access-modifier="private" name="Margin" display-name="Margin" uuid="36c60318-76ce-4d23-b70c-dc0c4f4e077c" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description=""/>
+	<param access-modifier="private" name="ButtonHeight" display-name="ButtonHeight" uuid="b7d59bc2-3cb0-4d08-93de-533ee7eae249" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description=""/>
+	<init target="ButtonHeight" ver="5" value="30"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="2cb35c86-8789-41e0-af95-6a0bf4c10e39" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="theme" display-name="theme" uuid="0c109ab5-8b88-4a35-a5d7-08efef4fbf69" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1">
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="SelectionColor" ver="5">
+				<body>
+					<![CDATA[pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="04a92f58-2a40-4465-9877-2fe2b4caae2c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="margin" display-name="margin" uuid="41dbcfef-4e93-46fb-bbbe-5ee4ab3d4328" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		<init target="margin" ver="5" ref="Margin"/>
+		<object access-modifier="private" name="height" display-name="height" uuid="af852bbf-2860-4d55-9770-ba799cd52247" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description="" cardinal="1"/>
+		<init target="height" ver="5" ref="ButtonHeight"/>
+	</object>
+	<init target="Margin" ver="5" value="1"/>
+</type>
+

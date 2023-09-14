@@ -1,0 +1,9 @@
+<type access-modifier="private" name="RoleCommands" display-name="RoleCommands" uuid="1eb2ba17-b609-4af3-9a7b-da2325096c1a" base-type="ListCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<object access-modifier="private" name="DoRename" display-name="DoRename" uuid="d5f82c68-9446-4d32-93b1-55c34d67ffb7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="ebb32c60-0b0f-4175-8265-ea728fcc4dcd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+</type>
+

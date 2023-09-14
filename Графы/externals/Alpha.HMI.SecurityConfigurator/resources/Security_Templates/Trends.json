@@ -1,0 +1,13 @@
+{
+    "Name": "Trends",
+    "Tokens": [{
+            "Type": "Boolean",
+            "Name": "EditSettings",
+            "Description": "Редактирование настроек"
+        }, {
+            "Type": "Boolean",
+            "Name": "FileSystemAccess",
+            "Description": "Доступ к файловой системе"
+        }
+    ]
+}

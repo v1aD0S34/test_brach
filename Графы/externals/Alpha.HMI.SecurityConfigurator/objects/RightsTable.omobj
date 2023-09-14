@@ -1,0 +1,519 @@
+<type access-modifier="private" name="RightsTable" display-name="RightsTable" uuid="e141c390-8852-4e53-874f-a5fe9c888efa" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<designed target="Width" value="610" ver="4"/>
+	<designed target="Height" value="350" ver="4"/>
+	<designed target="RoundingRadius" value="0" ver="4"/>
+	<designed target="PenColor" value="0xff000000" ver="4"/>
+	<designed target="PenStyle" value="0" ver="4"/>
+	<designed target="PenWidth" value="1" ver="4"/>
+	<designed target="BrushColor" value="4278190080" ver="4"/>
+	<designed target="BrushStyle" value="0" ver="4"/>
+	<object access-modifier="private" name="ConfigurationAccess" display-name="ConfigurationAccess" uuid="10682125-5fdf-4ad8-b909-43458b93da75" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+		<init target="Right" ver="2" value="ConfigurationAccess"/>
+		<init target="Application" ver="4" value="system:Alpha.Security"/>
+		<init target="SecurityContext" ver="4">
+			<object access-modifier="private" uuid="098b922e-f089-4775-9a9e-e2e148f0694f" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+		</init>
+	</object>
+	<object access-modifier="private" name="RightsTable" display-name="RightsTable" uuid="6464f57c-4632-4a44-b148-c2726f72ee75" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="600" ver="2"/>
+		<designed target="Height" value="400" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="3" ver="2"/>
+		<object access-modifier="private" name="TableColumn_TypeRight" display-name="TableColumn_TypeRight" uuid="6d0fa18e-39e0-4914-a531-d7fd231a792c" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Тип" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="TokenTypeTitle" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="75" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_NameRight" display-name="TableColumn_NameRight" uuid="f9474180-065a-4f7a-bf5e-d773c8070367" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Право" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="NameRight" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="100" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_Rights" display-name="TableColumn_Rights" uuid="88b27016-3555-49c3-88d4-317e784e4c8d" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Значение" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="RightsValue" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="100" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[if (ConfigurationAccess.Value && EditingAllowed){
+	rightType: string = Variant.ToString(RightsData.GetCellData(row, 0),"");
+	rightName: string = Variant.ToString(RightsData.GetCellData(row, 1),"");
+	rightValueAllow: string = Variant.ToString(RightsData.GetCellData(row, 2),"null");	
+	rightValueDenny: string = Variant.ToString(RightsData.GetCellData(row, 3),"null");	
+	rightEffValue: string = Variant.ToString(RightsData.GetCellData(row, 7),"");
+	appID: string = Variant.ToString(RightsData.GetCellData(row,9),"");
+	OutputData.ResetParamsValues();
+	
+	if (rightValueAllow != "null"){
+		if (rightType == "bool"){
+			if (rightValueAllow == "TRUE" && rightValueDenny == "FALSE"){
+				OutputData.SetParamsValue(appID, rightName, "FALSE", "TRUE");			//переход из ДА в НЕТ
+				RightValueChanged.Invoke();
+			} else if (rightValueAllow == "FALSE" && rightValueDenny == "TRUE" || rightValueAllow == "FALSE" && rightValueDenny == "FALSE") {
+				OutputData.SetParamsValue(appID, rightName, "TRUE", "FALSE");		//переход из НЕТ (или Не определено) в ДА
+				RightValueChanged.Invoke();
+			}
+		} else if (rightType == "string") {
+			tokenCode: uint1 = TokensDefinition.GetTokenCode(appID,rightType,rightName);
+			OutputData.SetParamsValue(appID, rightName, rightValueAllow, rightValueDenny);
+			if (tokenCode == 5) {																					// 5 - AlphaSecurity PasswordComplexity
+				Action_PassComlexity.Invoke();
+			} else if (tokenCode == 6){																			// 6 - AlphaSecurity PasswordAge
+				Action_PassAge.Invoke();
+			} else if (TokensDefinition.IsEqualsSystemIntegerRight(tokenCode)) {		//"числовые" права Alpha.Security
+				Action_ChangeIntegerRight.Invoke();
+			} else {																										// остальные строковые права
+				Action_ChangeStringRights.Invoke();
+			}
+		}
+	}
+}]]>
+				</body>
+			</do-on>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_EffRight" display-name="TableColumn_EffRight" uuid="83d8d039-a858-4e65-9ab7-d0a7471e8eb6" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Эффективное значение" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="EffRightValue" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="130" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_AppID" display-name="TableColumn_AppID" uuid="f5d3b99a-de41-4c37-96c5-18ef59bce388" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value=" " ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="AppID" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="20" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="true" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_Description" display-name="TableColumn_Description" uuid="40634e39-d7aa-4d95-ac23-6da098cc21db" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value=" Описание" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="Description" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="200" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+		</object>
+		<designed target="LatestRowTracking" value="false" ver="2"/>
+		<designed target="HeaderHeight" value="21" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="30" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<object access-modifier="private" name="selectedRow" display-name="selectedRow" uuid="7f26e9ca-53ec-426e-9386-124baa6a92c4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<init target="TableModel" ver="3" ref="RightsData"/>
+		<designed target="SelectionOverlayEnabled" value="false" ver="3"/>
+		<object access-modifier="private" name="TableDecorator_1" display-name="TableDecorator_1" uuid="361efbcf-820e-48b8-9f18-58a157102859" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="3">
+			<designed target="JsonDecorator" value="" ver="3"/>
+		</object>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[if (row>0 && row<GetRowCount()){
+	selectedRow = row;
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="RightsData" display-name="RightsData" uuid="a5d50ca9-d409-42dd-ac9c-a332ed86f530" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="3">
+		<designed target="Frozen" value="false" ver="3"/>
+		<designed target="MaxRowCount" value="100000" ver="3"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Reset();
+AddColumn("TypeRight","","","","string",false,true);						//0
+AddColumn("NameRight","","","","string",false,true);						//1
+AddColumn("RightsAllowValue","","","","string",false,true);			//2
+AddColumn("RightsDenyValue","","","","string",false,true);			//3
+AddColumn("RightsValue","","","","string",false,true);					//4	- вычисленное значение права ( только для отображения)
+AddColumn("EffRightsAllowValue","","","","string",false,true);		//5
+AddColumn("EffRightsDenyValue","","","","string",false,true);		//6
+AddColumn("EffRightValue","","","","string",false,true);				//7	- вычисленное значение эффективного права ( только для отображения)
+AddColumn("Description","","","","string",false,true);					//8
+AddColumn("AppID","","","","string",false,true);							//9
+AddColumn("TokenTypeTitle","","","","string",false,true);				//10	- текст типа токена ( только для отображения)
+Clear();]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="b4a509c1-8f1a-41c9-9eb4-4b0b092f0281" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<do access-modifier="private" name="InitFunction" display-name="InitFunction" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[RightsData.Init();
+TokensDefinition.Init();
+RightsTable.TableDecorator_1.JsonDecorator = GetJsonDecorator();
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var Object = {};
+Object.Formatting = [];
+Object.Decorating = [];
+Object.StyleDictionary = [];
+
+var tokenType_format = {};
+tokenType_format[`formatting_rule_name`] = "tokenType_format";
+tokenType_format[`formatting_column`] = "TokenTypeTitle";
+tokenType_format[`conditions`] = [];
+tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'bool'},'text':'логическое'});
+tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'string'},'text':'строковое'});
+tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'boolArray'},'text':'битовая \nмаска'});
+tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'int32Array'},'text':'диапазон \nчисел'});
+tokenType_format[`conditions`].push({'condition':{'data:TokenTypeTitle': 'int32'},'text':'числовое'});
+
+Object.Formatting.push(tokenType_format);
+
+var rightValue_format = {};
+rightValue_format[`formatting_rule_name`] = "rightValue_format";
+rightValue_format[`formatting_column`] = "RightsValue";
+rightValue_format[`conditions`] = [];
+rightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'TRUE'}]},'text':'Да'});
+rightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'FALSE'}]},'text':'Нет'});
+Object.Formatting.push(rightValue_format);
+
+var effectiveRightValue_format = {};
+effectiveRightValue_format[`formatting_rule_name`] = "effectiveRightValue_format";
+effectiveRightValue_format[`formatting_column`] = "EffRightValue";
+effectiveRightValue_format[`conditions`] = [];
+effectiveRightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'TRUE'}]},'text':'Да'});
+effectiveRightValue_format[`conditions`].push({'condition':{'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'FALSE'}]},'text':'Нет'});
+Object.Formatting.push(effectiveRightValue_format);
+
+var stringDecorating = {};
+stringDecorating[`decoration_rule_name`] = "string_decorating";
+stringDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'string'};
+stringDecorating[`columnstyle`] = {'TokenTypeTitle':"stringStyle"};
+Object.Decorating.push(stringDecorating);
+
+var boolDecorating = {};
+boolDecorating[`decoration_rule_name`] = "bool_decorating";
+boolDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'bool'};
+boolDecorating[`columnstyle`] = {'TokenTypeTitle':"boolStyle"};
+Object.Decorating.push(boolDecorating);
+
+var boolArrayDecorating = {};
+boolArrayDecorating[`decoration_rule_name`] = "boolArray_decorating";
+boolArrayDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'boolArray'};
+boolArrayDecorating[`columnstyle`] = {'TokenTypeTitle':"boolArrayStyle"};
+Object.Decorating.push(boolArrayDecorating);
+
+var Int32ArrayDecorating = {};
+Int32ArrayDecorating[`decoration_rule_name`] = "Int32Array_decorating";
+Int32ArrayDecorating[`decoration_rule`] = {'data:TokenTypeTitle': 'Int32Array'};
+Int32ArrayDecorating[`columnstyle`] = {'TokenTypeTitle':"Int32ArrayStyle"};
+Object.Decorating.push(Int32ArrayDecorating);
+
+var Int32Decorating = {};
+Int32Decorating[`decoration_rule_name`] = "Int32_decorating";
+Int32Decorating[`decoration_rule`] = {'data:TokenTypeTitle': 'Int32'};
+Int32Decorating[`columnstyle`] = {'TokenTypeTitle':"Int32Style"};
+Object.Decorating.push(Int32Decorating);
+
+var valueTrueDecorating = {};
+valueTrueDecorating[`decoration_rule_name`] = "valueTrueDecorating";
+valueTrueDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'TRUE'}]};
+valueTrueDecorating[`columnstyle`] = {'RightsValue':"trueStyle"};
+Object.Decorating.push(valueTrueDecorating);
+
+var valueFalseDecorating = {};
+valueFalseDecorating[`decoration_rule_name`] = "valueFalseDecorating";
+valueFalseDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:RightsValue': 'FALSE'}]};
+valueFalseDecorating[`columnstyle`] = {'RightsValue':"falseStyle"};
+Object.Decorating.push(valueFalseDecorating);
+
+var effectiveValueTrueDecorating = {};
+effectiveValueTrueDecorating[`decoration_rule_name`] = "effectiveValueTrueDecorating";
+effectiveValueTrueDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'TRUE'}]};
+effectiveValueTrueDecorating[`columnstyle`] = {'EffRightValue':"trueStyle"};
+Object.Decorating.push(effectiveValueTrueDecorating);
+
+var effectiveValueFalseDecorating = {};
+effectiveValueFalseDecorating[`decoration_rule_name`] = "effectiveValueFalseDecorating";
+effectiveValueFalseDecorating[`decoration_rule`] = {'and':[{'data:TokenTypeTitle': 'bool'},{'data:EffRightValue': 'FALSE'}]};
+effectiveValueFalseDecorating[`columnstyle`] = {'EffRightValue':"falseStyle"};
+Object.Decorating.push(effectiveValueFalseDecorating);
+
+var boolStyle = {};
+boolStyle[`style_name`] = "boolStyle";
+boolStyle[`style`] = {'background_color':'#ffddddff'};
+Object.StyleDictionary.push(boolStyle);
+
+var stringStyle = {};
+stringStyle[`style_name`] = "stringStyle";
+stringStyle[`style`] = {'background_color':'#fff3d3b4'};
+Object.StyleDictionary.push(stringStyle);
+
+var boolArrayStyle = {};
+boolArrayStyle[`style_name`] = "boolArrayStyle";
+boolArrayStyle[`style`] = {'background_color':'#ffddddff'};
+Object.StyleDictionary.push(boolArrayStyle);
+
+var Int32ArrayStyle = {};
+Int32ArrayStyle[`style_name`] = "Int32ArrayStyle";
+Int32ArrayStyle[`style`] = {'background_color':'#ff97d2fd'};
+Object.StyleDictionary.push(Int32ArrayStyle);
+
+var Int32Style = {};
+Int32Style[`style_name`] = "Int32Style";
+Int32Style[`style`] = {'background_color':'#ff97d2fd'};	//ff7ab4f4, #ff78c6ff - более темный синий
+Object.StyleDictionary.push(Int32Style);
+
+var trueStyle = {};
+trueStyle[`style_name`] = "trueStyle";
+trueStyle[`style`] = {'background_color':'#fface3ac'};
+Object.StyleDictionary.push(trueStyle);
+
+var falseStyle = {};
+falseStyle[`style_name`] = "falseStyle";
+falseStyle[`style`] = {'background_color':'#ffffa39b'};
+Object.StyleDictionary.push(falseStyle);
+
+var appDecorating = {};
+appDecorating[`decoration_rule_name`] = "appDecorating";
+appDecorating[`decoration_rule`] = {'data:TokenTypeTitle': ' '};
+appDecorating[`rowstyle`] = "appStyle";
+Object.Decorating.push(appDecorating);
+
+var appStyle = {};
+appStyle[`style_name`] = "appStyle";
+appStyle[`style`] = {'background_color':'#ffdcf2f8','font':{'font_weight':'bold'}};
+Object.StyleDictionary.push(appStyle);
+
+return JSON.stringify(Object, null, 2);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetToTable" display-name="SetToTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[//при изменении списка прав перестраиваем модель таблицы
+
+if (RightsData.GetColumnCount() == 0) RightsData.Init();
+RightsData.Clear();
+
+try {
+	var rightsData = JSON.parse(RightsJson).data;
+	currentRightsListJson = RightsJson;
+} catch (error) {
+	var rightsData = [];
+}
+
+try { 
+	var effectiveRightsData = JSON.parse(EffectiveRightsJson).data;
+} catch (error) {
+	var effectiveRightsData = [];
+}
+//формируем список приложений
+var appList = [];	
+if (effectiveRightsData.length != 0) {																			//Получаем список имен приложений
+	for (var i = 0; i < effectiveRightsData.length; i++) {
+		if ((appList.indexOf(effectiveRightsData[i].appName) === -1) ){
+			appList.push(effectiveRightsData[i].appName);
+		}
+	}
+	appList = appList.sort();
+	effectiveRightsData = effectiveRightsData.sort((a, b) => a.tokenName.toString().toLowerCase() > b.tokenName.toString().toLowerCase() ? 1 : -1);
+}
+//заполняем модель таблицы с группировкой прав по приложениям
+for (var i = 0; i<appList.length; i++){			//цикл перебора приложений
+	var currentRow = RightsData.GetRowCount();
+	var currentApp = appList[i];
+	RightsData.AddRow();
+	RightsData.SetCellData(currentRow,0, " ");	
+	RightsData.SetCellData(currentRow,10, " "); //отметка строки приложения для декоратора 
+	RightsData.SetCellData(currentRow,1, appList[i]);
+	
+	var currentAppRights = [];
+	for (var j = 0; j < effectiveRightsData.length; j++){		//выбрать права для данного приложения в одном экземляре
+		if ((effectiveRightsData[j].appName == currentApp) && (appList.indexOf(effectiveRightsData[j].tokenName) === -1)){
+			currentAppRights.push(effectiveRightsData[j]);
+		}
+	}
+	//заполняем модель таблицы данными прав по каждому приложению
+	for (var a =0; a < currentAppRights.length; a++){
+		var lastRow = RightsData.GetRowCount();
+		RightsData.AddRow();
+		RightsData.SetCellData(lastRow, 0, currentAppRights[a].tokenType);
+		RightsData.SetCellData(lastRow, 1, currentAppRights[a].tokenName);
+		for (var n = 0; n < rightsData.length; n++){		//если есть у аккаунта есть свои права, то добавляем в таблицу их значения
+			if (rightsData[n].appName == currentAppRights[a].appName && rightsData[n].tokenType ==  currentAppRights[a].tokenType 
+			&& rightsData[n].tokenName == currentAppRights[a].tokenName){
+				RightsData.SetCellData(lastRow, 2, rightsData[n].tokenValueAllow);
+				RightsData.SetCellData(lastRow, 3, rightsData[n].tokenValueDeny);
+				//определяем значение для визуального столбца текущих прав
+				RightsData.SetCellData(lastRow, 4,TokensDefinition.DetermineRightsValue(rightsData[n].appName, rightsData[n].tokenType, rightsData[n].tokenName, rightsData[n].tokenValueAllow, rightsData[n].tokenValueDeny));
+			}
+		}
+		RightsData.SetCellData(lastRow, 5, currentAppRights[a].tokenValueAllow);
+		RightsData.SetCellData(lastRow, 6, currentAppRights[a].tokenValueDeny);
+		RightsData.SetCellData(lastRow, 7, TokensDefinition.DetermineRightsValue(currentAppRights[a].appName, currentAppRights[a].tokenType, currentAppRights[a].tokenName, currentAppRights[a].tokenValueAllow, currentAppRights[a].tokenValueDeny));
+		RightsData.SetCellData(lastRow, 8, currentAppRights[a].tokenDescription);
+		RightsData.SetCellData(lastRow, 9, currentAppRights[a].appName);
+		RightsData.SetCellData(lastRow, 10, TokensDefinition.GetTypeTitle(currentAppRights[a].appName, currentAppRights[a].tokenType, currentAppRights[a].tokenName));
+	}
+}
+
+//переход к выделенной ячейке
+if (RightsTable.selectedRow >= 0 && RightsTable.selectedRow <= RightsTable.GetRowCount()){
+	RightsTable.ScrollTo(RightsTable.selectedRow,2,3);
+} else {
+	RightsTable.ScrollToTop();
+}]]>
+		</body>
+		<param access-modifier="private" name="RightsJson" display-name="" uuid="9bdcaf20-29b5-44ed-9ac1-6f6423ea2364" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="EffectiveRightsJson" display-name="" uuid="e8a98312-dcd0-4058-b740-ed62f8f0f139" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="085697e6-ce6e-4222-b9da-c6650eaf0b3e" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+		<designed target="Orientation" value="1" ver="4"/>
+		<designed target="Gap" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="Action_ChangeStringRights" display-name="Action_ChangeStringRights" uuid="99591231-3d20-4041-a64d-5c207cfa7b2c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="Action_PassComlexity" display-name="Action_PassComlexity" uuid="d3f437bf-f2d2-4f6e-bd8a-1866cba88234" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="RightValueChanged" display-name="RightValueChanged" uuid="deb0424e-f54a-4354-b6fb-8adb7f2c56a5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="Action_PassAge" display-name="Action_PassAge" uuid="1023e9d9-1828-40e2-a16f-0fc92efc6dce" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OutputData" display-name="OutputData" uuid="27e3d6a3-8666-46fe-9c3a-b8cafee707d4" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="Action_ChangeIntegerRight" display-name="Action_ChangeIntegerRight" uuid="644e96b5-3906-4b53-9ada-768e838b48eb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="currentRightsListJson" display-name="currentRightsListJson" uuid="b2beaeb3-b086-479e-8281-e53bc31e371a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3" cardinal="1"/>
+	<object access-modifier="private" name="TokensDefinition" display-name="TokensDefinition" uuid="3631574a-8abb-4600-a668-6c2d1a27e743" base-type="TokensDefinition" base-type-id="2d057de8-3722-4426-b142-42fa7ada0520" ver="4">
+		<designed target="X" value="190" ver="4"/>
+		<designed target="Y" value="-130" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="EditingAllowed" display-name="EditingAllowed" uuid="6978d00c-f73f-4319-a219-d6df16d3eb18" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+</type>
+

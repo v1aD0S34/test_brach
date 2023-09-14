@@ -1,0 +1,1860 @@
+<type access-modifier="public" name="SecurityConfigurator" display-name="SecurityConfigurator" uuid="5bd02e6e-72d8-47c1-8f17-67355b6bdfd0" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="850" ver="2"/>
+	<designed target="Height" value="550" ver="2"/>
+	<designed target="PenColor" value="0xffa7a7a7" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="850" ver="2"/>
+	<designed target="WindowHeight" value="550" ver="2"/>
+	<designed target="WindowCaption" value="SecurityConfigurator" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="true" ver="2"/>
+	<designed target="ShowWindowMaximize" value="true" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="1" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="1" ver="2"/>
+	<designed target="WindowCloseMode" value="1" ver="2"/>
+	<object access-modifier="private" name="Toolbar" display-name="Toolbar" uuid="f7d4ebcf-3a02-43b8-a674-f8e1ff5a123e" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="3">
+		<designed target="X" value="0" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="850" ver="3"/>
+		<designed target="Height" value="40" ver="3"/>
+		<designed target="RoundingRadius" value="0" ver="3"/>
+		<designed target="PenColor" value="0xff000000" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="BrushColor" value="0xff000000" ver="3"/>
+		<designed target="BrushStyle" value="0" ver="3"/>
+		<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="4596d2ea-f9e1-4f7d-a601-4f6f7151657c" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="3">
+			<designed target="Orientation" value="1" ver="3"/>
+			<designed target="Gap" value="0" ver="3"/>
+		</object>
+		<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="126c855d-1efd-493e-a7e6-0f67248d4549" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="0" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Save.png"/>
+			<designed target="Tooltip" value="Сохранить изменения" ver="3"/>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[BasicControlCommands.DoSave = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ConfigurationAccess.Value &&
+BasicControlCommands.DoSave.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<init target="IsVisible" ver="4" value="true"/>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator_0" display-name="separator_0" uuid="3e57e4a5-9797-4c87-b0b5-4046768bebbd" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="3">
+			<designed target="X" value="40" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+		</object>
+		<object access-modifier="private" name="btnSaveBackup" display-name="btnSaveBackup" uuid="c9c9eb12-f0fb-42bc-b87d-ec6dbd60f175" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="45" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/SaveBackup.png"/>
+			<designed target="Tooltip" value="Сохранить резервную копию конфигурации" ver="3"/>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[BasicControlCommands.DoSaveBackup = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ConfigurationAccess.Value &&
+ BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<init target="IsVisible" ver="4" value="true"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnRestoreBackup" display-name="btnRestoreBackup" uuid="e9bc6db8-6e94-43a5-94e0-62605701ead5" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="85" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RestoreBackup.png"/>
+			<designed target="Tooltip" value="Восcтановить конфигурацию из резервной копии" ver="3"/>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[BasicControlCommands.DoRestoreBackup = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ConfigurationAccess.Value && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<init target="IsVisible" ver="4" value="true"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator_1" display-name="separator_1" uuid="1bfbd101-4d88-466f-8bcc-e17cde98b042" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="3">
+			<designed target="X" value="90" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="btnApplications" display-name="btnApplications" uuid="3ce4b31b-58c9-46ce-a979-2b706e42fb64" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="95" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Applications.png"/>
+			<designed target="Tooltip" value="Показать список приложений" ver="3"/>
+			<do-trace access-modifier="private" target="Checked" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppList]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.AppList);]]>
+				</body>
+			</do-on>
+			<init target="IsVisible" ver="4" value="true"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroups" display-name="btnGroups" uuid="3f8fbd8e-365f-4aa1-aea7-991e91404286" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="135" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Groups.png"/>
+			<designed target="Tooltip" value="Показать группы пользователей" ver="3"/>
+			<do-trace access-modifier="private" target="Checked" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupList]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.GroupList);]]>
+				</body>
+			</do-on>
+			<init target="IsVisible" ver="4" value="true"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUsers" display-name="btnUsers" uuid="3593dac1-2cd1-47a7-b5a3-e8d3136c3fd1" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="175" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/UserList.png"/>
+			<init target="Checked" ver="3" value="false"/>
+			<designed target="Tooltip" value="Показать список пользователей" ver="3"/>
+			<do-trace access-modifier="private" target="Checked" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserList]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.UserList);]]>
+				</body>
+			</do-on>
+			<init target="IsVisible" ver="4" value="true"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator_2" display-name="separator_2" uuid="0025b539-21ab-4dc6-863a-d30a34305334" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="3">
+			<designed target="X" value="180" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="btnAppImport" display-name="btnAppImport" uuid="c5e36f81-891f-43f6-86c2-bfb173f90cc4" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="220" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Import.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Импортировать приложение из файла" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[AppListManagement.DoImport = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppAdd" display-name="btnAppAdd" uuid="63571849-8698-46d0-8a17-b98b5207865c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="260" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/ApplicationAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить приложение" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[AppListManagement.DoCreate = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppEdit" display-name="btnAppEdit" uuid="5473b30d-218c-402b-b439-2d5a4a2a0406" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="300" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/ApplicationEdit.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[AppListManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Редактировать приложение" ver="3"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.AppEdit);]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppRemove" display-name="btnAppRemove" uuid="4a1dac10-5d4c-4233-a628-c713fba66208" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="340" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/ApplicationRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить приложение" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[AppListManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[AppListManagement.DoRemoveSelected = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator_3" display-name="separator_3" uuid="07f7a2c0-6f42-419d-b2eb-62727af74145" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="3">
+			<designed target="X" value="345" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserList || ToolbarMode == BasicControlCommands.GoTo.UserEdit ||ToolbarMode == BasicControlCommands.GoTo.GroupList ||ToolbarMode == BasicControlCommands.GoTo.GroupEdit) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="btnAppAddBoolRight" display-name="btnAppAddBoolRight" uuid="0c697caa-3f8e-448c-bf44-97ea6529e945" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="385" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/BooleanTokenAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить логическое право" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedApp.DoCreateBoolToken.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedApp.DoCreateBoolToken = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppAddStringRight" display-name="btnAppAddStringRight" uuid="cebfc160-f237-4a73-8c9b-cc045ea7e36b" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="425" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/StringTokenAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить строковое право" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedApp.DoCreateStringToken.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedApp.DoCreateStringToken = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppRemoveRight" display-name="btnAppRemoveRight" uuid="4e923504-d199-48ee-9cff-e696f4b26fbb" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="465" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RightRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить выделенное право" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedApp.DoDeleteToken.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedApp.DoDeleteToken = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppChangeRight" display-name="btnAppChangeRight" uuid="90967bc0-24b6-41a3-831f-ec2d01496349" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="599" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RightEdit.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Изменить выделенное право" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedApp.DoChangeToken.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedApp.DoChangeToken = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnRoleEditor" display-name="btnRoleEditor" uuid="aaa2618c-bcd6-48ab-9495-a516fe69d98c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="505" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleEdit.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.AppEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<init target="Checked" ver="3" value="false"/>
+			<designed target="Tooltip" value="Редактирование ролей" ver="3"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.RoleEditor);]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppCreateRole" display-name="btnAppCreateRole" uuid="0c7d155e-4898-4157-8367-04031a7730e6" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="545" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.RoleEditor && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<init target="Checked" ver="3" value="false"/>
+			<designed target="Tooltip" value="Добавить роль" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[RolesManagement.DoCreate = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppRenameRole" display-name="btnAppRenameRole" uuid="03ef6b35-d707-4c0b-9c12-9c623d9782c4" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="595" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleRename.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.RoleEditor && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<init target="Checked" ver="3" value="false"/>
+			<designed target="Tooltip" value="Сменить имя роли" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[RolesManagement.DoRename = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[RolesManagement.DoRename.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnAppDeleteRole" display-name="btnAppDeleteRole" uuid="8c1dff2a-38bf-400a-b3b1-28bf26fb375a" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="635" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.RoleEditor && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<init target="Checked" ver="3" value="false"/>
+			<designed target="Tooltip" value="Удалить роль" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[RolesManagement.DoRemoveSelected = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[RolesManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupAdd" display-name="btnGroupAdd" uuid="eceeec37-d7ec-4e92-b120-2425cf7af6df" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="675" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/GroupAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить группу" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[GroupListManagement.DoCreate.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[GroupListManagement.DoCreate = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupEdit" display-name="btnGroupEdit" uuid="be46a13e-02f6-4545-aaac-cfdf3726acb3" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="805" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/GroupEdit.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[GroupListManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Редактировать группу" ver="3"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.GroupEdit);]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupRemove" display-name="btnGroupRemove" uuid="528d7efe-9ee2-465b-8c14-d8c05b44d618" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="845" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/GroupRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[GroupListManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить группу" ver="3"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[GroupListManagement.DoRemoveSelected = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupAddRole" display-name="btnGroupAddRole" uuid="fb93fd9b-a8b4-4b88-babb-77722b46a235" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="885" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить роли группе" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedGroup.DoAddRole.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedGroup.DoAddRole = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupDeleteRole" display-name="btnGroupDeleteRole" uuid="a9a37dfc-be83-4817-a66e-875a62c10478" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="925" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Лишить группу ролей" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedGroup.DoDeleteRole.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedGroup.DoDeleteRole = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupAddRight" display-name="btnGroupAddRight" uuid="335089cf-3e4b-4c74-a307-09609d1beb00" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="965" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RightAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить права" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedGroup.DoAddRights = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedGroup.DoAddRights.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupRemoveRight" display-name="btnGroupRemoveRight" uuid="d9b68ce7-45ec-47df-9451-5f08476f28c7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="1005" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RightRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить права" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedGroup.DoDeleteRights = true;]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedGroup.DoDeleteRights.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupLock" display-name="btnGroupLock" uuid="5a794fc0-cca8-42b6-a965-91661fa8c021" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="737" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Lock.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupEdit && ConfigurationAccess.Value && ManageSelectedGroup.DoLock.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Заблокировать группу" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedGroup.DoLock.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Enabled" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedGroup.DoLock = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnGroupUnlock" display-name="btnGroupUnlock" uuid="aba69581-8e99-489e-b8fe-776bf87ac475" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="777" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Unlock.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.GroupEdit && ConfigurationAccess.Value && ManageSelectedGroup.DoUnlock.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Разблокировать группу" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedGroup.DoUnlock.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedGroup.DoUnlock = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserAdd" display-name="btnUserAdd" uuid="ea845699-a7a7-4829-8cd7-213a46a962fd" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/UserAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserList || ToolbarMode == BasicControlCommands.GoTo.UserEdit) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить учётную запись пользователя" ver="3"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.UserCreate);]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[BasicControlCommands.GoTo.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserEdit" display-name="btnUserEdit" uuid="9139b36f-a016-40d3-926a-506846e912bb" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/UserEdit.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[UserListManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Редактировать учётную запись пользователя" ver="3"/>
+			<init target="Focus" ver="3" value="false"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.UserEdit);]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserRemove" display-name="btnUserRemove" uuid="35293947-7cfd-496a-adf7-a6c0274685c9" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/UserRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserList && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[UserListManagement.DoRemoveSelected.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить учётную запись пользователя" ver="3"/>
+			<designed target="Enabled" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[UserListManagement.DoRemoveSelected = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserChangePassword" display-name="btnUserChangePassword" uuid="23c22b7a-672e-499d-8484-425cc6c6c79f" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/PasswordEdit.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserEdit && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoChangePassword.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Задать пароль пользователя" ver="3"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoChangePassword = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator_4" display-name="separator_4" uuid="c6204cfe-4601-4a2e-aa3e-b12803f5d786" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="3">
+			<designed target="X" value="282" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<init target="IsVisible" ver="5" value="true"/>
+		</object>
+		<object access-modifier="private" name="btnUserAddGroup" display-name="btnUserAddGroup" uuid="d664b3b4-5f06-403b-97db-c9cb7a96fdae" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/GroupAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить в группу" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoAddToGroup.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoAddToGroup = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserRemoveGroup" display-name="btnUserRemoveGroup" uuid="3751f4e7-18bc-439b-9407-433e911bbb50" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/GroupRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить из группы" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoRemoveFromGroup.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoRemoveFromGroup= true;
+]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserAddRole" display-name="btnUserAddRole" uuid="18d0de76-7ed8-4d9a-b088-aed3200f6450" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="780" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Добавить роли пользователю" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoAddRole.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoAddRole = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserDeleteRole" display-name="btnUserDeleteRole" uuid="7f06beb5-d4cd-406e-96fb-f31126b1e8da" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="800" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RoleRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Лишить пользователя ролей" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoDeleteRole.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoDeleteRole = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserAddRight" display-name="btnUserAddRight" uuid="d7e1769d-0bc8-4258-af50-70bdbc41303f" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RightAdd.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<init target="Focus" ver="3" value="false"/>
+			<init target="Checked" ver="3" value="false"/>
+			<designed target="Tooltip" value="Добавить права" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoAddRights.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoAddRights = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserRemoveRight" display-name="btnUserRemoveRight" uuid="a7069502-b867-4313-85c4-d22e1aa9da6f" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/RightRemove.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[(ToolbarMode == BasicControlCommands.GoTo.UserEdit || ToolbarMode == BasicControlCommands.GoTo.UserCreate) && ConfigurationAccess.Value]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoDeleteRights.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Удалить права" ver="3"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-by-id="false">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoDeleteRights = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="separator_5" display-name="separator_5" uuid="cbae6ed0-e4da-4a62-ba15-18fcfdacf1cd" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="3">
+			<designed target="X" value="280" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Width" value="8" ver="5"/>
+			<designed target="Height" value="30" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserLock" display-name="btnUserLock" uuid="cd731c94-28b0-4c2c-8dc5-0b6d0c14e9f8" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="767" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Lock.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserEdit && ConfigurationAccess.Value && ManageSelectedUser.DoLock.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Заблокировать учётную запись пользователя" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoLock.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoLock = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserUnlock" display-name="btnUserUnlock" uuid="28b6950e-93d4-4f65-b0f8-902927df12c7" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="785" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Unlock.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserEdit && ConfigurationAccess.Value && ManageSelectedUser.DoUnlock.CanExecute]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Разблокировать учётную запись пользователя" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoUnlock.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoUnlock = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="btnUserLogOut" display-name="btnUserLogOut" uuid="c5acde52-4712-47c0-9a54-a81944a1501c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+			<designed target="X" value="805" ver="3"/>
+			<designed target="Y" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<init target="IconFile" ver="3" value="Security_Icons/Disconnect.png"/>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[ToolbarMode == BasicControlCommands.GoTo.UserEdit && ManageSelectedUser.DoLogout.CanExecute && ConfigurationAccess.Value ]]>
+				</body>
+			</do-trace>
+			<designed target="Tooltip" value="Завершить сессию пользователя" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[ManageSelectedUser.DoLogout.CanExecute && BasicControlCommands.GoTo.CanExecute]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[ManageSelectedUser.DoLogout = true;]]>
+				</body>
+			</do-on>
+			<designed target="Width" value="40" ver="5"/>
+			<designed target="Height" value="40" ver="5"/>
+		</object>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="df76354f-c066-4e83-901b-16791fde8863" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="40" ver="4"/>
+		</object>
+		<object access-modifier="private" name="ToolbarMode" display-name="ToolbarMode" uuid="84b864bc-3b5c-447b-b457-998cb9500b3e" base-type="notifying_uint1" base-type-id="fed14c54-414c-56bd-549a-8d761c4d6200" ver="4"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="8c626335-5ee5-4573-8bbc-acfe5035eeb2" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="Frame" display-name="Frame" uuid="a4306347-7896-4dca-9069-4600ee3ce6e0" base-type="Frame" base-type-id="71f78e19-ef99-4133-a029-2968b14f02b6" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="40" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="850" ver="2"/>
+		<designed target="Height" value="485" ver="2"/>
+		<designed target="PenColor" value="0xff000000" ver="2"/>
+		<designed target="PenStyle" value="1" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="BrushColor" value="0xff000000" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<designed target="OverrideScaling" value="false" ver="2"/>
+		<designed target="ShowScrollBars" value="false" ver="2"/>
+		<designed target="MoveByMouse" value="false" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="9e1e4f78-d6dc-4ccd-accf-1622cb884f81" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="485" ver="4"/>
+		</object>
+		<do access-modifier="private" name="OpenFrame" display-name="OpenFrame" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<param access-modifier="private" name="code" display-name="" uuid="033e1214-2f23-49d6-955f-e39e98c7ed0a" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+			<body kind="om">
+				<![CDATA[BasicControlCommands.GoTo.frameCode = code;
+BasicControlCommands.GoTo = true;]]>
+			</body>
+		</do>
+	</object>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="SecurityContext" display-name="SecurityContext" uuid="c64c6acf-fa71-482c-8185-a9900ceb6ddc" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentUserChanged">
+			<body kind="om">
+				<![CDATA[CurrentUserRightsChanged();
+ //для деблокировки команд на случай если не отработают обработчики событий
+if (GuestMode){
+	BasicControlCommands.GoTo.doUnblockingControll();
+}]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="CurrentUserRightsChanged" display-name="CurrentUserRightsChanged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[StatusBar.CurrentUser.Text = CurrentUserDisplayName;
+
+limitationOfRights: string = "";
+if (SecurityContext.GuestMode)
+	limitationOfRights = "Необходима авторизация пользователя";
+else	if (!ViewConfiguration.Value)
+	limitationOfRights = "У пользователя отсутствуют права для просмотра конфигурации";
+else if (!ConfigurationAccess.Value)
+	limitationOfRights = "Доступен только просмотр, изменение конфигурации запрещено";
+else limitationOfRights = "";
+StatusBar.CurentUserRights.Text = limitationOfRights;
+
+// отображаем панель инструментов и фрейм
+Toolbar.Visible = ViewConfiguration.Value;
+Frame.Visible = ViewConfiguration.Value;
+
+// открываем форму, если она еще не была открыта
+if (!GuestMode && ViewConfiguration.Value && BasicControlCommands.GoTo.frameCode != BasicControlCommands.GoTo.UserList){
+	Frame.OpenFrame(BasicControlCommands.GoTo.UserList);
+}]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ConnectedChanged">
+			<body kind="om">
+				<![CDATA[if (!connected){
+	BasicControlCommands.GoTo.doUnblockingControll();
+	StatusBar.CurentUserRights.Text = ConnectionError;
+	Toolbar.Visible = connected;
+	Frame.Visible = connected;
+} else {
+	CurrentUserRightsChanged();
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ViewConfiguration" display-name="ViewConfiguration" uuid="54a3229d-84eb-411b-a798-0b8f63472144" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+		<init target="Application" ver="2" value="system:Alpha.Security"/>
+		<init target="Right" ver="2" value="ViewConfiguration"/>
+		<init target="SecurityContext" ver="4" ref="here.SecurityContext"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[here.SecurityContext.CurrentUserRightsChanged();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ConfigurationAccess" display-name="ConfigurationAccess" uuid="7f59caa2-ab8b-426f-bb3f-0778ad1da2ea" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+		<init target="Application" ver="2" value="system:Alpha.Security"/>
+		<init target="Right" ver="2" value="ConfigurationAccess"/>
+		<init target="SecurityContext" ver="4" ref="here.SecurityContext"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[here.SecurityContext.CurrentUserRightsChanged();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="AppListManagement" display-name="AppListManagement" uuid="4b30f1f9-0400-43fc-ba85-b7a6dc8468ed" base-type="AppListCommands" base-type-id="cdeb00db-448c-4b3b-9efb-008b5139c711" ver="4">
+		<designed target="X" value="320" ver="4"/>
+		<designed target="Y" value="-50" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="GroupListManagement" display-name="GroupListManagement" uuid="01c519ce-a24e-4703-aad6-1b318e57e168" base-type="BaseCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" ver="4">
+		<designed target="X" value="640" ver="4"/>
+		<designed target="Y" value="-30" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="UserListManagement" display-name="UserListManagement" uuid="ddf9ebec-ac5d-4d85-9904-8ca2886975a0" base-type="BaseCommands" base-type-id="d481f36c-0b94-4338-a60e-3e31bf7df8a1" ver="4">
+		<designed target="X" value="620" ver="4"/>
+		<designed target="Y" value="-50" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ManageSelectedApp" display-name="ManageSelectedApp" uuid="7881f009-6a31-408e-97ec-dc67e3f42946" base-type="AppCommands" base-type-id="1bb4857b-5e24-4e31-a011-db8a88827b94" ver="4">
+		<designed target="X" value="-40" ver="4"/>
+		<designed target="Y" value="120" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ManageSelectedGroup" display-name="ManageSelectedGroup" uuid="a32fb1dc-1a90-4d09-bd20-18227e029778" base-type="GroupCommands" base-type-id="9bb6d28c-2cbf-4d1e-88e3-643d738838dc" ver="4">
+		<designed target="X" value="-40" ver="4"/>
+		<designed target="Y" value="30" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ManageSelectedUser" display-name="ManageSelectedUser" uuid="f232ac81-dc06-4849-9845-11e8ce9db202" base-type="UserCommands" base-type-id="91ff024c-1b48-4ec4-852f-40d7e1879ef3" ver="4">
+		<designed target="X" value="320" ver="4"/>
+		<designed target="Y" value="-60" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;
+
+Frame.LayoutWeight = Height - (Toolbar.LayoutWeight + StatusBar.LayoutWeight);
+
+BasicControlCommands.DoUpdateLayout.Width = Frame.Width;
+BasicControlCommands.DoUpdateLayout.Height = Frame.Height;
+BasicControlCommands.DoUpdateLayout = true;
+
+//Debug.Log("Frame Width: "+Str.ToString(Frame.Width)+" Frame height: "+Str.ToString(Math.Floor(Frame.Height)));]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="RolesManagement" display-name="RolesManagement" uuid="c0be1711-2222-44a5-afc4-8808715a46e5" base-type="RoleCommands" base-type-id="1eb2ba17-b609-4af3-9a7b-da2325096c1a" ver="4">
+		<designed target="X" value="940" ver="4"/>
+		<designed target="Y" value="70" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="BasicControlCommands" display-name="BasicControlCommands" uuid="e1f0f9dc-2c0c-40ed-91f9-498d137a4219" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<object access-modifier="private" name="GoToNextFrame" display-name="GoToNextFrame" uuid="09f53772-834a-4ecb-84e2-a8e2ef8b7505" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value){
+	GoTo = false;
+	if (GoTo.frameCode != 0){
+		if (DoSave.CanExecute){
+			ShowSaveDialog.Invoke();
+		} else {
+			FramesManagement(GoTo.frameCode);
+		}
+	}
+}
+]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="ShowSaveDialog" display-name="ShowSaveDialog" uuid="a93b005d-d85f-4873-8341-fb2036003852" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="f63cd720-4f97-4030-8d41-eeddd793d61f" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+					<init target="Icon" ver="4" value="1"/>
+					<init target="Buttons" ver="4" value="3"/>
+					<init target="YesAction" ver="4" ref="Yes_ExecuteSaving"/>
+					<init target="NoAction" ver="4" ref="No_OpenNextFrame"/>
+					<init target="Message" ver="4" value="Вы хотите сохранить изменения?"/>
+					<designed target="WindowCaption" value="Security.Configurator" ver="4"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="Yes_ExecuteSaving" display-name="Yes_ExecuteSaving" uuid="2d91f82c-908c-4f8b-965d-8a69c71a7548" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[DoSave = true;]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="No_OpenNextFrame" display-name="No_OpenNextFrame" uuid="83bfdee9-cf19-46f4-8d2c-436967f1dc54" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[FramesManagement(GoTo.frameCode);]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="Action_AppList" display-name="Action_AppList" uuid="508cec66-9858-48e4-a849-45f31b6624cf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
+				<object access-modifier="private" uuid="7e8031ef-6345-41e5-9a8a-16fe9ea7c038" base-type="AppList" base-type-id="add8f88a-c401-4600-8c5c-d86a83bf8913" ver="4">
+					<init target="Commands" ver="4" ref="AppListManagement"/>
+					<designed target="WindowHeight" value="400" ver="4"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="importTemplatesPath" ver="4" ref="AppTemplatesPath"/>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_GroupList" display-name="Action_GroupList" uuid="1b6ad3d6-bca7-4404-9057-d8428553cb49" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
+				<object access-modifier="private" uuid="987d7791-dda8-4649-948d-fbead5cd4dd0" base-type="GroupDetailsUser" base-type-id="86e1dbe1-fd23-49c5-b84a-ab651aaea281" ver="4">
+					<init target="Commands" ver="4" ref="GroupListManagement"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_UsersList" display-name="Action_UsersList" uuid="31e59b90-6702-4a0a-9967-8a3b1e1bcaf6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
+				<object access-modifier="private" uuid="67c64af4-a39b-4afd-8721-53ca3d1cd822" base-type="Users" base-type-id="a9102f11-aedf-44ca-a9c0-2fb9b31ee30d" ver="2">
+					<init target="Commands" ver="4" ref="UserListManagement"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_AppRoles" display-name="Action_AppRoles" uuid="372dc639-aa97-4a0e-b9e4-73424cdffbcd" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" frame-link="Frame" form-action="open-in-frame">
+				<object access-modifier="private" uuid="61a7b845-68ee-41b3-8a4a-9b66db9ad28f" base-type="RoleEdit" base-type-id="01b30c26-46d0-40e6-a364-8a9800f122a0" ver="4">
+					<init target="Commands" ver="4" ref="RolesManagement"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+					<init target="inputAppID" ver="5">
+						<expr>
+							<![CDATA[GoTo.sendData]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_AppEdit" display-name="Action_AppEdit" uuid="d8f8ac79-97f2-47bc-8420-1fc87015fd67" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" frame-link="Frame" form-action="open-in-frame">
+				<object access-modifier="private" uuid="41e4578b-bb4d-4fd3-858e-1262f40d7995" base-type="AppEdit" base-type-id="b9b929a8-3934-4822-919a-13ae874558fb" ver="4">
+					<init target="Commands" ver="4" ref="ManageSelectedApp"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="inputAppID" ver="5">
+						<expr>
+							<![CDATA[GoTo.sendData]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_GroupEdit" display-name="Action_GroupEdit" uuid="cafd291c-fea8-4a25-9f58-1156ea8af31d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" frame-link="Frame" form-action="open-in-frame">
+				<object access-modifier="private" uuid="016554e9-db5c-4f7b-8ca4-f1cf534d894c" base-type="GroupEdit" base-type-id="34423ca1-4e9a-48b2-9e1c-a271291e197e" ver="4">
+					<init target="Commands" ver="4" ref="ManageSelectedGroup"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="GroupId" ver="5">
+						<expr>
+							<![CDATA[GoTo.sendData]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_EditUser" display-name="Action_EditUser" uuid="9cf9ebde-0165-40a6-b001-44a9fc5cddd9" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
+				<object access-modifier="private" uuid="b86c4d9b-e3ad-4791-ab5f-13d24d3128ca" base-type="UserEditInfo" base-type-id="8a05ed29-54f1-4d67-aa5a-6085548cc89b" ver="4">
+					<init target="Commands" ver="4" ref="ManageSelectedUser"/>
+					<init target="domainNodesList" ver="4" ref="DomainNodesList"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="userInOnlyOneGroup" ver="4" ref="UserInOnlyOneGroup"/>
+					<init target="userInAtLeastOneGroup" ver="4" ref="UserInAtLeastOneGroup"/>
+					<init target="UserId" ver="5">
+						<expr>
+							<![CDATA[GoTo.sendData]]>
+						</expr>
+					</init>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Action_CreateUser" display-name="Action_CreateUser" uuid="b6738477-43b5-4384-9c07-e67c0ea4771f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="InvokeTrigger" value="false" ver="2"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="Invoked" frame-link="Frame" form-action="open-in-frame" form-by-id="false">
+				<object access-modifier="private" uuid="78cfa025-b555-4fdd-a714-e5eed5d49d18" base-type="UserEditInfo" base-type-id="8a05ed29-54f1-4d67-aa5a-6085548cc89b" ver="4">
+					<init target="Commands" ver="4" ref="ManageSelectedUser"/>
+					<init target="SystemCommands" ver="4" ref="BasicControlCommands"/>
+					<init target="userInOnlyOneGroup" ver="4" ref="UserInOnlyOneGroup"/>
+					<init target="userInAtLeastOneGroup" ver="4" ref="UserInAtLeastOneGroup"/>
+					<init target="WindowWidth" ver="5">
+						<expr>
+							<![CDATA[Frame.Width]]>
+						</expr>
+					</init>
+					<init target="WindowHeight" ver="5">
+						<expr>
+							<![CDATA[Frame.Height]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="FramesManagement" display-name="FramesManagement" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (GoTo.CanExecute){
+	if (frameCode  == GoTo.CloseMainForm){
+		here.Close();
+	} else if (frameCode  == GoTo.AppList){
+		GoTo.sendData = "";
+		Toolbar.ToolbarMode = GoTo.AppList;
+		Action_AppList.Invoke();
+	} else if (frameCode == GoTo.GroupList){
+		GoTo.sendData = "";
+		Toolbar.ToolbarMode = GoTo.GroupList;
+		Action_GroupList.Invoke();
+	} else if (frameCode == GoTo.UserList){
+		GoTo.sendData = "";
+		Toolbar.ToolbarMode = GoTo.UserList;
+		Action_UsersList.Invoke();
+	} else if (frameCode == GoTo.AppEdit){
+		Toolbar.ToolbarMode = GoTo.AppEdit;
+		Action_AppEdit.Invoke();
+	} else if (frameCode == GoTo.RoleEditor){
+		Toolbar.ToolbarMode = GoTo.RoleEditor;
+		Action_AppRoles.Invoke();
+	} else if (frameCode == GoTo.GroupEdit){
+		Toolbar.ToolbarMode = GoTo.GroupEdit;
+		Action_GroupEdit.Invoke();
+	} else if (frameCode == GoTo.UserEdit){
+		Toolbar.ToolbarMode = GoTo.UserEdit;
+		Action_EditUser.Invoke();
+	} else if (frameCode == GoTo.UserCreate){
+		Toolbar.ToolbarMode = GoTo.UserCreate;
+		Action_CreateUser.Invoke();
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="frameCode" display-name="" uuid="2ae4c948-62df-4334-ad23-a8066a7d31d6" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		</do>
+		<do-trace access-modifier="private" target="GoToNextFrame" ver="5">
+			<body>
+				<![CDATA[GoTo]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ImportExportCommands" display-name="ImportExportCommands" uuid="b85cbc41-64b5-407e-9e5f-e55ad83af3b8" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<object access-modifier="private" name="FileDialogResult" display-name="FileDialogResult" uuid="35d02dbf-9e3d-4a8e-954e-b31af7510749" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+			<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="f6de2506-f1ef-4b6f-8708-4cbf1fb300e9" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="4">
+				<init target="SecurityContext" ver="4" ref="here.SecurityContext"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="GetConfigurationFailed">
+					<body kind="om">
+						<![CDATA[ShowErrorWindow.message = GetErrorDescriptionByCode(FailReason);
+ShowErrorWindow.Invoke();
+BasicControlCommands.GoTo.doUnblockingControll();]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SetConfigurationFailed">
+					<body kind="om">
+						<![CDATA[ShowErrorWindow.message = GetErrorDescriptionByCode(FailReason);
+ShowErrorWindow.Invoke();
+BasicControlCommands.GoTo.doUnblockingControll();]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="GetConfigurationFinished">
+					<body kind="om">
+						<![CDATA[ShowMessageWindow.message = "Конфигурация сохранена в файл:\n" + FileDialogResult.FilePath;
+ShowMessageWindow.Invoke();
+BasicControlCommands.GoTo.doUnblockingControll();]]>
+					</body>
+				</do-on>
+				<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="SetConfigurationFinished">
+					<body kind="om">
+						<![CDATA[ShowMessageWindow.message = "Конфигурация восстановлена из файла:\n" + FileDialogResult.FilePath;
+ShowMessageWindow.Invoke();
+BasicControlCommands.GoTo.doUnblockingControll();
+//переоткроем текущую вкладку
+Frame.OpenFrame(BasicControlCommands.GoTo.frameCode);]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="Files" display-name="Files" uuid="b2d9aa25-c8b4-43b7-b26c-230d84b60b4d" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="4"/>
+			<object access-modifier="private" name="SaveBackupBase" display-name="SaveBackupBase" uuid="59698499-fd39-470f-b8cc-fede3db7e19c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="javascript">
+						<![CDATA[if (value){
+	BasicControlCommands.DoSaveBackup = false;
+	try{
+		if (!Files.Exists(BackupsPath)){
+			Files.CreateRecursiveFolder(BackupsPath);
+		}
+		ShowSaveFileDialog.Invoke();
+	} catch (err) {
+		ShowErrorWindow.message = err.message;
+		ShowErrorWindow.Invoke();
+	}
+}]]>
+					</body>
+				</do-on>
+				<object access-modifier="private" name="ShowSaveFileDialog" display-name="ShowSaveFileDialog" uuid="81163b18-42a9-42ad-85c7-cedcc234fa18" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+						<object access-modifier="private" uuid="b855def2-ae0f-491e-b9cc-e7b6743114a8" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="4">
+							<init target="Result" ver="4" ref="FileDialogResult"/>
+							<init target="FileTypeFilter" ver="4" value="Резервные копии (*.bak)|*.bak"/>
+							<init target="RootPath" ver="4" value=""/>
+							<init target="OnComplete" ver="4" ref="SaveFile"/>
+							<designed target="WindowBorderStyle" value="2" ver="4"/>
+							<init target="DefaultPath" ver="5">
+								<expr>
+									<![CDATA[BackupsPath]]>
+								</expr>
+							</init>
+						</object>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="SaveFile" display-name="SaveFile" uuid="af30f69e-5a8c-4be9-beba-089c2feb7e1c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[SecurityManager.ExportConfiguration(FileDialogResult.FilePath);
+BasicControlCommands.GoTo.doBlockingControll();]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<object access-modifier="private" name="RestoreBackupBase" display-name="RestoreBackupBase" uuid="d4b2533a-6385-4797-af25-5bfc1b3e16cd" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[if (value){
+	BasicControlCommands.DoRestoreBackup = false;
+	ShowOpenFileDialog.Invoke();
+}]]>
+					</body>
+				</do-on>
+				<object access-modifier="private" name="ShowOpenFileDialog" display-name="ShowOpenFileDialog" uuid="6a58d2f4-172d-414e-a8a5-10ec8c89b224" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+						<object access-modifier="private" uuid="96c2adf2-1774-4a6a-9a0c-8a6962b7eaeb" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="4">
+							<init target="Result" ver="4" ref="FileDialogResult"/>
+							<init target="OnComplete" ver="4" ref="OpenFile"/>
+							<init target="FileTypeFilter" ver="4" value="Резервные копии (*.bak)|*.bak"/>
+							<init target="RootPath" ver="4" value=""/>
+							<init target="CreateFolderAllowed" ver="4" value="false"/>
+							<designed target="WindowBorderStyle" value="2" ver="4"/>
+							<init target="DefaultPath" ver="5">
+								<expr>
+									<![CDATA[BackupsPath]]>
+								</expr>
+							</init>
+						</object>
+					</do-on>
+				</object>
+				<object access-modifier="private" name="OpenFile" display-name="OpenFile" uuid="49afb287-2b8c-4b2d-a83a-da530e540782" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[SecurityManager.ImportConfiguration(FileDialogResult.FilePath);
+BasicControlCommands.GoTo.doBlockingControll();
+]]>
+						</body>
+					</do-on>
+				</object>
+			</object>
+			<do-trace access-modifier="private" target="SaveBackupBase" ver="5">
+				<body>
+					<![CDATA[DoSaveBackup]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="RestoreBackupBase" ver="5">
+				<body>
+					<![CDATA[DoRestoreBackup]]>
+				</body>
+			</do-trace>
+			<do access-modifier="private" name="initialization" display-name="initialization" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// определяем пути. если путь не задан, используем значение по умолчанию
+if (BackupsPath == "")
+	BackupsPath = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Backups") + Files.PreferredSeparator();
+
+if (ExcelExportPath == "")
+	ExcelExportPath = Files.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export") + Files.PreferredSeparator();
+
+if (AppTemplatesPath == "")
+	AppTemplatesPath = Files.CombinePath(Files.ProjectFolder, Files.CombinePath("resources", "Security_Templates")) + Files.PreferredSeparator();]]>
+				</body>
+			</do>
+		</object>
+	</object>
+	<object access-modifier="private" name="StatusBar" display-name="StatusBar" uuid="64c07218-4dbb-4412-8a94-14739e80e5c7" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="525" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="850" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="LoginBtn" display-name="LoginBtn" uuid="171fa81c-c918-4cd6-b366-7f93dd121c83" base-type="LoginButton" base-type-id="d8d684bc-471f-4726-912c-02ba8a974892" ver="4">
+			<designed target="X" value="1" ver="4"/>
+			<designed target="Y" value="1" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Width" value="22" ver="4"/>
+			<designed target="Height" value="22" ver="4"/>
+		</object>
+		<object access-modifier="private" name="CurrentUser" display-name="CurrentUser" uuid="102cb016-bb14-4e00-8193-2c55dd2624dc" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="30" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="350" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="0xff000000" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+		</object>
+		<object access-modifier="private" name="CurentUserRights" display-name="CurentUserRights" uuid="9703e076-1703-49c6-a85b-3e8251388aa9" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="380" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="450" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="0xffff0000" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+		</object>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="f0d2a885-6370-4df0-9668-ef8deab6e216" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="25" ver="4"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="385a3b87-48c2-43de-a2f6-f06504d5b929" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+		<designed target="Orientation" value="2" ver="4"/>
+		<designed target="Gap" value="0" ver="4"/>
+	</object>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="CloseRequested">
+		<body kind="om">
+			<![CDATA[Frame.OpenFrame(BasicControlCommands.GoTo.CloseMainForm);
+]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="DomainNodesList" display-name="DomainNodesList" uuid="f1064bfe-3a09-4f1f-937c-4b2398488bb1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<init target="DomainNodesList" ver="4" value=""/>
+	<object access-modifier="private" name="UserInOnlyOneGroup" display-name="Требовать нахождения пользователя только в одной группе" uuid="dbdeb515-5c46-4fff-9315-df5f9ee32f48" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+	<init target="UserInOnlyOneGroup" ver="4" value="true"/>
+	<object access-modifier="private" name="UserInAtLeastOneGroup" display-name="Требовать нахождения пользователя в группе" uuid="1f0d7684-13b9-4df6-aead-1423a0e6dde3" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+	<object access-modifier="private" name="BackupsPath" display-name="Путь к резервным копиям базы" uuid="e6e6bc41-b055-4bc4-a7a2-ab11dccf3b7d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="ExcelExportPath" display-name="Путь для экспорта таблиц " uuid="b3ea5f86-0dc0-4a47-9782-208a96a2c99b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="AppTemplatesPath" display-name="Путь к шаблонам приложений" uuid="bb7a9709-1f05-46dc-99e3-c455a9972611" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<init target="BackupsPath" ver="4" value=""/>
+	<object access-modifier="private" name="InitializerApp" display-name="InitializerApp" uuid="7ec156cf-78b0-42f0-adbb-b38bc4eaa04e" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[BasicControlCommands.ImportExportCommands.initialization();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowErrorWindow" display-name="ShowErrorWindow" uuid="90ded6a2-ea62-4209-b80c-d0fd916b84b0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="a0014936-4f63-474f-b6a7-a9ec698e5444" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="Message" ver="4" ref="message"/>
+				<init target="Buttons" ver="4" value="0"/>
+				<init target="Icon" ver="4" value="3"/>
+				<designed target="WindowCaption" value="Ошибка" ver="4"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="7ddfb7cb-6c33-4918-8e68-9b74d200c382" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ShowMessageWindow" display-name="ShowMessageWindow" uuid="e378d6c1-ce6d-452b-81c4-6a250c013c0d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="3893dcdb-e495-4a64-bdb1-8fb2d5f4d849" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="Message" ver="4" ref="message"/>
+				<init target="Buttons" ver="4" value="0"/>
+				<init target="Icon" ver="4" value="0"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="3e2cb592-f6b4-4945-a1c4-4b9514bb69c8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<init target="UserInAtLeastOneGroup" ver="4" value="true"/>
+	<do access-modifier="private" name="SaveSession" display-name="SaveSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[try
+{
+	var settings = 
+	{
+		"Window": 
+		{
+			"X": WindowX,
+			"Y": WindowY, 
+			"Width": WindowWidth,
+			"Height": WindowHeight,
+			"State": WindowState
+		}
+	};
+	
+	Files.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить настройки в "  + filePath + ":\n" + error);
+}]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="8684c99d-c756-4c71-817f-b5d2817a008e" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="LoadSession" display-name="LoadSession" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[if (Files.Exists(filePath))
+{
+	//log("Загрузка настроек из файла "  + filePath);
+	try
+	{
+		var settings = JSON.parse(Files.ReadTextFile(filePath));
+		
+		var window = settings.Window;
+		if (window != undefined)
+		{
+			WindowX = window.X;
+			WindowY = window.Y;
+			WindowWidth = window.Width;
+			WindowHeight = window.Height;
+			WindowState = window.State;
+		}
+	}
+	catch(error)
+	{
+		log("Не удалось загрузить настройки из "  + filePath + ":\n" + error);
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="7cf7567c-cc86-4072-b3b5-33b50644ac1a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[folderPath:string = unit.ProductInfo.GetUserDataFolder();
+LoadSession(Files.CombinePath(folderPath, "session.json"));]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[folderPath:string = unit.ProductInfo.GetUserDataFolder();
+if (!Files.Exists(folderPath))
+	Files.CreateRecursiveFolder(folderPath);
+	
+SaveSession(Files.CombinePath(folderPath, "session.json"));]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Files" display-name="Files" uuid="0d7f02ce-fc1b-4c0a-b87d-be9195f5792a" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5"/>
+	<designed target="WindowIconPath" value="Security_Icons/SecurityConfigurator.ico" ver="5"/>
+</type>
+

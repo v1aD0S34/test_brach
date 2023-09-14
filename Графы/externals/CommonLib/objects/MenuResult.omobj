@@ -1,0 +1,5 @@
+<type access-modifier="public" name="MenuResult" display-name="MenuResult" uuid="0fe7658c-92f4-4af7-b038-3594414ac651" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="Id" display-name="Идентификатор команды" uuid="418b2c1e-8979-42da-b111-5ebd4a54632d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	<object access-modifier="private" name="StaysOpen" display-name="Меню остается открытым" uuid="7ef79c2e-f288-4d35-aad5-c48a2dfa90a2" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+</type>
+

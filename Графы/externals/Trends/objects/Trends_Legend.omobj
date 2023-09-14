@@ -1,0 +1,1070 @@
+<type access-modifier="private" name="Trends_Legend" display-name="Тренды. Легенда" uuid="12a9628e-5f57-42ef-afe7-6a7cf5b34b8d" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="800" ver="5"/>
+	<designed target="Height" value="150" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="0" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="OpenGraphicSettings" display-name="OpenGraphicSettings" uuid="4cb5f902-daf1-4a96-845f-dc602cd908d2" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="InvokeTrigger" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="ac5c25c4-6eef-41a9-8598-26e3bfb372c9" base-type="ChangeColor" base-type-id="7f88133f-deaf-4376-a13d-a52efda68de5" ver="5">
+				<init target="pTrends" ver="5" ref="pCore"/>
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+			</object>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="bRequestRefresh" display-name="bRequestRefresh" uuid="8c92ac2d-6bf4-422d-bb21-349615c70ce6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<object access-modifier="private" name="Timer_RefreshTimeOut" display-name="Timer_RefreshTimeOut" uuid="9ccdf13d-a8a1-47a4-890a-563550a5309c" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="5">
+		<designed target="Period" value="1000" ver="5"/>
+		<designed target="Active" value="false" ver="5"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+			<body kind="om">
+				<![CDATA[Active = false;	
+if (bRequestRefresh) 
+{
+	bRequestRefresh = false;
+	Update();
+}
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="3af89793-ea94-4ba4-ba77-dfb30414f236" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="21d26406-accd-478d-8782-dd9049dc4818" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="5">
+		<designed target="X" value="0" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Width" value="800" ver="5"/>
+		<designed target="Height" value="150" ver="5"/>
+		<designed target="SelectionBehavior" value="1" ver="5"/>
+		<designed target="SelectionMode" value="3" ver="5"/>
+		<object access-modifier="private" name="Columns" display-name="Columns" uuid="649a0799-259f-4d6a-9b02-92572a9839ab" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="5" cardinal="14">
+			<designed target="Title" value="" ver="5"/>
+			<designed target="Description" value="" ver="5"/>
+			<designed target="Id" value="" ver="5"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="TitleBackgroundColor" value="0xfff0f0f0" ver="5"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="5"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+			<designed target="Width" value="20" ver="5"/>
+			<designed target="WidthResizeMode" value="0" ver="5"/>
+			<designed target="Hidden" value="false" ver="5"/>
+			<designed target="NumberFormat" value="%s" ver="5"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="5"/>
+			<designed target="Emptiable" value="true" ver="5"/>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseRightClick">
+				<body kind="om">
+					<![CDATA[ContextMenu.OpenGraphicMenu(ScreenX(MouseX, MouseY), ScreenY(MouseX, MouseY), iItemInLegend[nRowSelected]);]]>
+				</body>
+			</do-on>
+			<designed target="TextAlignment" value="132" ver="5"/>
+			<designed target="JsonFilter" value="" ver="5"/>
+			<designed target="SortingEnabled" value="false" ver="5"/>
+			<designed target="SortOrder" value="0" ver="5"/>
+			<designed target="SortPriority" value="0" ver="5"/>
+			<designed target="WordWrap" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[OpenGraphicSettings.Invoke();]]>
+				</body>
+			</do-on>
+			<designed target="TitleTextAlignment" value="132" ver="5"/>
+			<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WidthChanged">
+				<body kind="om">
+					<![CDATA[pSaveConfig.Invoke();
+]]>
+				</body>
+			</do-on>
+			<designed target="ColumnOwnId" value="" ver="5"/>
+			<designed target="SortMode" value="0" ver="5"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseRightTitleClick">
+				<body kind="om">
+					<![CDATA[ContextMenu.OpenColumnsMenu(ScreenX(MouseX, MouseY), ScreenY(MouseX, MouseY));]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Font" ver="5">
+				<body>
+					<![CDATA[pTheme.Font]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleFont" ver="5">
+				<body>
+					<![CDATA[pTheme.Font]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="TableModel_1" display-name="TableModel_1" uuid="5b0f4fbf-4f30-485c-b676-c38f24c1ad7f" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="5">
+			<designed target="Frozen" value="false" ver="5"/>
+			<designed target="MaxRowCount" value="10000" ver="5"/>
+		</object>
+		<designed target="HeaderHeight" value="22" ver="5"/>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="RowHeight" value="22" ver="5"/>
+		<designed target="RowOrder" value="0" ver="5"/>
+		<designed target="LatestRowTracking" value="false" ver="5"/>
+		<init target="TableModel" ver="5" ref="TableModel_1"/>
+		<object access-modifier="private" name="TableDecorator_1" display-name="TableDecorator_1" uuid="5a2e21d6-cc0e-441c-9ed4-48ec92c45a05" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="5">
+			<designed target="JsonDecorator" value="" ver="5"/>
+			<do-trace access-modifier="private" target="JsonDecorator" ver="5">
+				<body>
+					<![CDATA[GetJsonDecorator(selectionColor)]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="SelectionOverlayEnabled" value="false" ver="5"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="5"/>
+		<designed target="HorizontalScrollMode" value="0" ver="5"/>
+		<designed target="VerticalScrollMode" value="0" ver="5"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="5"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="5"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Номера колонок в модели и в таблице должны соответствовать и равны значениям констант Const.cn.*
+Table_1.TableModel_1.AddColumn("Advise",     "","","","string",false,true);
+Table_1.TableModel_1.AddColumn("AxisColor",  "","","","uint4",false,true);
+Table_1.TableModel_1.AddColumn("LineColor",  "","","","uint4",false,true);
+Table_1.TableModel_1.AddColumn("LineStyle",  "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("Marker",     "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("Description","","","","string",false,true);
+Table_1.TableModel_1.AddColumn("Tag",        "","","","string",false,true);
+Table_1.TableModel_1.AddColumn("Value",      "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("EU",         "","","","string",false,true);
+Table_1.TableModel_1.AddColumn("Time",       "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("Quality",    "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("Minimum",    "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("Maximum",    "","","","variant",false,true);
+Table_1.TableModel_1.AddColumn("Quantity",   "","","","variant",false,true);
+
+Table_1.Columns[0].Id = "Advise";
+Table_1.Columns[0].Title = "";
+Table_1.Columns[0].Description = "Подписка";
+Table_1.Columns[0].Width = 20;
+
+Table_1.Columns[1].Id = "AxisColor";
+Table_1.Columns[1].Title = "Шкала";
+Table_1.Columns[1].Description = "Цвет шкалы графика";
+Table_1.Columns[1].Width = 50;
+
+Table_1.Columns[2].Id = "LineColor";
+Table_1.Columns[2].Title = "Цвет";
+Table_1.Columns[2].Description = "Цвет линии графика";
+Table_1.Columns[2].Width = 50;
+
+Table_1.Columns[3].Id = "LineStyle";
+Table_1.Columns[3].Title = "Стиль";
+Table_1.Columns[3].Description = "Стиль линии";
+Table_1.Columns[3].Width = 60;
+
+Table_1.Columns[4].Id = "Marker";
+Table_1.Columns[4].Title = "Маркер";
+Table_1.Columns[4].Description = "Маркер точек";
+Table_1.Columns[4].Width = 60;
+
+Table_1.Columns[5].Id = "Description";
+Table_1.Columns[5].Title = "Описание";
+Table_1.Columns[5].Description = "Описание";
+Table_1.Columns[5].Width = 200;
+
+Table_1.Columns[6].Id = "Tag";
+Table_1.Columns[6].Title = "Имя";
+Table_1.Columns[6].Description = "Тэг сигнала";
+Table_1.Columns[6].Width = 75;
+
+Table_1.Columns[7].Id = "Value";
+Table_1.Columns[7].Title = "Значение";
+Table_1.Columns[7].Description = "Значение";
+Table_1.Columns[7].Width = 75;
+
+Table_1.Columns[8].Id = "EU";
+Table_1.Columns[8].Title = "Единицы";
+Table_1.Columns[8].Description = "Единицы измерения";
+Table_1.Columns[8].Width = 50;
+
+Table_1.Columns[9].Id = "Time";
+Table_1.Columns[9].Title = "Время";
+Table_1.Columns[9].Description = "Метка времени";
+Table_1.Columns[9].Width = 130;
+
+Table_1.Columns[10].Id = "Quality";
+Table_1.Columns[10].Title = "Качество";
+Table_1.Columns[10].Description = "Качество сигнала ";
+Table_1.Columns[10].Width = 60;
+
+Table_1.Columns[11].Id = "Minimum";
+Table_1.Columns[11].Title = "Минимум";
+Table_1.Columns[11].Description = "Минимальное значение";
+Table_1.Columns[11].Width = 100;
+
+Table_1.Columns[12].Id = "Maximum";
+Table_1.Columns[12].Title = "Максимум";
+Table_1.Columns[12].Description = "Максимальное значение";
+Table_1.Columns[12].Width = 100;
+
+Table_1.Columns[13].Id = "Quantity";
+Table_1.Columns[13].Title = "Количество";
+Table_1.Columns[13].Description = "Количество точек на графике";
+Table_1.Columns[13].Width = 100;
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var decorator = {
+    StyleDictionary: [{
+            'style_name': "selected_style",
+            'style': { 'background_color': '#' + selectionColor.toString(16) }
+        },
+    ],
+    Decorating: [{
+            'decoration_rule_name': "selected_rule",
+            'decoration_rule': { 'row:isSelected': true },
+            'rowstyle': "selected_style"
+        }
+    ]
+}
+
+var colorDecorating_1 = {};				// Правило для отображения цвета линии
+colorDecorating_1["decoration_rule_name"] = "rule_ColorLine";
+colorDecorating_1["columnstyle"] = {'LineColor':"style_ColorLine"};
+decorator.Decorating.push(colorDecorating_1);
+
+var userStyle_1 = {};
+userStyle_1["style_name"] = "style_ColorLine";
+userStyle_1["style"] = {'background_color':'data:LineColor','color': 'data:LineColor'};
+decorator.StyleDictionary.push(userStyle_1);
+
+var colorDecorating_2 = {};				// Правило для отображения цвета оси
+colorDecorating_2["decoration_rule_name"] = "rule_ColorAxis";
+colorDecorating_2["columnstyle"] = {'AxisColor':"style_ColorAxis"};
+decorator.Decorating.push(colorDecorating_2);
+
+var userStyle_2 = {};
+userStyle_2["style_name"] = "style_ColorAxis";
+userStyle_2["style"] = {'background_color':'data:AxisColor','color': 'data:AxisColor'};
+decorator.StyleDictionary.push(userStyle_2);
+
+var adviseDecorating_1 = {};			// Правило декорирования при не отвечающем сервере
+adviseDecorating_1["decoration_rule_name"] = "rule_AdviseWarning_1";
+adviseDecorating_1["columnstyle"] = {'Advise':"style_AdviseWarning_1"};
+adviseDecorating_1["decoration_rule"] = {'data:Advise': '!'};
+decorator.Decorating.push(adviseDecorating_1);
+
+var userStyle_3 = {};
+userStyle_3["style_name"] = "style_AdviseWarning_1";
+userStyle_3["style"] = {'background_color':'#ffffff00','text_align': 'center'};
+decorator.StyleDictionary.push(userStyle_3);
+
+var adviseDecorating_2 = {};		// Правило декорирования при отсутствии тэга сигнала
+adviseDecorating_2["decoration_rule_name"] = "rule_AdviseWarning_2";
+adviseDecorating_2["columnstyle"] = {'Advise':"style_AdviseWarning_2"};
+adviseDecorating_2["decoration_rule"] = {'data:Advise': '! '};		// Признак отличается от предыдущего наличием пробела!
+decorator.Decorating.push(adviseDecorating_2);
+
+var userStyle_4 = {};
+userStyle_4["style_name"] = "style_AdviseWarning_2";
+userStyle_4["style"] = {'background_color':'#ffff0000','text_align': 'center'};
+decorator.StyleDictionary.push(userStyle_4);
+
+return JSON.stringify(decorator);]]>
+			</body>
+			<param access-modifier="private" name="selectionColor" display-name="" uuid="075fa0e5-ba69-4a21-9053-655f61f0b784" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		</do>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameColor" value="0xff000000" ver="5"/>
+		<designed target="GridColor" value="0xff5f5f5f" ver="5"/>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="GridColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="selectionColor" display-name="selectionColor" uuid="c4381609-133e-4bea-b710-b467ce7c2175" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+		<do-trace access-modifier="private" target="selectionColor" ver="5">
+			<body>
+				<![CDATA[pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="font" display-name="font" uuid="c4810f1b-4aaf-4655-baaf-a2f9b7cf0344" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="javascript">
+					<![CDATA[if (Value != "")
+{
+	// берем размер шрифта в pt
+	var parts = Value.split(",");
+	var size = parts[1];
+	
+	// вычисляем размер символа при разрешении 96 dpi
+	var charHeight = size / 0.75;
+	
+	// добавляем отступы
+	var rowHeight = (charHeight * 1.25 + 8).toFixed();
+
+	// ограничиваем минимальную высоту
+	if (rowHeight < 16)
+		rowHeight = 16;
+
+	if (Table_1.RowHeight != rowHeight)
+	{
+		//log("RowHeight changed to " + rowHeight);
+		Table_1.HeaderHeight = rowHeight;
+		Table_1.RowHeight = rowHeight;	
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="font" ver="5">
+			<body>
+				<![CDATA[pTheme.Font]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[nRowSelected = row; //GetSelectedRow();
+//DebugTool_1.Log("CurrentChanged.row="+String.ToString(row));
+if (nRowSelected > -1)
+	pCore.private.SetSelectItem(iItemInLegend[nRowSelected]);
+else	pCore.private.SetSelectItem(0);
+]]>
+			</body>
+		</do-on>
+	</object>
+	<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[
+if (Timer_RefreshTimeOut.Active){		// Если легенду уже недавно обновляли, 
+	bRequestRefresh = true;	// то запоминаем запрос, чтобы выполнить обновление через таймаут
+	return;							
+}//*/
+Timer_RefreshTimeOut.Active = true;  // активируем таймаут до следующего вызова обновления легенды
+
+LinesCount:int4 = 0;			// для подсчета графиков
+RowCount0:int4 = Table_1.TableModel_1.GetRowCount(); // Запоминаем начальное количество строк в таблице
+
+vv:variant;
+vs:string;
+i:int4 = 1;
+nAxis:int4;
+while (i <= unit.Const.MAX_LINES)		// перебираем графики
+{
+		//Для оперативного режима ВЫводим строки только с основным режимом времени, в историческом режиме выводим все строки
+	bNeedTimeMode:bool = (pCore.ActiveMode == unit.Const.amOPERATIVE)?(pCore.private.NowParams.bMainTime[i]):(true);	
+		//В первую очередь выводим только осноные графики
+	bNeedTypeGraph:bool = (pCore.private.NowParams.Lines[i].TypeGraph==unit.Const.tgFILE_GRAPH) && (pCore.ActiveMode==unit.Const.amHISTORY);
+	bNeedTypeGraph = bNeedTypeGraph || (pCore.private.NowParams.Lines[i].TypeGraph==unit.Const.tgMAIN_GRAPH);
+	if (pCore.private.NowParams.Lines[i].Used && bNeedTimeMode && bNeedTypeGraph)		
+	{
+		LinesCount += 1;										// увеличиваем счетчик графиков
+		if (Table_1.TableModel_1.GetRowCount() < LinesCount){
+			Table_1.TableModel_1.AddRow();	 // если строк не хватает добавляем
+		}
+		if (pCore.ShowRelativeTag==true && pCore.private.NowParams.Lines[i].RelationTag!=""){
+			Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.TAG, pCore.private.NowParams.Lines[i].RelationTag);
+		}else{
+			Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.TAG, pCore.private.NowParams.Lines[i].Tag);
+		}
+		vs = pCore.private.NowParams.Lines[i].Description;		
+		if (ShowFullDescription && pCore.private.NowParams.Lines[i].ObjectDescription!="---") 
+		{
+			if (vs>"" && pCore.private.NowParams.Lines[i].ObjectDescription>"") vs = ". " + vs;
+			vs = pCore.private.NowParams.Lines[i].ObjectDescription + vs;
+		}
+		if (pCore.private.NowParams.Lines[i].TypeGraph == unit.Const.tgFILE_GRAPH)
+			vs = "Из файла: " + vs;
+		Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.DESCRIPTION, vs);
+		vs = pCore.private.NowParams.Lines[i].Unit;		
+		Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.EU, vs);
+		
+		// маркер точек
+		pointSymbol:string = pCore.private.NowParams.Lines[i].PointSymbol;
+		if (pointSymbol == "") pointSymbol = "●"; // символ по умолчанию
+		Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.MARKER, pointSymbol);
+		
+		// стиль линии
+		lineStyle:string = pCore.private.LineStyles.Names[pCore.private.NowParams.Lines[i].StyleGood];
+		Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.LINE_STYLE, lineStyle);
+
+		nAxis = pCore.private.NowParams.Lines[i].numAxis;	// номер оси к которой привязан график
+		if (pCore.ActiveMode == unit.Const.amOPERATIVE)		// Для оперативного режима		
+		{		
+			vv = Variant.FromUint4(pCore.private.NowParams.Axis[nAxis].ColorY);  
+			Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.CL_AXIS, vv);		// Цвет оси
+			vv = Variant.FromUint4(pCore.private.NowParams.Lines[i].ColorMain);  
+			Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.CL_LINE, vv);		// Цвет линии
+			if (pCore.private.ActiveReper[pCore.ActiveMode] > 0)
+			{
+				pCore.private.GetReperValue(pCore.ActiveMode, i, pCore.private.ActiveReper[pCore.ActiveMode]);
+				vvalue:variant = pCore.private.Variant_Result;	// результат забираем из промежуточной переменной
+//				log("Legend Reper:"+A+" Point:"+i+" X:"+WS.RS.Main_Charts.Chart_Operative_mode.ControlLine[A].Value+" Y:"+vv);
+				vtime:uint8 = pCore.private.GetReperTime(pCore.ActiveMode, i, pCore.private.ActiveReper[pCore.ActiveMode]);
+				vtime = vtime + pCore.private.TimeZone;
+				vquality:uint4 = pCore.private.GetReperQuality(pCore.ActiveMode, i, pCore.private.ActiveReper[pCore.ActiveMode]);
+				SetVQT(LinesCount-1, vvalue, vtime, vquality, unit.Const.tmSOURCE);
+			}else{
+				pCore.pChart_Oper_1.LegendValuesUpdate();
+			}		
+		}
+		else									// Для исторического режима
+		{									
+			vv = Variant.FromUint4(pCore.private.NowParams.Axis[nAxis].ColorY); 
+			Table_1.TableModel_1.SetCellData(LinesCount-1 ,unit.Const.cn.CL_AXIS, vv);		// Цвет оси
+			vv = Variant.FromUint4(pCore.private.NowParams.Lines[i].ColorMain);
+			Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.CL_LINE, vv);		// Цвет
+			vsize:uint8 = pCore.private.Lines.GetSize(unit.Const.amHISTORY, i);
+			if (vsize > 0){
+				vmin:double = pCore.private.Lines.GetMinY(unit.Const.amHISTORY, i);
+				vmax:double = pCore.private.Lines.GetMaxY(unit.Const.amHISTORY, i);
+				SetMinMaxSize(LinesCount-1, vmin, vmax, vsize);
+			}else{		// если данных нет, максимума и минимума быть не может
+				SetMinMaxSize(LinesCount-1, 0, 0, 0);
+			}
+			if (pCore.private.ActiveReper[pCore.ActiveMode] > 0)
+			{				// если активный репер существует
+				pCore.private.GetReperValue(pCore.ActiveMode, i, pCore.private.ActiveReper[pCore.ActiveMode]);
+				vvalue:variant = pCore.private.Variant_Result;	// результат забираем из промежуточной переменной
+				vtime:uint8 = pCore.private.GetReperTime(pCore.ActiveMode, i, pCore.private.ActiveReper[pCore.ActiveMode]);
+				vtime = vtime + pCore.private.TimeZone;
+				vquality:uint4 = pCore.private.GetReperQuality(pCore.ActiveMode, i, pCore.private.ActiveReper[pCore.ActiveMode]);
+				SetVQT(LinesCount-1, vvalue, vtime, vquality, pCore.private.NowParams.Lines[i].nXColumn);
+			}else{
+				SetVQT(LinesCount-1, unit.Const.NULL, 0, 0, pCore.private.NowParams.Lines[i].nXColumn);
+			}
+		}//*/
+		Table_1.TableModel_1.SetCellData(LinesCount-1, unit.Const.cn.ADVISE, pCore.private.GetSymbolNoAdvised(i));
+		iItemInLegend[LinesCount-1] = i;	// Запоминаем индекс графика для строки легенды
+		nRowInLegend[i] = LinesCount -1;	// Запоминаем строку легенды для графика
+	}
+	i += 1;
+}
+
+while (Table_1.TableModel_1.GetRowCount() > LinesCount)
+{
+	Table_1.TableModel_1.RemoveRow(Table_1.TableModel_1.GetRowCount()-1);
+}
+
+//if (nRowSelected >= LinesCount) nRowSelected = LinesCount - 1;
+nRowSelected = nRowInLegend[pCore.private.nSelectedItem];
+if (nRowSelected >= 0)
+	Table_1.SetSelectedRows("["+Str.ToString(nRowSelected)+"]");
+else
+	Table_1.SetSelectedRows("[]");
+
+if (RowCount0 != Table_1.TableModel_1.GetRowCount()) // Если количество строк изменилось
+	pRowsChanged.Invoke();
+
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetVQT" display-name="SetVQT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("SetVQT.numRow="+Str.ToString(numRow));
+if (numRow < Table_1.GetRowCount())
+{
+	if (Variant.IsEmpty(value))
+	{
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.VALUE, "");
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.TIME, "");
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.QUALITY, "");
+	}
+	else
+	{
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.VALUE, pCore.private.VariantToString(value));
+		timeFormat: string = ShowMilliseconds ? "%d.%m.%Y %H:%M:%s" : "%d.%m.%Y %H:%M:%S";
+		timeStr: string = DateTime.ToString(timestamp, timeFormat);
+		if (pCore.UseServerTime)
+			timeStr += nXColumn == unit.Const.tmSOURCE ? " (Источника)" : " (Сервера)";
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.TIME, timeStr);
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.QUALITY, Str.ToString(quality));
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="numRow" display-name="" uuid="712bbd6b-02a1-41cc-87cc-5670908ee681" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="value" display-name="" uuid="59777941-69a7-4f69-8589-212ea60f2c18" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+		<param access-modifier="private" name="timestamp" display-name="" uuid="3c445cdd-ba7f-4284-b8fd-294eee1addeb" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		<param access-modifier="private" name="quality" display-name="" uuid="ed440585-c3df-4052-bc14-43dfc0222f95" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+		<param access-modifier="private" name="nXColumn" display-name="" uuid="260344ee-c0f1-4a7e-ad87-714abc8e45d2" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<object access-modifier="private" name="pCore" display-name="pCore" uuid="2f5e4d15-ee51-4e8c-bd3b-bb162ff6b919" base-type="Trends_Core" base-type-id="f0fa79fc-d3d2-43f0-9eed-88d0f13b0fa0" base-сonst="true" base-ref="true" ver="5"/>
+	<do access-modifier="private" name="SetColumnVisible" display-name="SetColumnVisible" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("SetColumnVisible.index="+Str.ToString(index)+", value="+Str.ToString(value));
+Table_1.Columns[index].Hidden = !value;]]>
+		</body>
+		<param access-modifier="private" name="index" display-name="" uuid="ab6c2a35-738f-45cb-bfb6-d5608dca95b3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="value" display-name="" uuid="a6ecb6ab-6121-42a2-b51a-61d3d92c58d6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	</do>
+	<do access-modifier="private" name="Deselect" display-name="Deselect" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Table_1.SetSelectedRows("[]");	// Снимаем выделение строки в таблице, так как выделенная строка была удалена
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="nRowSelected" display-name="nRowSelected" uuid="e9107add-9a7c-4fae-bc58-6641bbbca275" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="1"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="8b74aaf6-158a-4f9e-ba32-6fa2708fe4ed" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+		<designed target="X" value="800" ver="5"/>
+		<designed target="Y" value="75" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<do access-modifier="private" name="Initializer" display-name="Initializer" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("Trends.Legend: Инициализация");
+if (unit.Const.MAX_LINES == 0 )
+{
+	DebugTool_1.Log("Trends.Legend: Необходимо указать ссылку на объект Графики.Ядро в свойcтве pCore.");
+	return;
+}
+Table_1.Init();]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="iItemInLegend" display-name="iItemInLegend" uuid="05174ebb-ba63-4abe-8147-eb0b7009bdb5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="21"/>
+	<object access-modifier="private" name="nRowInLegend" display-name="nRowInLegend" uuid="61d54c5c-f3fe-4f2e-a07c-ff2b61925aa5" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" cardinal="21"/>
+	<object access-modifier="private" name="pSaveConfig" display-name="pSaveConfig" uuid="7e82afe4-0bc0-4921-9698-242f9b1a56d6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="95fdee38-ce8f-423c-a2b9-074682ba1b2e" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="pRowsChanged" display-name="pRowsChanged" uuid="36f3768e-24fb-4e31-ac86-69e0b8e81e6a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-сonst="true" base-ref="true" ver="5"/>
+	<do access-modifier="private" name="SaveSettings" display-name="SaveSettings" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="folder" display-name="" uuid="ad64623c-7663-4c0b-89e4-6f9f80d7cd15" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<body kind="javascript">
+			<![CDATA[var filePath = FileManager.CombinePath(folder, "legend.json"); 
+//log("Сохранение настроек легенды в файл "  + filePath);
+try
+{
+	var settings = {
+		"Columns" : {}
+	};
+
+	for (var i = 0; i < Table_1.Columns.Length; i++)
+	{		
+		var column = Table_1.Columns[i];
+	
+		var columnInfo = {
+			"Index": column.Index,
+			"Width": column.Width
+		};
+	
+		if (column.Hidden)
+			columnInfo.Hidden = true;
+	
+		if (column.SortingEnabled != false)
+		{
+			columnInfo.SortOrder = column.SortOrder;
+			columnInfo.SortPriority = column.SortPriority;
+		}
+	
+		settings.Columns[column.Id] = columnInfo;
+	}
+
+	FileManager.WriteTextFile(filePath, JSON.stringify(settings, null, 2));
+}
+catch(err)
+{
+	log("Не удалось сохранить настройки легенды в "  + filePath + "\n" + err.message);
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="LoadSettings" display-name="LoadSettings" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="javascript">
+			<![CDATA[var filePath = FileManager.CombinePath(folder, "legend.json"); 
+if (FileManager.Exists(filePath))
+{
+	//log("Загрузка настроек легенды из файла "  + filePath);
+	try
+	{
+		var json = FileManager.ReadTextFile(filePath);
+		
+		var settings = JSON.parse(json);
+		if (settings.Columns != undefined)
+		{
+			for (var i = 0; i < Table_1.Columns.Length; i++)
+			{
+				var column = Table_1.Columns[i];
+		
+				var columnInfo = settings.Columns[column.Id];
+				if (columnInfo != undefined)
+				{
+					var columnWidth = columnInfo.Width;
+					if (columnWidth > 0) // ширину столбца изменяем, только если она больше 0
+						column.Width = columnWidth;
+		
+					column.Hidden = columnInfo.Hidden == true;
+		
+					column.SortingEnabled = columnInfo.SortOrder != undefined;
+					if (column.SortingEnabled)
+					{
+						column.SortOrder = columnInfo.SortOrder;
+						column.SortPriority = columnInfo.SortPriority;
+					}
+				}
+			}
+		}
+	}
+	catch(err)
+	{
+		log("Не удалось загрузить настройки легенды из "  + filePath + "\n" + err.message);
+		return false;
+	}
+}
+
+return true;]]>
+		</body>
+		<param access-modifier="private" name="folder" display-name="" uuid="3fb3a75a-009d-45eb-9c5a-1cb617f7327b" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<object access-modifier="private" name="FileManager" display-name="FileManager" uuid="79862f6b-ff3e-4b19-b1ac-78870f274eb4" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="5">
+		<designed target="RootPath" value="/" ver="5"/>
+	</object>
+	<do access-modifier="private" name="SetMinMaxSize" display-name="SetMinMaxSize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("SetMinMaxSize.numRow="+Str.ToString(numRow));
+if (numRow < Table_1.GetRowCount())
+{
+	if (size == 0)	
+	{
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.MINIMUM, "");
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.MAXIMUM, "");
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.QUANTITY, "");
+	}
+	else
+	{
+		vs:string = pCore.private.ValueRound(minimum, pCore.YAxisPrecision);
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.MINIMUM, pCore.private.ValueRound(minimum, pCore.YAxisPrecision));
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.MAXIMUM, pCore.private.ValueRound(maximum, pCore.YAxisPrecision));
+		Table_1.TableModel_1.SetCellData(numRow, unit.Const.cn.QUANTITY, Str.ToString(size));
+	}
+}
+]]>
+		</body>
+		<param access-modifier="private" name="numRow" display-name="" uuid="3eeb15f5-2407-4fbf-8059-d6b396ba8f9b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="minimum" display-name="" uuid="cd19d010-f3ab-4e69-bb18-1f2ad781d87a" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+		<param access-modifier="private" name="maximum" display-name="" uuid="9e74d34f-cbf6-4fee-a626-f59a74747f7b" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+		<param access-modifier="private" name="size" display-name="" uuid="c7f2a65f-1ec5-4d3c-b7f8-eac0579e2278" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+	</do>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="aceb0bb2-bc06-44a5-9018-fba9fb89ac8f" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="ContextMenu" display-name="ContextMenu" uuid="a77ee9e8-949e-4d88-a3da-ab1dd1b2af2e" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+		<designed target="X" value="800" ver="5"/>
+		<designed target="Y" value="75" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<object access-modifier="private" name="MenuResult" display-name="MenuResult" uuid="f6f639cf-7b71-4bfa-ba8e-e14d0c0d5480" base-type="MenuResult" base-type-id="0fe7658c-92f4-4af7-b038-3594414ac651" ver="5"/>
+		<object access-modifier="private" name="mX" display-name="mX" uuid="43b2ab13-2434-4e31-924c-6a40182a817e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="mY" display-name="mY" uuid="83c5ee5c-034f-415a-a4fb-66f3c66660f8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<do access-modifier="private" name="OpenColumnsMenu" display-name="OpenColumnsMenu" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[mX = x;
+mY = y;
+ShowColumnsMenu.Invoke();]]>
+			</body>
+			<param access-modifier="private" name="x" display-name="" uuid="c3a7ec1a-70da-45dc-b951-cb0c9f835396" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="y" display-name="" uuid="82d8adae-32fa-4c56-96b2-024c8fa668e3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<object access-modifier="private" name="ItemIndex" display-name="ItemIndex" uuid="d18d8871-8ba0-4149-8711-efae34c218c3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<object access-modifier="private" name="ShowColumnsMenu" display-name="ShowColumnsMenu" uuid="b26f5b93-ab63-4063-9e82-6d14ae1b64a8" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="1bbed998-379a-4aaa-9d4e-1e64c0614cb0" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[mX]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[mY]]>
+						</expr>
+					</init>
+					<init target="pAction" ver="5" ref="OnColumnsMenuClick"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetColumnsMenuItems()]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnColumnsMenuClick" display-name="OnColumnsMenuClick" uuid="5f450b5b-d167-4fb1-9b16-8d82883461db" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[i: int4 = String.ToInt4(MenuResult.Id, -1);
+if (i> -1)
+	Table_1.Columns[i].Hidden = !Table_1.Columns[i].Hidden;]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="GetColumnsMenuItems" display-name="GetColumnsMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var items = [];
+
+var i = 0;
+while (i < Table_1.Columns.Length)
+{
+	if (!pCore.SynchronizeColor.Value || i != unit.Const.cn.CL_AXIS)
+	{
+		var column = Table_1.Columns[i];
+		items.push({
+			 'id': i,
+			 'title': column.Title == "" ? column.Description : column.Title,
+			 'checked': !column.Hidden,
+			 'staysOpen': true
+			});
+	}
+	i += 1;
+}
+
+return JSON.stringify(items);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="OpenGraphicMenu" display-name="OpenGraphicMenu" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[mX = x;
+mY = y;
+this.ItemIndex = itemIndex;
+ShowGraphicMenu.Invoke();]]>
+			</body>
+			<param access-modifier="private" name="x" display-name="" uuid="0de498e0-d68f-441f-8168-dd9440a3745e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="y" display-name="" uuid="7b1542da-f127-44bf-928c-ff3a6be592c6" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="itemIndex" display-name="" uuid="fcdda97e-01f4-4506-8d9e-a9a1c6d541a3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<object access-modifier="private" name="ShowGraphicMenu" display-name="ShowGraphicMenu" uuid="08003ee8-5e79-4965-aafd-f174a800c53d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-new" form-by-id="false">
+				<object access-modifier="private" uuid="86d804ff-9857-4b04-9941-484da22fb23f" base-type="Menu" base-type-id="07bb4545-980a-4140-bbaa-4d1397447864" ver="5">
+					<init target="pResult" ver="5" ref="MenuResult"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="WindowX" ver="5">
+						<expr>
+							<![CDATA[mX]]>
+						</expr>
+					</init>
+					<init target="WindowY" ver="5">
+						<expr>
+							<![CDATA[mY]]>
+						</expr>
+					</init>
+					<init target="pAction" ver="5" ref="OnGraphicMenuClick"/>
+					<init target="Items" ver="5">
+						<expr>
+							<![CDATA[GetGraphicMenuItems(ItemIndex)]]>
+						</expr>
+					</init>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="OnGraphicMenuClick" display-name="OnGraphicMenuClick" uuid="1c84303a-47aa-441c-88bf-8d27546bba34" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5">
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="InvokeTrigger" value="false" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="javascript">
+					<![CDATA[var cmd = MenuResult.Id;
+var sel = JSON.parse(Table_1.GetSelectedRows());
+var i = 0;
+var selItems = [];
+// Получаем массив индексов графиков из массива выделенных строк
+while (i < sel.length)
+{
+	selItems[i] = iItemInLegend[sel[i]];
+	i += 1;
+}
+
+i = 0;
+if (cmd == "1")
+{
+	// Значение видимости применяется для всех графиков одинаково по последнему выделенному графику
+	var showMarkers = pCore.private.NowParams.Lines[ItemIndex].bShowMarkerLabels;
+	while (i < sel.length)
+	{
+		pCore.SetGraphicMarkerLabelVisibleByIndex(selItems[i], !showMarkers);
+		i += 1;
+	}
+	return;
+}
+else if (cmd == "2")
+{
+	// Значение видимости применяется для всех графиков одинаково по последнему выделенному графику
+	var lineVisible = pCore.private.NowParams.Lines[ItemIndex].bVisible;
+	while (i < sel.length)
+	{
+		pCore.private.Lines.SetVisible(selItems[i], !lineVisible);
+		i += 1;
+	}
+	pCore.AxisLinkUpdate(pCore.GlobalRanges);
+	return;
+}
+else if (cmd.substr(0, 4) == "tag_")
+{
+	var tag = cmd.substr(4);
+	while (i < sel.length)
+	{
+		SetGraphicAxis(selItems[i], tag);
+		i += 1;
+	}
+	return;
+} 
+else if (cmd == "5")
+{
+	while (i < sel.length)
+	{
+		var path = pCore.private.NowParams.Lines[selItems[i]].Tag;
+		var EU = pCore.private.NowParams.Lines[selItems[i]].Unit;
+		var description = pCore.private.NowParams.Lines[selItems[i]].Description;
+		pCore.private.Items.Add(path, EU, description, unit.Const.tmSOURCE, unit.Const.tgMAIN_GRAPH);
+		i += 1;
+	}
+	return;
+}
+else if (cmd == "6")
+{
+	while (i < sel.length)
+	{
+		var path = pCore.private.NowParams.Lines[selItems[i]].Tag;
+		var EU = pCore.private.NowParams.Lines[selItems[i]].Unit;
+		var description = pCore.private.NowParams.Lines[selItems[i]].Description;
+		pCore.private.Items.Add(path, EU, description, unit.Const.tmSERVER, unit.Const.tgMAIN_GRAPH);
+		i += 1;
+	}
+	return;
+}
+else if (cmd == "7")
+{
+	while (i < sel.length)
+	{
+		pCore.RemoveItemByIndex(selItems[i]);
+		i += 1;
+	}
+	return;
+}
+else if (cmd == "8")
+{
+	pCore.ClearData();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="GetGraphicMenuItems" display-name="GetGraphicMenuItems" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var iconsPath = "Trends_Icons/";
+
+var items = [];
+items.push({ 'id': 1, 'title': "Выноски реперов", 'checked': pCore.private.NowParams.Lines[itemIndex].bShowMarkerLabels });
+items.push({ 'id': 2, 'title': "Видимость графика", 'checked':  pCore.private.NowParams.Lines[itemIndex].bVisible });
+items.push({ 'title': "-" });
+
+if (!pCore.GlobalRanges.Value && pCore.private.NowParams.LinesCount > 1)
+{
+	var tags = GetListTags(itemIndex).split(",");
+	if (tags.length > 0)
+	{
+		var axesItem = { 'id': 4, 'title': "Разместить на шкале", 'icon': iconsPath + "IndividualAxes16.png" };
+		axesItem.items = [];
+		var i = 0;
+		while (i < tags.length)
+		{
+			axesItem.items.push({ 'id': "tag_" + tags[i], 'title': tags[i] });
+			i += 1;
+		}
+		items.push(axesItem);
+		items.push({ 'title': "-" });
+	}
+}
+
+if (pCore.ActiveMode == unit.Const.amHISTORY && pCore.UseServerTime)
+{
+	var nColumn0 = pCore.private.NowParams.Lines[itemIndex].nXColumn;
+
+	var bPara = false;  // Признак существования пары сигналу
+	var	i = 1;
+	while (i <= unit.Const.MAX_LINES)
+	{
+		if (pCore.private.NowParams.Lines[i].Tag == pCore.private.NowParams.Lines[itemIndex].Tag && i != itemIndex)
+		{
+			if (nColumn0 != pCore.private.NowParams.Lines[i].nXColumn)
+			{
+				bPara = true;
+				break;
+			}
+		}
+		i += 1;
+	}
+
+	items.push({ 'id': 5, 'title': "Добавить график по времени источника", 'icon': iconsPath + "Add16.png",
+		'active': !bPara && nColumn0 != unit.Const.tmSOURCE });
+	items.push({ 'id': 6, 'title': "Добавить график по времени сервера", 'icon': iconsPath + "Add16.png",
+		'active': !bPara && nColumn0 == unit.Const.tmSOURCE });
+}
+
+items.push({ 'id': 7, 'title': "Удалить", 'icon': iconsPath + "Remove16.png" });
+items.push({ 'id': 8, 'title': "Удалить все" });
+
+//log(JSON.stringify(items,0,2));
+return JSON.stringify(items);]]>
+			</body>
+			<param access-modifier="private" name="itemIndex" display-name="" uuid="12f30db9-02f6-4367-a83e-2d04c6113370" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetListTags" display-name="GetListTags" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[// Формирование списка элементов из тэгов сигналов доступных для переключения осей в режиме индивидуальных осей
+sItems:string = "";
+
+i:int4 = 0;
+j:int4 = 1;
+if (pCore.private.NowParams.Lines[index].numAxis != index)	// Если выбранный график находится не на своей шкале
+{
+	sItems = "Отдельная шкала,";		// добавляем пункт для возвращения на свою шкалу
+	i += 1;
+}
+else
+{
+	while (j <= unit.Const.MAX_LINES && String.Length(sItems)==0)			// Перебираем графики 
+	{
+		if (pCore.private.NowParams.Lines[j].Used && j!=index)
+		{																				// Если есть сигналы подключенные к шкале выбранного сигнала
+			if (pCore.private.NowParams.Lines[j].numAxis == index )
+				sItems = "Отдельная шкала,";		// добавляем пункт для освобождения своей шкалы
+		}
+		j += 1;
+	}
+}
+
+j = 1;
+while (j <= unit.Const.MAX_LINES)			// Перебираем графики
+{
+	if (pCore.private.NowParams.Lines[j].Used && j != index)
+	{																				// Если найден сигнал отличный от текущего добавляем его в список
+		// Добавляем графики которые привязаны к своим осям и к которым не привязан выбранный график
+		if (pCore.private.NowParams.Lines[j].numAxis == j && pCore.private.NowParams.Lines[index].numAxis !=j )
+		{
+			sItems += pCore.private.NowParams.Lines[j].Tag + ",";
+			i += 1;
+		}
+	}
+	j += 1;
+}
+
+if (String.EndsWith(sItems, ",")) 
+	sItems = String.SubString(sItems, 0, String.Length(sItems)-1);
+
+return sItems;]]>
+			</body>
+			<param access-modifier="private" name="index" display-name="" uuid="c47b463e-333d-4a46-80a7-29e6fad1ffa8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetGraphicAxis" display-name="SetGraphicAxis" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (newScaleTag != "")
+{																// Замена шкалы выбранного графика
+	tag:string = pCore.private.NowParams.Lines[index].Tag;
+
+	if (newScaleTag == "Отдельная шкала")
+	{
+		if (pCore.private.NowParams.Lines[index].numAxis == index)			//	Освобождение от других графиков
+		{
+			j:int4 = 1;
+			n1:int4 = 0;
+			while (j <= unit.Const.MAX_LINES && n1==0)			// Перебираем cписok подключенных сигналов
+			{
+				if (pCore.private.NowParams.Lines[j].Used && j!=index)
+				{																				// Ищем первый сигнал подключенный к шкале выбранного сигнала
+					if (pCore.private.NowParams.Lines[j].numAxis == index)
+						n1 = j;		// Запоминаем индекс первого сигнала подключенного к выбранной шкале
+				}
+				j += 1;
+			}																								
+			pCore.private.CopyAxisParams(index, n1);				// Настройки шкалы копируем на новую шкалу
+			tag = pCore.private.NowParams.Lines[n1].Tag;
+			newScaleTag = tag;
+			j = 1;
+			while (j <= unit.Const.MAX_LINES)			// Перебираем cписok подключенных сигналов
+			{
+				if (pCore.private.NowParams.Lines[j].Used && j!=index)
+				{																				// Все сигналы подключенные к выбранной шкале переключаем на шкалу первого подключенного сигнала
+					if (pCore.private.NowParams.Lines[j].numAxis == index)
+						pCore.SetGraphicAxis(pCore.private.NowParams.Lines[j].Tag, tag);
+				}
+				j += 1;
+			}
+		}
+		else
+		{
+			newScaleTag = tag;	// Возвращение на свою ось
+		}
+	}
+	pCore.SetGraphicAxis(tag, newScaleTag);  // устанавливаем новую шкалу для выбранного графика
+}
+
+
+
+]]>
+			</body>
+			<param access-modifier="private" name="index" display-name="" uuid="c9ace04c-595b-4dc4-8391-58eae89eaf53" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="newScaleTag" display-name="" uuid="d2087b73-1753-49aa-b6df-8629e20d232a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="ShowFullDescription" display-name="Показывать полное описание" uuid="f6e58262-b31a-456e-aa88-af757fa2acec" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<init target="ShowFullDescription" ver="5" value="false"/>
+	<object access-modifier="private" name="ShowMilliseconds" display-name="Показывать миллисекунды" uuid="a57193b3-9dfc-4dd5-853f-ad888481c549" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<init target="ShowMilliseconds" ver="5" value="false"/>
+</type>
+

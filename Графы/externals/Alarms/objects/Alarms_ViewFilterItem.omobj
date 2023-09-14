@@ -1,0 +1,229 @@
+<type access-modifier="private" name="Alarms_ViewFilterItem" display-name="Alarms_ViewFilterItem" uuid="04671730-1304-4817-9ba6-884fd76da06c" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<object access-modifier="private" name="Rect" display-name="Rect" uuid="fd95bf0f-95cc-466c-a680-414ca20fc2db" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="410" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="RoundingRadius" value="0" ver="2"/>
+		<designed target="PenColor" value="4278190080" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="BrushColor" value="4278190080" ver="2"/>
+		<designed target="BrushStyle" value="0" ver="2"/>
+		<object access-modifier="private" name="Label" display-name="Label" uuid="48440d81-e7ee-484e-9e02-9d0a31a0a647" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+			<designed target="X" value="0" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="115" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Название столбца" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="130" ver="2"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<do-trace access-modifier="private" target="Width" ver="5">
+				<body>
+					<![CDATA[labelWidth]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[ppTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="6936074b-585f-4e06-8829-151ebebf66b5" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="120" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="290" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="0xffff0000" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="2" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[Error != ""]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="Width" ver="5">
+				<body>
+					<![CDATA[editorWidth]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="X" ver="5">
+				<body>
+					<![CDATA[labelWidth + 5]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Editor" display-name="Editor" uuid="2dfb05b9-0a23-4c51-919b-49f8889961f1" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="5">
+			<designed target="X" value="120" ver="5"/>
+			<designed target="Y" value="0" ver="5"/>
+			<designed target="ZValue" value="0" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<designed target="Scale" value="1" ver="5"/>
+			<designed target="Visible" value="true" ver="5"/>
+			<designed target="Opacity" value="1" ver="5"/>
+			<designed target="Enabled" value="true" ver="5"/>
+			<designed target="Tooltip" value="" ver="5"/>
+			<designed target="Width" value="290" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<designed target="Editable" value="true" ver="5"/>
+			<designed target="Text" value="" ver="5"/>
+			<designed target="SelectedIndex" value="-1" ver="5"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="5"/>
+			<designed target="FontColor" value="4278190080" ver="5"/>
+			<designed target="MaxVisibleItems" value="10" ver="5"/>
+			<do-trace access-modifier="private" target="Width" ver="5">
+				<body>
+					<![CDATA[editorWidth]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+				<body kind="om">
+					<![CDATA[AnyChanged(text);]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[Error]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="X" ver="5">
+				<body>
+					<![CDATA[labelWidth + 5]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[AnyChanged(GetItem(selected));]]>
+				</body>
+			</do-on>
+			<do access-modifier="private" name="AnyChanged" display-name="AnyChanged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (filterSource!="")
+{
+	filter: string = pVFControl.pAlarms.Main_panel.private.JSONstringForFilter(text, filterSource, 0, filterFormatted);
+	if (String.StartsWith(filter, "Error: "))
+	{
+		Filter = "";
+		Error = String.SubString(filter, 7);
+	}
+	else
+	{
+		Error = pVFControl.TestTable.CheckJSON(filter);
+		Filter = Error == "" ? filter : "";
+	}
+}
+
+pVFControl.ChangedInvoke(columnId);]]>
+				</body>
+				<param access-modifier="private" name="text" display-name="" uuid="bda3f844-ccad-4846-a060-312b67e48154" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			</do>
+		</object>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="Filter" display-name="Filter" uuid="8a472748-b9e1-49e2-b1c6-50f2048511fd" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do-trace access-modifier="private" target="Width" ver="5">
+			<body>
+				<![CDATA[labelWidth + 5 + editorWidth]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="labelWidth" display-name="labelWidth" uuid="3eab34f6-d46a-4d05-a85e-288abcb45192" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+		<object access-modifier="private" name="editorWidth" display-name="editorWidth" uuid="8a31ad41-51a9-4df1-8f09-43a80bac615b" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+		<object access-modifier="private" name="filterSource" display-name="filterSource" uuid="99d1a4e0-c605-419b-ad0d-59fbe64b0d41" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<object access-modifier="private" name="filterFormatted" display-name="filterFormatted" uuid="cf4a71cf-2256-4616-b0ab-717aa2f9c7e5" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<object access-modifier="private" name="columnId" display-name="columnId" uuid="00fadc6c-d1d6-4603-8e1b-8113fc5fc9df" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ppTheme" display-name="ppTheme" uuid="f47756ed-8ab6-4c8a-baba-eadddc5d5c29" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="SetWidth" display-name="SetWidth" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Rect.labelWidth = wLabel;
+Rect.editorWidth = wEditor;]]>
+		</body>
+		<param access-modifier="private" name="wLabel" display-name="" uuid="1a46ebcc-9b86-4373-af69-df07ca81512b" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+		<param access-modifier="private" name="wEditor" display-name="" uuid="4ccbd297-1820-4793-b9ab-9bbb3dd38914" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+	</do>
+	<do access-modifier="private" name="Setup" display-name="Setup" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[Rect.columnId = columnId;
+Rect.Label.Text = label;
+Rect.filterSource = filterSource;
+Rect.filterFormatted = filterFormatted;
+Rect.Editor.Editable = editable;
+
+while (Rect.Editor.ItemCount>0) Rect.Editor.RemoveItem(0);
+if (jsonItems!="") JSON.parse(jsonItems).forEach(e=>Rect.Editor.AddItem(e));]]>
+		</body>
+		<param access-modifier="private" name="columnId" display-name="" uuid="fd85a3e1-3322-4531-af45-2d6a5212eb4a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="label" display-name="" uuid="0fdd8c2e-42d2-44c1-a7fd-a7d556822a64" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="filterSource" display-name="" uuid="1fe48e9d-7aef-4eda-945d-6c83f96350ed" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="filterFormatted" display-name="" uuid="a4268cd6-2d1c-4a2c-b814-0f5db8286689" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<param access-modifier="private" name="editable" display-name="" uuid="2832e142-2ee0-4f6e-8eee-492f8f8ed736" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<param access-modifier="private" name="jsonItems" display-name="" uuid="821aa618-056e-4a63-9e8e-81446690d8ac" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="SetText" display-name="SetText" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Rect.Editor.Text = text;]]>
+		</body>
+		<param access-modifier="private" name="text" display-name="" uuid="46489d89-496a-45f8-8f7c-ae5571bd14df" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetFilter" display-name="GetFilter" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Rect.Filter;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetText" display-name="GetText" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Rect.Editor.Text;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetLabelLength" display-name="GetLabelLength" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[return String.Length(Rect.Label.Text);]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Error" display-name="Error" uuid="b6545a89-02bd-44fd-ba56-2d3929c26f33" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[pVFControl.HaveError.Update();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="pVFControl" display-name="pVFControl" uuid="725ff156-610e-4a89-b117-92756844fa85" base-type="Alarms_ViewFilterControl" base-type-id="ba1146f2-fa2e-4554-a774-5c6c50f19d52" base-const="true" base-ref="true" ver="5"/>
+	<do access-modifier="private" name="GetId" display-name="GetId" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Rect.columnId;]]>
+		</body>
+	</do>
+</type>
+

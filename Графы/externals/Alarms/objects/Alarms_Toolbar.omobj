@@ -1,0 +1,857 @@
+<type access-modifier="private" name="Alarms_Toolbar" display-name="Alarms_Toolbar" uuid="df35e6da-79f5-47c5-bafc-8f537dac5d59" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="1000" ver="5"/>
+	<designed target="Height" value="32" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff000000" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="4278190080" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<do-trace access-modifier="private" target="Visible" ver="5">
+		<body>
+			<![CDATA[pAlarmsTable.DisplayToolbar]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="1b420ca9-0d1d-4b6e-9ee4-ce2da8d08e70" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="pAlarmsTable" display-name="pAlarmsTable" uuid="26931ff6-519e-48ab-8bd2-aef6be25bb43" base-type="Alarms_Table" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="btnLogin" display-name="btnLogin" uuid="ba6b8dad-4f14-4ac1-94aa-14336a1bf7b5" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="3">
+		<designed target="X" value="1" ver="3"/>
+		<designed target="Y" value="7" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Tooltip" value="Сменить пользователя" ver="3"/>
+		<object access-modifier="private" name="ChangePassword" display-name="ChangePassword" uuid="1b715455-0e91-433d-944f-ae31c6d276ff" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="0e4df958-fe67-45af-892a-bc1d49754cae" base-type="ChangePasswordDialog" base-type-id="bc08353b-5b47-467f-aa5f-1d3f7ab7119b" ver="4">
+					<init target="UserId" ver="5">
+						<expr>
+							<![CDATA[LoginResult.UserId]]>
+						</expr>
+					</init>
+					<init target="UserDisplayName" ver="5">
+						<expr>
+							<![CDATA[LoginResult.UserDisplayName]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="AlwaysOnTop" ver="5" ref="pAlarmsTable.AlwaysOnTopForm"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="LoginResult" display-name="LoginResult" uuid="9fa7ef5c-da26-4709-9293-eb70ae574ef9" base-type="AuthentificationResult" base-type-id="5a70987d-09be-4ae7-90b3-76a00c6721bb" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="99aafaa9-bc97-4ead-aa03-758bd9cfca7e" base-type="LoginDialog" base-type-id="eb8d4a9b-7cd2-4fcf-81e1-67eed3b5c0d4" ver="4">
+				<init target="ChangePassword" ver="5" ref="parent.ChangePassword"/>
+				<init target="Result" ver="5" ref="parent.LoginResult"/>
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="AlwaysOnTop" ver="5" ref="pAlarmsTable.AlwaysOnTopForm"/>
+			</object>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Login24.png"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnLogin.IsVisible]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_1" display-name="Separator_1" uuid="21e7cd83-0b25-48fe-a77b-51818a8cb62f" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="20" ver="5"/>
+		<designed target="Y" value="7" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnLogin.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnOperMode" display-name="btnOperMode" uuid="310e8cab-a9ab-40e6-9af9-61a73d814233" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="29" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Оперативный режим" ver="2"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnOperMode.Checked]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnOperMode.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnOperMode.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Operative24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnHistMode" display-name="btnHistMode" uuid="f445e343-6107-4c54-a08d-80bc771cbaef" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="49" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Исторический режим" ver="2"/>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnHistMode.Checked]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnHistMode.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnHistMode.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Historical24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_2" display-name="Separator_2" uuid="c9419776-6069-45a7-aa58-ebc818ce15d3" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="68" ver="5"/>
+		<designed target="Y" value="7" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnOperMode.IsVisible ||
+btnHistMode.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSettings" display-name="btnSettings" uuid="d0bed42d-e406-4dfc-bbfb-aa2e3a5642f5" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="77" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Параметры..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSettings.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSettings.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Options24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnOpen" display-name="btnOpen" uuid="143abcc6-4f45-48f6-8265-1f52938c0a0a" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="97" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Открыть..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnOpen.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnOpen.Active]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnOpen.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/OpenFile24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSave" display-name="btnSave" uuid="e50591fc-37e4-43cd-96da-377a8c8f10a6" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="117" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Сохранить..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSave.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSave.Active]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSave.Invoke();]]>
+			</body>
+		</do-on>
+		<init target="Checked" ver="5" value="false"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/SaveFile24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnExport" display-name="btnExport" uuid="45f6233d-7548-42e2-8756-046dff2de0bd" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="137" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Экспорт..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnExport.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnExport.Active]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnExport.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/ExportToFile24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnPrint" display-name="btnPrint" uuid="f9e6c6b6-fec9-4a74-a019-f47a66660535" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="157" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Печать..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnPrint.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnPrint.Active]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnPrint.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Print24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_3" display-name="Separator_3" uuid="972b8286-526c-4c06-adee-6312d04c5eee" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="176" ver="5"/>
+		<designed target="Y" value="7" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnSettings.IsVisible ||
+btnOpen.IsVisible ||
+btnSave.IsVisible ||
+btnExport.IsVisible ||
+btnPrint.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnFiltr" display-name="btnFiltr" uuid="e7303d62-cf14-4dc6-aaae-22e02b2544ae" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="185" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Фильтр отображения..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnFiltr.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnFiltr.Invoke();]]>
+			</body>
+		</do-on>
+		<init target="pDropDown" ver="5" ref="btnFiltrList"/>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Filter24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnFiltrList" display-name="btnFiltrList" uuid="100cd191-76db-400d-b494-6baefb30897e" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="3">
+		<designed target="X" value="203" ver="3"/>
+		<designed target="Y" value="7" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Tooltip" value="Фильтр отображения..." ver="3"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnFiltrList.IsVisible]]>
+			</body>
+		</do-trace>
+		<init target="pButton" ver="5" ref="btnFiltr"/>
+		<designed target="Width" value="11" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnFiltrList.MenuWindowX = btnFiltr.ScreenX(0, 0);
+pAlarmsTable.Main_panel.ToolBar.btnFiltrList.MenuWindowY = btnFiltr.ScreenY(0, btnFiltr.Height);
+pAlarmsTable.Main_panel.ToolBar.btnFiltrList.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="Checked" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnFiltrList.Checked]]>
+			</body>
+		</do-trace>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSort" display-name="btnSort" uuid="1679ad51-118e-48be-bd65-a7ef807f963a" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="216" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Сортировка..." ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSort.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MousePress">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSort.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Sort24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="Separator_4" display-name="Separator_4" uuid="5b2718ca-699a-4e4b-bb04-219b974f3a38" base-type="ToolbarSeparator" base-type-id="0874ba53-66f8-4e74-b0d8-6e8f95558824" ver="5">
+		<designed target="X" value="235" ver="5"/>
+		<designed target="Y" value="7" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[btnFiltr.IsVisible ||
+btnFiltrList.IsVisible ||
+btnSort.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="8" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnAckSel" display-name="btnAckSel" uuid="9835258d-81ca-4e60-a3b1-8245e6269505" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="244" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Квитировать" ver="2"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnAckSel.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnAckSel.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnAckSel.Active]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Acknowledge24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnAckAll" display-name="btnAckAll" uuid="454b1919-7531-44ab-9b52-c89a2657db99" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="264" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Квитировать все" ver="2"/>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseClick" form-by-id="false">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnAckAll.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnAckAll.IsVisible]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/AcknowledgeAll24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnClearAll" display-name="btnClearAll" uuid="605f7de0-3779-477b-9892-e06c56d2564a" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="284" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Очистить список" ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnClearAll.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Active" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnClearAll.Active]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnClearAll.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/Clear24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSnapshot" display-name="btnSnapshot" uuid="4733375c-9bea-4471-a028-e26ea371aba2" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="304" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Снимок" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSnapshot.Invoke();]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSnapshot.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IconFile" ver="5">
+			<body>
+				<![CDATA[(pAlarmsTable.Main_panel.ToolBar.SnapshotON ? "Alarms_Icons/Play24.png" : "Alarms_Icons/Pause24.png")]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.SnapshotON ? "Отключить режим снимка"
+: "Включить режим снимка"]]>
+			</body>
+		</do-trace>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSndClear" display-name="btnSndClear" uuid="be778082-ae4c-443d-a5bb-0d0fdc57af8c" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="324" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Очистить очередь звуков" ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSndClear.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSndClear.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/SoundStop24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSndNext" display-name="btnSndNext" uuid="dfa2483f-80ba-441e-af4c-6032c0e96e88" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="344" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Tooltip" value="Пропустить звук" ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSndNext.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSndNext.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="IconFile" ver="5" value="Alarms_Icons/SoundForward24.png"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="btnSndMute" display-name="btnSndMute" uuid="14fd223f-f938-4dab-9f9a-0081ebb5d197" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+		<designed target="X" value="364" ver="2"/>
+		<designed target="Y" value="7" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<do-trace access-modifier="private" target="IsVisible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSndMute.IsVisible]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="IconFile" ver="5">
+			<body>
+				<![CDATA[(pAlarmsTable.Mute ? "Alarms_Icons/SoundPlay24.png" : "Alarms_Icons/SoundMute24.png")]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Mute ? "Включить проигрывание звуков"
+: "Отключить проигрывание звуков"]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseClick">
+			<body kind="om">
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.btnSndMute.Invoke();]]>
+			</body>
+		</do-on>
+		<designed target="Width" value="18" ver="5"/>
+		<designed target="Height" value="18" ver="5"/>
+		<init target="pTheme" ver="5" ref="Theme"/>
+	</object>
+	<object access-modifier="private" name="RecHistory" display-name="RecHistory" uuid="1d58ba4b-4ad6-4dec-94a8-9e54ddae0ea2" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+		<designed target="X" value="384" ver="2"/>
+		<designed target="Y" value="1" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<object access-modifier="private" name="IntervalStart" display-name="IntervalStart" uuid="1b69852e-5527-4971-b4bf-47de9c267173" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="0" ver="3"/>
+			<designed target="Y" value="1" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="112" ver="3"/>
+			<designed target="Height" value="29" ver="3"/>
+			<designed target="Text" value="Начало интервала:" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="130" ver="3"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Date_start" display-name="Date_start" uuid="c2d9d0e5-1b29-4845-a9fb-a338548fbd2e" base-type="DateEditor" base-type-id="69318eaa-4b1e-41d3-a9ef-5126cded808c" ver="3">
+			<designed target="X" value="113" ver="3"/>
+			<designed target="Y" value="2" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Width" value="85" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Error]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme"/>
+			<do-trace access-modifier="private" target="Value" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Date_start]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Changed" display-name="Changed" uuid="607ca0bd-9aa7-4cae-9b11-7b0ad139ea77" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Date_start = Date_start.Value;
+pAlarmsTable.Main_panel.ToolBar.RecHistory.DateTimeChanged.Invoke();]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pValueChanged" ver="5" ref="Date_start.Changed"/>
+		</object>
+		<object access-modifier="private" name="Time_start" display-name="Time_start" uuid="fac11314-725f-4c90-a4a0-76317920eb3e" base-type="TimeEditor" base-type-id="d0247632-ed97-46ad-b054-1da38b54f7b7" ver="3">
+			<designed target="X" value="198" ver="3"/>
+			<designed target="Y" value="2" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Width" value="75" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Error]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme"/>
+			<do-trace access-modifier="private" target="Value" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Time_start]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Changed" display-name="Changed" uuid="4e64bd2c-7906-4f6a-a2c6-df1ce830edf0" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Time_start = Time_start.Value;
+pAlarmsTable.Main_panel.ToolBar.RecHistory.DateTimeChanged.Invoke();]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pValueChanged" ver="5" ref="Time_start.Changed"/>
+		</object>
+		<object access-modifier="private" name="IntervalFinal" display-name="IntervalFinal" uuid="3b8f82e7-445a-4768-b81f-c82a9968a90f" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+			<designed target="X" value="263" ver="3"/>
+			<designed target="Y" value="1" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Scale" value="1" ver="3"/>
+			<designed target="Visible" value="true" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Enabled" value="true" ver="3"/>
+			<designed target="Tooltip" value="" ver="3"/>
+			<designed target="Width" value="105" ver="3"/>
+			<designed target="Height" value="29" ver="3"/>
+			<designed target="Text" value="Конец интервала:" ver="3"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+			<designed target="FontColor" value="4278190080" ver="3"/>
+			<designed target="TextAlignment" value="130" ver="3"/>
+			<do-trace access-modifier="private" target="FontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="Date_final" display-name="Date_final" uuid="4789ac96-9655-4c0d-a91c-d3c7e74191d3" base-type="DateEditor" base-type-id="69318eaa-4b1e-41d3-a9ef-5126cded808c" ver="3">
+			<designed target="X" value="368" ver="3"/>
+			<designed target="Y" value="2" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Width" value="85" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Error]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme"/>
+			<do-trace access-modifier="private" target="Value" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Date_final]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Changed" display-name="Changed" uuid="5a5e591b-3d77-4396-b602-79fbc1595f0c" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Date_final = Date_final.Value;
+pAlarmsTable.Main_panel.ToolBar.RecHistory.DateTimeChanged.Invoke();]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pValueChanged" ver="5" ref="Date_final.Changed"/>
+		</object>
+		<object access-modifier="private" name="Time_final" display-name="Time_final" uuid="574ddfb9-b97a-43ea-be72-c43f2548ab92" base-type="TimeEditor" base-type-id="d0247632-ed97-46ad-b054-1da38b54f7b7" ver="3">
+			<designed target="X" value="453" ver="3"/>
+			<designed target="Y" value="2" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Width" value="75" ver="5"/>
+			<designed target="Height" value="25" ver="5"/>
+			<do-trace access-modifier="private" target="Error" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Error]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme"/>
+			<do-trace access-modifier="private" target="Value" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Time_final]]>
+				</body>
+			</do-trace>
+			<object access-modifier="private" name="Changed" display-name="Changed" uuid="524e77d9-8703-4cd1-a70c-326662ca7d76" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="5" description="" cardinal="1">
+				<designed target="Enabled" value="true" ver="5"/>
+				<designed target="InvokeTrigger" value="false" ver="5"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.Time_final = Time_final.Value;
+pAlarmsTable.Main_panel.ToolBar.RecHistory.DateTimeChanged.Invoke();]]>
+					</body>
+				</do-on>
+			</object>
+			<init target="pValueChanged" ver="5" ref="Time_final.Changed"/>
+		</object>
+		<object access-modifier="private" name="btnHistRequest" display-name="btnHistRequest" uuid="e001caa8-6437-4302-9946-5943c3ed57c0" base-type="ToolbarButton" base-type-id="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" ver="2">
+			<designed target="X" value="528" ver="2"/>
+			<designed target="Y" value="1" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Tooltip" value="Запросить данные" ver="2"/>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[(!pAlarmsTable.Main_panel.private.LoadSaveBusy.LoadingHistory)?("Запросить данные"):("Прервать запрос истории")]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="IconFile" ver="5">
+				<conditional-expr>
+					<condition>
+						<![CDATA[pAlarmsTable.Main_panel.private.LoadSaveBusy.LoadingHistory]]>
+					</condition>
+					<expr>
+						<![CDATA["Alarms_Icons/CancelRrequest24.png"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[!pAlarmsTable.StatePanel.RequestFilterON]]>
+					</condition>
+					<expr>
+						<![CDATA["Alarms_Icons/Request24.png"]]>
+					</expr>
+				</conditional-expr>
+				<conditional-expr>
+					<condition>
+						<![CDATA[pAlarmsTable.StatePanel.RequestFilterON]]>
+					</condition>
+					<expr>
+						<![CDATA["Alarms_Icons/RequestWithFilter24.png"]]>
+					</expr>
+				</conditional-expr>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequest.Invoke();]]>
+				</body>
+			</do-on>
+			<init target="pDropDown" ver="5" ref="btnHistRequestList"/>
+			<designed target="Width" value="29" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequest.Active]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme"/>
+		</object>
+		<object access-modifier="private" name="btnHistRequestList" display-name="btnHistRequestList" uuid="afcd25b4-7031-4c09-a6f9-bef9d8e91723" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" ver="3">
+			<designed target="X" value="557" ver="3"/>
+			<designed target="Y" value="1" ver="3"/>
+			<designed target="Rotation" value="0" ver="3"/>
+			<designed target="Tooltip" value="Запросить данные" ver="3"/>
+			<do-trace access-modifier="private" target="Active" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequestList.Active]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="IsVisible" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequestList.IsVisible]]>
+				</body>
+			</do-trace>
+			<init target="pButton" ver="5" ref="btnHistRequest"/>
+			<designed target="Width" value="11" ver="5"/>
+			<designed target="Height" value="29" ver="5"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseClick">
+				<body kind="om">
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequestList.MenuWindowX = btnHistRequest.ScreenX(0, 0);
+pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequestList.MenuWindowY = btnHistRequest.ScreenY(0, btnHistRequest.Height);
+pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequestList.Invoke();]]>
+				</body>
+			</do-on>
+			<do-trace access-modifier="private" target="Checked" ver="5">
+				<body>
+					<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.btnHistRequestList.Checked]]>
+				</body>
+			</do-trace>
+			<init target="pTheme" ver="5" ref="Theme"/>
+		</object>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Width" value="615" ver="5"/>
+		<designed target="Height" value="30" ver="5"/>
+		<designed target="RoundingRadius" value="0" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="BrushColor" value="4278190080" ver="5"/>
+		<designed target="BrushStyle" value="0" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="5f371c88-a0c7-47a4-9f45-644a3845627e" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="1" ver="5"/>
+			<designed target="Bottom" value="1" ver="5"/>
+			<designed target="Left" value="1" ver="5"/>
+			<designed target="Right" value="1" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[pAlarmsTable.Main_panel.ToolBar.RecHistory.IsVisible]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="a685c45b-f5bb-406f-b28d-fbfa592ea7ff" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="Theme" display-name="Theme" uuid="8cf8aa52-ceb2-416e-8113-0e0452416ef3" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="4">
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.BackgroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.DisabledFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="SelectionColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.SelectionColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BorderColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+			<body>
+				<![CDATA[here.pTheme.DisabledBorderColor]]>
+			</body>
+		</do-trace>
+	</object>
+</type>
+

@@ -1,0 +1,547 @@
+<type access-modifier="private" name="AppList" display-name="AppList" uuid="add8f88a-c401-4600-8c5c-d86a83bf8913" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="845" ver="2"/>
+	<designed target="Height" value="350" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="845" ver="2"/>
+	<designed target="WindowHeight" value="976" ver="2"/>
+	<designed target="WindowCaption" value="MainForm" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="true" ver="2"/>
+	<designed target="ShowWindowMaximize" value="true" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="1" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="0" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[InMemoryTable.InitTable();
+SecurityManager.RequestAppList();
+SystemCommands.GoTo.doBlockingControll();
+Width = WindowWidth;
+Height = WindowHeight;]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="203cc931-e950-465c-a480-f2ce266201b9" base-type="AppListCommands" base-type-id="cdeb00db-448c-4b3b-9efb-008b5139c711" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="c6495224-1bd4-4799-8e2c-dca3cd78681e" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="32c434ad-7728-4cc2-8fdf-993c7f27e7fd" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="0" ver="4"/>
+		<designed target="Height" value="0" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="UpdateView" display-name="UpdateView" uuid="c30de07c-1a04-4d97-812e-86b258939242" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	SystemCommands.DoUpdateLayout = false;
+	here.WindowWidth = TypeConvert.ToInt4(SystemCommands.DoUpdateLayout.Width);
+	here.WindowHeight = TypeConvert.ToInt4(SystemCommands.DoUpdateLayout.Height);
+	
+	here.Width = here.WindowWidth;
+	here.Height = here.WindowHeight;
+
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="CreateApp" display-name="CreateApp" uuid="41c5165f-6ffa-4585-8dcb-e08a549ad335" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<object access-modifier="private" name="ShowCreateAppDialog" display-name="ShowCreateAppDialog" uuid="2bc4ae22-e193-4c3c-8625-bb475232d9d3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<object access-modifier="private" name="OnComplete" display-name="OnComplete" uuid="a9b4cd5b-348a-441d-b08d-fd192985084a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (appName.Error.Value == ""){
+	Application.New();
+	Application.ApplicationName = appName.Value;
+	Application.Save();
+	SecurityManager.RequestAppList();
+	SystemCommands.GoTo.doBlockingControll();
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="94b1daa3-51f3-4d51-bd44-1051c772938c" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+						<init target="OkAction" ver="4" ref="OnComplete"/>
+						<init target="Result" ver="4" ref="appName"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value){
+	Commands.DoCreate = false;
+	appName.InputText = "";
+	ShowCreateAppDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="RemoveApp" display-name="RemoveApp" uuid="572d15b4-3ef9-40c1-a549-b832c68a4b66" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value)
+{
+	Commands.DoRemoveSelected = false;
+	ShowRemoveDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowRemoveDialog" display-name="ShowRemoveDialog" uuid="01b07a3a-c69a-42c5-8e6f-2e7b58dd82e6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="d6d02274-561e-41d2-b8a6-a827aa12046c" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<init target="OkAction" ver="4" ref="RemoveSelectedApp"/>
+						<init target="Icon" ver="4" value="1"/>
+						<init target="Buttons" ver="4" value="1"/>
+						<designed target="WindowCaption" value="Удалить приложение" ver="4"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA["Вы действительно хотите удалить приложение " + SelectedApp + "?"]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="RemoveSelectedApp" display-name="RemoveSelectedApp" uuid="abd904e1-ad69-4f48-aa0c-2a30bc4a4940" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (SelectedApp !=""){
+	SecurityManager.DeleteApplication(SelectedApp);
+	SelectedApp = "";
+	SystemCommands.GoTo.doBlockingControll();
+}]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="ImportApp" display-name="ImportApp" uuid="e78b8a11-0293-41da-b4d2-964ee8c5ece0" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<object access-modifier="private" name="ShowFileImportDialog" display-name="ShowFileImportDialog" uuid="0aba1e83-e532-42bb-bb33-a8a1e5a0fc71" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<object access-modifier="private" name="DoImport" display-name="DoImport" uuid="6915e8ce-dfb8-43fc-8dd3-2ce81e0ae601" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="javascript">
+							<![CDATA[if (DialogResult.FileType == 0 && DialogResult.FilePath !="" && Files.Exists(DialogResult.FilePath)) {
+	try {
+		try {
+			var appJSON = JSON.parse(Files.ReadTextFile(DialogResult.FilePath));
+		} catch (e) {
+			throw new Error("Ошибка чтения файла:\n"+e.message);
+		}
+		try {
+			var appList = JSON.parse(private.ActualAppList).data;
+		} catch (e){
+			throw new Error("Ошибка парсинга списка приложений:\n"+e.message);
+		}
+	} catch (e) {
+		ShowErrorWindow.message = e.message;
+		ShowErrorWindow.Invoke();
+		return;
+	}
+	
+	
+	Application.New();
+	var count = 1;
+	var appName = appJSON.Name;
+	for (let i = 0; i < appList.length; i++) {	
+		if (appList[i].applicationName == appJSON.Name) {
+			appJSON.Name = appName + count;
+			count++;
+		}
+	}
+	Application.ApplicationName = appJSON.Name;
+	
+	for (let i = 0; i < appJSON.Tokens.length; i++) {
+	var type = appJSON.Tokens[i].Type == "Boolean" ? 1 : 2;
+		Application.CreateToken(type, appJSON.Tokens[i].Name, appJSON.Tokens[i].Description);
+	}
+	Application.Save();
+	SystemCommands.GoTo.doBlockingControll();
+}
+]]>
+						</body>
+					</do-on>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="7892b74f-e930-47e6-9d2f-188988164263" base-type="OpenFileDialog" base-type-id="41505bc5-e0a8-4d93-b1a9-de842aaf215b" ver="4">
+						<init target="Result" ver="4" ref="DialogResult"/>
+						<init target="OnComplete" ver="4" ref="DoImport"/>
+						<init target="FileTypeFilter" ver="4" value="Список токенов (*.json)|*.json"/>
+						<init target="DefaultPath" ver="4" ref="importTemplatesPath"/>
+						<init target="RootPath" ver="5" value=""/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoImport = false;
+	ShowFileImportDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="LoadAppListToTable" display-name="LoadAppListToTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[if (InputAppList != "") {
+	if (InMemoryTable.GetColumnCount() == 0) {InMemoryTable.InitTable();}
+	try {
+		var appList = JSON.parse(InputAppList).data
+	} catch {
+		var appList = [];
+	}
+	if (appList.length >= 0){
+		//appList = appList.sort((a, b) => a.applicationName.toString().toLowerCase() > b.applicationName.toString().toLowerCase() ? 1 : -1);
+		appList = appList.filter(a => a.applicationType != "SystemApp");
+		
+		InMemoryTable.Clear();
+		for (var i = 0; i<appList.length; i++){
+			InMemoryTable.AddRow();
+			InMemoryTable.SetCellData(i, 0, appList[i].applicationType);
+			InMemoryTable.SetCellData(i, 1, appList[i].applicationName);
+		}
+		Table_1.TableColumn_Name.SortingEnabled = true;
+		Table_1.TableColumn_Name.SortOrder = 0;
+		Table_1.ApplySort();
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="InputAppList" display-name="" uuid="c9014847-ece4-4df2-bab4-3ff7d5fa7fcf" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<object access-modifier="private" name="DialogResult" display-name="DialogResult" uuid="b9009fee-46fd-4eb5-bd7a-954d7b98aae9" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+		<do-trace access-modifier="private" target="CreateApp" ver="5">
+			<body>
+				<![CDATA[Commands.DoCreate]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="RemoveApp" ver="5">
+			<body>
+				<![CDATA[Commands.DoRemoveSelected]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="ImportApp" ver="5">
+			<body>
+				<![CDATA[Commands.DoImport]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="SelectedApp" display-name="SelectedApp" uuid="3ba118be-c970-4c8f-8111-0e6bbff2376b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value != ""){
+	Commands.DoRemoveSelected.CanExecute =  true;
+	SystemCommands.GoTo.sendData = value;
+} else {
+	Commands.DoRemoveSelected.CanExecute = false;
+	SystemCommands.GoTo.sendData = "";
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="UpdateView" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoUpdateLayout]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="ac37a5dd-5042-4624-9c91-9efe1c67f24c" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="0" ver="4"/>
+		</object>
+		<object access-modifier="private" name="appName" display-name="appName" uuid="cc47d722-eacb-47a3-8f58-054130d5ece1" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4">
+			<object access-modifier="private" name="inputStringIsChanged" display-name="inputStringIsChanged" uuid="a1d21133-c98b-429c-b0d5-8e441d2498f8" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="javascript">
+						<![CDATA[try {
+	var appList = JSON.parse(ActualAppList).data;
+} catch {
+	var appList = "";
+}
+
+appName.Error.Value  = "";
+
+if (InputText == "" || InputText == " "){
+	appName.Error.Value  = "Имя не может быть пустым";
+}else {
+	// Проверка дублирования имён
+	for (var i = 0; i < appList.length; i++)
+	{	
+		if (appList[i].applicationName == InputText)
+		{
+			appName.Error.Value = "Повторяющиеся имена недопустимы";
+			break;
+		}
+	}
+}
+]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="inputStringIsChanged" ver="5">
+				<body>
+					<![CDATA[InputText]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="ActualAppList" display-name="ActualAppList" uuid="7ee8a068-6157-4004-942f-e74af0d0913e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<object access-modifier="private" name="ShowErrorWindow" display-name="ShowErrorWindow" uuid="0f1351cd-b030-4b8a-8034-cdde8177d98a" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="c0467f5e-f870-49e1-860d-1315a3799fe1" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+					<init target="Message" ver="4" ref="message"/>
+					<init target="Buttons" ver="4" value="0"/>
+					<init target="Icon" ver="4" value="3"/>
+					<designed target="WindowCaption" value="Ошибка" ver="4"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="message" display-name="message" uuid="a77ca2d4-c6d0-409b-8545-d32f0dd24302" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Files" display-name="Files" uuid="28330874-878c-4021-b4b4-fd523307ccca" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="4"/>
+	</object>
+	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="d1e3d43e-1a36-4288-aff7-3c75ab7399d7" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="4">
+		<init target="SecurityContext" ver="4">
+			<object access-modifier="private" uuid="49e90c5c-26da-4cc3-9d99-1f3687b1d5e3" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+		</init>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestAppListComplete">
+			<body kind="om">
+				<![CDATA[private.LoadAppListToTable(JSONAppList);
+private.ActualAppList = JSONAppList;
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="RequestAppListFailed">
+			<body kind="om">
+				<![CDATA[private.ShowErrorWindow.message = GetErrorDescriptionByCode(FailReason);
+private.ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="DeleteApplicationComplete">
+			<body kind="om">
+				<![CDATA[RequestAppList();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="DeleteApplicationFailed">
+			<body kind="om">
+				<![CDATA[private.ShowErrorWindow.message = GetErrorDescriptionByCode(FailReason);
+private.ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Application" display-name="Application" uuid="ff864092-e44e-48fd-af3d-c4fffa94a0e4" base-type="SecurityManagerApplication" base-type-id="cfc3985c-54fc-4fe4-b001-cade048d6ee0" ver="4">
+		<designed target="ApplicationName" value="" ver="4"/>
+		<init target="SecurityManager" ver="4" ref="here.SecurityManager"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
+			<body kind="om">
+				<![CDATA[//private.LoadAppRightsToTable(GetTokensList());]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SaveComplete">
+			<body kind="om">
+				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
+here.SecurityManager.RequestAppList();
+SystemCommands.GoTo.doBlockingControll();
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SaveFailed">
+			<body kind="om">
+				<![CDATA[private.ShowErrorWindow.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="LoadFailed">
+			<body kind="om">
+				<![CDATA[private.ShowErrorWindow.message = GetErrorDescriptionByCode(FailReasonCode);
+private.ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="a1e2bfcc-3fa6-45c7-bb5e-749d09854510" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="LinearLayout" display-name="LinearLayout" uuid="c643a13a-e54f-48a9-b381-8c6838039258" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+		<designed target="Orientation" value="1" ver="4"/>
+		<designed target="Gap" value="0" ver="4"/>
+	</object>
+	<object access-modifier="private" name="InMemoryTable" display-name="InMemoryTable" uuid="07ae254c-dc70-46a4-a0b5-0c70c7bc2478" base-type="InMemoryTable" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="2">
+		<designed target="MaxRowCount" value="100000" ver="2"/>
+		<designed target="Frozen" value="false" ver="3"/>
+		<do access-modifier="private" name="InitTable" display-name="InitTable" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Reset();
+
+AddColumn("applicationType","","","","string",false,true);
+AddColumn("applicationName","","","","string",false,true);
+Clear();]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="Table_1" display-name="Table_1" uuid="3c5ed9fb-8b40-487d-a0a5-794dc5eecbd4" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="220" ver="2"/>
+		<designed target="Height" value="400" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="1" ver="2"/>
+		<object access-modifier="private" name="TableColumn_applicationType" display-name="TableColumn_applicationType" uuid="9b242032-e9e1-4ba1-990b-d124d829d772" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="applicationType" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="applicationType" ver="2"/>
+			<designed target="BackgroundColor" value="4293980400" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="20" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="true" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+		</object>
+		<object access-modifier="private" name="TableColumn_Name" display-name="TableColumn_Name" uuid="1e4baf2e-1c5d-496f-9332-e82281c430f2" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2">
+			<designed target="Title" value="Приложение" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="applicationName" ver="2"/>
+			<designed target="BackgroundColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="ForegroundColor" value="4278190080" ver="2"/>
+			<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="2"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="2"/>
+			<designed target="TitleFont" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="202" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="3"/>
+			<designed target="JsonFilter" value="" ver="3"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="false" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[if (private.SelectedApp !="") {
+	SystemCommands.GoTo.sendData = private.SelectedApp;
+	SystemCommands.GoTo.frameCode =2;
+	SystemCommands.GoTo = true;
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseTitleClick">
+				<body kind="om">
+					<![CDATA[
+// меняем направление сортировки: прямая -> обратная -> отключена и т.д.
+if (SortingEnabled)
+{
+	if (SortOrder == 0)
+		SortOrder = 1; // меняем направление сортировки
+	else SortingEnabled = false; // отключаем сортировку
+}
+else
+{
+	// включаем сортировку
+	SortOrder = 0;
+	SortingEnabled = true;
+}
+
+// сортируем таблицу
+ApplySort();]]>
+				</body>
+			</do-on>
+		</object>
+		<designed target="HeaderHeight" value="21" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="30" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<designed target="LatestRowTracking" value="false" ver="3"/>
+		<init target="TableModel" ver="3" ref="InMemoryTable"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="3"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[if (row >= 0 && row < GetRowCount()){
+		private.SelectedApp = Table_1.GetCellData(row,1);
+} 
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SelectionChanged">
+			<body kind="om">
+				<![CDATA[if (GetSelectedRows() == "[]"){
+	private.SelectedApp ="";
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="LayoutWeight" display-name="LayoutWeight" uuid="66eb2c8d-8d6f-4e87-b362-fec2eaf8be53" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+			<designed target="Weight" value="1" ver="4"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="importTemplatesPath" display-name="importTemplatesPath" uuid="9b7c1bf8-2c72-410b-9f7e-31b93ee6bf19" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

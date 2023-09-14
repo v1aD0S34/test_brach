@@ -1,0 +1,93 @@
+<type access-modifier="public" name="KeyboardLayoutButton" display-name="KeyboardLayoutButton" uuid="658542d3-e1f2-4bcc-a4e3-52ea4ca129e9" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="25" ver="5"/>
+	<designed target="Height" value="25" ver="5"/>
+	<designed target="Checkable" value="false" ver="5"/>
+	<designed target="Text" value="EN" ver="5"/>
+	<designed target="TextAlignment" value="132" ver="5"/>
+	<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+	<designed target="FontColor" value="0xff000000" ver="5"/>
+	<designed target="OnClickFontColor" value="0xff000000" ver="5"/>
+	<designed target="OnHoverFontColor" value="0xff000000" ver="5"/>
+	<designed target="DisabledFontColor" value="0xff000000" ver="5"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="5"/>
+	<designed target="OnClickBrushStyle" value="0" ver="5"/>
+	<designed target="OnHoverBrushColor" value="0xffffffff" ver="5"/>
+	<designed target="OnHoverBrushStyle" value="0" ver="5"/>
+	<designed target="DisabledBrushColor" value="0xffa0a0a0" ver="5"/>
+	<designed target="DisabledBrushStyle" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff000000" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="OnClickPenColor" value="0xff000000" ver="5"/>
+	<designed target="OnClickPenStyle" value="1" ver="5"/>
+	<designed target="OnClickPenWidth" value="1" ver="5"/>
+	<designed target="OnHoverPenColor" value="0xff000000" ver="5"/>
+	<designed target="OnHoverPenStyle" value="1" ver="5"/>
+	<designed target="OnHoverPenWidth" value="1" ver="5"/>
+	<designed target="DisabledPenColor" value="0xffa0a0a0" ver="5"/>
+	<designed target="DisabledPenStyle" value="0" ver="5"/>
+	<designed target="DisabledPenWidth" value="1" ver="5"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+		<body kind="om">
+			<![CDATA[Keyboard.NextLocale();]]>
+		</body>
+	</do-on>
+	<do-trace access-modifier="private" target="FontColor" ver="5">
+		<body>
+			<![CDATA[pTheme.ForegroundColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnClickFontColor" ver="5">
+		<body>
+			<![CDATA[pTheme.EditorFontColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnHoverFontColor" ver="5">
+		<body>
+			<![CDATA[pTheme.EditorFontColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnClickPenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="OnHoverPenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+		<body>
+			<![CDATA[pTheme.ForegroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="ed175609-c9fd-41a2-9af4-0d6229e73b42" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="Keyboard" display-name="Keyboard" uuid="60cdcf9b-d7af-4afb-bc1c-a99632b1856c" base-type="Keyboard" base-type-id="9430301f-2693-4c5c-9013-867d8d8f73f4" ver="5">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LocaleChanged">
+			<body kind="om">
+				<![CDATA[//Debug.Log("Keyboard locale: " + Locale);
+hyphen: int4 = String.IndexOf(Locale, "-");
+if (hyphen > 0)
+	Text = String.ToUpper(String.SubString(Locale, 0, hyphen));
+else Text = String.ToUpper(Locale);
+
+Tooltip = LocalizedLanguageName(Locale);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="1faba220-c95f-4631-b80f-aaaab8a899c2" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<designed target="Checked" value="false" ver="5"/>
+</type>
+

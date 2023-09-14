@@ -1,0 +1,45 @@
+<unit uuid="3b3a6fcc-7237-4cc6-b9a8-2c22c0bc7e34" name="CommonLib" display-name="CommonLib" description="" ver="5" main-form-id="68e78df5-0b85-4ef3-a9f4-6dce0b4141f2">
+	<object file="TestForm.omobj" filter=""/>
+	<object file="Theme.omobj" filter=""/>
+	<object file="Converter.omobj" filter=""/>
+	<object file="WindowUtils.omobj" filter=""/>
+	<object file="IntegerUpDown.omobj" filter="Редакторы"/>
+	<object file="DateEditor.omobj" filter="Редакторы"/>
+	<object file="TimeEditor.omobj" filter="Редакторы"/>
+	<object file="MenuItem.omobj" filter="Меню"/>
+	<object file="MenuSeparator.omobj" filter="Меню"/>
+	<object file="MenuResult.omobj" filter="Меню"/>
+	<object file="ToolbarButton.omobj" filter="Панель инструментов"/>
+	<object file="ToolbarDropDown.omobj" filter="Панель инструментов"/>
+	<object file="ToolbarSeparator.omobj" filter="Панель инструментов"/>
+	<object file="SearchBar.omobj" filter="Панель инструментов"/>
+	<object file="LoginButton.omobj" filter="Строка статуса"/>
+	<object file="LogViewButton.omobj" filter="Строка статуса"/>
+	<object file="ConnectionIndicator.omobj" filter="Строка статуса"/>
+	<object file="KeyboardLayoutButton.omobj" filter="Строка статуса"/>
+	<object file="Popup.omobj" filter=""/>
+	<object file="Menu.omobj" filter=""/>
+	<object file="MessageDialog.omobj" filter=""/>
+	<object file="InputDialog.omobj" filter=""/>
+	<object file="ColorDialog.omobj" filter=""/>
+	<object file="DialogResult.omobj" filter="Диалоги"/>
+	<object file="DateTimeResult.omobj" filter="Диалоги"/>
+	<object file="InputDialogResult.omobj" filter="Диалоги"/>
+	<object file="ColorDialogResult.omobj" filter="Диалоги"/>
+	<object file="FileDialogResult.omobj" filter="Диалоги"/>
+	<object file="LoginDialogResult.omobj" filter="Диалоги"/>
+	<object file="FolderLine.omobj" filter="Диалоги"/>
+	<object file="FileList.omobj" filter="Диалоги"/>
+	<object file="FileTree.omobj" filter="Диалоги"/>
+	<object file="FileDialog.omobj" filter="Файлы"/>
+	<object file="OpenFileDialog.omobj" filter="Файлы"/>
+	<object file="SaveFileDialog.omobj" filter="Файлы"/>
+	<object file="SelectFolderDialog.omobj" filter="Файлы"/>
+	<object file="LoginDialog.omobj" filter="Безопасность"/>
+	<object file="ChangePasswordDialog.omobj" filter="Безопасность"/>
+	<object file="Calendar.omobj" filter=""/>
+	<object file="ItemTree.omobj" filter=""/>
+	<object file="LogView.omobj" filter=""/>
+	<object file="ProductInfo.omobj" filter=""/>
+</unit>
+

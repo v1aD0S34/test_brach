@@ -1,0 +1,140 @@
+<type access-modifier="private" name="Trends_Status" display-name="Тренды. Строка статуса" uuid="60ec2e95-2b2d-4f82-9cbe-d981c7cd7032" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<designed target="Width" value="1000" ver="4"/>
+	<designed target="Height" value="25" ver="4"/>
+	<designed target="RoundingRadius" value="0" ver="4"/>
+	<designed target="PenColor" value="0xff808080" ver="4"/>
+	<designed target="PenStyle" value="1" ver="4"/>
+	<designed target="PenWidth" value="1" ver="4"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+	<designed target="BrushStyle" value="1" ver="4"/>
+	<object access-modifier="private" name="ConnectionIndicator" display-name="ConnectionIndicator" uuid="3788850c-f895-4c6e-b5da-70fdb534f0c5" base-type="ConnectionIndicator" base-type-id="931aa326-7fd9-496c-acaa-61370986249f" ver="3">
+		<designed target="Width" value="25" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="e826b904-1cd7-4cec-a9cf-d359b05f8e92" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="0" ver="5"/>
+			<designed target="MinHeight" value="0" ver="5"/>
+			<designed target="MaxWidth" value="25" ver="5"/>
+			<designed target="MaxHeight" value="25" ver="5"/>
+		</object>
+		<init target="init_ApSource" ver="5" ref="here.init_ApSource"/>
+	</object>
+	<object access-modifier="private" name="AdviseIcon" display-name="AdviseIcon" uuid="ecef93d4-ae82-4c87-8619-d27f19f9276d" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="3">
+		<designed target="X" value="25" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="16" ver="3"/>
+		<designed target="Height" value="16" ver="3"/>
+		<designed target="PenColor" value="4278190080" ver="3"/>
+		<designed target="PenStyle" value="0" ver="3"/>
+		<designed target="PenWidth" value="1" ver="3"/>
+		<designed target="ImageFile" value="Trends_Icons/Warning16.png" ver="3"/>
+		<designed target="Active" value="true" ver="3"/>
+		<designed target="CurrentFrameNumber" value="0" ver="3"/>
+		<designed target="Speed" value="1" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="06434a3a-676e-4f78-852c-a741c164b27a" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+			<designed target="MinWidth" value="16" ver="5"/>
+			<designed target="MinHeight" value="16" ver="5"/>
+			<designed target="MaxWidth" value="16" ver="5"/>
+			<designed target="MaxHeight" value="16" ver="5"/>
+		</object>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="c183f03d-ff58-424d-864b-71159e75d423" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="3" ver="5"/>
+			<designed target="Bottom" value="3" ver="5"/>
+			<designed target="Left" value="3" ver="5"/>
+			<designed target="Right" value="3" ver="5"/>
+		</object>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA[AdviseState]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[AdviseState != ""]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="StatusText" display-name="StatusText" uuid="fcf4aafa-a6db-4d37-8137-c7e9e4fbb41a" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="3">
+		<designed target="X" value="60" ver="3"/>
+		<designed target="Y" value="0" ver="3"/>
+		<designed target="Rotation" value="0" ver="3"/>
+		<designed target="Scale" value="1" ver="3"/>
+		<designed target="Visible" value="true" ver="3"/>
+		<designed target="Enabled" value="true" ver="3"/>
+		<designed target="Tooltip" value="" ver="3"/>
+		<designed target="Width" value="940" ver="3"/>
+		<designed target="Height" value="25" ver="3"/>
+		<designed target="Text" value="" ver="3"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="3"/>
+		<designed target="FontColor" value="4278190080" ver="3"/>
+		<designed target="TextAlignment" value="129" ver="3"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[State]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="c5241c23-3dbf-4664-8dcf-a32df759fd01" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="5214d395-96e6-44b7-baca-c48b677b9541" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="0ccd7d43-eb35-4635-ac17-8e291b121f90" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="9c646ea6-cb4f-4ea1-9a02-d3a145e787b4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<init target="oldValue" ver="5" value="true"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != Value)
+{
+	oldValue = Value;
+	Visible = Value;
+	SizeLimits.MaxHeight = Value ? 20 : 0;
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<init target="IsVisible" ver="5" value="true"/>
+	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="46599567-28d4-4e30-84ff-8aed95a2f34a" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+		<designed target="MinWidth" value="0" ver="5"/>
+		<designed target="MinHeight" value="25" ver="5"/>
+		<designed target="MaxWidth" value="16777215" ver="5"/>
+		<designed target="MaxHeight" value="25" ver="5"/>
+	</object>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="f6286086-23dd-4dc2-a298-4d8d31b86f0c" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="AdviseState" display-name="AdviseState" uuid="87b9052d-e7af-4016-b265-200a7f58d5a5" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="State" display-name="State" uuid="84253c2b-c23e-4b48-a37c-e662398cb00e" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<param access-modifier="private" name="init_ApSource" display-name="init_ApSource" uuid="3dc16b24-3db1-47fb-baa0-e6a214fd2ca5" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

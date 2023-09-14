@@ -1,0 +1,24 @@
+<type access-modifier="private" name="ApplicationCommands" display-name="ApplicationCommands" uuid="1bb4857b-5e24-4e31-a011-db8a88827b94" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<object access-modifier="private" name="DoCreateBoolToken" display-name="DoCreateBoolToken" uuid="e6691abb-db0b-4d7c-be4e-a1a758299ffa" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="45d631c8-8e20-44ac-8511-82f1fac0f60c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoCreateStringToken" display-name="DoCreateStringToken" uuid="b9e57b36-3b0b-493b-a944-f0c41e5f3cad" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="7f9e67ed-8a3e-4912-bf4e-5656293f3e1b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoDeleteToken" display-name="DoDeleteToken" uuid="fde76fad-9efd-466a-bf63-e18146433498" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="a7417d82-4202-4996-9327-80aa336edaef" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoChangeToken" display-name="DoChangeToken" uuid="3eb41df7-7e21-4107-9f59-0a1170992d03" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="eac9b385-1a8a-4d32-be53-82c6e616e950" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+</type>
+

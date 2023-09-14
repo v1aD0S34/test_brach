@@ -1,0 +1,3528 @@
+<type access-modifier="private" name="Trends_Core" display-name="Тренды. Ядро" uuid="f0fa79fc-d3d2-43f0-9eed-88d0f13b0fa0" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<object access-modifier="private" name="Initializer_1" display-name="Initializer_1" uuid="4b4805a8-5866-4f68-aeb9-d939245e1332" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[// Инициализатор вынесен в отдельную функцию, что бы иметь возможность запускать его в ручную,
+// например в событии Opened основной формы, который по недоразмению срабатывает раньше штатного инициализатора.
+// Это необходимо, если в событии Opened происходит добавление графиков в тренды.
+private.Initializer();
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ApSource_Core" display-name="ApSource_Core" uuid="5c6f3d7b-38cc-49c6-90e4-23d88aec902e" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="2">
+		<designed target="Active" value="true" ver="2"/>
+		<init target="Timeout" ver="2" value="0"/>
+		<init target="ConnectionEstablishTimeout" ver="2" value="0"/>
+		<init target="MaxBufferPoolSize" ver="2" value="0"/>
+		<init target="ParentSource" ver="2" ref="init_AP"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+			<body kind="om">
+				<![CDATA[OnAPSource_ConnectionChanged.Invoke();
+
+if (oldConnectionState != connectionState)
+{
+	oldConnectionState = connectionState;
+
+	pStatusLine.AdviseState = private.Items.GetAdviseState();
+}]]>
+			</body>
+		</do-on>
+		<designed target="Path" value="" ver="4"/>
+		<designed target="ReAdvise" value="0" ver="4"/>
+		<designed target="Location" value="" ver="5"/>
+		<designed target="Port" value="4388" ver="5"/>
+		<designed target="HistoryPort" value="4950" ver="5"/>
+		<object access-modifier="private" name="oldConnectionState" display-name="oldConnectionState" uuid="c6b3e40c-45ea-4c7b-8c2b-d28f0a5db7b6" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		<designed target="ClientDisplayName" value="HMI" ver="5"/>
+		<designed target="ClientId" value="HMI" ver="5"/>
+	</object>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="81c0398b-64bc-4302-8add-ba10da45081d" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="FileManager" display-name="FileManager" uuid="4256beaa-c225-479d-8de1-8767f5ad9f96" base-type="FileSystem" base-type-id="34d744f9-7303-4077-a3f7-9c06c0945512" ver="2">
+		<designed target="RootPath" value="/" ver="4"/>
+	</object>
+	<object access-modifier="private" name="MonitorList_1" display-name="MonitorList_1" uuid="27a9e65c-2851-4534-ae33-9d9e36164063" base-type="MonitorList" base-type-id="c74bfc5a-253e-4144-8b20-917cf4cf333b" ver="3"/>
+	<object access-modifier="private" name="Archiver_1" display-name="Archiver_1" uuid="70d0a65b-2d8f-4efd-8d5d-d5a846902f92" base-type="Archiver" base-type-id="3d5db667-b706-495b-a916-9785b07dd0ae" ver="3">
+		<designed target="CompressionLevel" value="1" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="PackFinished">
+			<body kind="om">
+				<![CDATA[if (error != "")
+{
+	ShowError.message = error;
+	ShowError.Invoke();
+}
+else
+{
+	private.EventParams[0] = private.ExportFile;
+	OnSaveTrends.Invoke();
+
+	ShowComplete.message = "Данные сохранены в файл:\n" + private.ExportFile;
+	ShowComplete.Invoke();	
+}
+
+FileManager.RemoveRecursive(private.ExportTrendsPath);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_ServerAPI" display-name="Item_ServerAPI" uuid="09eb272e-3d08-4a29-8729-413cedddf366" base-type="ApItemString" base-type-id="11bc436c-015a-4db9-b901-0cc5c75e1239" ver="2">
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<init target="Path" ver="2" value="Service.InvokeFromJSON"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnValueChanged">
+			<body kind="javascript">
+				<![CDATA[// #22657 - реализация алгоритма обращений к API сервера для получения относительного тега сигнала
+
+var tagID;
+if (Advised && value!="")		// Если сигнал подписан и значение определено
+{
+	var ask = JSON.parse( value );		// парсим строку в объект
+	if (ask.transaction != null && ask.result != null)
+	{
+		if (ask.transaction.indexOf("GetID_") == 0)
+		{									
+			var index = ask.transaction.slice(6);			// Извлекаем из строки индекс графика
+			if (ask.result.exception == null)	
+			{
+				private.NowParams.TagID[index] = ask.result.return;		// Сохраняем результат в параметрах графика
+				private.ServerAPI.SendRequestToGetParentObjectID(index, private.NowParams.TagID[index]);
+				private.ServerAPI.NodeID[index] = private.NowParams.TagID[index];	// Запоминаем ID по которому был сделан запрос
+			}
+		}
+		if (ask.transaction.indexOf("GetParentID_") == 0)
+		{									
+			var index = ask.transaction.slice(12);		
+			if (ask.result.exception == null)	
+			{
+				if (private.NowParams.TagID[index] == private.ServerAPI.NodeID[index])	// Если запрос был непосредственно от узла графика
+				{
+					private.NowParams.ParentID[index] = ask.result.return;		
+					private.ServerAPI.SendRequestToGetShortName(index);		// сначала запрашиваем имя сигнала, после ответа запрашиваем Описание для этого же узла
+				}
+				else																// для остальных узлов
+				{
+					private.ServerAPI.SendRequestToGetDescription(index, ask.result.return);  // сразу запрашиваем описание 
+				}
+				private.ServerAPI.NodeID[index] = ask.result.return;	
+			}
+			else																//  Если вместо ID приходит исключение
+			{
+				if (private.LegendIsUse) pLegend.Update();	// Выводим результат в легенду
+			}
+		}
+		if (ask.transaction.indexOf("GetShortName_") == 0)
+		{									
+			var index = ask.transaction.slice(13);			
+			if (ask.result.exception == null)	
+			{
+				var n = private.NowParams.Lines[index].Tag.indexOf(ask.result.return);
+				private.NowParams.Lines[index].RelationTag = private.NowParams.Lines[index].Tag.slice(n);		
+				if (private.NowParams.Lines[index].ObjectDescription != "---")	// Если полное описание не заблокировано созданием пользовательского описания
+					private.ServerAPI.SendRequestToGetDescription(index, private.ServerAPI.NodeID[index]);	// Запрашиваем Описание для этого же узла
+				else 
+					if (private.LegendIsUse) pLegend.Update();	
+			}
+		}
+		if (ask.transaction.indexOf("GetDescription_") == 0)
+		{									
+			var index = ask.transaction.slice(15);			
+			if (ask.result.exception == null)	
+			{					
+				if (ask.result.return != null)
+				{
+					if (private.NowParams.Lines[index].ObjectDescription > "")
+						private.NowParams.Lines[index].ObjectDescription = ". " + private.NowParams.Lines[index].ObjectDescription;
+					private.NowParams.Lines[index].ObjectDescription = ask.result.return + private.NowParams.Lines[index].ObjectDescription;
+				}	
+				private.ServerAPI.SendRequestToGetParentObjectID(index, private.ServerAPI.NodeID[index]);
+			}
+		}
+	}
+}
+
+
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_1" display-name="Item_1" uuid="ff48dc44-9abd-4861-be80-4614f99dbbb8" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<init target="Path" ver="2" value="**"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(1, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(1, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(1, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(1, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_2" display-name="Item_2" uuid="cec2dd4c-03e9-4bfa-9cbf-70c49229f56c" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(2, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(2, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(2, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(2, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_3" display-name="Item_3" uuid="6b4aac5a-5ec7-448c-9ed7-4185e130b04a" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(3, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(3, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(3, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(3, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_4" display-name="Item_4" uuid="3fd7d3e7-8af8-49fd-98cf-5ed9d02c929c" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(4, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(4, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(4, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(4, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_5" display-name="Item_5" uuid="cbf6b39d-c8b9-45fb-8f2d-b761976348de" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(5, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(5, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(5, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(5, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_6" display-name="Item_6" uuid="b2a85fe7-4a76-4d26-9f1c-fc47cf442241" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(6, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(6, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(6, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(6, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_7" display-name="Item_7" uuid="416347c5-e160-41d3-86ce-9018bdce3f02" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(7, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(7, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(7, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(7, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_8" display-name="Item_8" uuid="c7cd41db-4387-4491-9454-39ed7e028016" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(8, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(8, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(8, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(8, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_9" display-name="Item_9" uuid="8c7e76a4-cc5d-45de-9625-93aea3312a8e" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(9, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(9, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(9, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(9, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_10" display-name="Item_10" uuid="3f25a3bc-e3f6-4cec-a332-70c5db4ce612" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(10, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(10, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(10, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(10, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_11" display-name="Item_11" uuid="f372b23c-e3b4-4629-8a67-db086acecdc0" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(11, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(11, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(11, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(11, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_12" display-name="Item_12" uuid="3edb06bc-9b57-4c03-bc1b-9cf6e46f24d5" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(12, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(12, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(12, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(12, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_13" display-name="Item_13" uuid="10896ceb-cce4-43aa-a6af-afee3a5d314f" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(13, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(13, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(13, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(13, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_14" display-name="Item_14" uuid="e65c7f97-f0a6-4598-81a6-ce7a1aa1e0d6" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(14, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(14, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(14, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(14, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_15" display-name="Item_15" uuid="d7a7e27a-0866-42be-a179-789d5b072d27" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(15, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(15, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(15, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(15, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_16" display-name="Item_16" uuid="99465e45-f3c5-4b15-882e-42df10dae5cf" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(16, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(16, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(16, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(16, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_17" display-name="Item_17" uuid="692d9983-3008-462a-a8a2-0b78c8ddec94" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(17, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(17, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(17, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(17, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_18" display-name="Item_18" uuid="9fd1cbae-b465-44ad-bca5-a03ac1323f92" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(18, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(18, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(18, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(18, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_19" display-name="Item_19" uuid="71fa4a4c-0e2b-49b0-8920-16ba3e848093" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(19, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(19, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(19, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(19, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Item_20" display-name="Item_20" uuid="4eb46c5a-112b-4385-8fa2-79a201836778" base-type="ApItem" base-type-id="9bc9fdb8-ccbc-45af-b711-95945c17a630" ver="2">
+		<init target="Path" ver="2" value="**"/>
+		<init target="Source" ver="2" ref="ApSource_Core"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnDescriptionChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnDescriptionChanged(20, description);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="OnAdviseStateChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnAdviseStateChaged(20, adviseState, CanonicalType);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="OnVqtChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnChangeVQT(20, value, time, quality);]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="OnUnitsChanged">
+			<body kind="om">
+				<![CDATA[private.Items.OnUnitsChanged(20, units);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ActiveMode" display-name="Активный режим" uuid="e028106e-8344-4354-bbc1-2db4197e4667" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//vs:string = (ActiveMode==0)?("Оперативный"):("Исторический");
+//DebugTool_1.Log("ActiveMode : "+vs);
+i:int4 = 0;
+if (PrevValue != Value)
+{
+	if (Value == unit.Const.amOPERATIVE)
+	{
+		while (i < pChart_Hist_1.Chart.Axis_Y.Length)
+		{
+			bUserScale:bool = (i==0) ? private.NowParams.Charts[0].bUserScale : private.NowParams.Axis[i].bUserScale;
+			if (bUserScale)
+			{
+				min:double = Variant.ToDouble(pChart_Hist_1.Chart.Axis_Y[i].Min, 0);
+				max:double = Variant.ToDouble(pChart_Hist_1.Chart.Axis_Y[i].Max, 0);
+				pChart_Oper_1.SetYRange(i, min, max);
+			}
+			i += 1;
+		}
+	}
+	else
+	{
+		while (i < pChart_Oper_1.Chart.Axis_Y.Length)
+		{
+			bUserScale:bool = (i==0) ? private.NowParams.Charts[0].bUserScale : private.NowParams.Axis[i].bUserScale;
+			if (bUserScale)
+			{
+				min:double = Variant.ToDouble(pChart_Oper_1.Chart.Axis_Y[i].Min, 0);
+				max:double = Variant.ToDouble(pChart_Oper_1.Chart.Axis_Y[i].Max, 0);
+				pChart_Hist_1.SetYRange(i, min, max);
+			}
+			i += 1;
+		}
+	} 
+	PrevValue = Value;
+}
+if (private.LegendIsUse) pLegend.Update();
+if (private.ToolBarIsUse) pToolBar.Update();
+pLayoutUpdate.Invoke();
+]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="PrevValue" display-name="PrevValue" uuid="7d9c7072-bc76-4a1b-b06c-5b935e6add7a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</object>
+	<object access-modifier="private" name="AutoRange" display-name="Автоматическое определение диапазона значений для всех сигналов" uuid="7fb96cff-f72c-4b0f-a65c-941d35f1cec3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="9e5c4cb5-2dd0-4857-bfa4-558dbf6148fc" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue == value)
+	return;
+	
+//DebugTool_1.Log("Core.AutoRange.ValueChanged = " + String.ToString(value));
+oldValue = value;
+
+UpdateYRanges(value);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="GlobalRanges" display-name="Общий диапазон значений для всех сигналов" uuid="77712fa2-022f-4526-b1ae-627c32e4f9c9" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2" cardinal="1">
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="02ea1af9-0ad7-4b55-b927-821b230c8ac6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != Value)
+{
+	
+//DebugTool_1.Log("AutoRange.ValueChanged = " + String.ToString(value));
+	oldValue = Value;
+	AxisLinkUpdate(Value);
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="LowRange" display-name="Нижний предел значений по Y" uuid="f06d20a4-4636-4b58-880c-1e45d7ec77aa" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != value)
+{
+	oldValue = value;
+	if (private.bInit)
+	{
+		//DebugTool_1.Log("LowRange: " + String.ToString(value));
+		private.NowParams.Axis[0].fixYmin = value;
+		UpdateYRanges(AutoRange);
+	}
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="caee4d10-8ea3-479b-a758-6d5c8df4fc1d" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+	</object>
+	<object access-modifier="private" name="HighRange" display-name="Верхний предел значений по Y" uuid="892bfb16-62ad-42eb-a4e4-11612a993833" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != value)
+{
+	oldValue = value;
+	if (private.bInit)
+	{
+		private.NowParams.Axis[0].fixYmax = value;
+		UpdateYRanges(AutoRange);
+	}
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="d1a5ae74-c4e6-4b70-a335-5bc62843d3ed" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+	</object>
+	<object access-modifier="private" name="GraphicThickness" display-name="Толщина графиков" uuid="6d03884e-9d0f-47c2-bc1d-1cd3faf4f117" base-type="notifying_float4" base-type-id="bb7d05ee-cbf0-4c44-8740-1905239c8ead" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (private.ErrorAsString != "") return;
+
+i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	private.NowParams.Lines[i].WidthGood = value;
+	private.NowParams.Lines[i].WidthBad = value;
+	i += 1;
+}
+
+private.Lines.Update();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="InterpolationLine" display-name="Режим интерполяции" uuid="d71a4329-9dc4-45d1-b4f0-dbff8f4d385b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[pChart_Oper_1.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Oper_2.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Oper_3.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Oper_4.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Oper_5.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Hist_1.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Hist_2.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Hist_3.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Hist_4.Lines.Set_Interpolation(unit.Const.ALL, Value);
+pChart_Hist_5.Lines.Set_Interpolation(unit.Const.ALL, Value);
+
+if (private.LegendIsUse) pLegend.Update();
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="TicksCountAxisX" display-name="Количество делений на оси X" uuid="893adbed-7aaa-4bc1-a879-5f74c81d84a0" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="4"/>
+	<object access-modifier="private" name="TicksCountAxisY" display-name="Количество делений на оси Y" uuid="15f8d62a-e884-4cd0-9293-eb827cf2d00d" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="4"/>
+	<object access-modifier="private" name="YAxisPrecision" display-name="Точность отображения значений" uuid="5899cdb6-9873-4ae7-8d87-b05e4fc6f76c" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2"/>
+	<object access-modifier="private" name="OperativeDisplayedInterval" display-name="Отображаемый интервал оперативного режима, мин" uuid="11b2d780-e69f-483d-8397-095012cef5e0" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("OperativeDisplayedInterval: " + String.ToString(value));
+private.tCurInterval = value * unit.Const.dtONE_MINUTE; // минуты переводим в тики
+
+if (private.bInit)
+	private.UpdateXRange(DateTime.UtcNow(), false);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="UseRedLine" display-name="Использовать красную линию" uuid="67e439c3-8459-4118-a929-41b3e2c5d30f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (private.LegendIsUse) pLegend.Update();
+]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="RedLineShift" display-name="Сдвиг красной линии, %" uuid="90fc795b-5bef-4e00-b87d-c0b39ba96663" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ModeTimeSourceServer" display-name="Режим времени Источник-Сервер" uuid="69455faf-74e3-4d82-9969-b56510469623" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+	<object access-modifier="private" name="ExportImportFolderPath" display-name="Папка для экспорта и импорта" uuid="78149332-d2bb-4711-90d9-ccaa90739d9b" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[private.ExportPath.Update(ExportImportFolderPath, FileSystemAccess);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="FileSystemAccess" display-name="Доступность файловой системы" uuid="7bf2dd6d-0dc0-4f6a-911f-d60797c0ee01" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[private.ExportPath.Update(ExportImportFolderPath, FileSystemAccess);]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="SynchronizeColor" display-name="Синхронизировать цвет графика и оси" uuid="b1d363f3-8d3f-4a80-abf2-d4a45a6eea11" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (private.LegendIsUse)
+{
+	pLegend.SetColumnVisible(unit.Const.cn.CL_AXIS, value);
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="ShowRelativeTag" display-name="Показывать относительный тег" uuid="9d4ac05c-eb75-46c4-88ea-cef2cbff4379" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<object access-modifier="private" name="UseServerTime" display-name="Загружать метку времени сервера" uuid="21d34efa-b442-4ffb-8532-7c8401f31585" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+	<object access-modifier="private" name="Timer_of_ReadData" display-name="Timer_of_ReadData" uuid="c884a5de-a4a7-4482-9988-60adada03d45" base-type="Timer" base-type-id="72ba7cd4-549e-41f2-923c-2431b91f349a" ver="2">
+		<designed target="Period" value="1000" ver="2"/>
+		<designed target="Active" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnTimer">
+			<body kind="om">
+				<![CDATA[// работаем только в оперативном режиме
+if (ActiveMode == unit.Const.amHISTORY)
+	return;
+
+now: uint8 = DateTime.UtcNow();
+private.SetRedLine(now);
+
+if (!pChart_Oper_1.Chart.private.bMousePressed) // если пользователь не меняет диапазон вручную
+	private.UpdateXRange(now, false);
+
+lb: uint8 = Variant.ToUint8(pChart_Oper_1.Chart.Axis_X.Min, 0);		// Левая граница интервала
+pChart_Oper_1.RemoveOutRepers(lb);		// Удаление реперов выходящих за левую границу
+pChart_Oper_2.RemoveOutRepers(lb);
+pChart_Oper_3.RemoveOutRepers(lb);
+pChart_Oper_4.RemoveOutRepers(lb);
+pChart_Oper_5.RemoveOutRepers(lb);
+
+//==================================================   ЛИНИИ ГРАФИКОВ  ============================================================
+i:int4 = 0;
+if (private.NowParams.Lines[i].TypeGraph==unit.Const.tgMAIN_GRAPH && private.NowParams.bMainTime[i] && private.LegendIsUse) 
+{
+	nStr:int4 = pLegend.nRowInLegend[i];
+	mode:int4 = unit.Const.amOPERATIVE;
+	pLegend.SetMinMaxSize(nStr, private.Lines.GetMinY(mode, i), private.Lines.GetMaxY(mode, i), private.Lines.GetSize(mode, i));
+}
+
+]]>
+			</body>
+		</do-on>
+		<init target="Period" ver="3" ref="DataUpdatePeriod"/>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="e6910784-2e1a-48f0-ae4e-0edb7bd1e462" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="2">
+		<designed target="X" value="0" ver="2"/>
+		<designed target="Y" value="0" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="false" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<object access-modifier="private" name="Play" display-name="Play" uuid="b3927eca-f54f-43b2-88d6-3a85fdc3f12c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (Timer_of_ReadData.Active != value)
+	Timer_of_ReadData.Active = value;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="NowParams" display-name="NowParams" uuid="e5f1249a-ff07-433a-8379-59ff66185d69" base-type="Trends_Parameters" base-type-id="b3130c37-74d0-4745-864b-c3a1702c818e" ver="5">
+			<designed target="X" value="50" ver="5"/>
+			<designed target="Y" value="50" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<init target="pExParams" ver="5" ref="ExParams"/>
+			<init target="pFileSystem" ver="5" ref="here.FileManager"/>
+			<object access-modifier="private" name="TagID" display-name="TagID" uuid="70899315-aa4b-4e65-b579-f80f127ec56d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="21"/>
+			<object access-modifier="private" name="ParentID" display-name="ParentID" uuid="7e8ebd83-3a4b-4498-970c-9787031c9135" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="21"/>
+			<object access-modifier="private" name="bMainTime" display-name="bMainTime" uuid="c4d91174-f889-452c-981f-f85463a53993" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3" cardinal="21"/>
+		</object>
+		<object access-modifier="private" name="bShowPoints" display-name="bShowPoints" uuid="c91e94cb-18c4-45e6-8cd9-605740aae2b6" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+		<object access-modifier="private" name="mX" display-name="mX" uuid="e83ccf1b-a306-40a5-a711-f2f264484b4c" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="2"/>
+		<object access-modifier="private" name="mY" display-name="mY" uuid="32a5a7bd-3f47-4562-949c-68daf1217e26" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="2"/>
+		<object access-modifier="private" name="ZoomYEnable" display-name="ZoomYEnable" uuid="861d9a02-5cb1-4769-b0c5-aff104af74b3" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+		<object access-modifier="private" name="ZoomXEnable" display-name="ZoomXEnable" uuid="f265517a-0316-44f5-a781-a98c9c9eb136" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+		<init target="ZoomYEnable" ver="2" value="true"/>
+		<init target="ZoomXEnable" ver="2" value="true"/>
+		<do access-modifier="private" name="Initializer" display-name="Initializer" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Повторная инициализация не нужна
+if (bInit || ErrorAsString != "") 
+	return;
+
+DebugTool_1.Log("Trends. Инициализация.");
+
+// Определяем и фиксируем какие объекты подключены к ядру
+OperChartIsUse[1] = (pChart_Oper_1.Width > 0);	// Определяем по соответсвию констант реальным значениям
+OperChartIsUse[2] = (pChart_Oper_2.Width > 0);
+OperChartIsUse[3] = (pChart_Oper_3.Width > 0);
+OperChartIsUse[4] = (pChart_Oper_4.Width > 0);
+OperChartIsUse[5] = (pChart_Oper_5.Width > 0);
+HistChartIsUse[1] = (pChart_Hist_1.Width > 0);
+HistChartIsUse[2] = (pChart_Hist_2.Width > 0);
+HistChartIsUse[3] = (pChart_Hist_3.Width > 0);
+HistChartIsUse[4] = (pChart_Hist_4.Width > 0);
+HistChartIsUse[5] = (pChart_Hist_5.Width > 0);
+LegendIsUse = (pLegend.Width > 0);
+ToolBarIsUse = (pToolBar.mX > 0);
+
+ErrorAsString = TestPointers();	// Проверяем корректность подключения смежных компонентов
+if (ErrorAsString != "")
+{
+	DebugTool_1.Log("Trends.Core: "+ErrorAsString);
+	return;
+}
+if (OperChartIsUse[1]) pChart_Oper_1.private.Initializer();
+if (OperChartIsUse[2]) pChart_Oper_2.private.Initializer();
+if (OperChartIsUse[3]) pChart_Oper_3.private.Initializer();
+if (OperChartIsUse[4]) pChart_Oper_4.private.Initializer();
+if (OperChartIsUse[5]) pChart_Oper_5.private.Initializer();
+if (HistChartIsUse[1]) pChart_Hist_1.private.Initializer();
+if (HistChartIsUse[2]) pChart_Hist_2.private.Initializer();
+if (HistChartIsUse[3]) pChart_Hist_3.private.Initializer();
+if (HistChartIsUse[4]) pChart_Hist_4.private.Initializer();
+if (HistChartIsUse[5]) pChart_Hist_5.private.Initializer();
+if (LegendIsUse) pLegend.private.Initializer();
+if (ToolBarIsUse) pToolBar.Initializer();
+
+TimeZone = Time_Zone(); // Вычисляем однократно, чтобы не формировать погрешность вычислений
+
+t1:uint8 = DateTime.UtcNow() + TimeZone;
+t0:uint8 = DateTime.AddMinutes(t1, -OperativeDisplayedInterval / 2);
+pChart_Oper_1.SetInterval(t0, t1);	
+
+t0 = DateTime.AddMinutes(t1, -10);
+SetHistoricalInterval(t0, t1);
+
+private.MoveToNow();
+private.SetPause(false);
+
+i:int4 = 0;
+while (i < private.NowParams.Axis.Length)
+{
+	private.NowParams.Axis[i].fixYmax = HighRange;
+	private.NowParams.Axis[i].fixYmin = LowRange;
+	i += 1;
+}
+UpdateYRanges(AutoRange);
+
+if (ActiveMode ==(-1))	ActiveMode = unit.Const.amOPERATIVE;
+LastAddReper[unit.Const.amOPERATIVE] = 0;	// индекс последнего добавленного репера
+LastAddReper[unit.Const.amHISTORY] = 0;	// индекс последнего добавленного репера
+
+if (ColorPalette[0] == 0)	ColorPalette_Initialize();
+LineStyles.Initialize();
+Markers.Initialize();
+
+bInit = true;
+
+GraphicThickness = GraphicThickness;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="TestPointers" display-name="TestPointers" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[if (ApSource_Core.ParentSource.Port == 0)
+{
+	return "Для работы компонента требуется установить ссылку на родительский источник ApSource в свойстве init_AP";
+}
+
+if (!OperChartIsUse[1] && !HistChartIsUse[1])
+{
+	return "Для работы компонента требуется определение хотябы одной ссылки на компонент Trends_Chart.";
+}
+
+bNeed_initCore:bool = false;
+if (OperChartIsUse[1] && pChart_Oper_1.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (OperChartIsUse[1] && (pChart_Oper_1.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном Оперативном чарте 1 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (OperChartIsUse[2] && pChart_Oper_2.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (OperChartIsUse[2] && (pChart_Oper_1.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном Оперативном чарте 2 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (OperChartIsUse[3] && pChart_Oper_3.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (OperChartIsUse[3] && (pChart_Oper_1.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном Оперативном чарте 3 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (OperChartIsUse[4] && pChart_Oper_4.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (OperChartIsUse[4] && (pChart_Oper_1.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном Оперативном чарте 4 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (OperChartIsUse[5] && pChart_Oper_5.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (OperChartIsUse[5] && (pChart_Oper_1.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном Оперативном чарте 5 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (HistChartIsUse[1] && pChart_Hist_1.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (HistChartIsUse[1] && (pChart_Hist_1.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном чарте истории 1 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (HistChartIsUse[2] && pChart_Hist_2.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (HistChartIsUse[2] && (pChart_Hist_2.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном чарте истории 2 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (HistChartIsUse[3] && pChart_Hist_3.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (HistChartIsUse[3] && (pChart_Hist_3.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном чарте истории 3 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (HistChartIsUse[4] && pChart_Hist_4.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (HistChartIsUse[4] && (pChart_Hist_4.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном чарте истории 4 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+
+if (HistChartIsUse[5] && pChart_Hist_5.Chart.DataSource_1.ApItemValueQuery_1.Item.Tag == "") bNeed_initCore = true;
+if (HistChartIsUse[5] && (pChart_Hist_5.pCore.private.CursorMode==0 || bNeed_initCore))
+	return "В подключенном чарте истории 5 нужно инициализировать ссылки pCore и initCore на компонент Графики.ядро.";
+return "";]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Time_Zone" display-name="Time_Zone" ver="5" type="uint8" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561">
+			<body kind="om">
+				<![CDATA[time_zone: uint8 = DateTime.Now() - DateTime.UtcNow();
+return (time_zone);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="ValueRound" display-name="ValueRound" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[return value.toFixed(numDecimals);
+/*ValRound: double = Math.Round(Value,  TypeConvert.ToUint4(NumDecimals));
+if (NumDecimals > 0) {NumDecimals += 1;} 
+else {NumDecimals = 0;}
+LenValStr: int4 = Str.Length(Str.ToString(TypeConvert.ToInt4(Math.Truncate(Value)))) +  NumDecimals;
+ColForRemove: int4 = Str.Length(Str.ToString(ValRound)) - LenValStr;
+ValString: string = Str.Remove(Str.ToString(ValRound), LenValStr, ColForRemove);
+return ValString;//*/
+
+]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="71835e6a-8104-4f77-8df0-e9ec06b096cc" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2"/>
+			<param access-modifier="private" name="numDecimals" display-name="" uuid="68101e38-137a-4244-8fa9-f80eb74822c0" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		</do>
+		<object access-modifier="private" name="bThis" display-name="bThis" uuid="d833c7ca-10b6-43d0-95cc-52589f539a91" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4" cardinal="21"/>
+		<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="1d2ca65b-c3dd-4cf3-a90e-e132fcbc8af8" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="2">
+			<designed target="Weight" value="0" ver="2"/>
+		</object>
+		<object access-modifier="private" name="CursorMode" display-name="CursorMode" uuid="d63c7fbd-b238-4924-bbe7-d44c178c2529" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="2"/>
+		<init target="CursorMode" ver="2" value="2"/>
+		<object access-modifier="private" name="ExportPath" display-name="ExportPath" uuid="71150b32-4f11-4bf7-a6c4-814d5ff7894c" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="2">
+			<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[// Файловые диалоги при сохранении/открытии по умолчанию используют путь из свойства "Папка для экспорта и ипорта".
+if (exportImportFolder == "")
+	ExportPath = FileManager.CombinePath(unit.ProductInfo.GetProgramDataFolder(), "Export");
+else ExportPath = exportImportFolder;
+
+// Если FileSystemAccess = true, то пользователь может сменить этот путь на любой другой, иначе он ограничен этой папкой.
+if (fileSystemAccess)
+	Root = ""; // корневой путь произвольного доступа
+else Root = ExportPath;
+
+//DebugTool_1.Log("ExportPath updated to '" + ExportPath + (fileSystemAccess ? "'" : "' with '" + Root + "' root"));]]>
+				</body>
+				<param access-modifier="private" name="exportImportFolder" display-name="" uuid="daff6bb8-b6e1-4f9e-b790-8ba1b8683e3d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+				<param access-modifier="private" name="fileSystemAccess" display-name="" uuid="1ffec3cc-f597-46c1-a478-decfe36cf408" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+			</do>
+			<object access-modifier="private" name="Root" display-name="Root" uuid="a7e77930-b0ae-4465-b992-2d0fdc32e799" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+		</object>
+		<object access-modifier="private" name="ExportTrendsPath" display-name="ExportTrendsPath" uuid="6819d6ca-2239-4266-9223-7080c0606302" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<object access-modifier="private" name="ExportFile" display-name="ExportFile" uuid="0ff4c7dc-0039-472a-bb03-398265244c82" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<object access-modifier="private" name="sFileError" display-name="sFileError" uuid="2ecfeab1-55bf-41be-bcd1-1f611414b01c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2" cardinal="21"/>
+		<object access-modifier="private" name="FileSavedCount" display-name="FileSavedCount" uuid="4373fa58-d01a-4051-bd46-2ed9a585a70a" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="2">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[//===========================   Обработчик экспорта данных   ===============================================
+if (FileSaveCount > 0)
+{
+	if (value == -1)
+	{	
+		// результ сохранения - ошибка
+		ShowError.message = "Недостаточно прав для создания файла в указанном каталоге.";
+		ShowError.Invoke();
+	}
+	else if (value == FileSaveCount)	
+	{  
+		// Если Количество записанных файлов достигло количества запросов
+		if (!bPrint)
+			Archiver_1.AsyncPack(ExportTrendsPath, ExportFile);
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="FileDataSize" display-name="FileDataSize" uuid="36772367-2321-4148-a6c1-8ef492c93d4a" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2" cardinal="21"/>
+		<object access-modifier="private" name="FileSaveCount" display-name="FileSaveCount" uuid="fa05acea-6eac-421a-8057-ca53db5f7774" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<init target="FileSaveCount" ver="2" value="-1"/>
+		<object access-modifier="private" name="FileLoadCount" display-name="FileLoadCount" uuid="95251cb6-a1e2-4931-bf31-a8f9dc455041" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<object access-modifier="private" name="ExParams" display-name="ExParams" uuid="6a89b8bb-cab6-445f-9ecd-b2284ed7891c" base-type="Trends_Parameters" base-type-id="b3130c37-74d0-4745-864b-c3a1702c818e" ver="5">
+			<designed target="X" value="70" ver="5"/>
+			<designed target="Y" value="70" ver="5"/>
+			<designed target="Rotation" value="0" ver="5"/>
+			<object access-modifier="private" name="nItem" display-name="nItem" uuid="4c9fb727-701a-4644-bb42-da5cebaea297" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="21"/>
+			<init target="pFileSystem" ver="5" ref="here.FileManager"/>
+		</object>
+		<object access-modifier="private" name="bPrint" display-name="bPrint" uuid="47a942dd-0024-4235-a10b-8a20f5007498" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+		<init target="bPrint" ver="2" value="false"/>
+		<object access-modifier="private" name="nReperActive" display-name="nReperActive" uuid="32e476ae-ca25-46ba-8e7d-bc71c78f0153" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<init target="nReperActive" ver="2" value="0"/>
+		<object access-modifier="private" name="deltaRight" display-name="deltaRight" uuid="3f03285a-e37a-4ffd-8781-be9766727def" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+		<object access-modifier="private" name="bInitInterval" display-name="bInitInterval" uuid="e2593d92-b85d-4117-8025-ad326e3ce238" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+		<init target="bInitInterval" ver="3" value="false"/>
+		<object access-modifier="private" name="MasU8" display-name="MasU8" uuid="932f9ba7-87f6-4ea8-aebc-6dddb6201970" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3" cardinal="11"/>
+		<do access-modifier="private" name="VariantToDateTime" display-name="VariantToDateTime" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[vt:uint8 = Variant.ToUint8( value,0);
+vs:string = DateTime.ToString(vt, "%d.%m.%Y %H:%M:%S.%f");
+if (showMilliseconds)
+{ 
+	vs = String.SubString(vs, 0, String.Length(vs) - 3);
+}
+else
+{
+	vs = String.SubString(vs, 0, String.Length(vs) - 7);
+}
+return vs;
+]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="5cc7899e-15db-4f03-8706-5c25331e59f4" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="3"/>
+			<param access-modifier="private" name="showMilliseconds" display-name="" uuid="4f76ed86-672d-4810-87b5-91eb81ef829b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		</do>
+		<object access-modifier="private" name="TimeZone" display-name="TimeZone" uuid="4eb7bdd2-3940-4b02-b34b-5b5e6a5c7101" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<object access-modifier="private" name="tCurInterval" display-name="tCurInterval" uuid="c94dbb81-e402-4494-a483-58cc3eac29f8" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+		<object access-modifier="private" name="LeftBorderStoryInterval" display-name="LeftBorderStoryInterval" uuid="0679214e-e8e6-4804-b33e-7e9c5fd6bfc5" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+		<object access-modifier="private" name="RightBorderStoryInterval" display-name="RightBorderStoryInterval" uuid="58243715-3435-488d-97c0-8db6099223f6" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+		<object access-modifier="private" name="tOperRangeStart" display-name="tOperRangeStart" uuid="51f56bfa-cf82-48c1-90e0-9723f89b98e2" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="4"/>
+		<object access-modifier="private" name="tOperRangeEnd" display-name="tOperRangeEnd" uuid="8762799c-2ab1-4d20-993e-4930e1638705" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="4"/>
+		<object access-modifier="private" name="nSelectedItem" display-name="nSelectedItem" uuid="2e22c129-07cd-41cb-89e8-23617356de4a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+		<do access-modifier="private" name="VariantToString" display-name="VariantToString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<param access-modifier="private" name="value" display-name="" uuid="67910d7a-e6d6-477c-a76b-094b43ad5b7a" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="4"/>
+			<body kind="om">
+				<![CDATA[	result:string;
+
+	if (Variant.IsFloat(value) || Variant.IsDouble(value))
+	{
+			result = ValueRound(Variant.ToDouble(value, -1), YAxisPrecision);
+	}
+	else if (Variant.IsBool(value))
+	{
+			result = Variant.ToBool(value, false)? "1" : "0";
+	}
+	else if (Variant.IsString(value))
+	{
+			result = Variant.ToString(value, "");
+	}
+	else 
+	{
+			result = Str.ToString(Variant.ToInt8(value, 0));		
+	}
+return result;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="VariantGetType" display-name="VariantGetType" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<param access-modifier="private" name="value" display-name="" uuid="a09e7237-428f-43db-b185-1176af516ce4" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="5"/>
+			<body kind="om">
+				<![CDATA[if (Variant.IsEmpty(value)) return "Empty";
+else if (Variant.IsUint1(value)) return "Uint1";
+else if (Variant.IsInt1(value)) return "Int1";
+else if (Variant.IsUint2(value)) return "Uint2";
+else if (Variant.IsInt2(value)) return "Int2";
+else if (Variant.IsUint4(value)) return "Uint4";
+else if (Variant.IsInt4(value)) return "Int4";
+else if (Variant.IsUint8(value)) return "Uint8";
+else if (Variant.IsInt8(value)) return "Int8";
+else if (Variant.IsFloat(value)) return "Float";
+else if (Variant.IsDouble(value)) return "Double";
+else if (Variant.IsBool(value)) return "Bool";
+else if (Variant.IsString(value)) return "String";
+return "Unknown";]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetNextReper" display-name="GetNextReper" ver="5" type="uint4" type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e">
+			<body kind="om">
+				<![CDATA[// Поиск доступного репера для установки
+if (ActiveMode == unit.Const.amOPERATIVE)		// для оперативного режима
+{
+	return pChart_Oper_1.GetNextReper();
+}
+else			// для исторического режима
+{
+	return pChart_Hist_1.GetNextReper();
+}
+//DebugTool_1.Log("NextReper "+Str.ToString(i)+" "+Str.ToString(n));
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="RemoveActiveReper" display-name="RemoveActiveReper" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (CursorMode == unit.Const.cmADD_REPER)
+{
+	CursorMode = unit.Const.cmHAND_MOVE;
+}
+
+if (ActiveMode == unit.Const.amOPERATIVE)		// Для оперативного режима
+{
+	pChart_Oper_1.RemoveActiveReper();
+	pChart_Oper_2.RemoveActiveReper();
+	pChart_Oper_3.RemoveActiveReper();
+	pChart_Oper_4.RemoveActiveReper();
+	pChart_Oper_5.RemoveActiveReper();
+}
+else
+{
+	pChart_Hist_1.RemoveActiveReper();
+	pChart_Hist_2.RemoveActiveReper();
+	pChart_Hist_3.RemoveActiveReper();
+	pChart_Hist_4.RemoveActiveReper();
+	pChart_Hist_5.RemoveActiveReper();
+}
+pLegend.Update();
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="RemoveAllRepers" display-name="RemoveAllRepers" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (CursorMode == unit.Const.cmADD_REPER)
+{
+	CursorMode = unit.Const.cmHAND_MOVE;
+}
+i:uint4 = 1;
+
+if (ActiveMode == unit.Const.amOPERATIVE)		// Для оперативного режима
+{
+	pChart_Oper_1.RemoveAllRepers();
+	pChart_Oper_2.RemoveAllRepers();
+	pChart_Oper_3.RemoveAllRepers();
+	pChart_Oper_4.RemoveAllRepers();
+	pChart_Oper_5.RemoveAllRepers();
+}
+else
+{
+	pChart_Hist_1.RemoveAllRepers();
+	pChart_Hist_2.RemoveAllRepers();
+	pChart_Hist_3.RemoveAllRepers();
+	pChart_Hist_4.RemoveAllRepers();
+	pChart_Hist_5.RemoveAllRepers();
+}
+if (LegendIsUse) pLegend.Update();
+
+]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetAxisColor" display-name="SetAxisColor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[
+pChart_Oper_1.SetAxisColor(index, color);
+pChart_Oper_2.SetAxisColor(index, color);
+pChart_Oper_3.SetAxisColor(index, color);
+pChart_Oper_4.SetAxisColor(index, color);
+pChart_Oper_5.SetAxisColor(index, color);
+
+pChart_Hist_1.SetAxisColor(index, color);
+pChart_Hist_2.SetAxisColor(index, color);
+pChart_Hist_3.SetAxisColor(index, color);
+pChart_Hist_4.SetAxisColor(index, color);
+pChart_Hist_5.SetAxisColor(index, color);
+]]>
+			</body>
+			<param access-modifier="private" name="index" display-name="" uuid="e1a60dad-c07c-44cd-a978-a843409e2678" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+			<param access-modifier="private" name="color" display-name="" uuid="5ad2f4ce-1be9-4863-81d7-570add2f1e97" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+		</do>
+		<object access-modifier="private" name="bInit" display-name="флаг инициализации компонента" uuid="b3634531-02c0-4fc5-b63c-eaf06274324b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+		<object access-modifier="private" name="bConfigLoaded" display-name="bConfigLoaded" uuid="224e9d2a-0a5e-4bbf-9ebf-6acb8e2872c2" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+		<init target="bConfigLoaded" ver="3" value="false"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<object access-modifier="private" name="EventParams" display-name="EventParams" uuid="edbc45bb-6ab8-4af7-9023-402bc24a090d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4" cardinal="2"/>
+		<init target="nSelectedItem" ver="5" value="0"/>
+		<object access-modifier="private" name="OperChartIsUse" display-name="OperChartIsUse" uuid="e8d9cb17-3a9b-44af-907c-16ab9646ba65" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4" cardinal="6"/>
+		<object access-modifier="private" name="HistChartIsUse" display-name="HistChartIsUse" uuid="16bea47e-70d7-4d0f-a46d-88730fbd0493" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4" cardinal="6"/>
+		<object access-modifier="private" name="LegendIsUse" display-name="LegendIsUse" uuid="0f1e2cc8-d1d4-4928-b29f-10346e89d487" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4" cardinal="1"/>
+		<object access-modifier="private" name="ToolBarIsUse" display-name="ToolBarIsUse" uuid="24329d92-66f2-4fe6-b796-f45cf056d9c4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4" cardinal="1"/>
+		<do access-modifier="private" name="CopyAxisParams" display-name="CopyAxisParams" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// Настройки шкалы копируем на новую шкалу
+pChart_Oper_1.CopyAxisParams(src, dest);
+pChart_Oper_2.CopyAxisParams(src, dest);
+pChart_Oper_3.CopyAxisParams(src, dest);
+pChart_Oper_4.CopyAxisParams(src, dest);
+pChart_Oper_5.CopyAxisParams(src, dest);
+pChart_Hist_1.CopyAxisParams(src, dest);
+pChart_Hist_2.CopyAxisParams(src, dest);
+pChart_Hist_3.CopyAxisParams(src, dest);
+pChart_Hist_4.CopyAxisParams(src, dest);
+pChart_Hist_5.CopyAxisParams(src, dest);
+]]>
+			</body>
+			<param access-modifier="private" name="src" display-name="" uuid="afc1961f-3506-4a09-b403-bca5fa0b937b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="dest" display-name="" uuid="cfe5cdc9-78f6-4669-a3de-c438ec4a7e95" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		</do>
+		<object access-modifier="private" name="LastAddReper" display-name="LastAddReper" uuid="e2298be5-aa8b-4050-8397-a49195b07745" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2" cardinal="2"/>
+		<object access-modifier="private" name="ActiveReper" display-name="ActiveReper" uuid="456277ea-62cc-4e24-a353-8e7fdd8f9162" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3" cardinal="2"/>
+		<do access-modifier="private" name="GetReperValue" display-name="GetReperValue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[result:variant;
+
+if (mode == unit.Const.amOPERATIVE)
+{
+		if (NowParams.Lines[index].nChart == 1)	result = pChart_Oper_1.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+		if (NowParams.Lines[index].nChart == 2)	result = pChart_Oper_2.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+		if (NowParams.Lines[index].nChart == 3)	result = pChart_Oper_3.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);	
+		if (NowParams.Lines[index].nChart == 4)	result = pChart_Oper_4.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+		if (NowParams.Lines[index].nChart == 5)	result = pChart_Oper_5.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+}
+else
+{
+		if (NowParams.Lines[index].nChart == 1)	result = pChart_Hist_1.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+		if (NowParams.Lines[index].nChart == 2)	result = pChart_Hist_2.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+		if (NowParams.Lines[index].nChart == 3)	result = pChart_Hist_3.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);	
+		if (NowParams.Lines[index].nChart == 4)	result = pChart_Hist_4.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+		if (NowParams.Lines[index].nChart == 5)	result = pChart_Hist_5.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpVALUE);
+} 
+
+// Вернуть резкльтат типа вариант из функции невозможно! 
+// Возвращаем результат через промежуточную переменную 
+Variant_Result = result;]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="627109cd-31c2-4b26-9616-92c4fe23edc1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="index" display-name="" uuid="d20d3a7b-6b25-4b7a-a3da-4198970ba137" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="reper" display-name="" uuid="33d42abe-5cdc-4c8e-9f81-a1342feb396d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+		</do>
+		<do access-modifier="private" name="GetReperTime" display-name="GetReperTime" ver="5" type="uint8" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561">
+			<body kind="om">
+				<![CDATA[result:variant;
+
+	if (mode == unit.Const.amOPERATIVE)
+	{
+		if (NowParams.Lines[index].nChart == 1)	result = pChart_Oper_1.Chart.ControlLine[reper].Value;
+		if (NowParams.Lines[index].nChart == 2)	result = pChart_Oper_2.Chart.ControlLine[reper].Value;
+		if (NowParams.Lines[index].nChart == 3)	result = pChart_Oper_3.Chart.ControlLine[reper].Value;	
+		if (NowParams.Lines[index].nChart == 4)	result = pChart_Oper_4.Chart.ControlLine[reper].Value;
+		if (NowParams.Lines[index].nChart == 5)	result = pChart_Oper_5.Chart.ControlLine[reper].Value;
+	}
+	else
+	{
+		if (NowParams.Lines[index].nChart == 1)	result = pChart_Hist_1.Chart.ControlLine[reper].Value;
+		if (NowParams.Lines[index].nChart == 2)	result = pChart_Hist_2.Chart.ControlLine[reper].Value;
+		if (NowParams.Lines[index].nChart == 3)	result = pChart_Hist_3.Chart.ControlLine[reper].Value;	
+		if (NowParams.Lines[index].nChart == 4)	result = pChart_Hist_4.Chart.ControlLine[reper].Value;
+		if (NowParams.Lines[index].nChart == 5)	result = pChart_Hist_5.Chart.ControlLine[reper].Value;
+	} 
+
+return Variant.ToUint8(result, 0);]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="a3bc1d45-7ea1-4bae-8ca4-492923a02112" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="index" display-name="" uuid="f68f8e97-ab2c-46c9-bd56-fbfcaeb715be" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="reper" display-name="" uuid="27f78469-6ab2-45ce-a8a3-2fae98b11da6" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+		</do>
+		<do access-modifier="private" name="GetReperQuality" display-name="GetReperQuality" ver="5" type="uint4" type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e">
+			<body kind="om">
+				<![CDATA[result:variant;
+
+	if (mode == unit.Const.amOPERATIVE)
+	{
+		if (NowParams.Lines[index].nChart == 1)	result = pChart_Oper_1.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+		if (NowParams.Lines[index].nChart == 2)	result = pChart_Oper_2.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+		if (NowParams.Lines[index].nChart == 3)	result = pChart_Oper_3.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);	
+		if (NowParams.Lines[index].nChart == 4)	result = pChart_Oper_4.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+		if (NowParams.Lines[index].nChart == 5)	result = pChart_Oper_5.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+	}
+	else
+	{
+		if (NowParams.Lines[index].nChart == 1)	result = pChart_Hist_1.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+		if (NowParams.Lines[index].nChart == 2)	result = pChart_Hist_2.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+		if (NowParams.Lines[index].nChart == 3)	result = pChart_Hist_3.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);	
+		if (NowParams.Lines[index].nChart == 4)	result = pChart_Hist_4.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+		if (NowParams.Lines[index].nChart == 5)	result = pChart_Hist_5.Chart.ControlLine[reper].CrossPoint[index].GetValue(unit.Const.cpQUALITY);
+	} 
+
+return Variant.ToUint4(result, 0);]]>
+			</body>
+			<param access-modifier="private" name="mode" display-name="" uuid="e1d10f65-13bc-4d22-8a07-a722b7651fd1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="index" display-name="" uuid="13c57752-7ad6-49bc-aaf3-58211081c879" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			<param access-modifier="private" name="reper" display-name="" uuid="1fc19161-3ea2-419b-9adb-85c8a33d2442" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+		</do>
+		<do access-modifier="private" name="ZoomApply" display-name="ZoomApply" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[	if (ZoomYEnable)  // Если включен вертикальный зум
+	{
+		if (ActiveMode == unit.Const.amOPERATIVE)
+		{
+			if (OperChartIsUse[1]) pChart_Oper_1.ZoomY(direct);
+			if (OperChartIsUse[2]) pChart_Oper_2.ZoomY(direct);
+			if (OperChartIsUse[3]) pChart_Oper_3.ZoomY(direct);
+			if (OperChartIsUse[4]) pChart_Oper_4.ZoomY(direct);
+			if (OperChartIsUse[5]) pChart_Oper_5.ZoomY(direct);
+		}
+		else
+		{
+			if (HistChartIsUse[1]) pChart_Hist_1.ZoomY(direct);
+			if (HistChartIsUse[2]) pChart_Hist_2.ZoomY(direct);
+			if (HistChartIsUse[3]) pChart_Hist_3.ZoomY(direct);
+			if (HistChartIsUse[4]) pChart_Hist_4.ZoomY(direct);
+			if (HistChartIsUse[5]) pChart_Hist_5.ZoomY(direct);
+		}
+	}
+	if (ZoomXEnable)  // Если включен горизонтальный зум
+	{
+		if (ActiveMode == unit.Const.amOPERATIVE){
+			if (OperChartIsUse[1]) pChart_Oper_1.ZoomX(direct);
+			if (OperChartIsUse[2]) pChart_Oper_2.ZoomX(direct);
+			if (OperChartIsUse[3]) pChart_Oper_3.ZoomX(direct);
+			if (OperChartIsUse[4]) pChart_Oper_4.ZoomX(direct);
+			if (OperChartIsUse[5]) pChart_Oper_5.ZoomX(direct);
+		}
+		else
+		{
+			if (HistChartIsUse[1]) pChart_Hist_1.ZoomX(direct);
+			if (HistChartIsUse[2]) pChart_Hist_2.ZoomX(direct);
+			if (HistChartIsUse[3]) pChart_Hist_3.ZoomX(direct);
+			if (HistChartIsUse[4]) pChart_Hist_4.ZoomX(direct);
+			if (HistChartIsUse[5]) pChart_Hist_5.ZoomX(direct);
+		}
+	}
+	
+]]>
+			</body>
+			<param access-modifier="private" name="direct" display-name="" uuid="53284992-8f8f-46a6-a491-bfe95566caf5" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="4"/>
+		</do>
+		<do access-modifier="private" name="SetKzoomX" display-name="SetKzoomX" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (OperChartIsUse[1]) pChart_Oper_1.Chart.ZoomX = value;
+if (OperChartIsUse[2]) pChart_Oper_2.Chart.ZoomX = value;
+if (OperChartIsUse[3]) pChart_Oper_3.Chart.ZoomX = value;
+if (OperChartIsUse[4]) pChart_Oper_4.Chart.ZoomX = value;
+if (OperChartIsUse[5]) pChart_Oper_5.Chart.ZoomX = value;
+if (HistChartIsUse[1]) pChart_Hist_1.Chart.ZoomX = value;
+if (HistChartIsUse[2]) pChart_Hist_2.Chart.ZoomX = value;
+if (HistChartIsUse[3]) pChart_Hist_3.Chart.ZoomX = value;
+if (HistChartIsUse[4]) pChart_Hist_4.Chart.ZoomX = value;
+if (HistChartIsUse[5]) pChart_Hist_5.Chart.ZoomX = value;
+]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="6d4f8457-e2ae-4a0e-b89a-7c1a99519eb3" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+		</do>
+		<do access-modifier="private" name="SetKzoomY" display-name="SetKzoomY" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (OperChartIsUse[1]) pChart_Oper_1.Chart.ZoomY = value;
+if (OperChartIsUse[2]) pChart_Oper_2.Chart.ZoomY = value;
+if (OperChartIsUse[3]) pChart_Oper_3.Chart.ZoomY = value;
+if (OperChartIsUse[4]) pChart_Oper_4.Chart.ZoomY = value;
+if (OperChartIsUse[5]) pChart_Oper_5.Chart.ZoomY = value;
+if (HistChartIsUse[1]) pChart_Hist_1.Chart.ZoomY = value;
+if (HistChartIsUse[2]) pChart_Hist_2.Chart.ZoomY = value;
+if (HistChartIsUse[3]) pChart_Hist_3.Chart.ZoomY = value;
+if (HistChartIsUse[4]) pChart_Hist_4.Chart.ZoomY = value;
+if (HistChartIsUse[5]) pChart_Hist_5.Chart.ZoomY = value;
+]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="9735c46d-6d99-4cf8-9849-d1f8284ec92e" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+		</do>
+		<do access-modifier="private" name="ExportLines" display-name="ExportLines" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[pChart_Oper_1.SavedFilesCount = 0; // Обнуляем счетчик записанных файлов
+pChart_Hist_1.SavedFilesCount = 0;
+FileSaveCount = 0;  // Обнуляем счетчик файлов для записи
+FileLoadCount = 0;  // Обнуляем счетчик режима загрузки
+
+if (!FileManager.Exists(ExportTrendsPath))
+	FileManager.CreateRecursiveFolder(ExportTrendsPath);
+
+// Завершение процедуры записи отслеживается по изменению количества готовых записанных файлов
+// признаком завершения является равенство количества запросов и количества записанных файлов.
+i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	FileDataSize[i] = 0;
+	if (NowParams.Lines[i].Used) 
+	{
+		FileSaveCount += 1;  // Подсчет количества запросов на запись файлов
+
+		filePath: string = FileManager.CombinePath(ExportTrendsPath, String.ToString(i) + ".json");
+		if (ActiveMode == unit.Const.amOPERATIVE)
+		{
+			// сохранение  для оперативного режима
+			if (NowParams.Lines[i].nChart == 1) pChart_Oper_1.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 2) pChart_Oper_2.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 3) pChart_Oper_3.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 4) pChart_Oper_4.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 5) pChart_Oper_5.Lines.Save(i, filePath);
+		}
+		else
+		{
+			// сохранение для исторического режима
+			if (NowParams.Lines[i].nChart == 1) pChart_Hist_1.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 2) pChart_Hist_2.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 3) pChart_Hist_3.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 4) pChart_Hist_4.Lines.Save(i, filePath);
+			else if (NowParams.Lines[i].nChart == 5) pChart_Hist_5.Lines.Save(i, filePath);
+		}
+		//DebugTool_1.Log(filePath);
+	}
+	i += 1;
+}
+
+paramsPath: string = FileManager.CombinePath(ExportTrendsPath, "00.json");							// добавляем путь
+ExportParams(FileSaveCount, paramsPath);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="ExportParams" display-name="ExportParams" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//DebugTool_1.Log("ExportParams");
+
+var j = fileName.lastIndexOf("/");
+if (j < 1) j = fileName.lastIndexOf("\\");
+var filePath = fileName.substring(0, j);
+if (FileManager.Exists(filePath) == false)
+	FileManager.CreateRecursiveFolder(filePath);
+	
+var Charts = [];		// Создаем мессив чартов, чтобы обращаться к ним по индексу
+if (ActiveMode == unit.Const.amOPERATIVE)
+{
+	Charts.push(pChart_Oper_1);
+	Charts.push(pChart_Oper_2);
+	Charts.push(pChart_Oper_3);
+	Charts.push(pChart_Oper_4);
+	Charts.push(pChart_Oper_5);
+}
+else
+{
+	Charts.push(pChart_Hist_1);
+	Charts.push(pChart_Hist_2);
+	Charts.push(pChart_Hist_3);
+	Charts.push(pChart_Hist_4);
+	Charts.push(pChart_Hist_5);
+} 
+
+var Table = {}
+
+						// Заполнение недостающих параметров текущими значениями
+NowParams.ActiveMode = ActiveMode.Value;
+//NowParams.bGlobalRanges = GlobalRanges.Value;
+//NowParams.bAutoRange = AutoRange.Value;
+
+NowParams.Xmin = Charts[0].Chart.Axis_X.Min;
+NowParams.Xmax = Charts[0].Chart.Axis_X.Max;
+NowParams.tRedLine = Charts[0].Chart.RedLine.Value;
+NowParams.Axis[0].Ymin = Charts[0].Chart.Axis_Y[0].Min;
+NowParams.Axis[0].Ymax = Charts[0].Chart.Axis_Y[0].Max;
+NowParams.Axis[0].Yscale = Charts[0].Chart.Axis_Y[0].Scale;
+
+var i = 1, j = 1;	
+while (i <= unit.Const.MAX_LINES)
+{
+	if (NowParams.Lines[i].Used)
+	{
+		var iChart = NowParams.Lines[i].nChart - 1; // индекс в массиве трендовых полей
+//		var iAxis = NowParams.Lines[i].numAxis; // индекс оси, к которой привязан график
+
+		NowParams.Axis[i].Ymin = Charts[iChart].Chart.Axis_Y[i].Min;
+		NowParams.Axis[i].Ymax = Charts[iChart].Chart.Axis_Y[i].Max;
+		NowParams.Axis[i].Yscale = Charts[iChart].Chart.Axis_Y[i].Scale;
+		j	+= 1;	// подсчет количества записанных данных
+	}
+	i	+= 1;
+}
+
+NowParams.SaveToFile(fileName);]]>
+			</body>
+			<param access-modifier="private" name="linesCount" display-name="" uuid="63438b60-24e5-43bf-a1d9-cea736d79a59" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+			<param access-modifier="private" name="fileName" display-name="" uuid="ecfd8903-cdcc-44e7-a3b0-0116ad387147" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		</do>
+		<do access-modifier="private" name="SetPause" display-name="SetPause" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Play = !bPause;
+
+if (OperChartIsUse[1]) pChart_Oper_1.SetPause(bPause);
+if (OperChartIsUse[2]) pChart_Oper_2.SetPause(bPause);
+if (OperChartIsUse[3]) pChart_Oper_3.SetPause(bPause);
+if (OperChartIsUse[4]) pChart_Oper_4.SetPause(bPause);
+if (OperChartIsUse[5]) pChart_Oper_5.SetPause(bPause);]]>
+			</body>
+			<param access-modifier="private" name="bPause" display-name="" uuid="524dd9f4-ca05-4d65-bc71-ee12049de0f3" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="3"/>
+		</do>
+		<do access-modifier="private" name="GetSymbolNoAdvised" display-name="GetSymbolNoAdvised" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[// Генерация строки для легенды, символизирующей статус подключения к сигналу сервера
+
+if (NowParams.Lines[index].TypeGraph == unit.Const.tgMAIN_GRAPH)
+{
+	if (ApSource_Core.ConnectionState != unit.Const.stADVISED_OK)
+	{
+		return "!";
+	}
+	else 
+	{
+		if (Items.GetState(index) == unit.Const.stNOADVISED)
+			return "! ";
+		else 
+			return "";
+	}
+}
+else
+{
+	return "f";
+}
+]]>
+			</body>
+			<param access-modifier="private" name="index" display-name="" uuid="82762a32-7d25-43f4-8654-3e91b0fb5292" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		</do>
+		<object access-modifier="private" name="ErrorAsString" display-name="ErrorAsString" uuid="0ddfe659-e12b-46b0-92e9-6832a541d43c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<init target="ErrorAsString" ver="5" value=""/>
+		<object access-modifier="private" name="Open_PrintDialog_Oper" display-name="Open_PrintDialog_Oper" uuid="8478de00-9207-47d5-9987-4f1efaccdbc3" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-by-id="false" form-action="open-dialog">
+				<object access-modifier="private" uuid="ca75818a-757f-4c06-b9e1-911ed11dce8b" base-type="Trends_PrintMain" base-type-id="9ea85c57-5943-4aa2-a7c6-3e8b12cba954" ver="4">
+					<init target="pCore" ver="5" ref="here"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="pChart" ver="5" ref="pChart_Oper_1"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Markers" display-name="Markers" uuid="f93dd4f4-d61d-4fab-ab81-c798571a41da" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<object access-modifier="private" name="Symbols" display-name="Symbols" uuid="7936ead9-13ec-4e1b-8745-2d28c6631ab5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4" cardinal="8"/>
+			<object access-modifier="private" name="Codes" display-name="Codes" uuid="d6083c9d-9a18-41f5-aa31-33bf12d0f743" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="4" cardinal="8"/>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Symbols[0] = "●";
+Codes[0] = 0x25CF;
+
+Symbols[1] = "■";
+Codes[1] = 0x25A0;
+
+Symbols[2] = "▲";
+Codes[2] = 0x25B2;
+
+Symbols[3] = "x";
+Codes[3] = 0x0078;
+
+Symbols[4] = "+";
+Codes[4] = 0x002B;
+
+Symbols[5] = "♦";
+Codes[5] = 0x2666;
+
+Symbols[6] = "#";
+Codes[6] = 0x0023;
+
+Symbols[7] = "o";
+Codes[7] = 0x06F;]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="Next" display-name="Next" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Index += 1;
+if (Index == Codes.Length)
+	Index = 0;]]>
+				</body>
+			</do>
+			<object access-modifier="private" name="Index" display-name="Index" uuid="3460d794-eb83-4666-81d8-78b7431a1fb8" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		</object>
+		<object access-modifier="private" name="Lines" display-name="Lines" uuid="c5f4f2b0-cb99-4601-aebe-715c12737c4b" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[pChart_Oper_1.Lines.Update();
+pChart_Oper_2.Lines.Update();
+pChart_Oper_3.Lines.Update();
+pChart_Oper_4.Lines.Update();
+pChart_Oper_5.Lines.Update();
+pChart_Hist_1.Lines.Update();
+pChart_Hist_2.Lines.Update();
+pChart_Hist_3.Lines.Update();
+pChart_Hist_4.Lines.Update();
+pChart_Hist_5.Lines.Update();
+]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="SetVisible" display-name="SetVisible" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[
+if (index>0 && index<=unit.Const.MAX_LINES) 
+{
+	NowParams.Lines[index].bVisible = value;
+	pChart_Oper_1.Lines.SetVisible(index, value);
+	pChart_Hist_1.Lines.SetVisible(index, value);
+	pChart_Oper_2.Lines.SetVisible(index, value);
+	pChart_Hist_2.Lines.SetVisible(index, value);
+	pChart_Oper_3.Lines.SetVisible(index, value);
+	pChart_Hist_3.Lines.SetVisible(index, value);
+	pChart_Oper_4.Lines.SetVisible(index, value);
+	pChart_Hist_4.Lines.SetVisible(index, value);
+	pChart_Oper_5.Lines.SetVisible(index, value);
+	pChart_Hist_5.Lines.SetVisible(index, value);
+}]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="c9fa2b82-cc1d-4f46-98ee-01c94fcf8914" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+				<param access-modifier="private" name="value" display-name="" uuid="cb378015-6fa8-4084-94bb-93feb452fdda" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+			</do>
+			<do access-modifier="private" name="GetSize" display-name="GetSize" ver="5" type="uint8" type-id="c8ff7701-da6e-4d53-888a-81fa680ff561">
+				<body kind="om">
+					<![CDATA[result:uint8;
+if (mode == unit.Const.amOPERATIVE)
+{
+	if (NowParams.Lines[index].nChart == 1)	result = pChart_Oper_1.Lines.GetSize(index);
+	if (NowParams.Lines[index].nChart == 2)	result = pChart_Oper_2.Lines.GetSize(index);	
+	if (NowParams.Lines[index].nChart == 3)	result = pChart_Oper_3.Lines.GetSize(index);
+	if (NowParams.Lines[index].nChart == 4)	result = pChart_Oper_4.Lines.GetSize(index);
+	if (NowParams.Lines[index].nChart == 5)	result = pChart_Oper_5.Lines.GetSize(index);
+}
+else
+{
+	if (NowParams.Lines[index].nChart == 1)	result = pChart_Hist_1.Lines.GetSize(index);
+	if (NowParams.Lines[index].nChart == 2)	result = pChart_Hist_2.Lines.GetSize(index);	
+	if (NowParams.Lines[index].nChart == 3)	result = pChart_Hist_3.Lines.GetSize(index);
+	if (NowParams.Lines[index].nChart == 4)	result = pChart_Hist_4.Lines.GetSize(index);
+	if (NowParams.Lines[index].nChart == 5)	result = pChart_Hist_5.Lines.GetSize(index);
+} 
+return result;]]>
+				</body>
+				<param access-modifier="private" name="mode" display-name="" uuid="3a75a65c-c775-48d6-92ec-e94e1e3d5f59" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="index" display-name="" uuid="a6a75c93-0409-4316-aa11-fa477e1014b9" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			</do>
+			<do access-modifier="private" name="SetColor" display-name="SetColor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[
+if (index>0 && index<unit.Const.MAX_LINES)
+{
+	pChart_Oper_1.Lines.SetColor(index, color);
+	pChart_Oper_2.Lines.SetColor(index, color);
+	pChart_Oper_3.Lines.SetColor(index, color);
+	pChart_Oper_4.Lines.SetColor(index, color);
+	pChart_Oper_5.Lines.SetColor(index, color);
+
+	pChart_Hist_1.Lines.SetColor(index, color);
+	pChart_Hist_2.Lines.SetColor(index, color);
+	pChart_Hist_3.Lines.SetColor(index, color);
+	pChart_Hist_4.Lines.SetColor(index, color);
+	pChart_Hist_5.Lines.SetColor(index, color);
+
+	private.NowParams.Lines[index].ColorMain = color;	// Запоминаем цвет в последнюю очередь, это важно!
+}
+
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="91557f7f-060f-46fb-bd86-9bea88163671" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+				<param access-modifier="private" name="color" display-name="" uuid="244b1613-27f0-4c3c-a689-dbd819eeb607" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+			</do>
+			<do access-modifier="private" name="SetColorManual" display-name="SetColorManual" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[
+if (index>0 && index<=unit.Const.MAX_LINES)
+{
+	pChart_Oper_1.Lines.SetColorManual(index, color);
+	pChart_Oper_2.Lines.SetColorManual(index, color);
+	pChart_Oper_3.Lines.SetColorManual(index, color);
+	pChart_Oper_4.Lines.SetColorManual(index, color);
+	pChart_Oper_5.Lines.SetColorManual(index, color);
+
+	pChart_Hist_1.Lines.SetColorManual(index, color);
+	pChart_Hist_2.Lines.SetColorManual(index, color);
+	pChart_Hist_3.Lines.SetColorManual(index, color);
+	pChart_Hist_4.Lines.SetColorManual(index, color);
+	pChart_Hist_5.Lines.SetColorManual(index, color);
+}
+
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="1be52472-a93b-451b-94c3-14a8e3730102" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+				<param access-modifier="private" name="color" display-name="" uuid="6f9384fa-8d0f-4154-b36c-b58bf0d6971e" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+			</do>
+			<do access-modifier="private" name="GetMinY" display-name="GetMinY" ver="5" type="float8" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409">
+				<body kind="om">
+					<![CDATA[
+result:double ;
+if (mode == unit.Const.amOPERATIVE)
+{
+	if (NowParams.Lines[index].nChart == 1)	result = pChart_Oper_1.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 2)	result = pChart_Oper_2.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 3)	result = pChart_Oper_3.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 4)	result = pChart_Oper_4.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 5)	result = pChart_Oper_5.Lines.GetMinY(index);
+}
+else
+{
+	if (NowParams.Lines[index].nChart == 1)	result = pChart_Hist_1.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 2)	result = pChart_Hist_2.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 3)	result = pChart_Hist_3.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 4)	result = pChart_Hist_4.Lines.GetMinY(index);
+	if (NowParams.Lines[index].nChart == 5)	result = pChart_Hist_5.Lines.GetMinY(index);
+} 
+return result;]]>
+				</body>
+				<param access-modifier="private" name="mode" display-name="" uuid="a7eea43e-4c2a-47d7-980c-770a7bce9591" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="index" display-name="" uuid="301471b7-5168-44c9-9985-eccb644ff24a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			</do>
+			<do access-modifier="private" name="GetMaxY" display-name="GetMaxY" ver="5" type="float8" type-id="7ad62ecf-96dd-4751-9b96-e77954b44409">
+				<body kind="om">
+					<![CDATA[result:double;
+if (mode == unit.Const.amOPERATIVE)
+{
+	if (NowParams.Lines[index].nChart == 1)	result = pChart_Oper_1.Lines.GetMaxY(index);	
+	if (NowParams.Lines[index].nChart == 2)	result = pChart_Oper_2.Lines.GetMaxY(index);	
+	if (NowParams.Lines[index].nChart == 3)	result = pChart_Oper_3.Lines.GetMaxY(index);
+	if (NowParams.Lines[index].nChart == 4)	result = pChart_Oper_4.Lines.GetMaxY(index);
+	if (NowParams.Lines[index].nChart == 5)	result = pChart_Oper_5.Lines.GetMaxY(index);
+}
+else 
+{
+	if (NowParams.Lines[index].nChart == 1)	result = pChart_Hist_1.Lines.GetMaxY(index);	
+	if (NowParams.Lines[index].nChart == 2)	result = pChart_Hist_2.Lines.GetMaxY(index);	
+	if (NowParams.Lines[index].nChart == 3)	result = pChart_Hist_3.Lines.GetMaxY(index);
+	if (NowParams.Lines[index].nChart == 4)	result = pChart_Hist_4.Lines.GetMaxY(index);
+	if (NowParams.Lines[index].nChart == 5)	result = pChart_Hist_5.Lines.GetMaxY(index);
+}
+return result;]]>
+				</body>
+				<param access-modifier="private" name="mode" display-name="" uuid="50bcb834-bd77-4865-90d9-4462b5f27520" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="index" display-name="" uuid="cc58a85c-e73f-4bc0-b94a-2d4dd6ac8da9" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			</do>
+			<object access-modifier="private" name="OperID" display-name="OperID" uuid="5979f1f6-c546-4fbf-a36a-0460b563926d" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3" cardinal="21"/>
+			<object access-modifier="private" name="HistID" display-name="HistID" uuid="530ca639-54af-4678-a0f1-f2bddb92ba95" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3" cardinal="21"/>
+		</object>
+		<object access-modifier="private" name="LineStyles" display-name="LineStyles" uuid="51f2dd2c-2030-4fa0-a617-217ac50c2874" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<object access-modifier="private" name="Names" display-name="Names" uuid="7d8ef0be-566c-4423-8f89-5ee87a12694d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4" cardinal="6"/>
+			<object access-modifier="private" name="Values" display-name="Values" uuid="b0f05eaf-c752-48a0-bca8-8330d7772f33" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4" cardinal="6"/>
+			<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[Names[0] = "без линии";
+Values[0] = 0;
+
+Names[1] = "сплошная";
+Values[1] = 1;
+
+Names[2] = "- - - - -";
+Values[2] = 2;
+
+Names[3] = ".........";
+Values[3] = 3;
+
+Names[4] = ".-.-.-.-.";
+Values[4] = 4;
+
+Names[5] = "..-..-..-";
+Values[5] = 5;]]>
+				</body>
+			</do>
+		</object>
+		<object access-modifier="private" name="Items" display-name="Items" uuid="af6edb6d-0738-4e99-b05c-463d47a261f5" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<do access-modifier="private" name="GetState" display-name="GetState" ver="5" type="uint1" type-id="f73099bc-ee13-42cf-82bb-87368b826707">
+				<param access-modifier="private" name="index" display-name="" uuid="7d41a1a6-a1fc-485c-8092-17fd2e5af12b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+				<body kind="om">
+					<![CDATA[if (index == 1) return Item_1.AdviseState;
+if (index == 2) return Item_2.AdviseState;
+if (index == 3) return Item_3.AdviseState;
+if (index == 4) return Item_4.AdviseState;
+if (index == 5) return Item_5.AdviseState;
+if (index == 6) return Item_6.AdviseState;
+if (index == 7) return Item_7.AdviseState;
+if (index == 8) return Item_8.AdviseState;
+if (index == 9) return Item_9.AdviseState;
+if (index ==10) return Item_10.AdviseState;
+if (index ==11) return Item_11.AdviseState;
+if (index ==12) return Item_12.AdviseState;
+if (index ==13) return Item_13.AdviseState;
+if (index ==14) return Item_14.AdviseState;
+if (index ==15) return Item_15.AdviseState;
+if (index ==16) return Item_16.AdviseState;
+if (index ==17) return Item_17.AdviseState;
+if (index ==18) return Item_18.AdviseState;
+if (index ==19) return Item_19.AdviseState;
+if (index ==20) return Item_20.AdviseState;
+return 0;]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="GetStateAsString" display-name="GetStateAsString" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<param access-modifier="private" name="index" display-name="" uuid="5da6d8e7-15a2-4c27-aa04-7e259e4d48d7" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+				<body kind="om">
+					<![CDATA[if (index == 1) return Item_1.AdviseStateString;
+if (index == 2) return Item_2.AdviseStateString;
+if (index == 3) return Item_3.AdviseStateString;
+if (index == 4) return Item_4.AdviseStateString;
+if (index == 5) return Item_5.AdviseStateString;
+if (index == 6) return Item_6.AdviseStateString;
+if (index == 7) return Item_7.AdviseStateString;
+if (index == 8) return Item_8.AdviseStateString;
+if (index == 9) return Item_9.AdviseStateString;
+if (index ==10) return Item_10.AdviseStateString;
+if (index ==11) return Item_11.AdviseStateString;
+if (index ==12) return Item_12.AdviseStateString;
+if (index ==13) return Item_13.AdviseStateString;
+if (index ==14) return Item_14.AdviseStateString;
+if (index ==15) return Item_15.AdviseStateString;
+if (index ==16) return Item_16.AdviseStateString;
+if (index ==17) return Item_17.AdviseStateString;
+if (index ==18) return Item_18.AdviseStateString;
+if (index ==19) return Item_19.AdviseStateString;
+if (index ==20) return Item_20.AdviseStateString;
+return "";]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="GetFree" display-name="GetFree" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+				<body kind="om">
+					<![CDATA[i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	if (!NowParams.Lines[i].Used)
+		return i;
+	i += 1;
+}
+return 0;]]>
+				</body>
+			</do>
+			<do access-modifier="private" name="GetIndexByPath" display-name="GetIndexByPath" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+				<body kind="om">
+					<![CDATA[i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	if (private.NowParams.Lines[i].Used && private.NowParams.Lines[i].Tag==tag && private.NowParams.Lines[i].TypeGraph!=unit.Const.tgFILE_GRAPH)
+	{
+		return i;
+	}
+	i += 1;
+}
+return -1;]]>
+				</body>
+				<param access-modifier="private" name="tag" display-name="" uuid="5c07b639-f12f-4f96-9b38-ad20ddf68776" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+			</do>
+			<do access-modifier="private" name="Add" display-name="Add" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+				<param access-modifier="private" name="path" display-name="" uuid="95321545-ab0c-4aba-8370-c4a3f9e2c2ee" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+				<body kind="om">
+					<![CDATA[//log("Items.Add-"+path);
+
+i: int4 = GetFree();
+if (i > 0)
+{
+	NowParams.Lines[i].Used = true;
+	NowParams.Lines[i].TypeGraph = typeGraph;
+	SetPath(i, path);
+	if (Item_ServerAPI.Advised)	ServerAPI.SendRequestToGetID(i);
+	NowParams.Lines[i].Description = description;
+	if (description > "")					// Если Описание переопределено пользователем
+		NowParams.Lines[i].ObjectDescription = "---";	// Устанавливаем признак, чтобы не загружать полный путь с сервера
+	else NowParams.Lines[i].ObjectDescription = "";
+	NowParams.Lines[i].Unit = eu;//ед.измерения
+	NowParams.Lines[i].PointSymbol = Markers.Symbols[Markers.Index];
+	NowParams.Lines[i].PointSymbolCode = Markers.Codes[Markers.Index];
+	Markers.Next();
+	NowParams.Lines[i].numAxis = i;//номер оси Y для привязки
+	NowParams.Axis[i].Ymin = LowRange;	// Восстанавливаем значения макисмума и минимума начальными значениями не зависимо от режима
+	NowParams.Axis[i].Ymax = HighRange;
+	NowParams.Lines[i].bSyncroColorMarkerLabels = SynchroColorMarker;
+	NowParams.Lines[i].ColorMain = GetNewColor(i);  // Получаем цвет графика, отличающийся от остальных
+	NowParams.Axis[i].ColorY = NowParams.Lines[i].ColorMain;
+	NowParams.Lines[i].ColorManual = DefaultManualColor;
+	NowParams.Lines[i].bUseColorManual = EnableManualColor;
+	NowParams.Lines[i].WidthGood = GraphicThickness.Value;
+	NowParams.Lines[i].WidthBad = GraphicThickness.Value;
+	NowParams.Lines[i].StyleGood = unit.Const.slSOLID_LINE;
+	NowParams.Lines[i].StyleBad = unit.Const.slDOTED_LINE;
+	NowParams.LinesCount = NowParams.LinesCount + 1;
+	Lines.SetVisible(i, true);
+	NowParams.Lines[i].nXColumn = nXColumn;
+	NowParams.bMainTime[i] = false;
+	NowParams.Lines[i].nChart = 1;		// Добавляем графики всегда в первый чарт
+	nCurrentMode:int4 = (ModeTimeSourceServer==0)?(unit.Const.tmSOURCE):(unit.Const.tmSERVER);	// Определяем номер колонки времени в соответсвии с выбранным режимом
+	NowParams.Lines[i].nXColumn = nXColumn;
+	if (nXColumn == nCurrentMode || !UseServerTime)	// Если график не в текущем режиме- значит он дублирующий и не отображается в оперативном режиме
+	{		
+		NowParams.bMainTime[i] = true; // Помечаем график чтобы отображать его в легенде и чарте оперативного режима
+		if (private.OperChartIsUse[1])
+		{
+			pChart_Oper_1.AddItem(i, typeGraph);
+			pChart_Oper_1.AxisLinkUpdate(GlobalRanges);
+			pChart_Oper_1.UpdateYRanges(AutoRange);
+		}
+	}
+	if (private.HistChartIsUse[1])
+	{
+		pChart_Hist_1.AddItem(i, typeGraph);
+		pChart_Hist_1.AxisLinkUpdate(GlobalRanges);
+		pChart_Hist_1.UpdateYRanges(AutoRange);
+	}
+	Lines.OperID[i] = pChart_Oper_1.Lines.GetID(i);
+	Lines.HistID[i] = pChart_Hist_1.Lines.GetID(i);
+}
+return i;]]>
+				</body>
+				<param access-modifier="private" name="eu" display-name="" uuid="05920018-7d43-4b00-8267-ff8daaf090b2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+				<param access-modifier="private" name="description" display-name="" uuid="94705093-3739-40a3-b8d0-b236692c0cff" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+				<param access-modifier="private" name="nXColumn" display-name="" uuid="7b7eee0e-35f3-4f15-b0cd-902f945d7865" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="3"/>
+				<param access-modifier="private" name="typeGraph" display-name="" uuid="9c442fbb-e9aa-4075-b7bd-fd641e943856" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+			</do>
+			<do access-modifier="private" name="SetPath" display-name="SetPath" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[private.bThis[index] = true;
+
+if (private.bThis[0] || private.bThis[1]){
+	Item_1.Path = value;
+}
+if (private.bThis[0] || private.bThis[2]){
+	Item_2.Path = value;
+}
+if (private.bThis[0] || private.bThis[3]){
+	Item_3.Path = value;
+}
+if (private.bThis[0] || private.bThis[4]){
+	Item_4.Path = value;
+}
+if (private.bThis[0] || private.bThis[5]){
+	Item_5.Path = value;
+}
+if (private.bThis[0] || private.bThis[6]){
+	Item_6.Path = value;
+}
+if (private.bThis[0] || private.bThis[7]){
+	Item_7.Path = value;
+}
+if (private.bThis[0] || private.bThis[8]){
+	Item_8.Path = value;
+}
+if (private.bThis[0] || private.bThis[9]){
+	Item_9.Path = value;
+}
+if (private.bThis[0] || private.bThis[10]){
+	Item_10.Path = value;
+}
+if (private.bThis[0] || private.bThis[11]){
+	Item_11.Path = value;
+}
+if (private.bThis[0] || private.bThis[12]){
+	Item_12.Path = value;
+}
+if (private.bThis[0] || private.bThis[13]){
+	Item_13.Path = value;
+}
+if (private.bThis[0] || private.bThis[14]){
+	Item_14.Path = value;
+}
+if (private.bThis[0] || private.bThis[15]){
+	Item_15.Path = value;
+}
+if (private.bThis[0] || private.bThis[16]){
+	Item_16.Path = value;
+}
+if (private.bThis[0] || private.bThis[17]){
+	Item_17.Path = value;
+}
+if (private.bThis[0] || private.bThis[18]){
+	Item_18.Path = value;
+}
+if (private.bThis[0] || private.bThis[19]){
+	Item_19.Path = value;
+}
+if (private.bThis[0] || private.bThis[20]){
+	Item_20.Path = value;
+}
+private.bThis[index] = false;
+
+i:int4 = 1;
+if (index == unit.Const.ALL)		// Если выбран режим для всех элементов
+{													// Этот режим используется только для сброса тэгов графиков
+	while (i <= unit.Const.MAX_LINES)
+	{
+		private.NowParams.Lines[i].Tag = value;		
+		private.NowParams.Lines[i].Used = false;		// поэтому, заодно, сбрасываем флаг использования для всех графиков
+		private.bThis[i] = false;
+		i += 1;
+	}	
+}
+else
+{
+	private.NowParams.Lines[index].Tag = value;
+}]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="8ed2e6e8-9186-4162-9799-912f80f422ef" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="value" display-name="" uuid="74c1a6df-3a78-49cc-9fc7-8aa8caa7bcb5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			</do>
+			<do access-modifier="private" name="OnChangeVQT" display-name="OnChangeVQT" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[//DebugTool_1.Log("onChangeVQT.index="+Str.ToString(index)+" ,value="+Str.ToString(Variant.ToDouble(value,-1)));
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="014e0ea3-9f10-43c2-8cea-337330a5bc39" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="value" display-name="" uuid="b1fa83eb-146c-4ea7-ab73-c3d8bf0da353" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="4"/>
+				<param access-modifier="private" name="timestamp" display-name="" uuid="fe9f8af0-e020-4b07-b695-fbf776767a0a" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="4"/>
+				<param access-modifier="private" name="quality" display-name="" uuid="7f44acd1-1fe0-4fe9-bc0c-ca5de708c5b2" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+			</do>
+			<do access-modifier="private" name="OnAdviseStateChaged" display-name="OnAdviseStateChaged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (NowParams.Lines[index].Used)
+{
+//	DebugTool_1.Log(NowParams.Lines[index].Tag + " AdviseState=" + String.ToString(adviseState));
+	pStatusLine.AdviseState = GetAdviseState();
+	
+	if (adviseState == unit.Const.stADVISED_OK)
+	{
+		if (NowParams.Lines[index].ItemCDT != canonicalType)
+			SetCanonicalType(index, canonicalType);		
+		pChart_Oper_1.Lines.BeginReadRT(index);
+	}
+}]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="fc9fc5ae-a1ab-4854-9e46-02399234eb4a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="adviseState" display-name="" uuid="15bc39eb-ee88-4ce1-80e4-5fa25b43d5ac" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+				<param access-modifier="private" name="canonicalType" display-name="" uuid="9308c564-0fcb-4f2e-ac3f-9b356426c8a9" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+			</do>
+			<do access-modifier="private" name="OnDescriptionChanged" display-name="OnDescriptionChanged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (description != "" && NowParams.Lines[index].Description == "")	// Если пользователь не задал описание
+{
+	//DebugTool_1.Log("Item[" + String.ToString(index) + "].Description=" + description);
+	NowParams.Lines[index].Description = description;
+	if (private.OperChartIsUse[1])	pChart_Oper_1.Lines.SetDescription(index, description);
+	if (private.OperChartIsUse[2])	pChart_Oper_2.Lines.SetDescription(index, description);
+	if (private.OperChartIsUse[3])	pChart_Oper_3.Lines.SetDescription(index, description);
+	if (private.OperChartIsUse[4])	pChart_Oper_4.Lines.SetDescription(index, description);
+	if (private.OperChartIsUse[5])	pChart_Oper_5.Lines.SetDescription(index, description);
+	if (private.HistChartIsUse[1])	pChart_Hist_1.Lines.SetDescription(index, description);
+	if (private.HistChartIsUse[2])	pChart_Hist_2.Lines.SetDescription(index, description);
+	if (private.HistChartIsUse[3])	pChart_Hist_3.Lines.SetDescription(index, description);
+	if (private.HistChartIsUse[4])	pChart_Hist_4.Lines.SetDescription(index, description);
+	if (private.HistChartIsUse[5])	pChart_Hist_5.Lines.SetDescription(index, description);
+	
+	if (LegendIsUse)
+		pLegend.Update();
+}]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="1572d224-435d-4a67-93ba-4cc4bf97e42b" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="description" display-name="" uuid="ad592a3e-f6f0-4379-a1ee-3e678c1bded5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			</do>
+			<do access-modifier="private" name="OnUnitsChanged" display-name="OnUnitsChanged" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[if (units != "" && NowParams.Lines[index].Unit == "")	// Если пользователь не задал ед.измерения
+{
+	//DebugTool_1.Log("Item[" + String.ToString(index) + "].EUnit=" + units);
+	
+	NowParams.Lines[index].Unit = units;  // Берем ед.изм. из сигнала
+	if (private.OperChartIsUse[1])	pChart_Oper_1.Lines.SetUnits(index, units);
+	if (private.OperChartIsUse[2])	pChart_Oper_2.Lines.SetUnits(index, units);
+	if (private.OperChartIsUse[3])	pChart_Oper_3.Lines.SetUnits(index, units);
+	if (private.OperChartIsUse[4])	pChart_Oper_4.Lines.SetUnits(index, units);
+	if (private.OperChartIsUse[5])	pChart_Oper_5.Lines.SetUnits(index, units);
+	if (private.HistChartIsUse[1])	pChart_Hist_1.Lines.SetUnits(index, units);
+	if (private.HistChartIsUse[2])	pChart_Hist_2.Lines.SetUnits(index, units);
+	if (private.HistChartIsUse[3])	pChart_Hist_3.Lines.SetUnits(index, units);
+	if (private.HistChartIsUse[4])	pChart_Hist_4.Lines.SetUnits(index, units);
+	if (private.HistChartIsUse[5])	pChart_Hist_5.Lines.SetUnits(index, units);
+	
+	if (LegendIsUse)
+		pLegend.Update();
+}]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="c6564208-e3e7-40b8-b805-027e0ef39cb3" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="units" display-name="" uuid="50596b98-599e-4bf2-9313-e5aed799844f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			</do>
+			<do access-modifier="private" name="SetCanonicalType" display-name="SetCanonicalType" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[//DebugTool_1.Log("ItemCTD[" + String.ToString(index) + "]=" + String.ToString(canonicalType));
+if (NowParams.Lines[index].ItemCDT != canonicalType)
+{
+	NowParams.Lines[index].ItemCDT = canonicalType;
+
+	if (canonicalType == unit.Const.cdt.STRING)
+	{
+		NowParams.Lines[index].StyleGood = unit.Const.slWITHOUT_LINE;
+		NowParams.Lines[index].StyleBad = unit.Const.slWITHOUT_LINE;
+		SetGraphicMarkerLabelVisibleByIndex(index, true);
+	}
+		
+	ShowDataPoints = ShowDataPoints;	// Изменение ShowDataPoints, обновляет значение Line.PointVisible
+}]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="d0de0780-f62e-4f54-bf76-dc7ed81026e1" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+				<param access-modifier="private" name="canonicalType" display-name="" uuid="a0958fb1-f014-4b6f-b60e-1bfe9d604780" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+			</do>
+			<do access-modifier="private" name="TagIsUse" display-name="TagIsUse" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+				<body kind="om">
+					<![CDATA[
+index:int4 = Items.GetIndexByPath(tag);
+return (index > 0);
+]]>
+				</body>
+				<param access-modifier="private" name="tag" display-name="" uuid="334bffaf-5ce0-4019-b27b-548961307ef2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			</do>
+			<do access-modifier="private" name="GetNewColor" display-name="GetNewColor" ver="5" type="uint4" type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e">
+				<body kind="om">
+					<![CDATA[i: int4 = 0;
+while (i < ColorPalette.Length)
+{
+	pretender: uint4 = ColorPalette[i];
+	
+	// проверяем, что цвет не используется
+	exists: bool = false;
+	j: int4 = 1;
+	while (j < NowParams.Lines.Length)
+	{
+		// если это не новый, но используемый график, и его цвет совпадает с претендентом
+		if (j != index && NowParams.Lines[j].Used && NowParams.Lines[j].ColorMain == pretender)
+		{
+			exists = true;
+			break;
+		}
+		j += 1;
+	}
+	
+	// если цвет не занят, то возвращаем его как результат
+	if (!exists)
+		return pretender;
+	i += 1;
+}
+
+// так как количество графиков равно количеству цветов в палитре, то этого результата быть не должно
+return 0;]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="3ac29ca7-122a-4a96-9cb0-dba434441b73" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			</do>
+			<do access-modifier="private" name="GetAdviseState" display-name="GetAdviseState" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+				<body kind="om">
+					<![CDATA[result: string = "";
+
+if (ApSource_Core.ConnectionState == unit.Const.stADVISED_OK)
+{
+	i: int4 = 1;
+	while (i <= unit.Const.MAX_LINES)
+	{
+		if (NowParams.Lines[i].Used && GetState(i)==unit.Const.stNOADVISED && NowParams.Lines[i].TypeGraph!=unit.Const.tgFILE_GRAPH)
+		{
+			if (result != "")
+				result += "\n";
+				
+			result += NowParams.Lines[i].Tag + ": " + GetStateAsString(i);
+		}
+		i += 1;
+	}
+}
+
+//if (result != "")	DebugTool_1.Log(result);
+return result;]]>
+				</body>
+			</do>
+		</object>
+		<object access-modifier="private" name="Open_PrintDialog_Hist" display-name="Open_PrintDialog_Hist" uuid="a51f0207-e49b-4cc0-9f1f-4134f4dae223" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="1b43d624-913f-47d2-a9bb-8f58b18c144e" base-type="Trends_PrintMain" base-type-id="9ea85c57-5943-4aa2-a7c6-3e8b12cba954" ver="4">
+					<init target="pCore" ver="5" ref="here"/>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+					<init target="pChart" ver="5" ref="pChart_Hist_1"/>
+				</object>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Variant_Result" display-name="Variant_Result" uuid="8ad80c50-f628-45de-ae85-991bf78d137e" base-type="variant" base-type-id="7d3322c1-a2cf-4732-a957-abd69e3e4b7a" ver="4"/>
+		<do access-modifier="private" name="SetYRange" display-name="SetYRange" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// запоминаем значение диапазона
+//DebugTool_1.Log("SetYRange " + String.ToString(axisIndex) + "=[" + String.ToString(yMin) + ".." + String.ToString(yMax) + "]");
+
+// если автомасштабирование отключено, то задаем интервал по оси
+if (!AutoRange)	
+{
+	pChart_Oper_1.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Oper_2.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Oper_3.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Oper_4.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Oper_5.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Hist_1.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Hist_2.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Hist_3.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Hist_4.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+	pChart_Hist_5.Chart.Axis_Y[axisIndex].SetInterval(yMin, yMax);
+}]]>
+			</body>
+			<param access-modifier="private" name="axisIndex" display-name="" uuid="eb1df5e3-785b-426d-a463-675200cd6b8f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="yMin" display-name="" uuid="5462ad01-7a21-42e4-a7fa-61c2075ca5f1" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+			<param access-modifier="private" name="yMax" display-name="" uuid="97ba0e06-9b48-4283-b26f-fa89289328fa" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="5"/>
+		</do>
+		<do access-modifier="private" name="MoveToNow" display-name="MoveToNow" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// переместить отображаемый интервал по оси X к текущему времени
+now: uint8 = DateTime.UtcNow();
+SetRedLine(now);
+UpdateXRange(now, true);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="RestoreOperativeStoredInterval" display-name="RestoreOperativeStoredInterval" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[// восстанавливаем хранимый оперативный интервал
+pChart_Oper_1.OperativeStoredInterval.Restore();
+pChart_Oper_2.OperativeStoredInterval.Restore();
+pChart_Oper_3.OperativeStoredInterval.Restore();
+pChart_Oper_4.OperativeStoredInterval.Restore();
+pChart_Oper_5.OperativeStoredInterval.Restore();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="UpdateXRange" display-name="UpdateXRange" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//DebugTool_1.Log("UpdateXRange: ");
+if (private.tCurInterval > 0)
+{
+	if (UseRedLine)
+	{
+		// cдвиг отображаемого интервала
+		lastTime += pChart_Oper_1.Chart.GetRedLineShift();
+	}
+	
+	rb: uint8 = Variant.ToUint8(pChart_Oper_1.Chart.Axis_X.Max, 0); // правая граница интервала
+	if (lastTime > rb || shiftToLastTime)
+	{
+		// обновляем текущий интервал
+		t1: uint8 = lastTime - private.tCurInterval;
+		pChart_Oper_1.SetInterval(t1, lastTime);
+		//DebugTool_1.Log("UpdateXRange: " + DateTime.ToString(t1) + " .. " + DateTime.ToString(lastTime));
+	}
+	else
+	{
+		pChart_Oper_1.Chart.Update();
+	}
+}
+
+]]>
+			</body>
+			<param access-modifier="private" name="lastTime" display-name="" uuid="21c65c85-278b-4cde-bd2b-df734c79f1ca" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+			<param access-modifier="private" name="shiftToLastTime" display-name="" uuid="fd965651-1402-464e-85f9-c3629e14e7b7" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetRedLine" display-name="SetRedLine" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[pChart_Oper_1.Chart.RedLine.Value = time;
+pChart_Oper_2.Chart.RedLine.Value = time;
+pChart_Oper_3.Chart.RedLine.Value = time;
+pChart_Oper_4.Chart.RedLine.Value = time;
+pChart_Oper_5.Chart.RedLine.Value = time;
+NowParams.tRedLine = time;]]>
+			</body>
+			<param access-modifier="private" name="time" display-name="" uuid="4c27ed0f-6a8a-4822-bfbb-b345a9972b45" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetSelectItem" display-name="SetSelectItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[nSelectedItem = index;
+
+pChart_Oper_1.Lines.SetSelect(index);
+pChart_Oper_2.Lines.SetSelect(index);
+pChart_Oper_3.Lines.SetSelect(index);
+pChart_Oper_4.Lines.SetSelect(index);
+pChart_Oper_5.Lines.SetSelect(index);
+
+pChart_Hist_1.Lines.SetSelect(index);
+pChart_Hist_2.Lines.SetSelect(index);
+pChart_Hist_3.Lines.SetSelect(index);
+pChart_Hist_4.Lines.SetSelect(index);
+pChart_Hist_5.Lines.SetSelect(index);
+
+]]>
+			</body>
+			<param access-modifier="private" name="index" display-name="" uuid="a39ad336-15f3-465f-80d5-57b5bf31253f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+		<do-trace access-modifier="private" target="FileSavedCount" ver="5">
+			<body>
+				<![CDATA[pChart_Hist_1.SavedFilesCount 
++ pChart_Oper_1.SavedFilesCount]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="ColorPalette" display-name="ColorPalette" uuid="a85f129e-65be-4084-ac9c-f635958313e9" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="20"/>
+		<do access-modifier="private" name="ColorPalette_Initialize" display-name="ColorPalette_Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var colors = [
+	0xFF0000FF, 0xFF00FF00, 0xFFFF0000, 0xFFFF1EB4, 0xFFFFD200,
+	0xFF0087FF, 0xFF0F873C, 0xFF874B00, 0xFF3C005A, 0xFF0087A5,
+	0xFFFF8796, 0xFF00FFF0, 0xFFD2FF96, 0xFFB45AFF, 0xFFF0A5FF,
+	0xFF78002D, 0xFFFF8700, 0xFF878769, 0xFF00FF96, 0xFFFFC378];
+
+for (var i=0; i<ColorPalette.Length; i++)
+{
+	ColorPalette[i] = colors[i];
+}]]>
+			</body>
+		</do>
+		<object access-modifier="private" name="CustomColors" display-name="CustomColors" uuid="eb7ba443-5264-4cc4-b396-26492e9b2db0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<init target="CustomColors" ver="5" value=""/>
+		<object access-modifier="private" name="ServerAPI" display-name="ServerAPI" uuid="587039ed-887c-439d-ade1-46a9b6505ca2" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+			<designed target="X" value="20" ver="4"/>
+			<designed target="Y" value="20" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="false" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<do access-modifier="private" name="SendRequestToGetID" display-name="SendRequestToGetID" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var serverAPI = {
+	"transaction":"",		// 
+	"request":{		// 
+		"target":"Service.ServerApi",
+		"method":"GetIdByTagName",
+		"input":{
+			"tagname":""
+		}
+	}
+}
+NowParams.Lines[index].RelationTag = "";
+serverAPI.request.input.tagname = NowParams.Lines[index].Tag;
+serverAPI.transaction = "GetID_" + index;
+Item_ServerAPI.Value = JSON.stringify(serverAPI, null, 2);
+
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="aa8c001e-c807-4856-98fe-15c7410f7bb7" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+			</do>
+			<do access-modifier="private" name="SendRequestToGetParentObjectID" display-name="SendRequestToGetParentObjectID" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var serverAPI = {
+	"transaction":"GetParentID",		// 
+	"request":{		// 
+		"target":"Service.ServerApi",
+		"method":"GetParentObjectId",
+		"input":{
+			"nodeid":0
+		}
+	}
+}
+
+serverAPI.transaction = "GetParentID_" + index;
+serverAPI.request.input.nodeid = nodeid;
+Item_ServerAPI.Value = JSON.stringify(serverAPI);
+
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="d31d6cae-ab0a-4ec8-b146-d2ff49838bbe" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+				<param access-modifier="private" name="nodeid" display-name="" uuid="de5f6639-6488-4607-ade8-baa3dfc43350" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+			</do>
+			<do access-modifier="private" name="SendRequestToGetShortName" display-name="SendRequestToGetShortName" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var serverAPI = {
+	"transaction":"GetShortName",		// 
+	"request":{		// 
+		"target":"Service.ServerApi",
+		"method":"GetShortNameById",
+		"input":{
+			"nodeid":0
+		}
+	}
+}
+
+serverAPI.transaction = "GetShortName_" + index;
+serverAPI.request.input.nodeid = NowParams.ParentID[index];
+Item_ServerAPI.Value = JSON.stringify(serverAPI);
+
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="f25da35e-a30e-41ac-93d9-69d5472a45bc" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+			</do>
+			<do access-modifier="private" name="SendRequestToGetDescription" display-name="SendRequestToGetDescription" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[var serverAPI = {
+	"transaction":"GetDescription",		// 
+	"request":{		// 
+		"target":"Service.ServerApi",
+		"method":"ReadProperty",
+		"input":{
+			"nodeid":0,
+			"propname":"Description"
+		}
+	}
+}
+
+serverAPI.transaction = "GetDescription_" + index;
+serverAPI.request.input.nodeid = nodeid;
+Item_ServerAPI.Value = JSON.stringify(serverAPI);
+
+]]>
+				</body>
+				<param access-modifier="private" name="index" display-name="" uuid="3e375f2c-ee37-4fe1-9219-fb8380eceecf" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+				<param access-modifier="private" name="nodeid" display-name="" uuid="75d9b7a0-6b99-4445-ae97-56f08f774bf4" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+			</do>
+			<object access-modifier="private" name="NodeID" display-name="NodeID" uuid="c1745e1c-669f-41b8-99ee-05552b4635ef" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5" description="" cardinal="21"/>
+		</object>
+		<object access-modifier="private" name="tHistViewStart" display-name="tHistViewStart" uuid="3a4cf26c-aeb3-405c-8084-ec1863d66fe7" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="tHistViewEnd" display-name="tHistViewEnd" uuid="9a267bae-6d89-4aa1-a42e-fec0ac84d482" base-type="notifying_uint8" base-type-id="2e6d6c20-2489-49e1-9d5f-fe68a21b43df" ver="5" description="" cardinal="1"/>
+	</object>
+	<param access-modifier="private" name="init_AP" display-name="init_AP" uuid="96c5b325-35fd-40ba-b215-e1b261a1ac76" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="2"/>
+	<param access-modifier="private" name="DataUpdatePeriod" display-name="Период обновления данных, мс" uuid="49bb0886-a530-4790-913f-58994fc728bd" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+	<object access-modifier="private" name="pTree" display-name="pTree" uuid="03f7fb78-452e-4eec-86de-c8edea8ef218" base-type="Trends_ItemsTree" base-type-id="2d934a44-5181-41f0-94db-e0e63af54d68" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pChart_Oper_1" display-name="pChart_Oper_1" uuid="b682d0dc-f4d7-4b72-b99f-4e66022b9550" base-type="Trends_Chart_Operative" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pChart_Oper_2" display-name="pChart_Oper_2" uuid="c35d654c-6714-4e09-b460-510374705420" base-type="Trends_Chart_Operative" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pChart_Oper_3" display-name="pChart_Oper_3" uuid="f98629b4-5ae4-4da2-a949-555bb4ed5999" base-type="Trends_Chart_Operative" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pChart_Oper_4" display-name="pChart_Oper_4" uuid="54b40c0d-6ccc-4a81-947a-a8166ed58015" base-type="Trends_Chart_Operative" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pChart_Oper_5" display-name="pChart_Oper_5" uuid="d700d398-970e-4368-943d-a6e1aa26e66c" base-type="Trends_Chart_Operative" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="AddItem" display-name="AddItem" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<param access-modifier="private" name="path" display-name="" uuid="d74968fa-685c-441b-933c-90d01db30f28" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("AddItem(" + path + ", " + eUnit + ", " + description + ")");
+private.Initializer();  // инициализатор выполняется только один раз 
+if (private.ErrorAsString != "")
+	return 0;
+
+// Проверяем не повторяется ли сигнал
+if (private.Items.TagIsUse(path))
+	return 0;
+
+// Остальное делаем в доп функции.
+// Номер столобца DataSource в заисимости от выбранного источника данных (3-сервер, 2-источник)
+nXColumn:int4 = unit.Const.tmSOURCE;
+if (UseServerTime)
+	nXColumn = ModeTimeSourceServer == 0 ? unit.Const.tmSOURCE : unit.Const.tmSERVER;
+
+itemIndex: int4 = private.Items.Add(path, eUnit, description, nXColumn, unit.Const.tgMAIN_GRAPH);
+if (itemIndex > 0)
+{
+	if (private.LegendIsUse)
+		pLegend.Update();
+}
+//DebugTool_1.Log(String.ToString(itemIndex) + ": " + path);
+return itemIndex;]]>
+		</body>
+		<param access-modifier="private" name="eUnit" display-name="" uuid="8aa6ee0b-1659-4680-b6fb-ca164c43874d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="description" display-name="" uuid="7994ffb7-5537-4af2-bd8d-ef900e72ea80" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+	</do>
+	<do access-modifier="private" name="RemoveItem" display-name="RemoveItem" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="path" display-name="" uuid="ebdd5999-bfdc-455b-8004-5887eededf8f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+index:int4  = private.Items.GetIndexByPath(path);
+if (index>0 && index<=unit.Const.MAX_LINES)
+{
+	RemoveItemByIndex(index);	
+}
+else
+{
+	DebugTool_1.Log("Trends.RemoveItem: Указанный тэг не найден!");
+}]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="RemoveItemByIndex" display-name="RemoveItemByIndex" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="index" display-name="" uuid="d6c5d9dd-7610-45b6-8585-e3eda8b36d11" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+//DebugTool_1.Log("Remove " + String.ToString(index) + " item");
+private.Items.SetPath(index, "**");
+private.NowParams.Lines[index].Used = false;
+private.NowParams.Lines[index].Description = "";
+private.NowParams.Lines[index].ObjectDescription = "";
+private.NowParams.Lines[index].ItemCDT = unit.Const.cdt.EMPTY;
+private.NowParams.Lines[index].TypeGraph = unit.Const.tgNONE;
+private.NowParams.Lines[index].bVisible = false;
+nAxis:int4 = private.NowParams.Lines[index].numAxis;  // Определяем ось к которой привязан сигнал
+bAxisHide:bool = true;												// собираемся скрыть ось к которой привязан график
+i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)		// проверяем есть ли еще привязки к этой оси
+{  
+	if (private.NowParams.Lines[index].Used && i!=index)
+	{
+		if (private.NowParams.Lines[index].numAxis == private.NowParams.Lines[i].numAxis){ // Если нашелся привязанный график
+			bAxisHide = false;		// ось скрывать не будем
+		}
+	}
+	i += 1;
+}
+
+if (private.NowParams.Lines[index].nChart == 1){
+	pChart_Oper_1.RemoveItem(index);
+	pChart_Hist_1.RemoveItem(index);
+	if (bAxisHide)	{
+		pChart_Oper_1.Chart.Axis_Y[nAxis].Visible = false;
+		pChart_Hist_1.Chart.Axis_Y[nAxis].Visible = false;
+	}
+}
+if (private.NowParams.Lines[index].nChart == 2){
+	pChart_Oper_2.RemoveItem(index);
+	pChart_Hist_2.RemoveItem(index);
+	if (bAxisHide)	{
+		pChart_Oper_2.Chart.Axis_Y[nAxis].Visible = false;
+		pChart_Hist_2.Chart.Axis_Y[nAxis].Visible = false;
+	}
+}
+if (private.NowParams.Lines[index].nChart == 3){
+	pChart_Oper_3.RemoveItem(index);
+	pChart_Hist_3.RemoveItem(index);
+	if (bAxisHide)	{
+		pChart_Oper_3.Chart.Axis_Y[nAxis].Visible = false;
+		pChart_Hist_3.Chart.Axis_Y[nAxis].Visible = false;
+	}
+}
+if (private.NowParams.Lines[index].nChart == 4){
+	pChart_Oper_4.RemoveItem(index);
+	pChart_Hist_4.RemoveItem(index);
+	if (bAxisHide)	{
+		pChart_Oper_4.Chart.Axis_Y[nAxis].Visible = false;
+		pChart_Hist_4.Chart.Axis_Y[nAxis].Visible = false;
+	}
+}
+if (private.NowParams.Lines[index].nChart == 5){
+	pChart_Oper_5.RemoveItem(index);
+	pChart_Hist_5.RemoveItem(index);
+	if (bAxisHide)	{
+		pChart_Oper_5.Chart.Axis_Y[nAxis].Visible = false;
+		pChart_Hist_5.Chart.Axis_Y[nAxis].Visible = false;
+	}
+}
+
+private.NowParams.LinesCount -= 1;
+if (private.LegendIsUse){ 
+	pLegend.Update();
+	pLegend.Deselect();
+}
+
+pStatusLine.AdviseState = private.Items.GetAdviseState();
+
+//DebugTool_1.Log("Item[" + String.ToString(index) + "] removed");]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicThickness" display-name="SetGraphicThickness" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="e3ea506e-7a95-45c2-b014-bc53f52f6530" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="value" display-name="" uuid="cb750778-7b0c-4585-90e9-6e81bd292cb5" base-type="float4" base-type-id="730a70b7-31fd-42cf-860d-ba8faa618f9d" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+index:int4 = private.Items.GetIndexByPath(tag);
+
+if (index > 0)
+{
+	private.NowParams.Lines[index].WidthGood = value;
+	private.NowParams.Lines[index].WidthBad = value;
+	private.Lines.Update();
+	if (private.LegendIsUse) pLegend.Update();
+	return true;
+}
+else
+{
+	return false;
+}
+
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicMarkerLabelVisible" display-name="SetGraphicMarkerLabelVisible" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+SetGraphicMarkerLabelVisibleByIndex(private.Items.GetIndexByPath(tag), value);]]>
+		</body>
+		<param access-modifier="private" name="tag" display-name="" uuid="f835ab90-7f79-4407-90ad-c6c4f140132f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="value" display-name="" uuid="5e3614a5-82a2-4e73-ab45-89c47ee6cc95" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	</do>
+	<do access-modifier="private" name="SetGraphicMarkerLabelVisibleByIndex" display-name="SetGraphicMarkerLabelVisibleByIndex" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+private.NowParams.Lines[index].bShowMarkerLabels = value;
+
+pChart_Oper_1.SetMarkerLabelVisible(index, value);
+pChart_Oper_2.SetMarkerLabelVisible(index, value);
+pChart_Oper_3.SetMarkerLabelVisible(index, value);
+pChart_Oper_4.SetMarkerLabelVisible(index, value);
+pChart_Oper_5.SetMarkerLabelVisible(index, value);
+pChart_Hist_1.SetMarkerLabelVisible(index, value);
+pChart_Hist_2.SetMarkerLabelVisible(index, value);
+pChart_Hist_3.SetMarkerLabelVisible(index, value);
+pChart_Hist_4.SetMarkerLabelVisible(index, value);
+pChart_Hist_5.SetMarkerLabelVisible(index, value);
+]]>
+		</body>
+		<param access-modifier="private" name="index" display-name="" uuid="4e9480d5-092e-4e0e-8f5a-e150b2000394" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<param access-modifier="private" name="value" display-name="" uuid="7964ca47-d6ed-4cd3-ba01-d06b9d66cd31" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	</do>
+	<do access-modifier="private" name="AddLevel" display-name="AddLevel" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="85d9ce9b-d7ff-4aaf-b66e-72b4e7399797" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+if (private.ErrorAsString != "")
+	return false;
+
+// Проверяем не повторяется ли сигнал
+if (private.Items.TagIsUse(tag))
+	return false;
+
+nXColumn: int4 = ModeTimeSourceServer == 0 ? unit.Const.tmSOURCE : unit.Const.tmSERVER;
+
+// Добавление графика уровня
+index:int4 = private.Items.Add(tag, "", "", nXColumn, unit.Const.tgLEVEL);
+
+// Установка стиля линии
+if (lineStyle>0 && lineStyle<=5)
+{
+	private.NowParams.Lines[index].StyleGood = lineStyle;
+	private.NowParams.Lines[index].StyleBad = lineStyle;
+	private.Lines.Update();
+}
+else	if (lineStyle != 0)	// При нуле сохраняются значения по умолчанию
+{
+	DebugTool_1.Log("Trends.AddLevel: Недопустимое значение в параметре lineStyle.");
+}
+
+return index > 0;]]>
+		</body>
+		<param access-modifier="private" name="lineStyle" display-name="" uuid="b3c108f7-1c5e-4ac4-a44d-7c5bde7e1cf5" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+	</do>
+	<do access-modifier="private" name="ClearData" display-name="ClearData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+pChart_Oper_1.RemoveItem(unit.Const.ALL);
+pChart_Oper_2.RemoveItem(unit.Const.ALL);
+pChart_Oper_3.RemoveItem(unit.Const.ALL);
+pChart_Oper_4.RemoveItem(unit.Const.ALL);
+pChart_Oper_5.RemoveItem(unit.Const.ALL);
+pChart_Hist_1.RemoveItem(unit.Const.ALL);
+pChart_Hist_2.RemoveItem(unit.Const.ALL);
+pChart_Hist_3.RemoveItem(unit.Const.ALL);
+pChart_Hist_4.RemoveItem(unit.Const.ALL);
+pChart_Hist_5.RemoveItem(unit.Const.ALL);
+
+private.Items.SetPath(unit.Const.ALL, "**");
+private.NowParams.LinesCount = 0;
+i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	private.NowParams.Lines[i].Tag = "";
+	private.NowParams.Lines[i].Description = "";
+	private.NowParams.Lines[i].ObjectDescription = "";
+	private.NowParams.Lines[i].Unit = "";
+	private.NowParams.Lines[i].Used = false;
+	private.NowParams.Lines[i].TypeGraph = unit.Const.tgNONE;
+	i += 1;
+}
+
+if (private.LegendIsUse)
+	pLegend.Update();
+
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicColor" display-name="SetGraphicColor" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="eacc45ed-ce4f-429c-bb72-a1119487506c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="R" display-name="" uuid="87ac7e3c-2d1d-4d59-9744-26046ec767fd" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="javascript">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+var color = 0xff000000;
+color = color + ((R & 0x000000ff) << 16) + ((G & 0x000000ff) << 8) + (B & 0x000000ff);
+//log("GraphColor="+((R & 0x000000ff) << 16)+"_ "+color);
+return SetGraphicColorU4(tag, color);
+]]>
+		</body>
+		<param access-modifier="private" name="G" display-name="" uuid="d831380a-c1db-4333-84d2-4e9eef7a76af" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+		<param access-modifier="private" name="B" display-name="" uuid="50e8082c-7464-4f45-935a-31cf92e53d60" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+	</do>
+	<do access-modifier="private" name="SetGraphicColorU4" display-name="SetGraphicColorU4" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="d05910a6-da48-478c-b432-ed71ef89cfc0" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="color" display-name="" uuid="3be96820-f84e-4d3c-9530-e35a3fd3b5cf" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+index:int4 = private.Items.GetIndexByPath(tag);
+result:bool = false;
+if (index > 0)
+{
+	private.Lines.SetColor(index, color);
+	result = true;
+}
+return result;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetAxisColor" display-name="SetAxisColor" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="3750ea2d-9703-4526-a22e-0ae1cb9b38b6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="R" display-name="" uuid="a53dea04-a416-458e-9e55-d2343b47fc3d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="2"/>
+		<body kind="javascript">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+var color = 0xff000000;
+color = color + ((R & 0x000000ff) << 16) + ((G & 0x000000ff) << 8) + (B & 0x000000ff);
+return SetAxisColorU4(tag, color);
+]]>
+		</body>
+		<param access-modifier="private" name="G" display-name="" uuid="50840eca-79a8-4162-8174-0c13cf24a97a" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+		<param access-modifier="private" name="B" display-name="" uuid="2696eb38-b5c3-4ab6-bcd3-69b58abaa578" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="3"/>
+	</do>
+	<do access-modifier="private" name="SetAxisColorU4" display-name="SetAxisColorU4" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+result:bool = false;
+index:int4 = private.Items.GetIndexByPath(axisName);
+if (index >= 0)		// Если ось с указанным тегом найдена
+{
+	nAxis:int4 = private.NowParams.Lines[index].numAxis;
+	private.NowParams.Axis[index].ColorY = color;
+	pChart_Oper_1.SetAxisColor(nAxis, color);
+	pChart_Oper_2.SetAxisColor(nAxis, color);
+	pChart_Oper_3.SetAxisColor(nAxis, color);
+	pChart_Oper_4.SetAxisColor(nAxis, color);
+	pChart_Oper_5.SetAxisColor(nAxis, color);
+	pChart_Hist_1.SetAxisColor(nAxis, color);
+	pChart_Hist_2.SetAxisColor(nAxis, color);
+	pChart_Hist_3.SetAxisColor(nAxis, color);
+	pChart_Hist_4.SetAxisColor(nAxis, color);
+	pChart_Hist_5.SetAxisColor(nAxis, color);
+	result = true;
+}
+if (private.LegendIsUse) pLegend.Update();
+return result;
+
+]]>
+		</body>
+		<param access-modifier="private" name="axisName" display-name="" uuid="c6d1e4af-68a2-46d4-baea-da8b9db36c32" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		<param access-modifier="private" name="color" display-name="" uuid="7707d68b-53e5-4275-9b8e-630914cb859d" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	</do>
+	<do access-modifier="private" name="SetOperativInterval" display-name="SetOperativInterval" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="nMinutes" display-name="" uuid="49f529f3-3dea-4aac-b016-551bf3fede3e" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="2"/>
+		<param access-modifier="private" name="nUpdateRate" display-name="" uuid="e4250349-2665-4932-b14c-2113d88d86e6" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();// инициализатор выполняется только один раз 
+
+Timer_of_ReadData.Period = nUpdateRate;
+OperativeDisplayedInterval = nMinutes ;
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetGraphicAxis" display-name="SetGraphicAxis" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="tag" display-name="" uuid="e9cdbc35-7012-4fed-80f0-b142fbdfe811" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="axisTag" display-name="" uuid="89326c67-a48a-4a77-9ecf-769a448e6000" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="om">
+			<![CDATA[private.Initializer();		// инициализатор выполняется только один раз 
+//DebugTool_1.Log("SetGraphicAxis. Tag="+tag+" ,axisTag="+axisTag);
+if (axisTag!="" && tag!="")
+{
+	n0:int4 = 0; 
+	i:int4 = 1;
+	nAxis:int4 = 0;											// индекс графика к которому мы привязыаемся
+	while (i <= unit.Const.MAX_LINES)
+	{
+		if (private.NowParams.Lines[i].Tag == axisTag) nAxis = i;
+		if (private.NowParams.Lines[i].Tag == tag) n0 = i;
+		i += 1;
+	}
+	if (nAxis==0 || n0==0){
+		DebugTool_1.Log("Trends.SetGraphicAxis. Тэг  для одного из параметров не найден!");
+		return;
+	}	
+	if (private.NowParams.Lines[nAxis].nChart !=  private.NowParams.Lines[n0].nChart){
+		DebugTool_1.Log("Trends.SetGraphicAxis. Указанные графики находятся на разных чартах!");
+		return;
+	}	
+//	DebugTool_1.Log("SetGraphicAxis. nAxis="+Str.ToString(nAxis)+", n0="+Str.ToString(n0)+", nChart="+Str.ToString(private.NowParams.Lines[n0].nChart));
+
+	if (private.NowParams.Lines[n0].nChart == 1)	{
+		pChart_Oper_1.Lines.SetAxis(n0, nAxis);
+		pChart_Hist_1.Lines.SetAxis(n0, nAxis);
+	}
+	if (private.NowParams.Lines[n0].nChart == 2)	{
+		pChart_Oper_2.Lines.SetAxis(n0, nAxis);
+		pChart_Hist_2.Lines.SetAxis(n0, nAxis);
+	}
+	if (private.NowParams.Lines[n0].nChart == 3)	{
+		pChart_Oper_3.Lines.SetAxis(n0, nAxis);
+		pChart_Hist_3.Lines.SetAxis(n0, nAxis);
+	}
+	if (private.NowParams.Lines[n0].nChart == 4)	{
+		pChart_Oper_4.Lines.SetAxis(n0, nAxis);
+		pChart_Hist_4.Lines.SetAxis(n0, nAxis);
+	}
+	if (private.NowParams.Lines[n0].nChart == 5)	{
+		pChart_Oper_5.Lines.SetAxis(n0, nAxis);
+		pChart_Hist_5.Lines.SetAxis(n0, nAxis);
+	}
+
+	prevAxis:int4 = private.NowParams.Lines[n0].numAxis;
+	private.NowParams.Lines[n0].numAxis = nAxis;     // запоминем индекс новой шкалы для данного графика
+	
+	i = 1;  //  проверяем в цикле нужна ли еще другим графикам старая шкала
+	bNeed:bool = false;
+	while (i <= unit.Const.MAX_LINES)
+	{
+		if (private.NowParams.Lines[i].numAxis == prevAxis) bNeed = true;
+		i += 1;
+	}
+	if (!bNeed)
+	{
+		if (private.NowParams.Lines[n0].nChart == 1)	{
+			pChart_Oper_1.Chart.Axis_Y[prevAxis].Visible = false;
+			pChart_Hist_1.Chart.Axis_Y[prevAxis].Visible = false;
+		}
+		if (private.NowParams.Lines[n0].nChart == 2)	{
+			pChart_Oper_2.Chart.Axis_Y[prevAxis].Visible = false;
+			pChart_Hist_2.Chart.Axis_Y[prevAxis].Visible = false;
+		}
+		if (private.NowParams.Lines[n0].nChart == 3)	{
+			pChart_Oper_3.Chart.Axis_Y[prevAxis].Visible = false;
+			pChart_Hist_3.Chart.Axis_Y[prevAxis].Visible = false;
+		}
+		if (private.NowParams.Lines[n0].nChart == 4)	{
+			pChart_Oper_4.Chart.Axis_Y[prevAxis].Visible = false;
+			pChart_Hist_4.Chart.Axis_Y[prevAxis].Visible = false;
+		}
+		if (private.NowParams.Lines[n0].nChart == 5)	{
+			pChart_Oper_5.Chart.Axis_Y[prevAxis].Visible = false;
+			pChart_Hist_5.Chart.Axis_Y[prevAxis].Visible = false;
+		}
+	}
+}
+AxisLinkUpdate(GlobalRanges);
+if (private.LegendIsUse) pLegend.Update();
+]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetIndividualRange" display-name="SetIndividualRange" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.Initializer();// инициализатор выполняется только один раз 
+
+index:int4 = private.Items.GetIndexByPath(tag);
+if (index <= 0)
+{
+	DebugTool_1.Log("Trends.SetIndividualRange. Указанный тег не найден в списке графиков.");
+	return;
+}
+
+// проверяем чтобы максимум был больше минимума, иначе ошибка!
+if (highRange > lowRange)
+{
+	// получаем индекс оси, к которой привязан график
+	axisIndex: int4 = private.NowParams.Lines[index].numAxis;
+	private.NowParams.Axis[axisIndex].fixYmin = lowRange;
+	private.NowParams.Axis[axisIndex].fixYmax = highRange;
+	UpdateYRanges(AutoRange);
+}
+else
+	DebugTool_1.Log("Trends.SetIndividualRange: Ошибка установки диапазона значений");]]>
+		</body>
+		<param access-modifier="private" name="tag" display-name="" uuid="292b94d2-1f62-4077-a276-6ddd27b97ef6" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="lowRange" display-name="" uuid="f6d213e4-b8b9-4c02-a961-b6bc6b8b889d" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2"/>
+		<param access-modifier="private" name="highRange" display-name="" uuid="fe947c7a-a734-4ade-9bdc-5a91e1d3cb35" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="2"/>
+	</do>
+	<do access-modifier="private" name="FitToScreen" display-name="FitToScreen" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+if (private.ErrorAsString != "") return;
+//DebugTool_1.Log("FitToScreen");
+
+// восстанавливаем интервал по оси времени
+if (ActiveMode == unit.Const.amOPERATIVE)
+{
+	// в оперативном режиме восстанавливаем отображаемый интервал и запускаем проигрывание	
+	private.tCurInterval = OperativeDisplayedInterval * unit.Const.dtONE_MINUTE;
+	private.RestoreOperativeStoredInterval();
+	private.MoveToNow();
+	private.SetPause(false);
+}
+else
+{
+	// в историческом режиме восстанавливаем загруженный диапазон
+	t1:uint8 = private.NowParams.tHistRangeStart;
+	t2:uint8 = private.NowParams.tHistRangeEnd;
+	pChart_Hist_1.SetInterval(t1, t2);
+	pChart_Hist_2.SetInterval(t1, t2);
+	pChart_Hist_3.SetInterval(t1, t2);
+	pChart_Hist_4.SetInterval(t1, t2);
+	pChart_Hist_5.SetInterval(t1, t2);
+}
+
+// восстанавливаем интервал по оси значений
+private.NowParams.ResetUserScale();
+UpdateYRanges(AutoRange);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetHistoricalInterval" display-name="SetHistoricalInterval" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("SetHistoricalInterval ["+DateTime.ToString(dtFrom)+".."+DateTime.ToString(dtTo)+"]");
+pChart_Hist_1.SetHistoricalInterval(dtFrom, dtTo);
+pToolBar.SetHistoryInterval(dtFrom, dtTo);]]>
+		</body>
+		<param access-modifier="private" name="dtFrom" display-name="" uuid="32fa1b9d-1fab-45d3-a388-e64bc6f3b5f3" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+		<param access-modifier="private" name="dtTo" display-name="" uuid="5ba65f03-0b62-4fb0-af41-3c93bc884866" base-type="uint8" base-type-id="c8ff7701-da6e-4d53-888a-81fa680ff561" ver="3"/>
+	</do>
+	<do access-modifier="private" name="ReloadHistoricalData" display-name="ReloadHistoricalData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.Initializer();// инициализатор выполняется только один раз 
+
+pChart_Hist_1.RequestCounter.Value = 0;
+pChart_Hist_1.Chart.Timer_ValueQuery.Active = true;
+
+i:int4 = 1;
+while (i <= unit.Const.MAX_LINES)
+{
+	if (private.NowParams.Lines[i].TypeGraph == unit.Const.tgMAIN_GRAPH || private.NowParams.Lines[i].TypeGraph == unit.Const.tgLEVEL)
+		pChart_Hist_1.HistoryRequest(i);
+
+	i += 1;
+}
+//DebugTool_1.Log("ReloadHistoricalData.RequestCounter="+String.ToString(pChart_Hist_1.RequestCounter.Value));
+// Удаление реперов выходящих за пределы запрашиваемого диапазона
+i = 0;
+while (i < pChart_Hist_1.Chart.ControlLine.Length)
+{
+	if (pChart_Hist_1.Chart.ControlLine[i].Visible)
+	{
+		tCL:uint8 = Variant.ToUint8(pChart_Hist_1.Chart.ControlLine[i].Value, 0);
+		if (tCL<private.NowParams.tHistRangeStart || tCL>private.NowParams.tHistRangeEnd)
+		{
+			if (pChart_Hist_1.Chart.ControlLine[i].getActive())
+				private.RemoveActiveReper();
+			else
+				pChart_Hist_1.Chart.ControlLine[i].Visible = false;
+		}
+	}
+	i += 1;
+}
+
+if (private.LegendIsUse)
+	pLegend.Update();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="SynchroColorMarker" display-name="Синхронизировать цвет графика и выноски" uuid="a6dae1c8-17b3-43f7-975f-b04410d37352" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	<init target="LowRange" ver="5" value="0"/>
+	<init target="HighRange" ver="5" value="100"/>
+	<init target="GraphicThickness" ver="5" value="2"/>
+	<init target="InterpolationLine" ver="5" value="false"/>
+	<init target="YAxisPrecision" ver="5" value="4"/>
+	<init target="OperativeDisplayedInterval" ver="5" value="10"/>
+	<init target="ModeTimeSourceServer" ver="5" value="0"/>
+	<init target="ExportImportFolderPath" ver="5" value=""/>
+	<init target="SynchronizeColor" ver="5" value="true"/>
+	<init target="ShowRelativeTag" ver="5" value="false"/>
+	<init target="UseServerTime" ver="5" value="false"/>
+	<init target="ActiveMode" ver="5" value="0"/>
+	<init target="AutoRange" ver="5" value="true"/>
+	<init target="GlobalRanges" ver="5" value="true"/>
+	<object access-modifier="private" name="pLegend" display-name="pLegend" uuid="faab6386-b515-4350-948a-818e21b54148" base-type="Trends_Legend" base-type-id="12a9628e-5f57-42ef-afe7-6a7cf5b34b8d" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pToolBar" display-name="pToolBar" uuid="ec189c3a-6cc8-45de-a7e6-2e3ca4b40d44" base-type="Trends_ToolBar" base-type-id="c5a94cf9-44f5-45cc-b455-7d86479be8ca" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="ShowDataPoints" display-name="Видимость точек на графиках" uuid="b47f14a6-5fd6-4f76-aa48-ad442220279e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (private.OperChartIsUse[1]) pChart_Oper_1.ShowDataPoints = value;
+if (private.OperChartIsUse[2]) pChart_Oper_2.ShowDataPoints = value;
+if (private.OperChartIsUse[3]) pChart_Oper_3.ShowDataPoints = value;
+if (private.OperChartIsUse[4]) pChart_Oper_4.ShowDataPoints = value;
+if (private.OperChartIsUse[5]) pChart_Oper_5.ShowDataPoints = value;
+
+if (private.HistChartIsUse[1]) pChart_Hist_1.ShowDataPoints = value;
+if (private.HistChartIsUse[2]) pChart_Hist_2.ShowDataPoints = value;
+if (private.HistChartIsUse[3]) pChart_Hist_3.ShowDataPoints = value;
+if (private.HistChartIsUse[4]) pChart_Hist_4.ShowDataPoints = value;
+if (private.HistChartIsUse[5]) pChart_Hist_5.ShowDataPoints = value;
+
+]]>
+			</body>
+		</do-on>
+	</object>
+	<do access-modifier="private" name="SaveToFile" display-name="SaveToFile" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[// Используем имя файла без расширения для создания временнной папки 
+j: int4 = String.LastIndexOf(filePath, ".");											
+exportFolder: string = String.SubString(filePath, 0, j);
+
+private.ExportFile = filePath; // Сохраняем имя файла для формирования конечного файл архива
+private.ExportTrendsPath = exportFolder; // Переменную использует ExportLines
+private.ExportLines();]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="fb9cec63-0480-435f-851b-d39d38f3a6a3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do access-modifier="private" name="SaveSignalsList" display-name="SaveSignalsList" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+folder: string = FileManager.ParentPath(filePath);
+if (!FileManager.Exists(folder))
+	FileManager.CreateRecursiveFolder(folder);
+
+i:int4 = 1;
+n:int4 = 0;
+while (i <= unit.Const.MAX_LINES)
+{
+	if (private.NowParams.Lines[i].Used)
+		n += i;
+	i += 1;
+}
+private.ExportParams(n, filePath);
+
+return FileManager.Exists(filePath);]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="b1b7c177-782e-4ba0-8114-3758c9ff133c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<do access-modifier="private" name="LoadSignalsList" display-name="LoadSignalsList" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+if (FileManager.Exists(filePath))//проверка на существование файла
+{
+	if (private.ExParams.LoadFromFile(filePath))  // Загружаем параметры сипска сигналов в набор переменных private.ExParams
+	{
+		//DebugTool_1.Log("Interval=" + String.ToString(private.ExParams.Ymin[0]) + ".." + String.ToString(private.ExParams.Ymax[0]));
+
+		if (private.ExParams.LinesCount > 0)
+		{
+			i:int4 = 1;
+			while (i <= private.ExParams.LinesCount)
+			{
+				tag: string = private.ExParams.Lines[i].Tag;
+
+				// Проверяем не повторяется ли сигнал
+				if (!private.Items.TagIsUse(tag))
+				{
+					// добавляем график сигнала
+					index: int4 = private.Items.Add(private.ExParams.Lines[i].Tag, 
+														private.ExParams.Lines[i].Unit, 
+														private.ExParams.Lines[i].Description,
+														private.ExParams.Lines[i].nXColumn, 
+														private.ExParams.Lines[i].TypeGraph);
+					if (index > 0)
+					{					
+						private.ExParams.nItem[i] = index;
+						// Заменяем параметры по умолчанию параметрами загруженными из файла
+						private.NowParams.CopyLineFromEx(index, i);
+						private.NowParams.Lines[index].nChart = 1;
+					}
+				}
+				else
+				{	
+					private.ExParams.nItem[i] = 0;		// Обозначаем, что сигнал не добавлен		
+					DebugTool_1.Log("Trends.LoadSignalsList. Тэг " + tag + " уже используется");		
+				}
+				i += 1;
+			}
+			private.Lines.Update();
+			
+			// Обновляем номера осей для привязки, с учетом новых индексов графиков
+			i = 1;
+			while (i <= private.ExParams.LinesCount)
+			{
+				axisIndex: int4 =  private.ExParams.nItem[private.ExParams.Lines[i].numAxis];
+				index: int4 = private.ExParams.nItem[i];
+				if (index != 0)
+				{
+					if (axisIndex != 0)
+						private.NowParams.Lines[index].numAxis = axisIndex;
+					else
+						private.NowParams.Lines[index].numAxis = private.ExParams.nItem[i];
+						// восстанавливаем диапазон значений для индивидуальной оси
+					if (private.ExParams.Axis[i].Yscale == unit.Const.scFIXED)
+					{
+						pChart_Oper_1.SetYRange(axisIndex, private.ExParams.Axis[i].Ymin, private.ExParams.Axis[i].Ymax);
+						pChart_Hist_1.SetYRange(axisIndex, private.ExParams.Axis[i].Ymin, private.ExParams.Axis[i].Ymax);
+					}
+				}
+				i += 1;
+			}
+			// восстанавливаем диапазон значений общей оси
+			if (private.ExParams.Axis[0].Yscale == unit.Const.scFIXED)
+			{
+				pChart_Oper_1.SetYRange(0, private.ExParams.Axis[0].Ymin, private.ExParams.Axis[0].Ymax);
+				pChart_Hist_1.SetYRange(0, private.ExParams.Axis[0].Ymin, private.ExParams.Axis[0].Ymax);
+			}
+			if (private.LegendIsUse)
+				pLegend.Update();
+		}
+		
+		// Обновляем привязку осей
+		AxisLinkUpdate(private.ExParams.bGlobalRanges);
+		
+		// восстанавливаем режим масштабирования, не изменяя диапазонов осей, так они были загружены из файла
+		AutoRange = private.ExParams.bAutoRange;
+
+		t0:uint8 = private.ExParams.tHistRangeStart;
+		t1:uint8 = private.ExParams.tHistRangeEnd;
+		private.NowParams.tHistRangeStart = t0;
+		private.NowParams.tHistRangeEnd = t1;
+		pToolBar.SetHistoryInterval(t0 + private.TimeZone, t1 + private.TimeZone);
+		//DebugTool_1.Log("Trends.LoadSignalsList Файл " + filePath + "  загружен.");
+		return true;
+	}
+	else
+		return false;
+}
+else
+{
+	DebugTool_1.Log("Trends.LoadSignalsList Файл " + filePath + "  не найден.");
+	return false;
+}]]>
+		</body>
+		<param access-modifier="private" name="filePath" display-name="" uuid="9e1529d4-f3e5-434a-bc37-f6c239e61d06" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+	</do>
+	<do access-modifier="private" name="GetEventParam" display-name="GetEventParam" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+if (numParam>=0 && numParam<private.EventParams.Length)
+	return private.EventParams[numParam];
+else
+	return "";]]>
+		</body>
+		<param access-modifier="private" name="numParam" display-name="" uuid="8a5875fd-84e0-4b90-bd87-beb99ebc22c7" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+	</do>
+	<object access-modifier="private" name="pStatusLine" display-name="pStatusLine" uuid="72343ad0-ad3d-4b7d-895e-e0fa89f38cc9" base-type="Trends_Status" base-type-id="60ec2e95-2b2d-4f82-9cbe-d981c7cd7032" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="OpenPrint" display-name="OpenPrint" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[private.bPrint = true;
+private.ExportTrendsPath = FileManager.CombinePath(private.ExportPath, "PrintTrends");			
+//DebugTool_1.Log("Сохранение данных для печати в " + private.ExportTrendsPath);				
+private.ExportLines();
+if (ActiveMode == unit.Const.amOPERATIVE)
+	private.Open_PrintDialog_Oper.Invoke();
+else
+	private.Open_PrintDialog_Hist.Invoke();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="ShowMilliseconds" display-name="Показывать миллисекунды" uuid="f685f9ac-a34f-4522-8f95-e26e50199d43" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="AccessPrinterSelect" display-name="Разрешить выбор принтера" uuid="9d229a1b-b730-4fc1-bf2a-b67590d5b6e3" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="08206367-abe2-43ef-a571-54870a9cff55" base-type="Trends_Theme" base-type-id="3fbfa4c2-c742-4bec-94dc-d1bcb7ef25b6" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="SetStringTagYValue" display-name="SetStringTagYValue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="index" display-name="" uuid="437227f5-b3fb-4f7d-80bf-67d002ce343f" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+		<param access-modifier="private" name="value" display-name="" uuid="cd5b5c53-28f6-44d3-ac56-2dc95e109fd6" base-type="float8" base-type-id="7ad62ecf-96dd-4751-9b96-e77954b44409" ver="4"/>
+		<body kind="om">
+			<![CDATA[if (index == unit.Const.ALL)
+{
+	i:int4 = 0;
+	while (i <= unit.Const.MAX_LINES)
+	{
+		private.NowParams.Lines[i].StringTagYValue = value;
+		i += 1;		
+	}
+}
+else
+{
+	private.NowParams.Lines[index].StringTagYValue = value;
+}
+
+pChart_Oper_1.Lines.SetStringTagYValue(index, value);
+pChart_Oper_2.Lines.SetStringTagYValue(index, value);
+pChart_Oper_3.Lines.SetStringTagYValue(index, value);
+pChart_Oper_4.Lines.SetStringTagYValue(index, value);
+pChart_Oper_5.Lines.SetStringTagYValue(index, value);
+
+pChart_Hist_1.Lines.SetStringTagYValue(index, value);
+pChart_Hist_2.Lines.SetStringTagYValue(index, value);
+pChart_Hist_3.Lines.SetStringTagYValue(index, value);
+pChart_Hist_4.Lines.SetStringTagYValue(index, value);
+pChart_Hist_5.Lines.SetStringTagYValue(index, value);
+]]>
+		</body>
+	</do>
+	<init target="DataUpdatePeriod" ver="5" value="1000"/>
+	<init target="SynchroColorMarker" ver="5" value="false"/>
+	<init target="pLayoutUpdate" ver="5">
+		<object access-modifier="private" uuid="c78806c5-d0fb-43e5-9654-a60aa969cc58" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+		</object>
+	</init>
+	<init target="ShowDataPoints" ver="5" value="true"/>
+	<init target="ShowMilliseconds" ver="5" value="false"/>
+	<init target="AccessPrinterSelect" ver="5" value="true"/>
+	<object access-modifier="private" name="EnableManualColor" display-name="Включать индикацию ручного ввода" uuid="926416d3-468f-4aaf-b0e1-6afbd7823bad" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	<object access-modifier="private" name="DefaultManualColor" display-name="Цвет ручного ввода по умолчанию" uuid="278d6b4a-8efb-4080-a1d0-e8b5d33cebb0" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+	<object access-modifier="private" name="EnableTitlePrint" display-name="EnableTitlePrint" uuid="6f24178c-f578-4cfc-a61d-fe661b5226d4" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="TitlePrint" display-name="TitlePrint" uuid="ad453ff9-8a2d-421b-a3d0-8f2b01c142c9" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="ShowError" display-name="ShowError" uuid="1fd4ed0a-c3ee-446a-9698-afefbe8a9573" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="e202b1b7-2ce9-499c-8026-c027fbd83103" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Icon" ver="5" value="3"/>
+				<init target="Buttons" ver="5" value="0"/>
+				<init target="Message" ver="5">
+					<expr>
+						<![CDATA[message]]>
+					</expr>
+				</init>
+				<designed target="WindowCaption" value="Ошибка" ver="4"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="4fb5a5fc-dfbe-450b-89bf-b75be57da251" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<object access-modifier="private" name="ShowComplete" display-name="ShowComplete" uuid="5b724d33-8f3e-4169-8b6f-21a659222400" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="ada4956f-b2ca-4af0-a380-4a3276e01584" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="pTheme" ver="5" ref="here.pTheme"/>
+				<init target="Icon" ver="5" value="0"/>
+				<init target="Buttons" ver="5" value="0"/>
+				<init target="Message" ver="5">
+					<expr>
+						<![CDATA[message]]>
+					</expr>
+				</init>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="d059e725-7f4f-480c-b9bd-7476bab04ca5" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<do access-modifier="private" name="ConfigureGraphic" display-name="ConfigureGraphic" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<param access-modifier="private" name="tag" display-name="" uuid="02a63f79-7fb3-4dba-9a51-9393054140f4" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<param access-modifier="private" name="sJsonConfiguration" display-name="" uuid="8ea1bb6a-1b17-48e3-8780-d63ffe2e578c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+		<body kind="javascript">
+			<![CDATA[private.Initializer();  // инициализатор выполняется только один раз 
+
+var result = false;
+var index = private.Items.GetIndexByPath(tag);
+
+if (index >= 0)		
+{
+	var Config = JSON.parse(sJsonConfiguration);
+
+	if (Config.description != null)
+	{
+		private.NowParams.Lines[index].Description = Config.description;
+		if (private.OperChartIsUse[1])	pChart_Oper_1.Lines.SetDescription(index, Config.description);
+		if (private.OperChartIsUse[2])	pChart_Oper_2.Lines.SetDescription(index, Config.description);
+		if (private.OperChartIsUse[3])	pChart_Oper_3.Lines.SetDescription(index, Config.description);
+		if (private.OperChartIsUse[4])	pChart_Oper_4.Lines.SetDescription(index, Config.description);
+		if (private.OperChartIsUse[5])	pChart_Oper_5.Lines.SetDescription(index, Config.description);
+		if (private.HistChartIsUse[1])	pChart_Hist_1.Lines.SetDescription(index, Config.description);
+		if (private.HistChartIsUse[2])	pChart_Hist_2.Lines.SetDescription(index, Config.description);
+		if (private.HistChartIsUse[3])	pChart_Hist_3.Lines.SetDescription(index, Config.description);
+		if (private.HistChartIsUse[4])	pChart_Hist_4.Lines.SetDescription(index, Config.description);
+		if (private.HistChartIsUse[5])	pChart_Hist_5.Lines.SetDescription(index, Config.description);
+	}
+	if (Config.unit != null)
+	{
+		private.NowParams.Lines[index].Unit = Config.unit;
+		if (private.OperChartIsUse[1])	pChart_Oper_1.Lines.SetUnits(index, Config.unit);
+		if (private.OperChartIsUse[2])	pChart_Oper_2.Lines.SetUnits(index, Config.unit);
+		if (private.OperChartIsUse[3])	pChart_Oper_3.Lines.SetUnits(index, Config.unit);
+		if (private.OperChartIsUse[4])	pChart_Oper_4.Lines.SetUnits(index, Config.unit);
+		if (private.OperChartIsUse[5])	pChart_Oper_5.Lines.SetUnits(index, Config.unit);
+		if (private.HistChartIsUse[1])	pChart_Hist_1.Lines.SetUnits(index, Config.unit);
+		if (private.HistChartIsUse[2])	pChart_Hist_2.Lines.SetUnits(index, Config.unit);
+		if (private.HistChartIsUse[3])	pChart_Hist_3.Lines.SetUnits(index, Config.unit);
+		if (private.HistChartIsUse[4])	pChart_Hist_4.Lines.SetUnits(index, Config.unit);
+		if (private.HistChartIsUse[5])	pChart_Hist_5.Lines.SetUnits(index, Config.unit);
+	}
+	if (Config.thicknessGood != null)
+	{
+		private.NowParams.Lines[index].WidthGood = Config.thicknessGood;
+	}
+	if (Config.thicknessBad != null)
+	{
+		private.NowParams.Lines[index].WidthBad = Config.thicknessBad;
+	}
+	if (Config.brushStyleGood != null)
+	{
+		if (Config.brushStyleGood>=0 && Config.brushStyleGood<=5)
+			private.NowParams.Lines[index].StyleGood = Config.brushStyleGood;
+		else
+			log("Trends.ConfigureGraphic: Недопустимое значение в параметре brushStyleGood.");
+	}
+	if (Config.brushStyleBad != null)
+	{
+		if (Config.brushStyleBad>=0 && Config.brushStyleBad<=5)
+			private.NowParams.Lines[index].StyleBad = Config.brushStyleBad;
+		else
+			log("Trends.ConfigureGraphic: Недопустимое значение в параметре brushStyleBad.");
+	}
+	if (Config.color != null)
+	{
+		private.NowParams.Lines[index].ColorMain = Config.color;
+	}
+	if (Config.colorManual != null)
+	{
+		private.NowParams.Lines[index].ColorManual = Config.colorManual;
+			// Флаг использования цвета ручного ввода устанавливается автоматически, если цвет не совпадает с основным цветом
+		private.NowParams.Lines[index].bUseColorManual = (Config.colorManual != private.NowParams.Lines[index].ColorMain);
+	}
+	if (Config.useColorManual != null)
+	{
+		private.NowParams.Lines[index].bUseColorManual = Config.useColorManual;
+	}
+	if (Config.synchroColorMarker != null)
+	{
+		private.NowParams.Lines[index].bSyncroColorMarkerLabels = Config.synchroColorMarker;
+	}
+	if (Config.markerLabelVisible != null)
+	{
+		private.NowParams.Lines[index].bShowMarkerLabels = Config.markerLabelVisible;
+	}
+	if (Config.tagAxis != null)
+	{
+		SetGraphicAxis(tag, Config.tagAxis);
+	}
+	if (Config.colorAxis != null)
+	{
+		var nAxis = private.NowParams.Lines[index].numAxis;
+		private.NowParams.Axis[nAxis].ColorY = Config.colorAxis;
+	}
+	if (Config.lowRange!=null && Config.highRange!=null)
+	{
+		SetIndividualRange(tag, Config.lowRange, Config.highRange);
+	}
+	if (Config.pointSymbol != null)
+	{
+		if (Config.pointSymbol>=0 && Config.pointSymbol<=7)
+		{
+			private.NowParams.Lines[index].PointSymbol = private.Markers.Symbols[Config.pointSymbol];
+			private.NowParams.Lines[index].PointSymbolCode = private.Markers.Codes[Config.pointSymbol];
+		}
+		else
+			log("Trends.ConfigureGraphic: Недопустимое значение в параметре Config.pointSymbol.");
+	}
+	if (Config.interpolation != null)
+	{
+		if (private.OperChartIsUse[1]) pChart_Oper_1.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.OperChartIsUse[2]) pChart_Oper_2.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.OperChartIsUse[3]) pChart_Oper_3.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.OperChartIsUse[4]) pChart_Oper_4.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.OperChartIsUse[5]) pChart_Oper_5.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.HistChartIsUse[1]) pChart_Hist_1.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.HistChartIsUse[2]) pChart_Hist_2.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.HistChartIsUse[3]) pChart_Hist_3.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.HistChartIsUse[4]) pChart_Hist_4.Lines.Set_Interpolation(index, Config.interpolation);
+		if (private.HistChartIsUse[5]) pChart_Hist_5.Lines.Set_Interpolation(index, Config.interpolation);
+	}
+	
+	private.Lines.Update();
+	if (private.LegendIsUse) pLegend.Update();
+	result = true;
+}
+return result;
+]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="pChart_Hist_1" display-name="pChart_Hist_1" uuid="2eb7dace-ae34-44bd-ac5f-17d8d02a5079" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pChart_Hist_2" display-name="pChart_Hist_2" uuid="ffbb894d-d396-4c29-925e-a22966f30152" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pChart_Hist_3" display-name="pChart_Hist_3" uuid="c42149e9-75d8-475b-bccd-ec5aa936c2e0" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pChart_Hist_4" display-name="pChart_Hist_4" uuid="6b2562db-cf00-4c57-a1ae-e331dda6d03e" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="pChart_Hist_5" display-name="pChart_Hist_5" uuid="9484ee65-3083-4be7-ba07-0d6b2acf099f" base-type="Trends_Chart" base-type-id="659f73ba-7fa5-4aa4-ac4d-623541275829" base-const="true" base-ref="true" ver="5"/>
+	<do access-modifier="private" name="UpdateYRanges" display-name="UpdateYRanges" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("UpdateYRanges");
+if (AutoRange != autoRange)
+{
+	AutoRange = autoRange;
+	AutoRange.oldValue = autoRange;
+}
+pChart_Oper_1.UpdateYRanges(autoRange);
+pChart_Oper_2.UpdateYRanges(autoRange);
+pChart_Oper_3.UpdateYRanges(autoRange);
+pChart_Oper_4.UpdateYRanges(autoRange);
+pChart_Oper_5.UpdateYRanges(autoRange);
+pChart_Hist_1.UpdateYRanges(autoRange);
+pChart_Hist_2.UpdateYRanges(autoRange);
+pChart_Hist_3.UpdateYRanges(autoRange);
+pChart_Hist_4.UpdateYRanges(autoRange);
+pChart_Hist_5.UpdateYRanges(autoRange);]]>
+		</body>
+		<param access-modifier="private" name="autoRange" display-name="" uuid="2eadc5e3-eaac-40b7-a2af-cd3195b938be" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	</do>
+	<object access-modifier="private" name="OnSaveTable" display-name="OnSaveTable" uuid="5fbd9ca8-282d-4e94-8b65-30a6699bd597" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnDoPrintSettings" display-name="OnDoPrintSettings" uuid="2860540f-abdf-4e76-9ec4-2d9c15649882" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnPrint" display-name="OnPrint" uuid="489cff97-f4c2-4248-ac60-2268d83deb11" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnSaveSignalList" display-name="OnSaveSignalList" uuid="51fb96ed-68db-4ef6-a0f1-a884580f15c1" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnAPSource_ConnectionChanged" display-name="OnAPSource_ConnectionChanged" uuid="1cf95575-515a-44e6-8175-daa99281a544" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="pLayoutUpdate" display-name="pLayoutUpdate" uuid="21402e32-67b2-496a-b05a-3f2ac51d70c5" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<init target="TicksCountAxisX" ver="5" value="7"/>
+	<init target="TicksCountAxisY" ver="5" value="10"/>
+	<init target="EnableManualColor" ver="5" value="false"/>
+	<init target="DefaultManualColor" ver="5" value="0xff00bfff"/>
+	<object access-modifier="private" name="ShowMiniTrends" display-name="ShowMiniTrends" uuid="e56323e4-33ed-4b01-b50c-96073246c13f" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+	<do access-modifier="private" name="AxisLinkUpdate" display-name="AxisLinkUpdate" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//DebugTool_1.Log("AxisLinkUpdate");
+if (GlobalRanges != globalRanges)
+{
+	GlobalRanges = globalRanges;
+	GlobalRanges.oldValue = globalRanges;		// Чтобы не было повторного вызова функции из обработчика свойства
+}
+pChart_Oper_1.AxisLinkUpdate(globalRanges);
+pChart_Oper_2.AxisLinkUpdate(globalRanges);
+pChart_Oper_3.AxisLinkUpdate(globalRanges);
+pChart_Oper_4.AxisLinkUpdate(globalRanges);
+pChart_Oper_5.AxisLinkUpdate(globalRanges);
+pChart_Hist_1.AxisLinkUpdate(globalRanges);
+pChart_Hist_2.AxisLinkUpdate(globalRanges);
+pChart_Hist_3.AxisLinkUpdate(globalRanges);
+pChart_Hist_4.AxisLinkUpdate(globalRanges);
+pChart_Hist_5.AxisLinkUpdate(globalRanges);]]>
+		</body>
+		<param access-modifier="private" name="globalRanges" display-name="" uuid="0d3f6c93-9420-4a0f-9597-c73e4b09874d" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+	</do>
+	<init target="RedLineShift" ver="5" value="1"/>
+	<object access-modifier="private" name="OnSaveSettings" display-name="OnSaveSettings" uuid="0bfb0380-29d0-4537-9449-cbd0d28723ff" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="OnLoadData" display-name="OnLoadData" uuid="afa5e113-f372-4717-ae78-fcfd05a9da1f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="OnSaveTrends" display-name="OnSaveTrends" uuid="89001509-384e-435f-b514-b59dcfa000ea" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+</type>
+

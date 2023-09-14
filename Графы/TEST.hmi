@@ -1,0 +1,8 @@
+<unit uuid="a87c87da-87fa-4bdd-9b99-1365e384efda" name="TEST" display-name="TEST" description="" ver="5" main-form-id="52ba4c07-f54c-4d06-9300-cc4a2c258280">
+	<object file="MainForm.omobj" filter=""/>
+	<unit-link name="CommonLib" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="CommonLib" ver="5"/>
+	<unit-link name="Alarms" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="Alarms" ver="5"/>
+	<unit-link name="Alpha_HMI_SecurityConfigurator" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="Alpha.HMI.SecurityConfigurator" ver="5"/>
+	<unit-link name="Trends" type="b0491687-7585-47f3-b51f-4e24fd62aef1" type-hint="" assembly-path="Trends" ver="5"/>
+</unit>
+

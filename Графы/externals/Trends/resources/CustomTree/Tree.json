@@ -1,0 +1,31 @@
+{
+ "UserTree": [
+  {
+   "Signal": {
+    "UserTree": "Температуры/Температура в прямом трубопроводе котлов   [5а]",
+    "OpcTag": "root.signal_float 1",
+    "EUnit": "°C",
+    "Description": "Температура в прямом трубопроводе котлов   [5а]",
+    "DataType":"float"
+   }
+  },
+  {
+   "Signal": {
+    "UserTree": "Температуры/Температура в обратном трубопроводе котлов   [5в]",
+    "OpcTag": "root.signal_float 2",
+    "EUnit": "°C",
+    "Description": "Температура в обратном трубопроводе котлов   [5в]",
+    "DataType":"float"
+   }
+  },
+  {
+   "Signal": {
+    "UserTree": "Давление/Камера 1   [Па]",
+    "OpcTag": "root.signal_i1",
+    "EUnit": "Па",
+    "Description": "Давление в камере 1   [Па]",
+    "DataType":"int1"
+   }
+  }
+ ]
+}

@@ -1,0 +1,321 @@
+<type access-modifier="private" name="ChangeUserGroup" display-name="ChangeUserGroup" uuid="af7a739b-e65e-4aa0-a684-9d43e247e7b4" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="210" ver="2"/>
+	<designed target="Height" value="345" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="210" ver="2"/>
+	<designed target="WindowHeight" value="345" ver="2"/>
+	<designed target="WindowCaption" value="Выбор группы" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="3" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[private.ActionCanExecute = false;
+SecurityManager.RequestGroupList();
+GroupTree.Init();
+]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="ActionButton" display-name="ActionButton" uuid="b101fb31-2a26-4937-a3b7-45b74763c885" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="30" ver="2"/>
+		<designed target="Y" value="310" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="90" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Действие" ver="2"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="Checkable" value="false" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed">
+			<body kind="om">
+				<![CDATA[ApplySelected();]]>
+			</body>
+		</do-on>
+		<init target="Enabled" ver="4" value="false"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="OnClickFontColor" value="0xff000000" ver="4"/>
+		<designed target="OnHoverFontColor" value="0xff000000" ver="4"/>
+		<designed target="DisabledFontColor" value="0xff808080" ver="4"/>
+		<designed target="BrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="4"/>
+		<designed target="OnClickBrushStyle" value="1" ver="4"/>
+		<designed target="OnHoverBrushColor" value="0xffffffff" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="PenColor" value="0xff000000" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[private.ActionCanExecute && private.SelectedGroup != ""]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="CancelButton" display-name="CancelButton" uuid="6b145e63-455b-45b3-8054-6f3259a8027b" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+		<designed target="X" value="130" ver="2"/>
+		<designed target="Y" value="310" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="70" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Отмена" ver="2"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<designed target="Checkable" value="false" ver="3"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="close"/>
+		<designed target="Checked" value="false" ver="4"/>
+		<designed target="TextAlignment" value="132" ver="4"/>
+		<designed target="OnClickFontColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverFontColor" value="4278190080" ver="4"/>
+		<designed target="DisabledFontColor" value="4278190080" ver="4"/>
+		<designed target="BrushColor" value="4293980400" ver="4"/>
+		<designed target="BrushStyle" value="1" ver="4"/>
+		<designed target="OnClickBrushColor" value="4288716960" ver="4"/>
+		<designed target="OnClickBrushStyle" value="1" ver="4"/>
+		<designed target="OnHoverBrushColor" value="4294967295" ver="4"/>
+		<designed target="OnHoverBrushStyle" value="1" ver="4"/>
+		<designed target="DisabledBrushColor" value="4288716960" ver="4"/>
+		<designed target="DisabledBrushStyle" value="1" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="1" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="OnClickPenColor" value="4278190080" ver="4"/>
+		<designed target="OnClickPenStyle" value="1" ver="4"/>
+		<designed target="OnClickPenWidth" value="1" ver="4"/>
+		<designed target="OnHoverPenColor" value="4278190080" ver="4"/>
+		<designed target="OnHoverPenStyle" value="1" ver="4"/>
+		<designed target="OnHoverPenWidth" value="1" ver="4"/>
+		<designed target="DisabledPenColor" value="4288716960" ver="4"/>
+		<designed target="DisabledPenStyle" value="1" ver="4"/>
+		<designed target="DisabledPenWidth" value="1" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="9198ed98-1329-4c12-80d3-189a3901a069" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="SecurityManager" display-name="SecurityManager" uuid="30c10ca4-9cf9-4a66-9c82-5e9827dbfb32" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="4">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="RequestGroupListComplete">
+			<body kind="om">
+				<![CDATA[private.ActionCanExecute = true;
+groupList:string = "";
+if (NeedDeleteGroup) {
+	groupList = private.GetUserGroups(JSONGroupList, currentUserGroup);
+	ActionButton.Text = "Удалить";
+} else {
+	groupList = private.GetAvailableGroups(JSONGroupList, currentUserGroup);
+	ActionButton.Text = "Добавить";
+}
+if (groupList != "") LoadDataToTree(groupList);]]>
+			</body>
+		</do-on>
+		<init target="SecurityContext" ver="4">
+			<object access-modifier="private" uuid="87019523-aa90-4ac5-95ff-4785cc7e6cd6" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+		</init>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="RequestGroupListFailed">
+			<body kind="om">
+				<![CDATA[private.ActionCanExecute = true;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="96faa6d0-ea24-4a0c-bed9-29a3ae61b840" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="0" ver="4"/>
+		<designed target="Height" value="0" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="ActionCanExecute" display-name="ActionCanExecute" uuid="424cddfd-b424-4daa-b965-60ee6f354ffc" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[//allGroups = allGroups;
+currentUserGroup = currentUserGroup;]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="SelectedGroup" display-name="SelectedGroup" uuid="95a630f6-910c-4cf8-a9b7-6704e3bc08b4" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do access-modifier="private" name="GetUserGroups" display-name="GetUserGroups" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var formatedGroupList = [];
+var allGroupList = JSON.parse(allGroupListJSON).data;
+var userGroupList = JSON.parse(userGroupListJSON).data;
+
+userGroupList.forEach(currentGroup => formatedGroupList.push({"displayName":currentGroup.groupName ,"uid":currentGroup.groupID}));
+
+return JSON.stringify({"data":formatedGroupList});
+]]>
+			</body>
+			<param access-modifier="private" name="allGroupListJSON" display-name="" uuid="6e674ae8-34d8-4bb4-a52f-f238c0ddbe4d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="userGroupListJSON" display-name="" uuid="fb71e4d9-3df7-4476-8f70-4b15ea8b2dba" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<init target="ActionCanExecute" ver="5" value="false"/>
+		<do access-modifier="private" name="GetAvailableGroups" display-name="GetAvailableGroups" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var allGroupList = JSON.parse(allGroupListJSON).data;
+var currentGroups = JSON.parse(userGroupListJSON).data;
+
+if (currentGroups.length > 0 && currentGroups.length < allGroupList.length){
+	for (let userGroup of currentGroups) {
+		allGroupList = allGroupList.filter(group => group.uid != userGroup.groupID);
+	}
+}
+
+return JSON.stringify({"data":allGroupList});]]>
+			</body>
+			<param access-modifier="private" name="allGroupListJSON" display-name="" uuid="cd49fd72-3c37-4911-bfd5-ec663c5e1a09" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			<param access-modifier="private" name="userGroupListJSON" display-name="" uuid="188d7a7d-55f4-4992-81a9-72cc4f9596ad" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="currentUserGroup" display-name="currentUserGroup" uuid="459cf792-2f51-4d31-931b-9d49b46c8cbf" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="2"/>
+	<object access-modifier="private" name="NeedDeleteGroup" display-name="NeedDeleteGroup" uuid="24156e6c-c1d5-4702-8f05-bc3a9465db19" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="2">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (value) {
+	if (currentUserGroup != ""){
+		LoadDataToTree(currentUserGroup);
+	}
+	ActionButton.Text = "Удалить";
+} else {
+	SecurityManager.RequestGroupList();
+	ActionButton.Text = "Добавить";
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Result" display-name="Result" uuid="40776416-dbc9-4573-ac0b-4221e9580423" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="doAction" display-name="doAction" uuid="47df8469-6e4f-4a0a-b9d7-4f41a7f28005" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="GroupTree" display-name="GroupTree" uuid="80ca6bb1-d803-4452-a6ad-31910eebfaf5" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="210" ver="4"/>
+		<designed target="Height" value="300" ver="4"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="4"/>
+		<designed target="FontColor" value="4278190080" ver="4"/>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameVisible" value="true" ver="4"/>
+		<designed target="ColumnCount" value="3" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[//настройка дерева
+
+GroupTree.SetColumnName("Выбор группы", 0);
+
+GroupTree.SetColumnName("displayName", 1);
+GroupTree.SetColumnHidden(1, true); 
+
+GroupTree.SetColumnName("uid", 2);
+GroupTree.SetColumnHidden(2, true); 
+]]>
+			</body>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemClicked">
+			<body kind="om">
+				<![CDATA[currentGroup: string = Variant.ToString(GroupTree.GetItemData(itemId,2),"");
+private.SelectedGroup = (currentGroup !="")?(currentGroup):("");]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ItemDoubleClicked">
+			<body kind="om">
+				<![CDATA[if (private.ActionCanExecute)
+	ApplySelected();]]>
+			</body>
+		</do-on>
+		<designed target="HeaderVisible" value="true" ver="5"/>
+		<designed target="CurrentItem" value="" ver="5"/>
+	</object>
+	<do access-modifier="private" name="LoadDataToTree" display-name="LoadDataToTree" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var groupsList = JSON.parse(groupListJson).data;
+var groupTree = GroupTree;
+var nodeId, parentNodeId;
+var treeData = new Map();
+
+groupTree.RemoveChildren("");
+if (groupsList.length != 0) {
+	groupsList = groupsList.sort((a, b) => a.displayName.toString().toLowerCase() > b.displayName.toString().toLowerCase() ? 1 : -1);
+	for (let group of groupsList){
+		parentNodeId = (group.parent_id != undefined)?((treeData.has(group.parent_id))?(treeData.get(group.parent_id)):("")):("");
+		nodeId = groupTree.AddItem(parentNodeId,group.displayName);
+		groupTree.SetItemIconPath(nodeId,"Security_Icons/Group_small.png",0);
+		groupTree.SetItemData(nodeId, group.displayName, 1);
+		groupTree.SetItemData(nodeId, group.uid, 2);
+		treeData.set(group.uid, nodeId);
+	}
+}
+]]>
+		</body>
+		<param access-modifier="private" name="groupListJson" display-name="" uuid="0bd25c39-44f2-4219-a7c5-453faf4db18d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="ApplySelected" display-name="ApplySelected" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (private.SelectedGroup != "") {
+	Result.Value = private.SelectedGroup;
+	doAction.Invoke();
+	Close();
+}]]>
+		</body>
+	</do>
+</type>
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<type access-modifier="public" name="Theme" display-name="Theme" uuid="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="BackgroundColor" display-name="Цвет фона" uuid="a1db124e-50a3-47f0-89ed-93b7d2761e7d" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="ForegroundColor" display-name="Цвет текста" uuid="01ce7566-e551-4981-8ba4-847df133984e" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="DisabledFontColor" display-name="Цвет текста при выключении" uuid="bba85648-2f9e-4c6b-bd51-9b312dd6b3e8" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="EditorBrushColor" display-name="Цвет фона редактора" uuid="2cb38916-cd4a-412e-9458-5b1f35b287ee" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="EditorFontColor" display-name="Цвет текста в редакторе" uuid="a9512e24-eeb6-48a4-9bde-091befa62513" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="SelectionColor" display-name="Цвет выделения" uuid="99b04de0-4f41-40f7-85b2-e1386e4efd56" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="BorderColor" display-name="Цвет рамки" uuid="76a7f04c-59c3-4fd4-bc49-d7dbd2c16959" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<object access-modifier="private" name="DisabledBorderColor" display-name="Цвет рамки при выключении" uuid="99677fe9-be2e-4910-a667-5558356977e1" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+	<init target="BackgroundColor" ver="5" value="0xfff0f0f0"/>
+	<init target="ForegroundColor" ver="5" value="0xff000000"/>
+	<init target="BorderColor" ver="5" value="0xff808080"/>
+	<init target="EditorBrushColor" ver="5" value="0xffffffff"/>
+	<init target="EditorFontColor" ver="5" value="0xff000000"/>
+	<init target="SelectionColor" ver="5" value="0xffcde8ff"/>
+	<init target="DisabledFontColor" ver="5" value="0xffa0a0a0"/>
+	<init target="DisabledBorderColor" ver="5" value="0xffa0a0a0"/>
+	<object access-modifier="public" name="Presets" display-name="Presets" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" uuid="5beff42a-84f2-429e-8cc1-c27d24964a01">
+		<do access-modifier="private" name="Light" display-name="Light" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[BackgroundColor = 0xfff0f0f0;
+ForegroundColor = 0xff000000;
+DisabledFontColor = 0xffa0a0a0;
+EditorBrushColor = 0xffffffff;
+EditorFontColor = 0xff000000;
+SelectionColor = 0xffcde8ff;
+BorderColor = 0xff808080;
+DisabledBorderColor = 0xffa0a0a0;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Gray" display-name="Gray" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[BackgroundColor = 0xffcccccc;
+ForegroundColor = 0xff000000;
+DisabledFontColor = 0xffa0a0a0;
+EditorBrushColor = 0xffe0e0e0;
+EditorFontColor = 0xff000000;
+SelectionColor = 0xfff3f3f3;
+BorderColor = 0xff808080;
+DisabledBorderColor = 0xffa0a0a0;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Dark" display-name="Dark" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[BackgroundColor = 0xff00344a;
+ForegroundColor = 0xfff0f0f0;
+DisabledFontColor = 0xffa0a0a0;
+EditorBrushColor = 0xff416075;
+EditorFontColor = 0xffffffff;
+SelectionColor = 0xff557e99;
+BorderColor = 0xffb0b0b0;
+DisabledBorderColor = 0xffa0a0a0;]]>
+			</body>
+		</do>
+	</object>
+	<do access-modifier="private" name="GetViewSettings" display-name="GetViewSettings" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var settings = {
+	"Background": ColorToHex(BackgroundColor.Value),
+	"Foreground": ColorToHex(ForegroundColor.Value),
+	"DisabledFont": ColorToHex(DisabledFontColor.Value),
+	"EditorBrush": ColorToHex(EditorBrushColor.Value),
+	"EditorFont": ColorToHex(EditorFontColor.Value),
+	"Selection": ColorToHex(SelectionColor.Value),
+	"Border": ColorToHex(BorderColor.Value),
+	"DisabledBorder": ColorToHex(DisabledBorderColor.Value)
+};
+
+function ColorToHex(value)
+{
+	var hex = Number(value).toString(16);
+	while (hex.length < 8)
+		hex = "0" + hex;
+	return "0x" + hex;
+}
+
+return JSON.stringify(settings);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="UpdateView" display-name="UpdateView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var settings = JSON.parse(json);
+BackgroundColor.Value = parseInt(settings.Background);
+ForegroundColor.Value = parseInt(settings.Foreground);
+DisabledFontColor.Value = parseInt(settings.DisabledFont);
+EditorBrushColor.Value = parseInt(settings.EditorBrush);
+EditorFontColor.Value = parseInt(settings.EditorFont);
+SelectionColor.Value = parseInt(settings.Selection);
+BorderColor.Value = parseInt(settings.Border);
+DisabledBorderColor.Value = parseInt(settings.DisabledBorder);]]>
+		</body>
+		<param access-modifier="private" name="json" display-name="" uuid="e166a9e4-62cd-4ab3-b37b-493a863e1e7f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+	</do>
+</type>
+

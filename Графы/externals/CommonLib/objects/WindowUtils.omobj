@@ -1,0 +1,154 @@
+<type access-modifier="public" name="WindowUtils" display-name="WindowUtils" uuid="4a818ada-44b1-4070-9b9d-c28dc3447ece" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="">
+	<object access-modifier="private" name="pForm" display-name="pForm" uuid="72b723b8-b7fb-48a4-9968-f95d32a669d5" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" base-const="true" base-ref="true" ver="5" description=""/>
+	<do access-modifier="private" name="CorrectPosition" display-name="CorrectPosition" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[// если заголовок окна не отображается на мониторе
+topLeft: int4 = Monitors.GetMonitor(pForm.WindowX, pForm.WindowY);
+topRight: int4 = Monitors.GetMonitor(pForm.WindowX + pForm.WindowWidth, pForm.WindowY);
+
+if (topLeft == -1 && topRight == -1)
+{
+	// определяем монитор, на котором отображается окно
+	monitor: int4 = GetMonitor();
+	
+	// если окна нет ни на одном мониторе, то переносим его на первый монитор
+	if (monitor == -1)
+		monitor = 0;
+	
+	FitToMonitor(monitor);
+}]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Monitors" display-name="Monitors" uuid="bd08274b-ad9d-4e95-b71e-f6d0c16ecb52" base-type="MonitorList" base-type-id="c74bfc5a-253e-4144-8b20-917cf4cf333b" ver="5">
+		<do access-modifier="private" name="GetMonitor" display-name="GetMonitor" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+			<body kind="om">
+				<![CDATA[// определяем монитор, на котором находится указанная точка
+i: int4 = 0;
+while (i < Monitors.Count())
+{
+	left: int4 = Monitors.GetX(i);
+	right: int4 = left + Monitors.GetResolutionX(i);
+	top: int4 = Monitors.GetY(i);
+	bottom: int4 = top + Monitors.GetResolutionY(i);
+	
+	if (x >= left && x < right && y >= top && y < bottom)
+		return i;
+
+	i += 1;
+}
+
+// точка за пределом мониторов
+return -1;]]>
+			</body>
+			<param access-modifier="private" name="x" display-name="" uuid="fb82581a-16b5-4be5-a3d1-db988feac24a" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+			<param access-modifier="private" name="y" display-name="" uuid="5836bc72-0064-490b-a64c-5ca52a19ae93" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		</do>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="a4701029-d564-46ce-9116-74418b0650a0" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<do access-modifier="private" name="FitToMonitor" display-name="FitToMonitor" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//Debug.Log("FitToMonitor: " + String.ToString(monitor));
+if (monitor >= Monitors.Count())
+	return;
+
+// текущее положение окна	
+left: int4 = pForm.WindowX;
+top: int4 = pForm.WindowY;
+
+// доступная область монитора
+monitorLeft: int4 = Monitors.GetX(monitor);
+monitorRight: int4 = monitorLeft + Monitors.GetResolutionX(monitor);
+monitorTop: int4 = Monitors.GetY(monitor);
+monitorBottom: int4 = monitorTop + Monitors.GetResolutionY(monitor);
+
+// корректируем координаты окна так, чтобы оно вписалось в монитор
+if (left < monitorLeft)
+	left = monitorLeft;
+if (left + pForm.WindowWidth > monitorRight)
+	left = monitorRight - pForm.WindowWidth;
+if (top < monitorTop)
+	top = monitorTop;
+if (top + pForm.WindowHeight > monitorBottom)
+	top = monitorBottom - pForm.WindowHeight;
+
+// новое положение окна
+pForm.WindowX = left;
+pForm.WindowY = top;]]>
+		</body>
+		<param access-modifier="private" name="monitor" display-name="" uuid="8ee0bac1-0afd-4c66-80e4-654e086a0dd4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<do access-modifier="private" name="CorrectPositionAboutPoint" display-name="CorrectPositionAboutPoint" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//Debug.Log("CorrectPositionAboutPoint: " + String.ToString(x) + ", " + String.ToString(y));
+m: int4 = Monitors.GetMonitor(x, y);
+if (m > -1)
+{
+	//Debug.Log("Monitor: " + String.ToString(m));
+	left: int4 = pForm.WindowX;
+	top: int4 = pForm.WindowY;
+
+	// если не помещается по горизонтали, то смещаем его на необходимое расстояние
+	monitorRight: int4 = Monitors.GetX(m) + Monitors.GetResolutionX(m);
+	if (left + pForm.WindowWidth > monitorRight)
+		left = monitorRight - pForm.WindowWidth;
+
+	// если не помещается вниз от курсора, то отображаем его над курсором
+	monitorTop: int4 = Monitors.GetY(m);
+	monitorBottom: int4 = monitorTop + Monitors.GetResolutionY(m);
+	if (top + pForm.WindowHeight > monitorBottom)
+	{
+		top = top - pForm.WindowHeight - pointHeight;
+		
+		// если получается выше монитора, то распологаем от верхнего края		
+		if (top < monitorTop)
+			top = monitorTop;
+	}
+	
+	pForm.WindowX = left;
+	pForm.WindowY = top;
+}]]>
+		</body>
+		<param access-modifier="private" name="x" display-name="" uuid="6fadbb7d-2a71-4eba-af32-73fbcd1d570e" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="y" display-name="" uuid="a7bf5f70-eed3-4546-8450-26922c3038bc" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+		<param access-modifier="private" name="pointHeight" display-name="" uuid="d01eb3ba-62da-428b-9226-8b7da30f31ce" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5"/>
+	</do>
+	<do access-modifier="private" name="GetMonitor" display-name="GetMonitor" ver="5" type="int4" type-id="74222947-f188-4195-8e0e-e33bd9827255">
+		<body kind="om">
+			<![CDATA[// определим результат, когда форма за пределами мониторов
+monitor: int4 = -1;
+
+// текущее положение окна	
+left: int4 = pForm.WindowX;
+top: int4 = pForm.WindowY;
+right: int4 = left + pForm.WindowWidth;
+bottom: int4 = top + pForm.WindowHeight;
+
+// определим монитор, на котором отображается большая часть формы
+i: int4 = 0;
+max: int4 = 0;
+while (i < Monitors.Count())
+{
+	// доступная область монитора
+	monitorLeft: int4 = Monitors.GetX(i);
+	monitorRight: int4 = monitorLeft + Monitors.GetResolutionX(i);
+	monitorTop: int4 = Monitors.GetY(i);
+	monitorBottom: int4 = monitorTop + Monitors.GetResolutionY(i);
+	
+	if (left < monitorRight && right > monitorLeft && top < monitorBottom && bottom > monitorTop)
+	{
+		// площадь перекрытия формы и монитора	
+		s: int4 = (Math.Min(right, monitorRight) - Math.Max(left, monitorLeft)) * (Math.Min(bottom, monitorBottom) - Math.Max(top, monitorTop));
+		if (s > max)
+		{
+			max = s;
+			monitor = i;
+		}
+	}
+	i += 1;
+}
+
+return monitor;]]>
+		</body>
+	</do>
+</type>
+

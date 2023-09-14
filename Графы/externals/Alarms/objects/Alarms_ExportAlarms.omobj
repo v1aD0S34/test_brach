@@ -1,0 +1,646 @@
+<type access-modifier="private" name="Alarms_ExportAlarms" display-name="Form_2_1" uuid="4eaa655b-e7df-43ce-a704-693e19fb182e" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="1220" ver="2"/>
+	<designed target="Height" value="500" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="4293980400" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="1220" ver="2"/>
+	<designed target="WindowHeight" value="500" ver="2"/>
+	<designed target="WindowCaption" value="Сохранить в файл" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="1" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="b48d5662-2c25-4fa3-b5c0-0d8c57afec39" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="2"/>
+	<object access-modifier="private" name="Buttons" display-name="Buttons" uuid="e954ef04-9632-41c0-b395-826574e321cc" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="1220" ver="4"/>
+		<designed target="Height" value="50" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="ExportButton" display-name="ExportButton" uuid="48aa3221-adcc-4f47-b6e4-d2468697d319" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+			<designed target="X" value="10" ver="2"/>
+			<designed target="Y" value="5" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="Сохранить в файл" ver="2"/>
+			<designed target="Width" value="40" ver="2"/>
+			<designed target="Height" value="40" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="TextAlignment" value="132" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="0xff000000" ver="2"/>
+			<designed target="OnClickFontColor" value="0xff000000" ver="2"/>
+			<designed target="OnHoverFontColor" value="0xff000000" ver="2"/>
+			<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="OnClickBrushColor" value="0xffa0a0a0" ver="2"/>
+			<designed target="OnClickBrushStyle" value="1" ver="2"/>
+			<designed target="OnHoverBrushColor" value="0xffffffff" ver="2"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+			<designed target="PenColor" value="0xff000000" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="OnClickPenColor" value="0xff000000" ver="2"/>
+			<designed target="OnClickPenStyle" value="1" ver="2"/>
+			<designed target="OnClickPenWidth" value="1" ver="2"/>
+			<designed target="OnHoverPenColor" value="0xff000000" ver="2"/>
+			<designed target="OnHoverPenStyle" value="1" ver="2"/>
+			<designed target="OnHoverPenWidth" value="1" ver="2"/>
+			<designed target="Checkable" value="false" ver="2"/>
+			<designed target="DisabledFontColor" value="0xffa0a0a0" ver="3"/>
+			<designed target="DisabledBrushColor" value="0xfff0f0f0" ver="3"/>
+			<designed target="DisabledBrushStyle" value="1" ver="3"/>
+			<designed target="DisabledPenColor" value="0xffa0a0a0" ver="3"/>
+			<designed target="DisabledPenStyle" value="1" ver="3"/>
+			<designed target="DisabledPenWidth" value="1" ver="3"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Checked" value="false" ver="4"/>
+			<object access-modifier="private" name="Icon" display-name="Icon" uuid="ec63be2c-d586-4e5f-9f8b-0b5f10396bde" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="4">
+				<designed target="X" value="4" ver="4"/>
+				<designed target="Y" value="4" ver="4"/>
+				<designed target="ZValue" value="0" ver="4"/>
+				<designed target="Rotation" value="0" ver="4"/>
+				<designed target="Scale" value="1" ver="4"/>
+				<designed target="Visible" value="true" ver="4"/>
+				<designed target="Opacity" value="1" ver="4"/>
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="Tooltip" value="" ver="4"/>
+				<designed target="Width" value="32" ver="4"/>
+				<designed target="Height" value="32" ver="4"/>
+				<designed target="PenColor" value="4278190080" ver="4"/>
+				<designed target="PenStyle" value="0" ver="4"/>
+				<designed target="PenWidth" value="1" ver="4"/>
+				<designed target="ImageFile" value="Alarms_Icons/ExportToFile.png" ver="4"/>
+				<designed target="Active" value="true" ver="4"/>
+				<designed target="CurrentFrameNumber" value="0" ver="4"/>
+				<designed target="Speed" value="1" ver="4"/>
+			</object>
+			<object access-modifier="private" name="ExportToFile" display-name="ExportToFile" uuid="1c865239-1f57-465f-a346-2943a4f2dfba" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="javascript">
+						<![CDATA[// определяем тип файла
+var fileType;
+if (FileDialogResult.FileType == 0) fileType = "csv";
+else if (FileDialogResult.FileType == 1) fileType = "xlsx";
+else	if (FileDialogResult.FileType == 2) fileType = "pdf";
+	
+try
+{
+	// сохраняем
+	Table.Save(FileDialogResult.FilePath, fileType);
+	
+	// сообщаем, что сохранили
+	pAlarms.Main_panel.private.EventParams[0] = FileDialogResult.FilePath;	
+	ShowComplete.Invoke();
+	OnExport();
+}
+catch (err)
+{
+	// сообщаем об ошибке
+	pAlarms.Main_panel.private.ShowError.message = err.message;
+	pAlarms.Main_panel.private.ShowError.Invoke();
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ShowSaveFileDialog" display-name="ShowSaveFileDialog" uuid="112601ce-7f85-4fd3-84d9-eb13364a646f" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="e3e1119b-8ee4-4daa-9cf1-a0ea6467afb1" base-type="SaveFileDialog" base-type-id="d69a91c3-89e9-4e7b-994e-9242dbc5e095" ver="4">
+						<init target="FileTypeFilter" ver="5" value="Текстовый файл (*.csv)|*.csv|Книга Excel (*.xlsx)|*.xlsx|Файл Adobe PDF (*.pdf)|*.pdf"/>
+						<init target="Result" ver="5" ref="FileDialogResult"/>
+						<init target="pTheme" ver="5" ref="here.pTheme"/>
+						<init target="OnComplete" ver="5" ref="ExportToFile"/>
+						<init target="DefaultPath" ver="5">
+							<expr>
+								<![CDATA[FileDialogResult.FilePath]]>
+							</expr>
+						</init>
+						<init target="RootPath" ver="5">
+							<expr>
+								<![CDATA[pAlarms.Main_panel.private.Export.ExportPath.Root]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<object access-modifier="private" name="ShowComplete" display-name="ShowComplete" uuid="78749289-065a-4d35-a8c7-deb8746d0360" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="487f9f9a-e6df-4593-8f50-f8a0bff9f9cf" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<init target="Icon" ver="5" value="0"/>
+						<init target="Buttons" ver="5" value="0"/>
+						<designed target="WindowCaption" value="Экспорт в файл" ver="4"/>
+						<init target="pTheme" ver="5" ref="here.pTheme"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA["Данные сохранены в файл:\n" + FileDialogResult.FilePath]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+			</object>
+			<do access-modifier="private" name="OnExport" display-name="OnExport" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[pAlarms.OnExport.Invoke();]]>
+				</body>
+			</do>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ButtonPressed">
+				<body kind="om">
+					<![CDATA[fileNameFormat: string = pAlarms.ExportFileNameFormat;
+if (fileNameFormat == "")
+	fileNameFormat = "Alarms_%d-%m-%Y_%H-%M-%S";
+fileName: string = DateTime.ToString(DateTime.Now(), fileNameFormat);
+
+exportFolder: string = pAlarms.Main_panel.private.Export.ExportPath;
+pAlarms.Main_panel.private.CreateFolderIfNotExist(exportFolder);
+
+if (pAlarms.File.Exists(exportFolder))
+{
+	FileDialogResult.FilePath = pAlarms.File.CombinePath(exportFolder, fileName);
+	ShowSaveFileDialog.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="FileDialogResult" display-name="FileDialogResult" uuid="7be8ede8-e40a-4c51-8f0c-3f688ebb855c" base-type="FileDialogResult" base-type-id="602926f1-7d01-4d50-a5c0-d8fd35eadc74" ver="4"/>
+		</object>
+		<object access-modifier="private" name="OrientationComboBox" display-name="OrientationComboBox" uuid="78b60ad8-17fa-4070-b3c5-2579568f8a93" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="4">
+			<designed target="X" value="60" ver="4"/>
+			<designed target="Y" value="10" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="Ориентация страницы" ver="4"/>
+			<designed target="Width" value="90" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="Editable" value="false" ver="4"/>
+			<designed target="Text" value="" ver="4"/>
+			<designed target="SelectedIndex" value="-1" ver="4"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="MaxVisibleItems" value="10" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+				<body kind="om">
+					<![CDATA[if (selected > -1 && initialized)
+{
+	if (selected == 0)
+		SetOrientation(0); // книжная
+	else SetOrientation(1); // альбомная
+}]]>
+				</body>
+			</do-on>
+			<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="FocusChanged">
+				<body kind="om">
+					<![CDATA[// После перевода фокуса на элемент будем считать окончанием инициализации.
+// Этот флаг нужен для корректной обработки события SelectedChanged, который несколько раз срабатывает при открытии формы.
+if (hasFocus)
+	initialized = true;]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="initialized" display-name="initialized" uuid="42d68738-9608-4941-a0ac-bc986701d34f" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		</object>
+		<object access-modifier="private" name="SelectColumnsButton" display-name="SelectColumnsButton" uuid="d18706f0-ff61-419c-b573-1c71e9e8097c" base-type="Button" base-type-id="61e46e4a-827f-4dd2-ac8a-b68bcaddf442" ver="2">
+			<designed target="X" value="160" ver="2"/>
+			<designed target="Y" value="10" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="110" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="Выбор столбцов" ver="2"/>
+			<designed target="TextAlignment" value="132" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="OnClickFontColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverFontColor" value="4278190080" ver="2"/>
+			<designed target="BrushColor" value="4293980400" ver="2"/>
+			<designed target="BrushStyle" value="1" ver="2"/>
+			<designed target="OnClickBrushColor" value="4288716960" ver="2"/>
+			<designed target="OnClickBrushStyle" value="1" ver="2"/>
+			<designed target="OnHoverBrushColor" value="4294967295" ver="2"/>
+			<designed target="OnHoverBrushStyle" value="1" ver="2"/>
+			<designed target="PenColor" value="4278190080" ver="2"/>
+			<designed target="PenStyle" value="1" ver="2"/>
+			<designed target="PenWidth" value="1" ver="2"/>
+			<designed target="OnClickPenColor" value="4278190080" ver="2"/>
+			<designed target="OnClickPenStyle" value="1" ver="2"/>
+			<designed target="OnClickPenWidth" value="1" ver="2"/>
+			<designed target="OnHoverPenColor" value="4278190080" ver="2"/>
+			<designed target="OnHoverPenStyle" value="1" ver="2"/>
+			<designed target="OnHoverPenWidth" value="1" ver="2"/>
+			<designed target="Checkable" value="false" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="DisabledFontColor" value="4278190080" ver="3"/>
+			<designed target="DisabledBrushColor" value="4288716960" ver="3"/>
+			<designed target="DisabledBrushStyle" value="1" ver="3"/>
+			<designed target="DisabledPenColor" value="4288716960" ver="3"/>
+			<designed target="DisabledPenStyle" value="1" ver="3"/>
+			<designed target="DisabledPenWidth" value="1" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<designed target="Checked" value="false" ver="4"/>
+			<object access-modifier="private" name="VisibleColumns" display-name="VisibleColumns" uuid="97a554af-5687-4ff6-8ca6-6fc4e4d0750a" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ButtonPressed" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="4bc46744-a036-4030-a021-eaf0518a27ff" base-type="Alarms_SelectColumns" base-type-id="3b4031c4-d45e-4596-9232-5120026222ce" ver="4">
+					<init target="Result" ver="5" ref="VisibleColumns"/>
+					<init target="OnComplete" ver="5" ref="SetVisibleColumns"/>
+					<init target="CurrentState" ver="5">
+						<expr>
+							<![CDATA[Table.GetVisibleColumns()]]>
+						</expr>
+					</init>
+					<init target="pTheme" ver="5" ref="here.pTheme"/>
+				</object>
+			</do-on>
+			<object access-modifier="private" name="SetVisibleColumns" display-name="SetVisibleColumns" uuid="8196548a-7791-4a12-980e-059ce2883369" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[Table.SetVisibleColumns(VisibleColumns.Value);]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[pAlarms.Main_panel.private.Export.ViewColumnSettings]]>
+				</body>
+			</do-trace>
+		</object>
+	</object>
+	<object access-modifier="private" name="pAlarms" display-name="pAlarms" uuid="a2b700d2-94a3-4528-b1a1-273525755f7f" base-type="Alarms_1" base-type-id="521d4d69-1b32-4210-ae17-099df1125e3c" base-const="true" base-ref="true" ver="2"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Buttons.OrientationComboBox.AddItem("Книжная");
+Buttons.OrientationComboBox.AddItem("Альбомная");
+Buttons.OrientationComboBox.SelectedIndex = 1;
+
+Table.Initialize();
+
+if (LoadView() == false)
+	SetOrientation(1);
+
+Focus = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="KeyPress">
+		<body kind="om">
+			<![CDATA[if (event.KeyCode == 75)
+	Close();]]>
+		</body>
+	</do-on>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<param access-modifier="private" name="Init_TableModel" display-name="Init_TableModel" uuid="61eb0af8-7f5d-431a-a8d7-61d34ceb9c1d" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" base-const="true" base-ref="true" ver="4"/>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="WindowSizeChanged">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;
+UpdateLayout();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="SetOrientation" display-name="SetOrientation" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[//Debug.Log("SetOrientation: " + String.ToString(orientation));
+Table.SetPageOrientation(orientation);
+
+// в зависимости от ориентации страницы задаем размер таблицы
+// размер А4 при разрешении 96 dpi будет 794 x 1123, но нужно учесть ещё ширину полей 30/50
+a4width: int4 = 794 - 30 - 45/*подгонка мимо теории*/;
+a4height: int4 = 1123 - 50 - 25/*подгонка мимо теории*/;
+WindowWidth = orientation == 0 ? a4width : a4height;
+//Height = orientation == 0 ? a4height : a4width;]]>
+		</body>
+		<param access-modifier="private" name="orientation" display-name="" uuid="be85646a-f516-4f97-add9-53a304c25d95" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+	</do>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Buttons.Width = Width;
+Table.Width = Width - 10;]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Table" display-name="Table" uuid="64e5921e-082e-4fb2-b753-4ee60b8eecbb" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="55" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Width" value="1210" ver="2"/>
+		<designed target="Height" value="440" ver="2"/>
+		<designed target="SelectionBehavior" value="1" ver="2"/>
+		<designed target="SelectionMode" value="0" ver="2"/>
+		<object access-modifier="private" name="Columns" display-name="Columns" uuid="c62c5784-c81b-49ea-acdd-020a87d4668b" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="2" cardinal="23">
+			<designed target="Title" value="" ver="2"/>
+			<designed target="Description" value="" ver="2"/>
+			<designed target="Id" value="" ver="2"/>
+			<designed target="BackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="ForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="TitleBackgroundColor" value="0xffffffff" ver="2"/>
+			<designed target="TitleForegroundColor" value="0xff000000" ver="2"/>
+			<designed target="TitleFont" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+			<designed target="Width" value="60" ver="2"/>
+			<designed target="WidthResizeMode" value="0" ver="2"/>
+			<designed target="Hidden" value="false" ver="2"/>
+			<designed target="NumberFormat" value="%d" ver="2"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="2"/>
+			<designed target="Emptiable" value="true" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="JsonFilter" value="" ver="2"/>
+			<designed target="SortingEnabled" value="false" ver="3"/>
+			<designed target="SortOrder" value="0" ver="3"/>
+			<designed target="SortPriority" value="0" ver="3"/>
+			<designed target="WordWrap" value="true" ver="3"/>
+			<designed target="TitleTextAlignment" value="132" ver="3"/>
+			<designed target="SortMode" value="0" ver="3"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<do-trace access-modifier="private" target="TitleBackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TitleForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="TimeFormat" ver="5">
+				<body>
+					<![CDATA[(pAlarms.ShowMilliseconds)?("dd.MM.yyyy hh:mm:ss.zzz"):("dd.MM.yyyy hh:mm:ss")]]>
+				</body>
+			</do-trace>
+		</object>
+		<designed target="LatestRowTracking" value="false" ver="2"/>
+		<designed target="HeaderHeight" value="23" ver="3"/>
+		<designed target="HeaderVisible" value="true" ver="3"/>
+		<designed target="RowHeight" value="23" ver="3"/>
+		<designed target="RowOrder" value="0" ver="3"/>
+		<designed target="SelectionOverlayEnabled" value="false" ver="3"/>
+		<object access-modifier="private" name="TableDecorator_1" display-name="TableDecorator_1" uuid="c7446abc-03bd-4762-9041-212d09fd5698" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="3">
+			<designed target="JsonDecorator" value="" ver="3"/>
+		</object>
+		<designed target="HorizontalScrollMode" value="1" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<object access-modifier="private" name="columnWidths" display-name="columnWidths" uuid="fcce8af0-3006-4934-987b-a44d351a21b4" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4" cardinal="23"/>
+		<designed target="BackgroundColor" value="0xffffffff" ver="4"/>
+		<designed target="FrameColor" value="0xff5f5f5f" ver="4"/>
+		<designed target="GridColor" value="0xffd8d8d8" ver="4"/>
+		<init target="TableModel" ver="5" ref="Init_TableModel"/>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var ActiveTableColumn = [];
+var ActiveTable;
+
+if (pAlarms.ActiveMode == 0)
+{
+	ActiveTable = pAlarms.Main_tables_Operative.Table_Operative_mode;
+	for (let i = 0; i < pAlarms.Main_tables_Operative.Table_Operative_mode.Columns.Length; i++)
+		if (pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i].Title != "-")//cheat1
+			ActiveTableColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[i]);
+	ActiveTableColumn.push(pAlarms.Main_tables_Operative.Table_Operative_mode.Columns[pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.pos]);
+
+}
+else
+{
+	ActiveTable = pAlarms.Main_tables_Historical.Table_History_mode;
+	for (let i = 0; i < pAlarms.Main_tables_Historical.Table_History_mode.Columns.Length; i++)
+		if (pAlarms.Main_tables_Historical.Table_History_mode.Columns[i].Title != "-")//cheat1
+			ActiveTableColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[i]);
+	ActiveTableColumn.push(pAlarms.Main_tables_Historical.Table_History_mode.Columns[pAlarms.Main_panel.private.TableView.Static.Column_Subcondition.pos]);
+}
+
+// Импорт параметров таблицы
+Table.RowOrder = ActiveTable.RowOrder;//#24120 настройка порядка важна
+var indexesArray = [];
+for (let i = 0; i < Columns.Length; i++)
+{
+	var column = ActiveTableColumn[i];
+	if (column != null)
+	{
+		// запоминаем ширину столбца, так как при скрытии она обнуляется
+		columnWidths[i] = column.Width;
+		
+		Columns[i].Title = column.Title;
+		Columns[i].Id = column.Id;
+		Columns[i].ColumnOwnId = column.ColumnOwnId;
+		Columns[i].Hidden = column.Hidden;
+		Columns[i].Width = column.Width;
+		Columns[i].WidthResizeMode = column.WidthResizeMode;
+		Columns[i].Font = column.Font;
+		Columns[i].TitleFont = column.TitleFont;
+		indexesArray[column.GetIndex()] = i;
+		
+		// сортировка
+		Columns[i].SortPriority = column.SortPriority;
+		Columns[i].SortOrder = column.SortOrder;
+		Columns[i].SortingEnabled = column.SortingEnabled;
+		
+		// фильтрация
+		Columns[i].JsonFilter = column.JsonFilter;
+	}
+	
+	// неиспользуемую колонку скрываем и помечаем пустым заголовком
+	if (column == null || column.Title == "-")//cheat1
+	{
+		Columns[i].Hidden = true;
+		Columns[i].Title = "";
+	}
+}
+//#25486 расстановка столбцов должна выполняться в порядке их расположения
+for (let i = 0; i < indexesArray.length; i++)
+	if (indexesArray[i] != null)
+		MoveColumn(Columns[indexesArray[i]].GetIndex(), i);
+ApplySort();
+
+RowHeight = ActiveTable.RowHeight;
+HeaderHeight = ActiveTable.HeaderHeight;
+TableDecorator_1.JsonDecorator = pAlarms.Main_panel.private.EventSettings.BuildDecorator(pAlarms.ActiveMode == 1, true);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="GetVisibleColumns" display-name="GetVisibleColumns" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="javascript">
+				<![CDATA[var columns = [];
+for(let i = 0; i < Columns.Length; i++)
+{
+	if (Columns[i].Title != "")
+	{
+		var column = {};
+		column.Index = Columns[i].GetIndex();
+		column.Title = Columns[i].Title;
+		column.State = !Columns[i].Hidden;
+		columns.push(column);
+	}
+}
+
+columns.sort(function (a, b)
+{
+  if (a.Index > b.Index)
+    return 1;
+  else if (a.Index < b.Index)
+    return -1;
+  else return 0;
+});
+
+return JSON.stringify(columns);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="SetVisibleColumns" display-name="SetVisibleColumns" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[var columns = JSON.parse(value);
+for(let j = 0; j < Columns.Length; j++)
+{
+	var column = Columns[j];
+	var hidden = true;
+	for(let i = 0; i < columns.length; i++)
+	{
+		// в диалог выбора столбцы поступают отсортированные, поэтому идентифицируем их по заголовку
+		if (columns[i].Title == column.Title)
+		{
+			hidden = !columns[i].State;
+			break;
+		}
+	}
+	
+	if (column.Hidden != hidden)
+	{
+		// запоминаем/восстанавливаем ширину столбца
+		if (column.Hidden)
+			column.Width = columnWidths[j];
+		else	columnWidths[j] = column.Width;
+		
+		column.Hidden = hidden;
+	}
+}]]>
+			</body>
+			<param access-modifier="private" name="value" display-name="" uuid="3548ffbb-04ab-4314-a2d5-363082cdfc08" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		</do>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="FrameColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="c4e70474-72e9-4a36-ac42-3f04a1df84a4" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="" ver="5"/>
+	<do access-modifier="private" name="SaveView" display-name="SaveView" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[var filePath = pAlarms.File.CombinePath(pAlarms.Main_panel.private.ConfigurationPath, "exportview.json");
+try
+{
+	var View = { Orientation:Buttons.OrientationComboBox.SelectedIndex, Columns:{} };
+	for(let i = 0; i < Table.Columns.Length; i++)
+	{
+		//if (Columns[i].Title != "")
+		{
+			var column = {};
+			column.Title = Table.Columns[i].Title;//для справки
+			column.Hidden = Table.Columns[i].Hidden;
+			column.Width = Table.Columns[i].Width;
+			column.Index = Table.Columns[i].GetIndex();//пока не используется
+			View.Columns[Table.Columns[i].Id] = column;
+		}
+	}
+	pAlarms.File.WriteTextFile(filePath, JSON.stringify(View, null, 2));
+}
+catch(error)
+{
+	log("Не удалось сохранить в "  + filePath + ": " + error);
+}]]>
+		</body>
+	</do>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[SaveView();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="LoadView" display-name="LoadView" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="javascript">
+			<![CDATA[var success = false;
+var filePath = pAlarms.File.CombinePath(pAlarms.Main_panel.private.ConfigurationPath, "exportview.json");
+if (pAlarms.File.Exists(filePath))
+try
+{
+	var json = pAlarms.File.ReadTextFile(filePath);
+	var View = JSON.parse(json);
+	
+	SetOrientation(View.Orientation);
+	Orientation:Buttons.OrientationComboBox.SelectedIndex = View.Orientation;
+	
+	for(let i = 0; i < Table.Columns.Length; i++)
+	{
+		var id = Table.Columns[i].Id;
+		var column = View.Columns[id];
+		if (column != undefined)
+		{
+			Table.Columns[i].Hidden = column.Hidden;
+			Table.Columns[i].Width = column.Width;
+		}
+	}
+	success = true;
+}
+catch(error)
+{
+	log("Не удалось загрузить "  + filePath + ": " + error);
+}
+return success;]]>
+		</body>
+	</do>
+</type>
+

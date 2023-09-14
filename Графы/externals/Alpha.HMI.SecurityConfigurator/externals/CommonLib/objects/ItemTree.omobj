@@ -1,0 +1,333 @@
+<type access-modifier="public" name="ItemTree" display-name="ItemTree" uuid="c334bfb4-cb34-44c9-8ba1-4961a2834b3b" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5" description="">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="200" ver="5"/>
+	<designed target="Height" value="300" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xff808080" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0xffffffff" ver="5"/>
+	<designed target="BrushStyle" value="0" ver="5"/>
+	<object access-modifier="private" name="Tree" display-name="Tree" uuid="e3c86671-e498-4281-a9a3-c3a598a9ce65" base-type="Tree" base-type-id="bebad81f-83c4-4dc1-8ac4-e7fe7b6ee966" ver="5" description="" cardinal="1">
+		<designed target="X" value="1" ver="5"/>
+		<designed target="Y" value="1" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Width" value="199" ver="5"/>
+		<designed target="Height" value="299" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="BackgroundColor" value="0xffffffff" ver="5"/>
+		<designed target="FrameVisible" value="false" ver="5"/>
+		<designed target="ColumnCount" value="0" ver="5"/>
+		<designed target="HeaderVisible" value="false" ver="5"/>
+		<designed target="CurrentItem" value="" ver="5"/>
+		<object access-modifier="private" name="Margins" display-name="Margins" uuid="1dd00b9e-2d6f-4414-88c9-3c4d40c897f9" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+			<designed target="Top" value="1" ver="5"/>
+			<designed target="Bottom" value="1" ver="5"/>
+			<designed target="Left" value="1" ver="5"/>
+			<designed target="Right" value="1" ver="5"/>
+		</object>
+		<object access-modifier="private" name="DataSource" display-name="DataSource" uuid="19707848-5682-4ee8-baf8-f7ac8f19ee8e" base-type="TreeDataSource" base-type-id="be3b13bc-c755-41ae-bc8c-867e6c690575" ver="5" description="" cardinal="1">
+			<object access-modifier="private" name="display_name" display-name="display_name" uuid="88e5e756-2096-4fb3-873f-57e90ebcacab" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5" description="" cardinal="1">
+				<designed target="Name" value="" ver="5"/>
+				<designed target="Id" value="display_name" ver="5"/>
+				<designed target="Type" value="4" ver="5"/>
+			</object>
+			<object access-modifier="private" name="name" display-name="name" uuid="a8e99ce5-b33c-47ce-8c2f-d6e5f8cd05f4" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5" description="" cardinal="1">
+				<designed target="Name" value="" ver="5"/>
+				<designed target="Id" value="name" ver="5"/>
+				<designed target="Type" value="1" ver="5"/>
+			</object>
+			<object access-modifier="private" name="id" display-name="id" uuid="da469679-ac8c-41c0-9137-28d7b124fa36" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5" description="" cardinal="1">
+				<designed target="Name" value="" ver="5"/>
+				<designed target="Id" value="id" ver="5"/>
+				<designed target="Type" value="2" ver="5"/>
+			</object>
+			<object access-modifier="private" name="parent_id" display-name="parent_id" uuid="3cc394bf-9431-48bd-975b-6041c598c27d" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5" description="" cardinal="1">
+				<designed target="Name" value="" ver="5"/>
+				<designed target="Id" value="parent_id" ver="5"/>
+				<designed target="Type" value="3" ver="5"/>
+			</object>
+			<object access-modifier="private" name="cdt" display-name="cdt" uuid="d0fd309f-a557-48bd-8789-1d905b3df678" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5" description="" cardinal="1">
+				<designed target="Name" value="" ver="5"/>
+				<designed target="Id" value="cdt" ver="5"/>
+				<designed target="Type" value="5" ver="5"/>
+			</object>
+			<object access-modifier="private" name="has_children" display-name="has_children" uuid="89215f2a-9b34-4a66-9392-ca1740be1f4a" base-type="TreeColumn" base-type-id="b2427bd0-4897-43ca-b426-97290870cf62" ver="5" description="" cardinal="1">
+				<designed target="Name" value="" ver="5"/>
+				<designed target="Id" value="has_children" ver="5"/>
+				<designed target="Type" value="6" ver="5"/>
+			</object>
+			<object access-modifier="private" name="Browser" display-name="Browser" uuid="dd2937fa-953a-4f75-b949-272b6e822cfb" base-type="ApSourceBrowser" base-type-id="2159a654-022a-44f7-8d92-fc737a94ab96" ver="5" description="" cardinal="1">
+				<designed target="DescriptionPreferred" value="false" ver="5"/>
+				<init target="Source" ver="5" ref="private.ApSource"/>
+			</object>
+			<object access-modifier="private" name="browsedItemId" display-name="browsedItemId" uuid="032801f9-29d3-4b48-8930-83e17ee42a05" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5" description="" cardinal="1"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnNodeReceived">
+				<body kind="om">
+					<![CDATA[//Debug.Log("Получено узлов "+ String.ToString(nodeCount));
+
+// обновим иконки полученных элементов
+SetChildrenIcons(browsedItemId);
+browsedItemId = "";]]>
+				</body>
+			</do-on>
+		</object>
+		<do access-modifier="private" name="Initialize" display-name="Initialize" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[SetColumnHidden(0, false);
+SetColumnHidden(1, true);
+SetColumnHidden(2, true);
+SetColumnHidden(3, true);
+SetColumnHidden(4, true);
+SetColumnHidden(5, true);]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="Refresh" display-name="Refresh" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[if (ChildCount(itemId) > 0)
+	RemoveChildren(itemId);
+
+DataSource.browsedItemId = itemId;
+DataSource.Browser.GetChildren(itemId);]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="9a1556b1-3d99-4ec2-849f-1d163b2f7cfb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetCDT" display-name="GetCDT" ver="5" type="uint4" type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e">
+			<body kind="om">
+				<![CDATA[return String.ToUint4(GetItemText(itemId, 4), 0);]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="ea96fd66-aabd-427a-8b7a-46505a96542c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetChildrenIcons" display-name="SetChildrenIcons" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[// Обработка элементов узла
+var childrenJson = EnumChildrenJSON(parentId);
+if (childrenJson != "")
+{
+	var children = JSON.parse(childrenJson);
+
+	// Устанавливаем иконку для каждого элемента
+	for (let i = 0; i < children.length; i++)
+		SetItemIcon(children[i], false);
+}]]>
+			</body>
+			<param access-modifier="private" name="parentId" display-name="" uuid="0ca96533-c4f5-44e9-94b2-b2f0c74b70a1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="SetItemIcon" display-name="SetItemIcon" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[icon: string = GetItemIconPath(itemId, isExpanded);
+SetItemIconPath(itemId, icon, 0);]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="f94d2385-1406-4a1a-85d9-9d88ee722237" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="isExpanded" display-name="" uuid="7cf6d2fd-4357-4ff7-967d-c8b79cfabb11" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		</do>
+		<do access-modifier="private" name="GetItemIconPath" display-name="GetItemIconPath" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[cdt: uint4 = GetCDT(itemId);
+if (cdt == 0)
+{
+	if (isExpanded)
+		return "CommonLib_Icons/FolderOpened.png";
+	else return "CommonLib_Icons/FolderClosed.png";
+}
+else
+{
+	fileName: string;
+	if (cdt == 1) fileName = "SByte.png";
+	else if (cdt == 3) fileName = "Byte.png";
+	else if (cdt == 9) fileName = "Int16.png";
+	else if (cdt == 8) fileName = "UInt16.png";
+	else if (cdt == 7) fileName = "Int32.png";
+	else if (cdt == 6) fileName = "UInt32.png";
+	else if (cdt == 13) fileName = "Int64.png";
+	else if (cdt == 12) fileName = "UInt64.png";
+	else if (cdt == 14) fileName = "Single.png";
+	else if (cdt == 15) fileName = "Double.png";
+	else if (cdt == 5) fileName = "Boolean.png";
+	else if (cdt == 17) fileName = "String.png";
+	else if (cdt == 18) fileName = "DateTime.png";
+	else fileName = "Object.png";
+	
+	return "CommonLib_Icons/Items/" + fileName;
+}]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="8baea95f-2800-4f71-ae17-02833aaa593f" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+			<param access-modifier="private" name="isExpanded" display-name="" uuid="359e13c4-be75-42b9-8b94-2a0e6075df7a" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		</do>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ItemExpanded">
+			<body kind="om">
+				<![CDATA[SetItemIcon(itemId, true);
+
+if (ChildCount(itemId) == 0)
+{
+	tag: string = DataSource.GetFullName(itemId);
+	DataSource.browsedItemId = itemId;
+	DataSource.Browser.GetChildren(tag);
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="ItemCollapsed">
+			<body kind="om">
+				<![CDATA[SetItemIcon(itemId, false);]]>
+			</body>
+		</do-on>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorFontColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="ItemDoubleClicked">
+			<body kind="om">
+				<![CDATA[if (event.Button == 1)
+	pDoubleClicked.Invoke();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_8" display-name="Handler_8" ver="5" event="ItemPressed">
+			<body kind="om">
+				<![CDATA[if (event.Button == 1)
+	itemIsPressed = true;]]>
+			</body>
+		</do-on>
+		<do access-modifier="private" name="GetItemInfo" display-name="GetItemInfo" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[cdt: uint4 = GetCDT(itemId);
+if (cdt > 0)
+{
+	tag: string = DataSource.GetFullName(itemId);
+	dataType: string = CdtToDataType(cdt);
+	return "{\"tag\":\"" + tag + "\",\"dataType\":\"" + dataType + "\"}";
+}
+
+return "";]]>
+			</body>
+			<param access-modifier="private" name="itemId" display-name="" uuid="f1cf23f1-7b92-4f78-96f4-4710b2ffcee8" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="5"/>
+		</do>
+		<do access-modifier="private" name="CdtToDataType" display-name="CdtToDataType" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+			<body kind="om">
+				<![CDATA[if (cdt == 0) return "void";
+else if (cdt == 1) return "int1";
+else if (cdt == 3) return "uint1";
+else if (cdt == 5) return "bool";
+else if (cdt == 6) return "uint4";
+else if (cdt == 7) return "int4";
+else if (cdt == 8) return "uint2";
+else if (cdt == 9) return "int2";
+else if (cdt == 12) return "uint8";
+else if (cdt == 13) return "int8";
+else if (cdt == 14) return "float";
+else if (cdt == 15) return "double";
+else if (cdt == 17) return "string";
+else if (cdt == 18) return "timestamp";
+else return "";]]>
+			</body>
+			<param access-modifier="private" name="cdt" display-name="" uuid="22ff83b7-3a9e-47ca-8eda-fb9c0a69b9b4" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="5"/>
+		</do>
+		<object access-modifier="private" name="itemIsPressed" display-name="itemIsPressed" uuid="49108c5f-968b-4d84-99a7-a6335512f42b" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<do-on access-modifier="private" name="Handler_9" display-name="Handler_9" ver="5" event="MouseMove">
+			<body kind="om">
+				<![CDATA[if (itemIsPressed)
+{
+	itemIsPressed = false;
+	pDragStarted.Invoke();
+}]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_10" display-name="Handler_10" ver="5" event="MouseRelease">
+			<body kind="om">
+				<![CDATA[itemIsPressed = false;]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_11" display-name="Handler_11" ver="5" event="MouseLeave">
+			<body kind="om">
+				<![CDATA[itemIsPressed = false;]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="Layout" display-name="Layout" uuid="1c02c2bb-d835-4b9d-b541-1ab035bd9471" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="5" description="" cardinal="1">
+		<designed target="Orientation" value="1" ver="5"/>
+		<designed target="Gap" value="0" ver="5"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="33a62790-450b-45d7-88b0-9db5d2758065" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="4eb138e6-a5a8-4872-8456-878e0842db05" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<object access-modifier="private" name="Initializer" display-name="Initializer" uuid="2a9ea53d-0cbf-4b00-b08c-c3912490d9d4" base-type="Initializer" base-type-id="6db89679-9299-4993-ad1a-0d086cd1c7d2" ver="5" description="" cardinal="1">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Initialized">
+			<body kind="om">
+				<![CDATA[Tree.Initialize();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="e5f5a96a-e2d0-41ae-bf65-5b477955a6bb" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="ApSource" display-name="ApSource" uuid="86a18a8c-6234-42c6-b2b2-b2c2479e8d0f" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" ver="5" description="" cardinal="1">
+			<designed target="Active" value="true" ver="5"/>
+			<init target="ParentSource" ver="5" ref="init_ApSource"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="OnConnectionStateChanged">
+				<body kind="om">
+					<![CDATA[if (oldConnectionState != connectionState)
+{
+	oldConnectionState = connectionState;
+	
+	if (connectionState == 2)
+		Tree.Refresh("");
+}]]>
+				</body>
+			</do-on>
+			<designed target="Location" value="" ver="5"/>
+			<designed target="Port" value="4388" ver="5"/>
+			<designed target="HistoryPort" value="4950" ver="5"/>
+			<designed target="Path" value="" ver="5"/>
+			<designed target="ReAdvise" value="0" ver="5"/>
+			<designed target="ClientDisplayName" value="HMI" ver="5"/>
+			<designed target="ClientId" value="HMI" ver="5"/>
+			<object access-modifier="private" name="oldConnectionState" display-name="oldConnectionState" uuid="6bfccf66-4764-4711-80fe-31b5210658c8" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		</object>
+	</object>
+	<object access-modifier="private" name="DescriptionPreferred" display-name="Вывод описания предпочтительнее имени" uuid="f0bdb9bd-253c-4365-9fd1-219d3adf8c2a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="248536cb-9435-46be-9a26-293dd93aa689" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5" description="" cardinal="1"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != Value)
+{
+	oldValue = Value;
+	//Debug.Log("DescriptionPreferred: " + String.ToString(Value));
+	
+	Tree.DataSource.Browser.DescriptionPreferred = Value;
+	Tree.Refresh("");
+}]]>
+			</body>
+		</do-on>
+	</object>
+	<param access-modifier="private" name="init_ApSource" display-name="Ссылка на источник" uuid="c66eceed-5c4f-4264-b99d-ed004e538468" base-type="ApSource" base-type-id="966603da-f05e-4b4d-8ef0-919efbf8ab2c" base-const="true" base-ref="true" ver="5" description=""/>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BorderColor]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pDragStarted" display-name="pDragStarted" uuid="1261df0b-5461-4f36-a14a-ba1200f6ba7e" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<object access-modifier="private" name="pDoubleClicked" display-name="pDoubleClicked" uuid="510065d0-862a-4008-b898-7def56fc73fc" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" base-const="true" base-ref="true" ver="5" description=""/>
+	<do access-modifier="private" name="GetCurrentItemInfo" display-name="GetCurrentItemInfo" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="om">
+			<![CDATA[return Tree.GetItemInfo(Tree.CurrentItem);]]>
+		</body>
+	</do>
+</type>
+

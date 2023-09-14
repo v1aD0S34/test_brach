@@ -1,0 +1,574 @@
+<type ver="2" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" base-type="Form" uuid="4d754945-ea42-4c97-9c9a-2aab992cab7b" display-name="Alarms_SettingsSeverity" name="Alarms_SettingsSeverity" access-modifier="private">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<designed target="Width" value="640" ver="2"/>
+	<designed target="Height" value="560" ver="2"/>
+	<designed target="PenColor" value="4278190080" ver="2"/>
+	<designed target="PenStyle" value="0" ver="2"/>
+	<designed target="PenWidth" value="1" ver="2"/>
+	<designed target="BrushColor" value="0xfff0f0f0" ver="2"/>
+	<designed target="BrushStyle" value="1" ver="2"/>
+	<designed target="WindowX" value="0" ver="2"/>
+	<designed target="WindowY" value="0" ver="2"/>
+	<designed target="WindowWidth" value="640" ver="2"/>
+	<designed target="WindowHeight" value="560" ver="2"/>
+	<designed target="WindowCaption" value="Важность событий" ver="2"/>
+	<designed target="ShowWindowCaption" value="true" ver="2"/>
+	<designed target="ShowWindowMinimize" value="false" ver="2"/>
+	<designed target="ShowWindowMaximize" value="false" ver="2"/>
+	<designed target="ShowWindowClose" value="true" ver="2"/>
+	<designed target="AlwaysOnTop" value="false" ver="2"/>
+	<designed target="WindowSizeMode" value="0" ver="2"/>
+	<designed target="WindowBorderStyle" value="2" ver="2"/>
+	<designed target="WindowState" value="0" ver="2"/>
+	<designed target="WindowScalingMode" value="0" ver="2"/>
+	<designed target="MonitorNumber" value="0" ver="2"/>
+	<designed target="WindowPosition" value="2" ver="2"/>
+	<designed target="WindowCloseMode" value="0" ver="2"/>
+	<object access-modifier="private" name="pSettingsForm" display-name="pSettingsForm" uuid="154ed3c9-1bc5-4dc4-91aa-eb806a884fe6" base-type="SettingsForm" base-type-id="82dc7618-130c-486c-840d-5d302f40306b" base-const="true" base-ref="true" ver="2"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="GroupLabel" display-name="GroupLabel" uuid="bd038796-a0eb-403d-8951-70d8b4aa608c" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="10" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="360" ver="2"/>
+		<designed target="Height" value="20" ver="2"/>
+		<designed target="Text" value="Выберите категорию важности для настройки ее параметров" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="TextAlignment" value="33" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Group" display-name="Group" uuid="0c821d1c-ec4d-44e4-a344-894d6bd58f32" base-type="ComboBox" base-type-id="3495bcd2-01f2-4709-b7f4-e9cf6f3a00bc" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="30" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="160" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Editable" value="false" ver="2"/>
+		<designed target="Text" value="" ver="2"/>
+		<designed target="SelectedIndex" value="-1" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="4278190080" ver="2"/>
+		<designed target="MaxVisibleItems" value="10" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="SelectedChanged">
+			<body kind="om">
+				<![CDATA[if (SelectedIndex >= 0 && SelectedIndex != pSettingsForm.Settings.Severity.selectedIndex)
+{
+	pSettingsForm.Settings.Severity.selectedIndex = SelectedIndex;
+	UpdateEditors(SelectedIndex);
+}]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+	</object>
+	<object access-modifier="private" name="ValuesLabel" display-name="ValuesLabel" uuid="25621c74-fc39-4088-8259-d0e32fd2269b" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="70" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="60" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Значения" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Values" display-name="Values" uuid="f4f27df6-1ef7-48fe-994b-a624e2dccdd3" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="70" ver="4"/>
+		<designed target="Y" value="70" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="220" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="ErrorRect" display-name="ErrorRect" uuid="21168882-7512-4aa3-bde6-dd3406c1b585" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="220" ver="4"/>
+			<designed target="Height" value="25" ver="4"/>
+			<designed target="RoundingRadius" value="0" ver="4"/>
+			<designed target="PenColor" value="0xffff0000" ver="4"/>
+			<designed target="PenStyle" value="1" ver="4"/>
+			<designed target="PenWidth" value="2" ver="4"/>
+			<designed target="BrushColor" value="4278190080" ver="4"/>
+			<designed target="BrushStyle" value="0" ver="4"/>
+			<do-trace access-modifier="private" target="Visible" ver="5">
+				<body>
+					<![CDATA[Error != ""]]>
+				</body>
+			</do-trace>
+			<init target="Visible" ver="5" value="false"/>
+		</object>
+		<object access-modifier="private" name="Editor" display-name="Editor" uuid="61c8f4ae-9053-4dcf-aa63-0774e2cbc6d7" base-type="TextEdit" base-type-id="53a97863-93f3-45a1-a2ea-9ff98d2dcdd9" ver="2">
+			<designed target="X" value="0" ver="2"/>
+			<designed target="Y" value="0" ver="2"/>
+			<designed target="Rotation" value="0" ver="2"/>
+			<designed target="Scale" value="1" ver="2"/>
+			<designed target="Visible" value="true" ver="2"/>
+			<designed target="Enabled" value="true" ver="2"/>
+			<designed target="Tooltip" value="" ver="2"/>
+			<designed target="Width" value="220" ver="2"/>
+			<designed target="Height" value="25" ver="2"/>
+			<designed target="Text" value="" ver="2"/>
+			<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+			<designed target="FontColor" value="4278190080" ver="2"/>
+			<designed target="TextAlignment" value="129" ver="2"/>
+			<designed target="HideInput" value="false" ver="2"/>
+			<designed target="PlaceholderText" value="" ver="2"/>
+			<designed target="ReadOnly" value="false" ver="2"/>
+			<designed target="ZValue" value="0" ver="3"/>
+			<designed target="Opacity" value="1" ver="3"/>
+			<do-trace access-modifier="private" target="Tooltip" ver="5">
+				<body>
+					<![CDATA[Error]]>
+				</body>
+			</do-trace>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="TextChanged">
+				<body kind="om">
+					<![CDATA[if (Focus)
+{
+	if (Group.SelectedIndex == 0) 
+		pSettingsForm.Settings.Severity.Range1.JSON = text;
+	else if (Group.SelectedIndex == 1)
+		pSettingsForm.Settings.Severity.Range2.JSON = text;
+	else if (Group.SelectedIndex == 2)
+		pSettingsForm.Settings.Severity.Range3.JSON = text;
+	else if (Group.SelectedIndex == 3)
+		pSettingsForm.Settings.Severity.Range4.JSON = text;
+	
+	CheckRange(); // Функция проверки корректности значений полей
+	pSettingsForm.Settings.Severity.OnEdited();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="Error" display-name="Error" uuid="eb825438-1c6b-433f-8547-b9a84b0e02b7" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<do access-modifier="private" name="CheckRange" display-name="CheckRange" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da" form-by-id="true">
+			<body kind="javascript">
+				<![CDATA[//Функция проверки корректности значений полей
+Values.Error = "";
+if (Group.SelectedIndex < 0 || Group.SelectedIndex > 2)
+	return;
+
+var range = [pSettingsForm.Settings.Severity.Range1, pSettingsForm.Settings.Severity.Range2, pSettingsForm.Settings.Severity.Range3];
+
+// Проверяем поле на наличие синтаксической ошибки
+var parsedSeverityString = pSettingsForm.Settings.TryParseSeverityString(range[Group.SelectedIndex].JSON);
+range[Group.SelectedIndex].JSON_temp = pSettingsForm.pAlarms.Main_panel.private.GapToArray(parsedSeverityString);
+
+if (parsedSeverityString == "errorSyntax")
+	Values.Error = "Допустим ввод только чисел от 1 до 1000, дефиса, пробела и запятой";
+else if (parsedSeverityString == "errorValues")
+	Values.Error = "Некорректное задание диапазона";
+else if (parsedSeverityString == "errorMatch")
+	Values.Error = "Значения введённого диапазона пересекаются";
+
+// Запоминаем ошибку для соответствующего диапазона
+range[Group.SelectedIndex].syntaxError = Values.Error != "";
+
+// Проверяем все поля на совпадения между собой
+var errorMatchGroupNumber = CheckAllMatch(Group.SelectedIndex,
+	pSettingsForm.Settings.Severity.Range1.JSON_temp,
+	pSettingsForm.Settings.Severity.Range2.JSON_temp,
+	pSettingsForm.Settings.Severity.Range3.JSON_temp);
+if (errorMatchGroupNumber != -1)
+	Values.Error = "Значения \"" + Group.GetItem(Group.SelectedIndex) + "\" совпадают со значениями \"" +Group.GetItem(errorMatchGroupNumber) + "\"";
+
+// Запоминаем разобранный результат в случае отсутствия ошибки
+if (Values.Error == "")
+	range[Group.SelectedIndex].JSON = parsedSeverityString;
+
+// Формируем строку важности информационных значений как все незанятые элементы диапазона от остальных значений важности 
+GetOtherEventsSeverity();]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="CheckAllMatch" display-name="CheckAllMatch" ver="5" type="int1" type-id="756a0a23-7e63-4a13-8a35-e8a38909e5ed">
+			<body kind="javascript">
+				<![CDATA[// Функция проверки совпадений диапазонов полей
+var range1 = str1;
+var range2 = str2;
+var range3 = str3;
+var matchGroupNumber = -1; // Номер группы, с которой найдено совпадение
+var rangeGroup = [];
+
+rangeGroup[0] = pSettingsForm.Settings.Severity.Range1;
+rangeGroup[1] = pSettingsForm.Settings.Severity.Range2;
+rangeGroup[2] = pSettingsForm.Settings.Severity.Range3;
+
+// Функция проверки совпадений элементов в массиве
+function CheckMatch(str) {
+	let commonArray = str.split(",").filter(s => s!="");//#23420 отбрасываем пустые элементы
+	var uniqueArray = new Set(commonArray);
+	if (uniqueArray.size != commonArray.length) return true
+	return false;
+}
+
+// Вычисляем совпадения
+switch (numberRange) {
+	case 0:
+		if (CheckMatch(range1 + "," + range2) && !/[A-Za-z]/g.test(range1 + "," + range2)) matchGroupNumber = 1;
+		if (CheckMatch(range1 + "," + range3) && !/[A-Za-z]/g.test(range1 + "," + range3)) matchGroupNumber = 2;
+		break;
+	case 1:
+		if (CheckMatch(range2 + "," + range1) && !/[A-Za-z]/g.test(range2 + "," + range1)) matchGroupNumber = 0;
+		if (CheckMatch(range2 + "," + range3) && !/[A-Za-z]/g.test(range2 + "," + range3)) matchGroupNumber = 2;	
+		break;
+	case 2:
+		if (CheckMatch(range3 + "," + range1) && !/[A-Za-z]/g.test(range3 + "," + range1)) matchGroupNumber = 0;
+		if (CheckMatch(range3 + "," + range2) && !/[A-Za-z]/g.test(range3 + "," + range2)) matchGroupNumber = 1;
+		break;
+}
+
+// Запоминаем общую ошибку совпадений диапазонов
+var commonRange = "";
+if (!/[A-Za-z]/g.test(range1)) commonRange += range1 + ",";
+if (!/[A-Za-z]/g.test(range2)) commonRange += range2 + ",";
+if (!/[A-Za-z]/g.test(range3)) commonRange += range3 + ",";
+pSettingsForm.Settings.Severity.errorMatch = CheckMatch(commonRange);
+
+return matchGroupNumber;]]>
+			</body>
+			<param access-modifier="private" name="numberRange" display-name="" uuid="df194299-ed1a-4b48-ac7b-312e322b2e9a" base-type="int1" base-type-id="756a0a23-7e63-4a13-8a35-e8a38909e5ed" ver="3"/>
+			<param access-modifier="private" name="str1" display-name="" uuid="0059c20f-b404-47e1-a559-ee71be048402" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+			<param access-modifier="private" name="str2" display-name="" uuid="b0781fb3-253e-4192-81b8-8897ed501580" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+			<param access-modifier="private" name="str3" display-name="" uuid="f69ea44d-e0eb-4703-a5f7-de1c27463bbc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="3"/>
+		</do>
+		<do access-modifier="private" name="GetOtherEventsSeverity" display-name="GetOtherEventsSeverity" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="javascript">
+				<![CDATA[//Функция формирования массив важностей для прочих событий
+var str = "";
+if (pSettingsForm.Settings.Severity.Range1.JSON != "") str+=","+pSettingsForm.Settings.Severity.Range1.JSON;
+if (pSettingsForm.Settings.Severity.Range2.JSON != "") str+=","+pSettingsForm.Settings.Severity.Range2.JSON;
+if (pSettingsForm.Settings.Severity.Range3.JSON != "") str+=","+pSettingsForm.Settings.Severity.Range3.JSON;
+
+var numberArray = [];
+var tempArray = [];
+var informArray = [];
+var commonArray = [];
+var count = 1;
+
+//Инициализируем шаблоны
+//Элемент как диапазон
+var gapPattern = /\d+\s?[-]\s?\d+/;
+
+//Переопределяем, если проверка прошла, образуем массив элементов и проверяем дальше
+commonArray = str.split(",");
+
+//Проверка на верную запись диапазона чисел, запись его чисел в виде элемента массива
+for (let i = 0; i < commonArray.length; i++)
+{
+	if (gapPattern.test(commonArray[i])) //Если элемент - диапазон чисел, то проверяем его и формируем массив
+	{
+		tempArray = commonArray[i].match(/\d+/g);
+		while (parseInt(tempArray[0]) <= parseInt(tempArray[1]))
+		{
+			numberArray.push(parseInt(tempArray[0]));
+			tempArray[0] = parseInt(tempArray[0])+1;
+		}
+	}
+	else numberArray.push(parseInt(commonArray[i]));
+	tempArray = [];
+}
+
+//Дальше идет генерация важностей информационных сообщений
+//Заполняем значения важности информационных сообщения
+for (let i = 1; i < 1001; i++)
+{
+	informArray.push(i);
+}
+
+//Оставляем в массие все, что не входит в входной массив
+informArray = informArray.filter(x=>!numberArray.includes(x));
+
+//Запись элементов в виде диапазона, если они образуют арифметическую прогрессию(сокращение записи)
+if (informArray != null)
+{
+	for (let i = 0; i < informArray.length; i++)
+	{
+		while (parseInt(informArray[i])+count == parseInt(informArray[i+count]))
+		{
+			count++;
+		}
+		if (count > 2)
+		{
+			informArray[i] = informArray[i] + "-" + informArray[i+count-1];
+			informArray.splice(i+1,count-1);
+		}
+		count = 1;
+	}
+}
+
+pSettingsForm.Settings.Severity.Range4.JSON = informArray.toString();
+]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="PlaySounds" display-name="PlaySounds" uuid="9ce62a23-b76e-4d08-a9f5-1753f81f5c4d" base-type="Checkbox" base-type-id="ba26cad1-a080-4c5d-8847-ce576488cf3f" ver="2">
+		<designed target="X" value="5" ver="2"/>
+		<designed target="Y" value="100" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="150" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Проигрывать звуки" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="State" value="false" ver="2"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="StateChanged">
+			<body kind="om">
+				<![CDATA[if (Group.SelectedIndex == 0) 
+	pSettingsForm.Settings.Severity.Range1.SoundEnable = state;
+else if (Group.SelectedIndex == 1)
+	pSettingsForm.Settings.Severity.Range2.SoundEnable = state;
+else if (Group.SelectedIndex == 2)
+	pSettingsForm.Settings.Severity.Range3.SoundEnable = state;
+else if (Group.SelectedIndex == 3)
+	pSettingsForm.Settings.Severity.Range4.SoundEnable = state;
+
+pSettingsForm.Settings.Severity.OnEdited();]]>
+			</body>
+		</do-on>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[pTheme.ForegroundColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="RepeatLabel" display-name="RepeatLabel" uuid="21530a6e-c52b-4582-9963-2d868a937bc6" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="30" ver="2"/>
+		<designed target="Y" value="130" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="150" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Количество повторов" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[PlaySounds.State ? EnabledFontColor : DisabledFontColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Repeat" display-name="Repeat" uuid="27608e4e-9122-4ce3-8a58-222e40303560" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="4">
+		<designed target="X" value="180" ver="4"/>
+		<designed target="Y" value="130" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Width" value="50" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<init target="Minimum" ver="5" value="0"/>
+		<init target="Maximum" ver="5" value="100"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[PlaySounds.State]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="onChanged" display-name="onChanged" uuid="048f8b2b-b41f-4b68-b663-13517b4de57d" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (Group.SelectedIndex == 0) 
+	pSettingsForm.Settings.Severity.Range1.nSoundRepeats = TypeConvert.ToInt2(Value);
+else if (Group.SelectedIndex == 1)
+	pSettingsForm.Settings.Severity.Range2.nSoundRepeats = TypeConvert.ToInt2(Value);
+else if (Group.SelectedIndex == 2)
+	pSettingsForm.Settings.Severity.Range3.nSoundRepeats = TypeConvert.ToInt2(Value);
+else if (Group.SelectedIndex == 3)
+	pSettingsForm.Settings.Severity.Range4.nSoundRepeats = TypeConvert.ToInt2(Value);
+
+pSettingsForm.Settings.Severity.OnEdited();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="ValueChanged" ver="5" ref="onChanged"/>
+	</object>
+	<object access-modifier="private" name="PriorityLabel" display-name="PriorityLabel" uuid="c459f20c-7f10-44ad-9ecb-1bed1812b8fd" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="2">
+		<designed target="X" value="30" ver="2"/>
+		<designed target="Y" value="160" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="150" ver="2"/>
+		<designed target="Height" value="25" ver="2"/>
+		<designed target="Text" value="Приоритет проигрывания" ver="2"/>
+		<designed target="Font" value="Tahoma,8,-1,5,50,0,0,0,0,0,Обычный" ver="2"/>
+		<designed target="FontColor" value="0xff000000" ver="2"/>
+		<designed target="TextAlignment" value="129" ver="2"/>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[PlaySounds.State && Repeat.Value > 0 ? EnabledFontColor : DisabledFontColor]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Priority" display-name="Priority" uuid="b2b81cda-ef47-4ccd-b0ce-496b627bc395" base-type="IntegerUpDown" base-type-id="604b557e-d136-4579-8201-c6ca23cbffa7" ver="4">
+		<designed target="X" value="180" ver="4"/>
+		<designed target="Y" value="160" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Width" value="50" ver="4"/>
+		<designed target="Height" value="25" ver="4"/>
+		<init target="Maximum" ver="5" value="100"/>
+		<init target="Minimum" ver="5" value="0"/>
+		<do-trace access-modifier="private" target="Enabled" ver="5">
+			<body>
+				<![CDATA[PlaySounds.State && Repeat.Value > 0]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="onChanged" display-name="onChanged" uuid="02dfd620-e8a5-4d68-94bd-f0d9462210b6" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+				<body kind="om">
+					<![CDATA[if (Group.SelectedIndex == 0) 
+	pSettingsForm.Settings.Severity.Range1.SoundPriority = TypeConvert.ToInt2(Value);
+else if (Group.SelectedIndex == 1)
+	pSettingsForm.Settings.Severity.Range2.SoundPriority = TypeConvert.ToInt2(Value);
+else if (Group.SelectedIndex == 2)
+	pSettingsForm.Settings.Severity.Range3.SoundPriority = TypeConvert.ToInt2(Value);
+else if (Group.SelectedIndex == 3)
+	pSettingsForm.Settings.Severity.Range4.SoundPriority = TypeConvert.ToInt2(Value);
+
+pSettingsForm.Settings.Severity.OnEdited();]]>
+				</body>
+			</do-on>
+		</object>
+		<init target="ValueChanged" ver="5" ref="onChanged"/>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="b18b6977-25cb-4dab-b42b-35f0efe5acb2" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[Group.AddItem("Особой важности");
+Group.AddItem("Важные");
+Group.AddItem("Значительные");
+Group.AddItem("Прочие");
+Group.SelectedIndex = pSettingsForm.Settings.Severity.selectedIndex;
+UpdateEditors(Group.SelectedIndex);
+Group.Focus = true;]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="UpdateEditors" display-name="UpdateEditors" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (index == 0)
+{
+	Values.Editor.Enabled = true;
+	Values.Editor.Text = pSettingsForm.Settings.Severity.Range1.JSON; 
+	PlaySounds.State = pSettingsForm.Settings.Severity.Range1.SoundEnable;
+	Repeat.Value = pSettingsForm.Settings.Severity.Range1.nSoundRepeats;
+	Priority.Value = pSettingsForm.Settings.Severity.Range1.SoundPriority;
+}
+else if (index == 1)
+{
+	Values.Editor.Enabled = true;
+	Values.Editor.Text = pSettingsForm.Settings.Severity.Range2.JSON; 
+	PlaySounds.State = pSettingsForm.Settings.Severity.Range2.SoundEnable;
+	Repeat.Value = pSettingsForm.Settings.Severity.Range2.nSoundRepeats;
+	Priority.Value = pSettingsForm.Settings.Severity.Range2.SoundPriority;
+}
+else if (index == 2)
+{
+	Values.Editor.Enabled = true;
+	Values.Editor.Text = pSettingsForm.Settings.Severity.Range3.JSON; 
+	PlaySounds.State = pSettingsForm.Settings.Severity.Range3.SoundEnable;
+	Repeat.Value = pSettingsForm.Settings.Severity.Range3.nSoundRepeats;
+	Priority.Value = pSettingsForm.Settings.Severity.Range3.SoundPriority;
+}
+else if (index == 3)
+{
+	Values.Editor.Enabled = false;
+	Values.Editor.Text = pSettingsForm.Settings.Severity.Range4.JSON; 
+	PlaySounds.State = pSettingsForm.Settings.Severity.Range4.SoundEnable;
+	Repeat.Value = pSettingsForm.Settings.Severity.Range4.nSoundRepeats;
+	Priority.Value = pSettingsForm.Settings.Severity.Range4.SoundPriority;	
+}
+
+Values.CheckRange();]]>
+		</body>
+		<param access-modifier="private" name="index" display-name="" uuid="4be22c4d-fbb7-46b0-8f1d-ee70c62d7aed" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="4"/>
+	</do>
+	<object access-modifier="private" name="EnabledFontColor" display-name="EnabledFontColor" uuid="47378aae-607f-4c27-b6ed-1fba62a9fab5" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+	<object access-modifier="private" name="DisabledFontColor" display-name="DisabledFontColor" uuid="7816da4f-1c28-484e-8614-40473fb9445e" base-type="uint4" base-type-id="a42274b8-724b-4f03-bcf9-dd8498c29f8e" ver="4"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="db2d2402-bf1b-43c1-81e4-21af860985c2" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="4"/>
+	<init target="EnabledFontColor" ver="5" value="0xff000000"/>
+	<init target="DisabledFontColor" ver="5" value="0xff808080"/>
+	<do-trace access-modifier="private" target="EnabledFontColor" ver="5">
+		<body>
+			<![CDATA[pTheme.ForegroundColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+		<body>
+			<![CDATA[pTheme.DisabledFontColor]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[pTheme.BackgroundColor]]>
+		</body>
+	</do-trace>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

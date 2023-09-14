@@ -1,0 +1,35 @@
+<type access-modifier="private" name="ChangedRightsResult" display-name="ChangedRightsResult" uuid="3efb0823-a348-4b39-a762-64290867ccb6" base-type="DialogResult" base-type-id="edf8f921-912c-457b-838d-25607e6715bb" ver="4">
+	<object access-modifier="private" name="AppID" display-name="AppID" uuid="90f8a12b-7767-4cbd-ae28-15267d56a512" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="TokenName" display-name="TokenName" uuid="77d2072c-aa19-4170-8a67-d7ca6f3fbfcb" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="AllowValue" display-name="AllowValue" uuid="8b919582-508e-444d-b3a9-764df02f2c4c" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="DenyValue" display-name="DenyValue" uuid="b9117e37-49d8-4799-b956-7307ad76ba48" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<do access-modifier="private" name="ResetParamsValues" display-name="ResetParamsValues" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Value = "";
+
+AppID ="";
+TokenName = "";
+AllowValue = "";
+DenyValue = "";]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="SetParamsValue" display-name="SetParamsValue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="appId" display-name="" uuid="495fc1d7-a3f8-4647-a940-0d00a15a254d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="8392f179-afdf-4482-ba63-08fdbaedd123" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="allowValue" display-name="" uuid="18a39751-f15a-43ae-b17f-c5766632dafc" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="denyValue" display-name="" uuid="24625f04-994b-4312-8b61-e6de2b6e6918" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="om">
+			<![CDATA[AppID = appId;
+TokenName = tokenName;
+AllowValue = allowValue;
+DenyValue = denyValue;]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="GetDataValidation" display-name="GetDataValidation" ver="5" type="bool" type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8">
+		<body kind="om">
+			<![CDATA[return AppID != "" && TokenName != "";
+]]>
+		</body>
+	</do>
+</type>
+

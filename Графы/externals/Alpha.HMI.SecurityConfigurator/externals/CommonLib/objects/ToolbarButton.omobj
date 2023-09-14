@@ -1,0 +1,340 @@
+<type access-modifier="public" name="ToolbarButton" display-name="ToolbarButton" uuid="06f54e9d-00fa-4fc7-81ad-fd37c305cbb1" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="2">
+	<designed target="X" value="0" ver="2"/>
+	<designed target="Y" value="0" ver="2"/>
+	<designed target="Rotation" value="0" ver="2"/>
+	<designed target="Scale" value="1" ver="2"/>
+	<designed target="Visible" value="true" ver="2"/>
+	<designed target="Enabled" value="true" ver="2"/>
+	<designed target="Tooltip" value="" ver="2"/>
+	<object access-modifier="private" name="Icon" display-name="Icon" uuid="484d3399-4bf4-43bd-b207-58c25f44f1e2" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="2">
+		<designed target="X" value="2" ver="2"/>
+		<designed target="Y" value="2" ver="2"/>
+		<designed target="Rotation" value="0" ver="2"/>
+		<designed target="Scale" value="1" ver="2"/>
+		<designed target="Visible" value="true" ver="2"/>
+		<designed target="Enabled" value="true" ver="2"/>
+		<designed target="Tooltip" value="" ver="2"/>
+		<designed target="Width" value="24" ver="2"/>
+		<designed target="Height" value="24" ver="2"/>
+		<designed target="PenColor" value="0xff000000" ver="2"/>
+		<designed target="PenStyle" value="0" ver="2"/>
+		<designed target="PenWidth" value="1" ver="2"/>
+		<designed target="ImageFile" value="" ver="2"/>
+		<designed target="Active" value="true" ver="2"/>
+		<designed target="CurrentFrameNumber" value="0" ver="2"/>
+		<designed target="Speed" value="1" ver="2"/>
+		<do-trace access-modifier="private" target="ImageFile" ver="5">
+			<body>
+				<![CDATA[IconFile]]>
+			</body>
+		</do-trace>
+		<designed target="ZValue" value="0" ver="3"/>
+		<designed target="Opacity" value="1" ver="3"/>
+		<do-trace access-modifier="private" target="Opacity" ver="5">
+			<body>
+				<![CDATA[here.Active ? 1 : 0.4]]>
+			</body>
+		</do-trace>
+		<init target="Width" ver="5" ref="IconSize"/>
+		<init target="Height" ver="5" ref="IconSize"/>
+		<object access-modifier="private" name="margin" display-name="margin" uuid="381bf014-76c7-419c-a2d8-d2302f24db96" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<init target="margin" ver="5">
+			<expr>
+				<![CDATA[(ButtonHeight - IconSize) / 2 - Margin]]>
+			</expr>
+		</init>
+		<init target="X" ver="5">
+			<expr>
+				<![CDATA[(ButtonHeight - IconSize) / 2 - Margin]]>
+			</expr>
+		</init>
+		<init target="Y" ver="5">
+			<expr>
+				<![CDATA[(ButtonHeight - IconSize) / 2 - Margin]]>
+			</expr>
+		</init>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="de07fd55-2196-45f3-a994-61ff8c97ac23" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="IconFile" display-name="IconFile" uuid="0a11f794-3123-42e8-a244-c40d0a5b4a8a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="2"/>
+	<object access-modifier="private" name="TitleText" display-name="TitleText" uuid="0ff75b64-da96-49c9-aa07-63c679fae79a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5" description="" cardinal="1"/>
+	<object access-modifier="private" name="Checked" display-name="Checked" uuid="6a5315a6-c01d-461c-bd4b-7712f1f7b876" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<object access-modifier="private" name="Active" display-name="Active" uuid="e2786ab6-0434-420f-a1a7-660a94e1c912" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="2"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<object access-modifier="private" name="IsVisible" display-name="IsVisible" uuid="3854f6eb-f4af-4961-bdd5-ca7eafba8b91" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="3">
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+			<body kind="om">
+				<![CDATA[if (oldValue != value)
+{
+	//Debug.Log(Tooltip + " IsVisible changed");
+	oldValue = value;
+	
+	if	(value)
+	{
+		Margins.Top = private.margin;
+		Margins.Bottom = private.margin;
+		Margins.Left = private.margin;
+		Margins.Right = private.margin;
+		SizeLimits.MinWidth = private.width - 2 * private.margin;
+		SizeLimits.MinHeight = private.height - 2 * private.margin;
+		SizeLimits.MaxWidth = private.width - 2 * private.margin;
+		SizeLimits.MaxHeight = private.height - 2 * private.margin;
+	}
+	else
+	{
+		Margins.Top = 0;
+		Margins.Bottom = 0;
+		Margins.Left = 0;
+		Margins.Right = 0;
+		SizeLimits.MinWidth = 0;
+		SizeLimits.MinHeight = 0;
+		SizeLimits.MaxWidth = 0;
+		SizeLimits.MaxHeight = 0;
+	}
+}]]>
+			</body>
+		</do-on>
+		<object access-modifier="private" name="oldValue" display-name="oldValue" uuid="e95c7a13-03cc-46d4-9697-7b90ece2638a" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="4"/>
+		<init target="oldValue" ver="4" value="true"/>
+	</object>
+	<object access-modifier="private" name="pDropDown" display-name="pDropDown" uuid="7c345ed2-e2cd-4f7a-9a63-6f0c832c4d19" base-type="ToolbarDropDown" base-type-id="0e258e56-d922-4a8f-b8c3-7d577d177609" base-const="true" base-ref="true" ver="4"/>
+	<init target="Checked" ver="3" value="false"/>
+	<init target="Active" ver="3" value="true"/>
+	<init target="Focus" ver="3" value="false"/>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseEnter">
+		<body kind="om">
+			<![CDATA[private.MouseIsOver = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseLeave">
+		<body kind="om">
+			<![CDATA[Icon.X = Icon.margin;
+Icon.Y = Icon.margin;
+
+Title.X = Title.margin;
+Title.Y = 0;
+
+private.MouseIsOver = false;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MousePress">
+		<body kind="om">
+			<![CDATA[Icon.X = Icon.margin + 1;
+Icon.Y = Icon.margin + 1;
+
+Title.X = Title.margin + 1;
+Title.Y = 1;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MouseRelease">
+		<body kind="om">
+			<![CDATA[Icon.X = Icon.margin;
+Icon.Y = Icon.margin;
+
+Title.X = Title.margin;
+Title.Y = 0;]]>
+		</body>
+	</do-on>
+	<do-trace access-modifier="private" target="Enabled" ver="5">
+		<body>
+			<![CDATA[Active]]>
+		</body>
+	</do-trace>
+	<init target="IsVisible" ver="4" value="true"/>
+	<object access-modifier="private" name="Margins" display-name="Margins" uuid="e3932aef-6541-4100-86b0-10d2eb7e69b9" base-type="LayoutMargins" base-type-id="d86ce751-1ea7-42c6-8d4b-10c651a2727d" ver="5" description="" cardinal="1">
+		<designed target="Top" value="1" ver="5"/>
+		<designed target="Bottom" value="1" ver="5"/>
+		<designed target="Left" value="1" ver="5"/>
+		<designed target="Right" value="1" ver="5"/>
+		<init target="Top" ver="5" ref="Margin"/>
+		<init target="Bottom" ver="5" ref="Margin"/>
+		<init target="Left" ver="5" ref="Margin"/>
+		<init target="Right" ver="5" ref="Margin"/>
+	</object>
+	<designed target="Width" value="28" ver="5"/>
+	<designed target="Height" value="28" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="PenStyle" value="0" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0x00000000" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="4fc853a3-cbdf-414a-863b-22e8515ce3e2" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+		<designed target="MinWidth" value="18" ver="5"/>
+		<designed target="MinHeight" value="18" ver="5"/>
+		<designed target="MaxWidth" value="18" ver="5"/>
+		<designed target="MaxHeight" value="18" ver="5"/>
+		<init target="MinWidth" ver="5">
+			<expr>
+				<![CDATA[ButtonWidth - 2 * Margin]]>
+			</expr>
+		</init>
+		<init target="MinHeight" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight - 2 * Margin]]>
+			</expr>
+		</init>
+		<init target="MaxWidth" ver="5">
+			<expr>
+				<![CDATA[ButtonWidth - 2 * Margin]]>
+			</expr>
+		</init>
+		<init target="MaxHeight" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight - 2 * Margin]]>
+			</expr>
+		</init>
+	</object>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[Active && (Checked || private.MouseIsOver || pDropDown.private.MouseIsOver) ? private.theme.BorderColor : 0]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="PenStyle" ver="5">
+		<body>
+			<![CDATA[TypeConvert.ToUint2(Active && (Checked || private.MouseIsOver || pDropDown.private.MouseIsOver) ? 1 : 0)]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<conditional-expr>
+			<condition>
+				<![CDATA[Active && Checked]]>
+			</condition>
+			<expr>
+				<![CDATA[private.theme.SelectionColor]]>
+			</expr>
+		</conditional-expr>
+		<conditional-expr>
+			<condition>
+				<![CDATA[Active && (private.MouseIsOver || pDropDown.private.MouseIsOver)]]>
+			</condition>
+			<expr>
+				<![CDATA[private.theme.EditorBrushColor]]>
+			</expr>
+		</conditional-expr>
+		<default-expr>
+			<expr>
+				<![CDATA[0x00000000]]>
+			</expr>
+		</default-expr>
+	</do-trace>
+	<do-trace access-modifier="private" target="Visible" ver="5">
+		<body>
+			<![CDATA[IsVisible]]>
+		</body>
+	</do-trace>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="57fd19a4-c5bf-40aa-bf4f-232bb534e4df" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5" description=""/>
+	<init target="ButtonHeight" ver="5" value="30"/>
+	<param access-modifier="private" name="Margin" display-name="Margin" uuid="36afde2b-7be3-4b0c-8bfc-b31e087a60cc" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description=""/>
+	<param access-modifier="private" name="IconSize" display-name="IconSize" uuid="456c26d5-79f4-4a92-b595-252823dd3da1" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description=""/>
+	<param access-modifier="private" name="ButtonWidth" display-name="ButtonWidth" uuid="c20e0823-d731-45e1-80ba-d22453ca4592" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description=""/>
+	<init target="ButtonWidth" ver="5" value="30"/>
+	<param access-modifier="private" name="ButtonHeight" display-name="ButtonHeight" uuid="f44e2fbc-6f7e-4229-89fe-fe39b9ec9a89" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description=""/>
+	<init target="IconSize" ver="5" value="24"/>
+	<object access-modifier="private" name="Title" display-name="Title" uuid="89f8d3c8-da9d-4e43-a0a6-ca448e792048" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="5" description="" cardinal="1">
+		<designed target="X" value="30" ver="5"/>
+		<designed target="Y" value="0" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="0" ver="5"/>
+		<designed target="Height" value="28" ver="5"/>
+		<designed target="Text" value="" ver="5"/>
+		<designed target="Font" value="PT Sans,8,-1,5,50,0,0,0,0,0,Обычный" ver="5"/>
+		<designed target="FontColor" value="0xff000000" ver="5"/>
+		<designed target="TextAlignment" value="129" ver="5"/>
+		<do-trace access-modifier="private" target="Visible" ver="5">
+			<body>
+				<![CDATA[TitleText != ""]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="Text" ver="5">
+			<body>
+				<![CDATA[TitleText]]>
+			</body>
+		</do-trace>
+		<init target="Height" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight - 2]]>
+			</expr>
+		</init>
+		<do-trace access-modifier="private" target="FontColor" ver="5">
+			<body>
+				<![CDATA[private.theme.ForegroundColor]]>
+			</body>
+		</do-trace>
+		<init target="Width" ver="5">
+			<expr>
+				<![CDATA[ButtonWidth - ButtonHeight - 2]]>
+			</expr>
+		</init>
+		<object access-modifier="private" name="margin" display-name="margin" uuid="91a0ec94-199a-4ee0-a72a-fd7c86cdc07c" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<init target="X" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight]]>
+			</expr>
+		</init>
+		<init target="margin" ver="5">
+			<expr>
+				<![CDATA[ButtonHeight]]>
+			</expr>
+		</init>
+	</object>
+	<object access-modifier="private" name="private" display-name="private" uuid="45115ac4-512c-4c6a-97f4-ec1c43a3c525" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="theme" display-name="theme" uuid="0cdf3a9c-175e-472f-a7eb-5d26dcc05e1a" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" ver="5" description="" cardinal="1">
+			<do-trace access-modifier="private" target="BackgroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BackgroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="ForegroundColor" ver="5">
+				<body>
+					<![CDATA[pTheme.ForegroundColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorBrushColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorBrushColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="EditorFontColor" ver="5">
+				<body>
+					<![CDATA[pTheme.EditorFontColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="SelectionColor" ver="5">
+				<body>
+					<![CDATA[pTheme.SelectionColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="BorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.BorderColor]]>
+				</body>
+			</do-trace>
+			<do-trace access-modifier="private" target="DisabledBorderColor" ver="5">
+				<body>
+					<![CDATA[pTheme.DisabledBorderColor]]>
+				</body>
+			</do-trace>
+		</object>
+		<object access-modifier="private" name="margin" display-name="margin" uuid="7e8b58cb-3f67-4ae9-b321-aeba09ca05f7" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="width" display-name="width" uuid="b83e9194-e9c3-4656-99a0-158053404501" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description="" cardinal="1"/>
+		<object access-modifier="private" name="height" display-name="height" uuid="e80c5aef-0e5d-41c1-82a1-52628844953b" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description="" cardinal="1"/>
+		<init target="width" ver="5" ref="ButtonWidth"/>
+		<init target="height" ver="5" ref="ButtonHeight"/>
+		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="1bf59f0b-6e05-4b3f-b060-45661f60c6ab" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<init target="margin" ver="5" ref="Margin"/>
+	</object>
+	<init target="Margin" ver="5" value="1"/>
+</type>
+

@@ -1,0 +1,300 @@
+<type access-modifier="public" name="LogViewButton" display-name="LogViewButton" uuid="f441f6b3-2f00-4d56-b3d1-eaf11905bf72" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="5">
+	<designed target="X" value="0" ver="5"/>
+	<designed target="Y" value="0" ver="5"/>
+	<designed target="Rotation" value="0" ver="5"/>
+	<designed target="Scale" value="1" ver="5"/>
+	<designed target="Visible" value="true" ver="5"/>
+	<designed target="Enabled" value="true" ver="5"/>
+	<designed target="Tooltip" value="" ver="5"/>
+	<designed target="Width" value="65" ver="5"/>
+	<designed target="Height" value="22" ver="5"/>
+	<designed target="RoundingRadius" value="0" ver="5"/>
+	<designed target="PenColor" value="0xfff0f0f0" ver="5"/>
+	<designed target="PenStyle" value="1" ver="5"/>
+	<designed target="PenWidth" value="1" ver="5"/>
+	<designed target="BrushColor" value="0x00000000" ver="5"/>
+	<designed target="BrushStyle" value="1" ver="5"/>
+	<designed target="ZValue" value="0" ver="5"/>
+	<designed target="Opacity" value="1" ver="5"/>
+	<do-trace access-modifier="private" target="BrushColor" ver="5">
+		<body>
+			<![CDATA[private.MouseIsOver ? private.onHoverColor : 0]]>
+		</body>
+	</do-trace>
+	<do-trace access-modifier="private" target="PenColor" ver="5">
+		<body>
+			<![CDATA[private.MouseIsOver ? private.borderColor : 0]]>
+		</body>
+	</do-trace>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="MouseEnter">
+		<body kind="om">
+			<![CDATA[private.MouseIsOver = true;]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="MouseLeave">
+		<body kind="om">
+			<![CDATA[private.MouseIsOver = false;
+private.bPressed = false;
+private.Update();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="MousePress">
+		<body kind="om">
+			<![CDATA[private.bPressed = true;
+private.Update();]]>
+		</body>
+	</do-on>
+	<do-on access-modifier="private" name="Handler_5" display-name="Handler_5" ver="5" event="MouseRelease">
+		<body kind="om">
+			<![CDATA[private.bPressed = false;
+private.Update();]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="Icon" display-name="Icon" uuid="139e41f9-8095-46f2-8d78-1b3bc5a48959" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+		<designed target="X" value="5" ver="5"/>
+		<designed target="Y" value="3" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="false" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="16" ver="5"/>
+		<designed target="Height" value="16" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="ImageFile" value="CommonLib_Icons/Log16.png" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="CurrentFrameNumber" value="0" ver="5"/>
+		<designed target="Speed" value="1" ver="5"/>
+	</object>
+	<object access-modifier="private" name="ErrorIcon" display-name="ErrorIcon" uuid="66cd7751-9378-416c-bcae-546ef55a3b7a" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+		<designed target="X" value="5" ver="5"/>
+		<designed target="Y" value="3" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="16" ver="5"/>
+		<designed target="Height" value="16" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="ImageFile" value="CommonLib_Icons/Error16.png" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="CurrentFrameNumber" value="0" ver="5"/>
+		<designed target="Speed" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA["Ошибки: " + String.ToString(private.ErrorCount)]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="WarningIcon" display-name="WarningIcon" uuid="be7f59ab-821b-4e87-bd8f-9aa87bccab34" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+		<designed target="X" value="25" ver="5"/>
+		<designed target="Y" value="3" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="16" ver="5"/>
+		<designed target="Height" value="16" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="ImageFile" value="CommonLib_Icons/Warning16.png" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="CurrentFrameNumber" value="0" ver="5"/>
+		<designed target="Speed" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA["Предупреждения: " + String.ToString(private.WarningCount)]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="InformationIcon" display-name="InformationIcon" uuid="64364265-cf6b-4837-9a8c-d4e8edaf97c0" base-type="Image" base-type-id="5a6b2782-c728-4a42-8c02-1a83ef97e138" ver="5" description="" cardinal="1">
+		<designed target="X" value="45" ver="5"/>
+		<designed target="Y" value="3" ver="5"/>
+		<designed target="ZValue" value="0" ver="5"/>
+		<designed target="Rotation" value="0" ver="5"/>
+		<designed target="Scale" value="1" ver="5"/>
+		<designed target="Visible" value="true" ver="5"/>
+		<designed target="Opacity" value="1" ver="5"/>
+		<designed target="Enabled" value="true" ver="5"/>
+		<designed target="Tooltip" value="" ver="5"/>
+		<designed target="Width" value="16" ver="5"/>
+		<designed target="Height" value="16" ver="5"/>
+		<designed target="PenColor" value="4278190080" ver="5"/>
+		<designed target="PenStyle" value="0" ver="5"/>
+		<designed target="PenWidth" value="1" ver="5"/>
+		<designed target="ImageFile" value="CommonLib_Icons/Information16.png" ver="5"/>
+		<designed target="Active" value="true" ver="5"/>
+		<designed target="CurrentFrameNumber" value="0" ver="5"/>
+		<designed target="Speed" value="1" ver="5"/>
+		<do-trace access-modifier="private" target="Tooltip" ver="5">
+			<body>
+				<![CDATA["Информация: " + String.ToString(private.InformationCount)]]>
+			</body>
+		</do-trace>
+	</object>
+	<object access-modifier="private" name="Debug" display-name="Debug" uuid="d74a5f93-060b-4f9d-a4a9-c2b2135870ff" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="5"/>
+	<object access-modifier="private" name="pTheme" display-name="Тема оформления" uuid="6da14d1c-b4c5-43fa-b577-a0224f05f9df" base-type="Theme" base-type-id="05d4d7df-0f8e-4ec1-ac85-b5460e30af81" base-const="true" base-ref="true" ver="5"/>
+	<object access-modifier="private" name="private" display-name="private" uuid="1e8a2e3e-706c-4283-a6ae-1e5a9a57d04a" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5" description="" cardinal="1">
+		<object access-modifier="private" name="ErrorCount" display-name="ErrorCount" uuid="8e495186-9b50-45bf-bfab-7344ce61813d" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[Update();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="WarningCount" display-name="WarningCount" uuid="8e1496dc-35ea-4f72-adea-12d2e5653ef7" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[Update();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="InformationCount" display-name="InformationCount" uuid="04de5715-5621-4470-96ea-d8870e8b404d" base-type="notifying_int4" base-type-id="5ccca629-a45d-46c8-a56c-83ecde8126f7" ver="5" description="" cardinal="1">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[Update();]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="bPressed" display-name="bPressed" uuid="e8212a2b-8097-4a77-8069-017a6beb7c6e" base-type="bool" base-type-id="7c9fe1ab-1ee2-42d8-939f-94ce3e89fca8" ver="5"/>
+		<object access-modifier="private" name="MouseIsOver" display-name="MouseIsOver" uuid="386f0d25-1082-438b-ae76-20c718c51484" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="5"/>
+		<object access-modifier="private" name="onHoverColor" display-name="onHoverColor" uuid="e6fd47ac-3dab-4467-8090-e19bd1067d57" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+		<object access-modifier="private" name="borderColor" display-name="borderColor" uuid="aada9fb0-a4a8-4975-82c0-74d9ac221870" base-type="notifying_uint4" base-type-id="2606f4f1-fd02-40e5-b3c8-9c59e02296fb" ver="5"/>
+		<init target="onHoverColor" ver="5" value="0xffffffff"/>
+		<init target="borderColor" ver="5" value="0xff808080"/>
+		<do-trace access-modifier="private" target="onHoverColor" ver="5">
+			<body>
+				<![CDATA[pTheme.EditorBrushColor]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="borderColor" ver="5">
+			<body>
+				<![CDATA[pTheme.BorderColor]]>
+			</body>
+		</do-trace>
+		<do access-modifier="private" name="Update" display-name="Update" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[y: double = margin;
+if (bPressed)
+	y += 1;
+
+Icon.Y = y;
+ErrorIcon.Y = y;
+WarningIcon.Y = y;
+InformationIcon.Y = y;
+
+x: double = 0;
+dx: double = bPressed ? 1 : 0;
+
+if (pLogView.ErrorCount > 0)
+{
+	x += 4;	
+	ErrorIcon.X = x + dx;
+	ErrorIcon.Visible = true;
+	x += 16;
+}
+else
+{
+	ErrorIcon.X = 0;
+	ErrorIcon.Visible = false;
+}
+
+if (pLogView.WarningCount > 0)
+{
+	x += 4;
+	WarningIcon.X = x + dx;
+	WarningIcon.Visible = true;	
+	x += 16;
+}
+else
+{
+	WarningIcon.X = 0;
+	WarningIcon.Visible = false;
+}
+	
+
+if (pLogView.InformationCount > 0)
+{
+	x += 4;
+	InformationIcon.X = x + dx;
+	InformationIcon.Visible = true;	
+	x += 16;
+}
+else
+{
+	InformationIcon.X = 0;
+	InformationIcon.Visible = false;
+}
+
+if (x > 0)
+{
+	Icon.Visible = false;
+}
+else
+{
+	x += 4;	
+	Icon.X = x + dx;
+	Icon.Visible = true;
+	x += 16;
+}
+
+SizeLimits.MaxWidth = x + 5;]]>
+			</body>
+		</do>
+		<do-trace access-modifier="private" target="ErrorCount" ver="5">
+			<body>
+				<![CDATA[pLogView.ErrorCount]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="WarningCount" ver="5">
+			<body>
+				<![CDATA[pLogView.WarningCount]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="InformationCount" ver="5">
+			<body>
+				<![CDATA[pLogView.InformationCount]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="margin" display-name="margin" uuid="fb8426ee-4690-40e7-b6f5-663f31533664" base-type="int4" base-type-id="74222947-f188-4195-8e0e-e33bd9827255" ver="5" description="" cardinal="1"/>
+		<init target="margin" ver="5">
+			<expr>
+				<![CDATA[(ButtonHeight - 16) / 2]]>
+			</expr>
+		</init>
+	</object>
+	<object access-modifier="private" name="pLogView" display-name="pLogView" uuid="2f9043b3-e138-4420-8880-53d91d6c2703" base-type="LogView" base-type-id="493c7166-bdbb-4717-8f49-2906ed88e930" base-const="true" base-ref="true" ver="5"/>
+	<do-on access-modifier="private" name="Handler_6" display-name="Handler_6" ver="5" event="MouseClick">
+		<body kind="om">
+			<![CDATA[pLogView.IsVisible = !pLogView.IsVisible;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="SizeLimits" display-name="SizeLimits" uuid="1ea8f9ba-c6c9-441d-a3f6-2005c27a29bb" base-type="LayoutSizeLimits" base-type-id="10342c1f-560b-4160-9de5-7e2c08026f47" ver="5" description="" cardinal="1">
+		<designed target="MinWidth" value="0" ver="5"/>
+		<designed target="MinHeight" value="0" ver="5"/>
+		<designed target="MaxWidth" value="65" ver="5"/>
+		<designed target="MaxHeight" value="24" ver="5"/>
+		<init target="MaxHeight" ver="5" ref="ButtonHeight"/>
+	</object>
+	<param access-modifier="private" name="ButtonHeight" display-name="ButtonHeight" uuid="1c323f81-f5b0-4c88-a63d-97eeae9f7039" base-type="uint2" base-type-id="ae923ad8-8b75-4813-8121-36efe3cc8c12" ver="5" description=""/>
+	<init target="ButtonHeight" ver="5" value="24"/>
+	<do-trace access-modifier="private" target="Tooltip" ver="5">
+		<body>
+			<![CDATA[pLogView.IsVisible ? "Скрыть журнал" : "Показать журнал"]]>
+		</body>
+	</do-trace>
+</type>
+

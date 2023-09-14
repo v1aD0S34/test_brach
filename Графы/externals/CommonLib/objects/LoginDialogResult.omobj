@@ -1,0 +1,5 @@
+<type access-modifier="public" name="LoginDialogResult" display-name="LoginDialogResult" uuid="5a70987d-09be-4ae7-90b3-76a00c6721bb" base-type="" base-type-id="00000000-0000-0000-0000-000000000000" ver="5">
+	<object access-modifier="private" name="UserId" display-name="UserId" uuid="0409a115-c3e1-4287-a421-af1186237b26" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+	<object access-modifier="private" name="UserDisplayName" display-name="UserDisplayName" uuid="fc7d7b7c-e77e-4191-a7c7-1a7df155967a" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="5"/>
+</type>
+

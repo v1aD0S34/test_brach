@@ -1,0 +1,987 @@
+<type access-modifier="private" name="RoleEdit" display-name="RoleEdit" uuid="01b30c26-46d0-40e6-a364-8a9800f122a0" base-type="Form" base-type-id="ffaf5544-6200-45f4-87ec-9dd24558a9d5" ver="3">
+	<designed target="X" value="0" ver="3"/>
+	<designed target="Y" value="0" ver="3"/>
+	<designed target="ZValue" value="0" ver="3"/>
+	<designed target="Rotation" value="0" ver="3"/>
+	<designed target="Scale" value="1" ver="3"/>
+	<designed target="Visible" value="true" ver="3"/>
+	<designed target="Opacity" value="1" ver="3"/>
+	<designed target="Enabled" value="true" ver="3"/>
+	<designed target="Tooltip" value="" ver="3"/>
+	<designed target="Width" value="847" ver="3"/>
+	<designed target="Height" value="400" ver="3"/>
+	<designed target="PenColor" value="4278190080" ver="3"/>
+	<designed target="PenStyle" value="0" ver="3"/>
+	<designed target="PenWidth" value="1" ver="3"/>
+	<designed target="BrushColor" value="4293980400" ver="3"/>
+	<designed target="BrushStyle" value="1" ver="3"/>
+	<designed target="WindowX" value="0" ver="3"/>
+	<designed target="WindowY" value="0" ver="3"/>
+	<designed target="WindowWidth" value="847" ver="3"/>
+	<designed target="WindowHeight" value="400" ver="3"/>
+	<designed target="WindowCaption" value="MainForm" ver="3"/>
+	<designed target="ShowWindowCaption" value="true" ver="3"/>
+	<designed target="ShowWindowMinimize" value="true" ver="3"/>
+	<designed target="ShowWindowMaximize" value="true" ver="3"/>
+	<designed target="ShowWindowClose" value="true" ver="3"/>
+	<designed target="AlwaysOnTop" value="false" ver="3"/>
+	<designed target="WindowSizeMode" value="0" ver="3"/>
+	<designed target="WindowBorderStyle" value="1" ver="3"/>
+	<designed target="WindowState" value="0" ver="3"/>
+	<designed target="WindowScalingMode" value="0" ver="3"/>
+	<designed target="MonitorNumber" value="0" ver="3"/>
+	<designed target="WindowPosition" value="2" ver="3"/>
+	<designed target="WindowCloseMode" value="0" ver="3"/>
+	<object access-modifier="private" name="ConfigurationAccess" display-name="ConfigurationAccess" uuid="d7c384dc-99c1-47c9-b131-ae8142003f5f" base-type="BoolTokenProxy" base-type-id="9cc1c61e-9310-406a-8f93-18028f747d59" ver="2">
+		<init target="Application" ver="2" value="system:Alpha.Security"/>
+		<init target="Right" ver="2" value="ConfigurationAccess"/>
+		<init target="SecurityContext" ver="4">
+			<object access-modifier="private" uuid="afdf53c8-110f-44da-b3bc-7754e0abfebf" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+		</init>
+	</object>
+	<object access-modifier="private" name="Application" display-name="Application" uuid="56d5f2c4-6b8e-4526-b7aa-f0a9bceb78d8" base-type="SecurityManagerApplication" base-type-id="cfc3985c-54fc-4fe4-b001-cade048d6ee0" ver="4">
+		<designed target="ApplicationName" value="" ver="4"/>
+		<init target="SecurityManager" ver="4">
+			<object access-modifier="private" uuid="b0c06c01-d429-4e26-a526-caf2e7df06b8" base-type="SecurityManager" base-type-id="179958e0-f45a-40f3-9668-98e4ea2987da" ver="4">
+				<init target="SecurityContext" ver="4">
+					<object access-modifier="private" uuid="30f1fe7f-2e62-4f6b-8abb-0191f58ed57a" base-type="SecurityContext" base-type-id="d9cb0fff-b70a-4e2d-833d-3f73cf74e0dd" ver="4"/>
+				</init>
+			</object>
+		</init>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="LoadComplete">
+			<body kind="om">
+				<![CDATA[//private.RoleName.roleList = GetRolesList();
+appInfo.appNameText = ApplicationName;
+LoadRolesList(GetRolesList());
+UpdateRolesTokenRights();
+SystemCommands.GoTo.doUnblockingControll();
+
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="SaveComplete">
+			<body kind="om">
+				<![CDATA[private.saveChanges.needSave = false;
+SystemCommands.GoTo = SystemCommands.GoTo.frameCode != SystemCommands.GoTo.RoleEditor;
+SystemCommands.GoTo.doUnblockingControll();
+]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_3" display-name="Handler_3" ver="5" event="SaveFailed">
+			<body kind="om">
+				<![CDATA[ShowErrorWindow.message = GetErrorDescriptionByCode(FailReasonCode);
+ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+		<do-on access-modifier="private" name="Handler_4" display-name="Handler_4" ver="5" event="LoadFailed">
+			<body kind="om">
+				<![CDATA[SystemCommands.GoTo.doUnblockingControll();
+ShowErrorWindow.message = GetErrorDescriptionByCode(FailReasonCode);
+ShowErrorWindow.Invoke();
+SystemCommands.GoTo.doUnblockingControll();]]>
+			</body>
+		</do-on>
+	</object>
+	<object access-modifier="private" name="inputAppID" display-name="inputAppID" uuid="0eeb669a-4f51-4c33-9961-3c62ebc38c9d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	<object access-modifier="private" name="RoleListTable" display-name="RoleListTable" uuid="3b3cdedf-caf3-48fc-be95-01b3a52e979c" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="30" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Width" value="220" ver="4"/>
+		<designed target="Height" value="370" ver="4"/>
+		<designed target="HeaderHeight" value="21" ver="4"/>
+		<designed target="HeaderVisible" value="true" ver="4"/>
+		<designed target="RowHeight" value="30" ver="4"/>
+		<designed target="RowOrder" value="0" ver="4"/>
+		<designed target="SelectionBehavior" value="1" ver="4"/>
+		<designed target="SelectionMode" value="1" ver="4"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="4"/>
+		<designed target="LatestRowTracking" value="false" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<object access-modifier="private" name="roleName" display-name="roleName" uuid="8f4a6d3e-28e8-4050-92a2-e86a2a940e14" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="4">
+			<designed target="Title" value="Роль" ver="4"/>
+			<designed target="Description" value="" ver="4"/>
+			<designed target="Id" value="roleName" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="BackgroundColor" value="4293980400" ver="4"/>
+			<designed target="ForegroundColor" value="4278190080" ver="4"/>
+			<designed target="Font" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="4"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="4"/>
+			<designed target="TitleFont" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="Width" value="100" ver="4"/>
+			<designed target="WidthResizeMode" value="1" ver="4"/>
+			<designed target="Emptiable" value="true" ver="4"/>
+			<designed target="Hidden" value="false" ver="4"/>
+			<designed target="NumberFormat" value="%g" ver="4"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="4"/>
+			<designed target="JsonFilter" value="" ver="4"/>
+			<designed target="SortingEnabled" value="false" ver="4"/>
+			<designed target="SortOrder" value="0" ver="4"/>
+			<designed target="SortPriority" value="0" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="WordWrap" value="false" ver="4"/>
+		</object>
+		<init target="TableModel" ver="4" ref="RoleListData"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="CurrentChanged">
+			<body kind="om">
+				<![CDATA[
+if (row >= 0 && row < GetRowCount()){
+	private.selectedRoleID = Variant.ToString(RoleListData.GetCellData(row,0),"");
+	private.selectedRoleName = Variant.ToString(RoleListData.GetCellData(row,1),"");
+} else {
+	private.selectedRoleID = "";
+	private.selectedRoleName = "";
+}]]>
+			</body>
+		</do-on>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameColor" value="4278190080" ver="4"/>
+		<designed target="GridColor" value="4292401368" ver="4"/>
+	</object>
+	<object access-modifier="private" name="RoleListData" display-name="RoleListData" uuid="a161a28f-8068-44f4-87ee-edcd0534780c" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="4">
+		<designed target="Frozen" value="false" ver="4"/>
+		<designed target="MaxRowCount" value="10000" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Reset();
+AddColumn("roleID","","","","string",false,true);
+AddColumn("roleName","","","","string",false,true);]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="RightsTable" display-name="RightsTable" uuid="f6b2f14b-be82-4f82-b1ca-5db44ac3e0a0" base-type="Table" base-type-id="c65ff4dc-f22b-47d3-9333-72c4e4e5f662" ver="4">
+		<designed target="X" value="223" ver="4"/>
+		<designed target="Y" value="30" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Width" value="620" ver="4"/>
+		<designed target="Height" value="370" ver="4"/>
+		<designed target="HeaderHeight" value="21" ver="4"/>
+		<designed target="HeaderVisible" value="true" ver="4"/>
+		<designed target="RowHeight" value="30" ver="4"/>
+		<designed target="RowOrder" value="0" ver="4"/>
+		<designed target="SelectionBehavior" value="1" ver="4"/>
+		<designed target="SelectionMode" value="1" ver="4"/>
+		<designed target="SelectionOverlayEnabled" value="true" ver="4"/>
+		<designed target="LatestRowTracking" value="false" ver="4"/>
+		<designed target="DelayedSortingEnabled" value="false" ver="4"/>
+		<designed target="HorizontalScrollMode" value="0" ver="4"/>
+		<designed target="VerticalScrollMode" value="0" ver="4"/>
+		<designed target="HorizontalScrollBarPolicy" value="0" ver="4"/>
+		<designed target="VerticalScrollBarPolicy" value="0" ver="4"/>
+		<object access-modifier="private" name="type" display-name="type" uuid="7b9b9f20-8734-4963-a276-fc80429b29cc" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="4">
+			<designed target="Title" value="Тип" ver="4"/>
+			<designed target="Description" value="" ver="4"/>
+			<designed target="Id" value="tokenType" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="BackgroundColor" value="4293980400" ver="4"/>
+			<designed target="ForegroundColor" value="4278190080" ver="4"/>
+			<designed target="Font" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="4"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="4"/>
+			<designed target="TitleFont" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="Width" value="75" ver="4"/>
+			<designed target="WidthResizeMode" value="0" ver="4"/>
+			<designed target="Emptiable" value="true" ver="4"/>
+			<designed target="Hidden" value="false" ver="4"/>
+			<designed target="NumberFormat" value="%g" ver="4"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="4"/>
+			<designed target="JsonFilter" value="" ver="4"/>
+			<designed target="SortingEnabled" value="false" ver="4"/>
+			<designed target="SortOrder" value="0" ver="4"/>
+			<designed target="SortPriority" value="0" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="WordWrap" value="false" ver="4"/>
+		</object>
+		<object access-modifier="private" name="name" display-name="name" uuid="bdb68cf4-c832-4fab-9359-fac8b6f7f4d0" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="4">
+			<designed target="Title" value="Право" ver="4"/>
+			<designed target="Description" value="" ver="4"/>
+			<designed target="Id" value="tokenName" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="BackgroundColor" value="4293980400" ver="4"/>
+			<designed target="ForegroundColor" value="4278190080" ver="4"/>
+			<designed target="Font" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="4"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="4"/>
+			<designed target="TitleFont" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="Width" value="150" ver="4"/>
+			<designed target="WidthResizeMode" value="0" ver="4"/>
+			<designed target="Emptiable" value="true" ver="4"/>
+			<designed target="Hidden" value="false" ver="4"/>
+			<designed target="NumberFormat" value="%g" ver="4"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="4"/>
+			<designed target="JsonFilter" value="" ver="4"/>
+			<designed target="SortingEnabled" value="false" ver="4"/>
+			<designed target="SortOrder" value="0" ver="4"/>
+			<designed target="SortPriority" value="0" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="WordWrap" value="false" ver="4"/>
+		</object>
+		<object access-modifier="private" name="rightValue" display-name="rightValue" uuid="3acc43b8-1494-43e9-8efd-167fcb2aa56f" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="4">
+			<designed target="Title" value="Значение" ver="4"/>
+			<designed target="Description" value="" ver="4"/>
+			<designed target="Id" value="rightValue" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="BackgroundColor" value="4293980400" ver="4"/>
+			<designed target="ForegroundColor" value="4278190080" ver="4"/>
+			<designed target="Font" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="4"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="4"/>
+			<designed target="TitleFont" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="Width" value="100" ver="4"/>
+			<designed target="WidthResizeMode" value="0" ver="4"/>
+			<designed target="Emptiable" value="true" ver="4"/>
+			<designed target="Hidden" value="false" ver="4"/>
+			<designed target="NumberFormat" value="%g" ver="4"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="4"/>
+			<designed target="JsonFilter" value="" ver="4"/>
+			<designed target="SortingEnabled" value="false" ver="4"/>
+			<designed target="SortOrder" value="0" ver="4"/>
+			<designed target="SortPriority" value="0" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="WordWrap" value="true" ver="4"/>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="MouseDoubleClick">
+				<body kind="om">
+					<![CDATA[if (ConfigurationAccess.Value && SystemCommands.GoTo.CanExecute) {
+	selectTokenType: string = Variant.ToString(RightsData.GetCellData(row,1),"");
+	selectTokenName: string = Variant.ToString(RightsData.GetCellData(row,2),"");
+	selectValueAllow: string = Variant.ToString(RightsData.GetCellData(row,5),"");
+	selectValueDeny: string = Variant.ToString(RightsData.GetCellData(row,6),"");
+
+	ChangeRightValue(private.selectedRoleID, selectTokenType, selectTokenName, selectValueAllow, selectValueDeny);
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="description" display-name="description" uuid="67764fe1-b6bc-46ba-ac13-fadcc60760f9" base-type="TableColumn" base-type-id="109c05c5-8dcf-4a8f-aedd-5bb547cca2d4" ver="4">
+			<designed target="Title" value="Описание" ver="4"/>
+			<designed target="Description" value="" ver="4"/>
+			<designed target="Id" value="tokenDescription" ver="4"/>
+			<designed target="ColumnOwnId" value="" ver="4"/>
+			<designed target="BackgroundColor" value="4293980400" ver="4"/>
+			<designed target="ForegroundColor" value="4278190080" ver="4"/>
+			<designed target="Font" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<designed target="TitleBackgroundColor" value="4293980400" ver="4"/>
+			<designed target="TitleForegroundColor" value="4278190080" ver="4"/>
+			<designed target="TitleFont" value="PT Sans,8.25,-1,5,50,0,0,0,0,0" ver="4"/>
+			<designed target="TitleTextAlignment" value="132" ver="4"/>
+			<designed target="Width" value="280" ver="4"/>
+			<designed target="WidthResizeMode" value="0" ver="4"/>
+			<designed target="Emptiable" value="true" ver="4"/>
+			<designed target="Hidden" value="false" ver="4"/>
+			<designed target="NumberFormat" value="%g" ver="4"/>
+			<designed target="TimeFormat" value="dd.MM.yyyy hh:mm:ss.zzz" ver="4"/>
+			<designed target="JsonFilter" value="" ver="4"/>
+			<designed target="SortingEnabled" value="false" ver="4"/>
+			<designed target="SortOrder" value="0" ver="4"/>
+			<designed target="SortPriority" value="0" ver="4"/>
+			<designed target="SortMode" value="0" ver="4"/>
+			<designed target="WordWrap" value="false" ver="4"/>
+		</object>
+		<init target="TableModel" ver="4" ref="RightsData"/>
+		<object access-modifier="private" name="TableDecorator" display-name="TableDecorator" uuid="a2919a2d-07a8-462b-a20f-26e5e4036267" base-type="TableDecorator" base-type-id="2ff6a2d7-9573-4060-bfea-29c63d61b079" ver="4">
+			<designed target="JsonDecorator" value="" ver="4"/>
+		</object>
+		<designed target="BackgroundColor" value="4294967295" ver="4"/>
+		<designed target="FrameColor" value="4278190080" ver="4"/>
+		<designed target="GridColor" value="4292401368" ver="4"/>
+	</object>
+	<object access-modifier="private" name="RightsData" display-name="RightsData" uuid="2718ab42-7e55-4e03-92a4-3f4bd1d98f87" base-type="TableModel" base-type-id="32b2875b-ee3e-454d-bcbb-40806a49273c" ver="4">
+		<designed target="Frozen" value="false" ver="4"/>
+		<designed target="MaxRowCount" value="10000" ver="4"/>
+		<do access-modifier="private" name="Init" display-name="Init" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[Reset();
+AddColumn("appName","","","","string",false,true);
+AddColumn("tokenType","","","","string",false,true);
+AddColumn("tokenName","","","","string",false,true);
+AddColumn("tokenDescription","","","","string",false,true);
+AddColumn("ownerId","","","","string",false,true);
+AddColumn("tokenValueAllow","","","","string",false,true);
+AddColumn("tokenValueDeny","","","","string",false,true);
+AddColumn("rightValue","","","","string",false,true);
+Clear();]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="appInfo" display-name="appInfo" uuid="323f4c00-644b-4d75-8a97-33e5dec35687" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="847" ver="4"/>
+		<designed target="Height" value="30" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="1" ver="4"/>
+		<designed target="BrushColor" value="0x6e000000" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="appNameCaption" display-name="appNameCaption" uuid="d051ffff-afae-4418-b003-def61f5d3af1" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+			<designed target="X" value="0" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="150" ver="4"/>
+			<designed target="Height" value="30" ver="4"/>
+			<designed target="Text" value="Имя приложения:" ver="4"/>
+			<designed target="Font" value="PT Sans,9,-1,5,50,0,0,0,0,0,Обычный" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="TextAlignment" value="132" ver="4"/>
+			<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="620a3391-9152-4f30-aebc-187286250b1f" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+				<designed target="Weight" value="150" ver="4"/>
+			</object>
+		</object>
+		<object access-modifier="private" name="appNameText" display-name="appNameText" uuid="a2caffbb-fa23-4632-9524-d06048784fd5" base-type="Text" base-type-id="21d59f8d-2ca4-4592-92ca-b4dc48992a0f" ver="4">
+			<designed target="X" value="150" ver="4"/>
+			<designed target="Y" value="0" ver="4"/>
+			<designed target="ZValue" value="0" ver="4"/>
+			<designed target="Rotation" value="0" ver="4"/>
+			<designed target="Scale" value="1" ver="4"/>
+			<designed target="Visible" value="true" ver="4"/>
+			<designed target="Opacity" value="1" ver="4"/>
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="Tooltip" value="" ver="4"/>
+			<designed target="Width" value="697" ver="4"/>
+			<designed target="Height" value="30" ver="4"/>
+			<designed target="Text" value="appname" ver="4"/>
+			<designed target="Font" value="PT Sans,10,-1,5,75,0,0,0,0,0,Полужирный" ver="4"/>
+			<designed target="FontColor" value="4278190080" ver="4"/>
+			<designed target="TextAlignment" value="129" ver="4"/>
+			<object access-modifier="private" name="LayoutWeight_1" display-name="LayoutWeight_1" uuid="4b671508-e30e-44a1-8339-14ff611fbe7b" base-type="LayoutWeight" base-type-id="8f3d975c-9645-4288-9406-a8dda0527008" ver="4">
+				<designed target="Weight" value="697" ver="4"/>
+			</object>
+			<init target="Text" ver="4" value=""/>
+		</object>
+		<object access-modifier="private" name="LinearLayout_1" display-name="LinearLayout_1" uuid="137814f0-c24d-4fa0-83d9-b2777ae6ae86" base-type="LinearLayout" base-type-id="800edd71-7303-408c-890b-8346e98f5718" ver="4">
+			<designed target="Orientation" value="1" ver="4"/>
+			<designed target="Gap" value="0" ver="4"/>
+		</object>
+		<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[appNameText.LayoutWeight_1 = Width - appNameCaption.LayoutWeight_1;]]>
+			</body>
+		</do>
+	</object>
+	<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Opened">
+		<body kind="om">
+			<![CDATA[SystemCommands.GoTo.doBlockingControll();
+Application.Load(inputAppID);
+RoleListData.Init();
+RightsData.Init();
+RightsTable.TableDecorator.JsonDecorator = GetJsonDecorator();
+private.RoleName.clearData();
+
+UpdateLayout();]]>
+		</body>
+	</do-on>
+	<do access-modifier="private" name="LoadRolesList" display-name="LoadRolesList" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[if (RoleListData.GetColumnCount == 0) {RoleListData.init();}
+RoleListData.Clear();
+private.RoleName.roleList = InputJSON;//Application.GetRolesList();	// Сохраняем актульный список ролей для проверки имен на уникальность
+try {
+	var rolesList = JSON.parse(InputJSON).data;
+} catch {
+	var rolesList = [];
+}
+
+if (rolesList.length != 0) {
+	rolesList = rolesList.sort((a, b) => a.roleName.toString().toLowerCase() > b.roleName.toString().toLowerCase() ? 1 : -1);
+	RoleListData.InsertRows(0, rolesList.length);
+	for (var i = 0; i <rolesList.length; i++){
+		RoleListData.SetCellData(i, 0, rolesList[i].roleID);
+		RoleListData.SetCellData(i, 1, rolesList[i].roleName);
+	}
+}]]>
+		</body>
+		<param access-modifier="private" name="InputJSON" display-name="" uuid="506bd925-b75c-48b0-876c-8d6ac441c33a" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<object access-modifier="private" name="DebugTool_1" display-name="DebugTool_1" uuid="954e1ab1-eebd-4f20-a0ae-e0e476a2ddb1" base-type="DebugTool" base-type-id="43946044-139a-43f4-a7b8-19a6074ffc56" ver="4"/>
+	<do access-modifier="private" name="LoadRights" display-name="LoadRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<param access-modifier="private" name="inputID" display-name="" uuid="60243bde-ad03-4867-bc84-00d0bcfc4ef1" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="javascript">
+			<![CDATA[function determineValue(type, allowValue, denyValue){
+	var outValue ="";
+	if (type == "bool") {
+		if (allowValue == "TRUE" && denyValue == "FALSE") {
+			outValue = "TRUE"; //Отображением этих значений занимается декоратор
+		} else if (allowValue == "FALSE" && denyValue == "TRUE"){
+			outValue = "FALSE"; //Отображением этих значений занимается декоратор
+		} else if (allowValue == "FALSE" && denyValue == "FALSE"){
+			outValue = ""; 
+		}
+	} else if (type == "string"){
+		if (denyValue == "" && allowValue != ""){					//если запрещенные значения отсутствуют
+			outValue = allowValue;
+		} else if (allowValue != "" && denyValue != ""){		//если есть и разрешенные и запрещенные значения
+			outValue = allowValue +"\nкроме: "+"\n"+denyValue;
+		} else if (allowValue == "" && denyValue != "")	{		//если есть только запрещенные значения
+			outValue = "кроме: "+"\n"+denyValue;
+		}
+	}
+	return outValue;
+}
+if (RightsData.GetRowCount() != 0) {RightsData.Clear();}
+if (RightsData.GetColumnCount == 0) {RightsData.init();}
+if (Application.GetRoleRights(inputID) != ""){
+try {
+	var rightsList = JSON.parse(Application.GetRoleRights(inputID)).data;
+	} catch (error) {
+		var rightsList = [];
+	}
+	if (rightsList.length != 0){
+		rightsList = rightsList.sort((a, b) => a.tokenName.toString().toLowerCase() > b.tokenName.toString().toLowerCase() ? 1 : -1);
+		RightsData.InsertRows(0, rightsList.length);
+		for (let i = 0; i < rightsList.length; i++)
+		{
+			RightsData.SetCellData(i, 0, rightsList[i].appName);
+			RightsData.SetCellData(i, 1, rightsList[i].tokenType);
+			RightsData.SetCellData(i, 2, rightsList[i].tokenName);
+			RightsData.SetCellData(i, 3, rightsList[i].tokenDescription);
+			RightsData.SetCellData(i, 4, rightsList[i].ownerId);			//id роли к которой относится право
+			RightsData.SetCellData(i, 5, rightsList[i].tokenValueAllow);
+			RightsData.SetCellData(i, 6, rightsList[i].tokenValueDeny);
+			//подготовка значения 
+			var rightCurrentValue = determineValue(rightsList[i].tokenType, rightsList[i].tokenValueAllow, rightsList[i].tokenValueDeny);
+			RightsData.SetCellData(i, 7, rightCurrentValue);
+		}
+	}
+}]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="private" display-name="private" uuid="c2fa7987-6771-44b1-b717-5a655538da69" base-type="Rectangle" base-type-id="15726dc3-881e-4d8d-b0fa-a8f8237f08ca" ver="4">
+		<designed target="X" value="0" ver="4"/>
+		<designed target="Y" value="0" ver="4"/>
+		<designed target="ZValue" value="0" ver="4"/>
+		<designed target="Rotation" value="0" ver="4"/>
+		<designed target="Scale" value="1" ver="4"/>
+		<designed target="Visible" value="true" ver="4"/>
+		<designed target="Opacity" value="1" ver="4"/>
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="Tooltip" value="" ver="4"/>
+		<designed target="Width" value="0" ver="4"/>
+		<designed target="Height" value="0" ver="4"/>
+		<designed target="RoundingRadius" value="0" ver="4"/>
+		<designed target="PenColor" value="4278190080" ver="4"/>
+		<designed target="PenStyle" value="0" ver="4"/>
+		<designed target="PenWidth" value="0" ver="4"/>
+		<designed target="BrushColor" value="4278190080" ver="4"/>
+		<designed target="BrushStyle" value="0" ver="4"/>
+		<object access-modifier="private" name="saveChanges" display-name="saveChanges" uuid="f11050f4-90da-41c9-b5f8-5209642495b1" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	SystemCommands.DoSave = false;
+	Application.Save();
+	SystemCommands.GoTo.doBlockingControll();
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="needSave" display-name="needSave" uuid="18080dbe-7c1f-47d6-b378-df79bed6e271" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="om">
+						<![CDATA[SystemCommands.DoSave.CanExecute = value && Application.IsChanged;]]>
+					</body>
+				</do-on>
+			</object>
+		</object>
+		<object access-modifier="private" name="UpdateView" display-name="UpdateView" uuid="3ed59050-33e8-4c19-a46d-8185a48bc909" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	SystemCommands.DoUpdateLayout = false;
+	here.WindowWidth = TypeConvert.ToInt4(SystemCommands.DoUpdateLayout.Width);
+	here.WindowHeight = TypeConvert.ToInt4(SystemCommands.DoUpdateLayout.Height);
+	UpdateLayout();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="createRole" display-name="createRole" uuid="9ca541b2-50e5-47eb-bdcb-712d7d336d79" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<object access-modifier="private" name="showCreateRolePopup" display-name="showCreateRolePopup" uuid="f819dd7b-322b-43fd-8444-21e3a58853eb" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<object access-modifier="private" name="onComplete" display-name="onComplete" uuid="14a639ad-8f22-40bb-a914-88001b48e204" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[Application.CreateRole(RoleName.Value, Application.ApplicationID);
+LoadRolesList(Application.GetRolesList());
+currentId: string = GetRoleIdByName(RoleName.Value);
+AddAllRights(currentId);
+private.saveChanges.needSave = true;
+RoleName.clearData();
+//установить выделение на этом элементе]]>
+						</body>
+					</do-on>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="d34823a5-f32f-4f0e-98cd-e833d06d7099" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+						<init target="Result" ver="4" ref="RoleName"/>
+						<init target="OkAction" ver="4" ref="onComplete"/>
+						<designed target="WindowCaption" value="Введите имя роли" ver="4"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value){
+	Commands.DoCreate = false;
+	RoleListTable.SetSelectedRows("[]");
+	RoleName.clearData();
+	showCreateRolePopup.Invoke();
+}]]>
+				</body>
+			</do-on>
+			<do access-modifier="private" name="AddAllRights" display-name="AddAllRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="javascript">
+					<![CDATA[
+if (roleID == "") {return;}
+try{
+	var appTokenList = JSON.parse(Application.GetTokensList()).data;
+} catch {
+	var appTokenList = [];
+}
+
+if (appTokenList.length != 0) {
+	for (var i = 0; i<appTokenList.length; i++){ //формиируем из токена право и добавляем к роли
+		var AppName = Application.ApplicationName;
+		var TokenType = (appTokenList[i].tokenType == "bool")?(1):(0);
+		var TokenName = appTokenList[i].tokenName;
+		var TokenValueAllow = (TokenType == 0)?(""):("TRUE"); 
+		var TokenValueDeny = (TokenType == 0)?(""):("FALSE");
+		Application.RoleAddRight(AppName,roleID, TokenName,TokenType,TokenValueAllow,TokenValueDeny);
+	}
+}
+]]>
+				</body>
+				<param access-modifier="private" name="roleID" display-name="" uuid="877021b2-68bb-4f79-bd49-042c859e3dd3" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+			</do>
+		</object>
+		<object access-modifier="private" name="deleteRole" display-name="deleteRole" uuid="7b455fd3-002a-4632-9516-9bd5504b4872" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoRemoveSelected = false;
+	if (private.selectedRoleID != ""){
+		ShowRemoveDialog.Invoke();
+	}
+}]]>
+				</body>
+			</do-on>
+			<object access-modifier="private" name="ShowRemoveDialog" display-name="ShowRemoveDialog" uuid="0a4ec015-40e5-4c55-8542-58dbf74f2098" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="58436062-27ac-4ccb-b847-a6f7d11b0c50" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+						<init target="Icon" ver="4" value="1"/>
+						<init target="Buttons" ver="4" value="1"/>
+						<designed target="WindowCaption" value="Удалить роль" ver="4"/>
+						<init target="OkAction" ver="4" ref="onComplete"/>
+						<init target="Message" ver="5">
+							<expr>
+								<![CDATA["Вы действительно хотите удалить выбранную роль ?"]]>
+							</expr>
+						</init>
+					</object>
+				</do-on>
+				<object access-modifier="private" name="onComplete" display-name="onComplete" uuid="01d194c5-6cf2-4c5d-ad2b-9bc79d427f65" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[
+DeleteAllRighs(private.selectedRoleID);
+Application.DeleteRole(private.selectedRoleID);
+LoadRolesList(Application.GetRolesList());
+
+private.saveChanges.needSave = true;
+RoleListTable.SetSelectedRows("[]");]]>
+						</body>
+					</do-on>
+				</object>
+				<do access-modifier="private" name="DeleteAllRighs" display-name="DeleteAllRighs" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+					<param access-modifier="private" name="roleId" display-name="" uuid="a2ec8d41-3531-4c23-8018-1375019e9c25" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+					<body kind="javascript">
+						<![CDATA[var roleRightsList = JSON.parse(Application.GetRoleRights(roleId)).data;
+if (roleRightsList != "") {
+	for (var i =0; i < roleRightsList.length; i++){
+		Application.RoleDeleteRight(Application.ApplicationName, roleId ,roleRightsList[i].tokenName);
+	}
+}]]>
+					</body>
+				</do>
+			</object>
+		</object>
+		<object access-modifier="private" name="ExchangeDialogData" display-name="ExchangeDialogData" uuid="ef0b4353-61c4-499d-a260-441cde46dcd5" base-type="ChangedRightsResult" base-type-id="3efb0823-a348-4b39-a762-64290867ccb6" ver="4"/>
+		<object access-modifier="private" name="changeName" display-name="changeName" uuid="e88be227-279c-43b9-82cf-7ecc62666f8c" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+			<object access-modifier="private" name="showChangeNamePopup" display-name="showChangeNamePopup" uuid="a75246da-fee1-4438-93b0-a702ade97574" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<object access-modifier="private" name="onComplete" display-name="onComplete" uuid="8959148b-8e2d-4bfb-813d-12ba87810a40" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+					<designed target="Enabled" value="true" ver="4"/>
+					<designed target="InvokeTrigger" value="false" ver="4"/>
+					<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+						<body kind="om">
+							<![CDATA[if (RoleName.Error == "")
+{
+	saveChanges.needSave = true;
+	Application.ChangeRole(selectedRoleID, RoleName.Value);
+	LoadRolesList(Application.GetRolesList());
+	RoleName.clearData();
+}]]>
+						</body>
+					</do-on>
+				</object>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+					<object access-modifier="private" uuid="57a21218-d370-4200-b978-983365f24398" base-type="InputDialog" base-type-id="eb80f6e6-d9d7-4ca5-a3e9-34863ab130d2" ver="4">
+						<designed target="WindowCaption" value="Введите имя роли" ver="4"/>
+						<init target="Result" ver="4" ref="RoleName"/>
+						<init target="OkAction" ver="4" ref="onComplete"/>
+					</object>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value) {
+	Commands.DoRename = false;
+	if (selectedRoleID != "") {
+		RoleName.InputText = selectedRoleName;
+		showChangeNamePopup.Invoke();
+	}
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<object access-modifier="private" name="selectedRoleID" display-name="selectedRoleID" uuid="fc94cd1d-7572-411b-b17e-c184ecc9ae03" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+				<body kind="om">
+					<![CDATA[if (value != ""){
+	Commands.DoRename.CanExecute = true;
+	Commands.DoRemoveSelected.CanExecute = true;
+	LoadRights(value);
+} else {
+	Commands.DoRename.CanExecute = false;
+	Commands.DoRemoveSelected.CanExecute = false;
+	RightsData.Clear();
+}]]>
+				</body>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="createRole" ver="5">
+			<body>
+				<![CDATA[Commands.DoCreate]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="deleteRole" ver="5">
+			<body>
+				<![CDATA[Commands.DoRemoveSelected]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="changeName" ver="5">
+			<body>
+				<![CDATA[Commands.DoRename]]>
+			</body>
+		</do-trace>
+		<do-trace access-modifier="private" target="saveChanges" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoSave]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="selectedRoleName" display-name="selectedRoleName" uuid="a7cf58e1-8313-49c2-a77f-cb90c3456718" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+		<object access-modifier="private" name="ChangeStringRight" display-name="ChangeStringRight" uuid="bbfea5e2-0dbe-471e-9210-2c67bba59caf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+			<designed target="Enabled" value="true" ver="4"/>
+			<designed target="InvokeTrigger" value="false" ver="4"/>
+			<object access-modifier="private" name="onComplete" display-name="onComplete" uuid="5e0aef4b-fd40-496a-b3b6-e5edd671a2bf" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+				<designed target="Enabled" value="true" ver="4"/>
+				<designed target="InvokeTrigger" value="false" ver="4"/>
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked">
+					<body kind="om">
+						<![CDATA[if (private.ExchangeDialogData.GetDataValidation()){
+	Application.RoleChangeRight(ExchangeDialogData.AppID, selectedRoleID, ExchangeDialogData.TokenName, ExchangeDialogData.AllowValue, ExchangeDialogData.DenyValue);
+	LoadRights(selectedRoleID);
+	private.saveChanges.needSave = true;
+	ExchangeDialogData.ResetParamsValues();
+}]]>
+					</body>
+				</do-on>
+			</object>
+			<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+				<object access-modifier="private" uuid="f6b91f21-c67f-46d9-8fd3-0bf2e8c058c9" base-type="ChangeValuesStringRight" base-type-id="d37d50b1-4ff5-48a2-b5aa-83abfe7acf77" ver="4">
+					<init target="Result" ver="4" ref="ExchangeDialogData"/>
+					<init target="ApplyChanges" ver="4" ref="onComplete"/>
+				</object>
+			</do-on>
+		</object>
+		<do-trace access-modifier="private" target="UpdateView" ver="5">
+			<body>
+				<![CDATA[SystemCommands.DoUpdateLayout]]>
+			</body>
+		</do-trace>
+		<object access-modifier="private" name="RoleName" display-name="RoleName" uuid="51bc0a2d-10bf-4789-810b-e1f33c3282e2" base-type="InputDialogResult" base-type-id="cdcda119-652b-45ed-bfc4-8cc21b98730d" ver="4">
+			<object access-modifier="private" name="roleList" display-name="roleList" uuid="370cf590-34d0-495f-96e2-c2cf641ca0eb" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4"/>
+			<object access-modifier="private" name="inputStringIsChanged" display-name="inputStringIsChanged" uuid="541a3f93-4f90-4914-be90-7d671653e840" base-type="notifying_string" base-type-id="14976fbf-36ab-415f-abc3-9f8fdc217351" ver="4">
+				<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="ValueChanged">
+					<body kind="javascript">
+						<![CDATA[try {
+	var roleList = JSON.parse(RoleName.roleList).data;
+} catch {
+	var roleList = "";
+}
+
+RoleName.Error.Value = "";
+if (InputText == "" || InputText == " "){
+	RoleName.Error.Value = "Имя не может быть пустым";
+} else {
+	for (var i = 0; i < roleList.length; i++){	
+		if ( roleList[i].roleName == InputText && InputText.Value != selectedRoleName.Value){
+			RoleName.Error.Value = "Повторяющиеся имена недопустимы";
+			break;
+		}
+	}
+}
+]]>
+					</body>
+				</do-on>
+			</object>
+			<do-trace access-modifier="private" target="inputStringIsChanged" ver="5">
+				<body>
+					<![CDATA[InputText]]>
+				</body>
+			</do-trace>
+			<do access-modifier="private" name="clearData" display-name="clearData" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+				<body kind="om">
+					<![CDATA[RoleName.InputText = "";
+RoleName.Error = "";
+RoleName.Value ="";]]>
+				</body>
+			</do>
+		</object>
+	</object>
+	<do access-modifier="private" name="GetRoleIdByName" display-name="GetRoleIdByName" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<param access-modifier="private" name="roleName" display-name="" uuid="b9fa206d-aff0-4607-a7cd-59574afd4850" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<body kind="javascript">
+			<![CDATA[if (roleName != "" ){
+	for (var i = 0; i < RoleListData.GetRowCount(); i++){
+		if (RoleListData.GetCellData(i,1) == roleName){
+			return RoleListData.GetCellData(i,0);
+		}
+	}
+}
+return "";]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="Commands" display-name="Commands" uuid="f6306372-45dc-4e9b-96c1-9ca784e69375" base-type="RoleCommands" base-type-id="1eb2ba17-b609-4af3-9a7b-da2325096c1a" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="GetJsonDecorator" display-name="GetJsonDecorator" ver="5" type="string" type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d">
+		<body kind="javascript">
+			<![CDATA[var Object = {};
+Object.Formatting = [];
+Object.Decorating = [];
+Object.StyleDictionary = [];
+
+var tokenType_format = {};
+tokenType_format[`formatting_rule_name`] = "tokenType_format";
+tokenType_format[`formatting_column`] = "tokenType";
+tokenType_format[`conditions`] = [];
+tokenType_format[`conditions`].push({'condition':{'data:tokenType': 'bool'},'text':'логическое'});
+tokenType_format[`conditions`].push({'condition':{'data:tokenType': 'string'},'text':'строковое'});
+Object.Formatting.push(tokenType_format);
+
+var rightValue_format = {};
+rightValue_format[`formatting_rule_name`] = "rightValue_format";
+rightValue_format[`formatting_column`] = "rightValue";
+rightValue_format[`conditions`] = [];
+rightValue_format[`conditions`].push({'condition':{'and':[{'data:tokenType': 'bool'},{'data:rightValue': 'TRUE'}]},'text':'Да'});
+rightValue_format[`conditions`].push({'condition':{'and':[{'data:tokenType': 'bool'},{'data:rightValue': 'FALSE'}]},'text':'Нет'});
+Object.Formatting.push(rightValue_format);
+
+var stringDecorating = {};
+stringDecorating[`decoration_rule_name`] = "string_decorating";
+stringDecorating[`decoration_rule`] = {'data:tokenType': 'string'};
+stringDecorating[`columnstyle`] = {'tokenType':"stringStyle"};
+Object.Decorating.push(stringDecorating);
+
+var boolDecorating = {};
+boolDecorating[`decoration_rule_name`] = "bool_decorating";
+boolDecorating[`decoration_rule`] = {'data:tokenType': 'bool'};
+boolDecorating[`columnstyle`] = {'tokenType':"boolStyle"};
+Object.Decorating.push(boolDecorating);
+
+var valueTrueDecorating = {};
+valueTrueDecorating[`decoration_rule_name`] = "valueTrueDecorating";
+valueTrueDecorating[`decoration_rule`] = {'and':[{'data:tokenType': 'bool'},{'data:rightValue': 'TRUE'}]};
+valueTrueDecorating[`columnstyle`] = {'rightValue':"trueStyle"};
+Object.Decorating.push(valueTrueDecorating);
+
+var valueFalseDecorating = {};
+valueFalseDecorating[`decoration_rule_name`] = "valueFalseDecorating";
+valueFalseDecorating[`decoration_rule`] = {'and':[{'data:tokenType': 'bool'},{'data:rightValue': 'FALSE'}]};
+valueFalseDecorating[`columnstyle`] = {'rightValue':"falseStyle"};
+Object.Decorating.push(valueFalseDecorating);
+
+var boolStyle = {};
+boolStyle[`style_name`] = "boolStyle";
+boolStyle[`style`] = {'background_color':'#ffddddff'};
+Object.StyleDictionary.push(boolStyle);
+
+var stringStyle = {};
+stringStyle[`style_name`] = "stringStyle";
+stringStyle[`style`] = {'background_color':'#fff3d3b4'};
+Object.StyleDictionary.push(stringStyle);
+
+var trueStyle = {};
+trueStyle[`style_name`] = "trueStyle";
+trueStyle[`style`] = {'background_color':'#fface3ac'};
+Object.StyleDictionary.push(trueStyle);
+
+var falseStyle = {};
+falseStyle[`style_name`] = "falseStyle";
+falseStyle[`style`] = {'background_color':'#ffffa39b'};
+Object.StyleDictionary.push(falseStyle);
+
+return JSON.stringify(Object, null, 2);]]>
+		</body>
+	</do>
+	<do access-modifier="private" name="ChangeRightValue" display-name="ChangeRightValue" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[if (tokenType == "bool"){
+	initAllowValue: string = tokenAllowValue;	//перенести в глобальную область
+	initDenyValue: string = tokenDenyValue;
+	
+	if (tokenAllowValue == "TRUE" && tokenDenyValue == "FALSE"){
+		//переход из Разрешено в Запрещенно
+		tokenAllowValue = "FALSE";
+		tokenDenyValue = "TRUE";
+	} else if (tokenAllowValue == "FALSE" && tokenDenyValue == "TRUE" || tokenAllowValue == "FALSE" && tokenDenyValue == "FALSE") {
+		//переход из Запрещенно (или Не определено) в Разрешено
+		tokenAllowValue = "TRUE";
+		tokenDenyValue = "FALSE";
+	} 
+	Application.RoleChangeRight(Application.ApplicationName, roleID, tokenName, tokenAllowValue, tokenDenyValue);
+	private.saveChanges.needSave = true;
+	
+} else if (tokenType == "string"){
+	private.ExchangeDialogData.ResetParamsValues();
+	private.ExchangeDialogData.SetParamsValue(Application.ApplicationID, tokenName, tokenAllowValue, tokenDenyValue);
+	private.ChangeStringRight.Invoke();
+}
+	
+LoadRights(roleID);]]>
+		</body>
+		<param access-modifier="private" name="roleID" display-name="" uuid="a119811a-dbac-46cf-b1a1-57e6bc4fc60d" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenType" display-name="" uuid="e3d59f3e-dc48-470e-8b8c-2d8de840e954" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenName" display-name="" uuid="0c257295-9314-4a42-bbf5-8c69c4b9a189" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenAllowValue" display-name="" uuid="d30afe80-4fb4-4b98-b0f7-780c6496d402" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<param access-modifier="private" name="tokenDenyValue" display-name="" uuid="13fed89c-9ea8-4589-a016-393cfe9095e2" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</do>
+	<do-on access-modifier="private" name="Handler_2" display-name="Handler_2" ver="5" event="Closed">
+		<body kind="om">
+			<![CDATA[SystemCommands.DoSave.CanExecute = false;]]>
+		</body>
+	</do-on>
+	<object access-modifier="private" name="ShowErrorWindow" display-name="ShowErrorWindow" uuid="f753a880-32eb-4bbe-9a2a-edb3624c8173" base-type="Action" base-type-id="a9ee9770-1c4a-44c9-b815-157d9fc2ab95" ver="4">
+		<designed target="Enabled" value="true" ver="4"/>
+		<designed target="InvokeTrigger" value="false" ver="4"/>
+		<do-on access-modifier="private" name="Handler_1" display-name="Handler_1" ver="5" event="Invoked" form-action="open-dialog" form-by-id="false">
+			<object access-modifier="private" uuid="223bca99-7570-4708-99ed-c2a06134fdd2" base-type="MessageDialog" base-type-id="a468f863-f603-4768-ad4b-e16bc34ea78e" ver="4">
+				<init target="Message" ver="4" ref="message"/>
+				<init target="Buttons" ver="4" value="0"/>
+				<init target="Icon" ver="4" value="3"/>
+				<designed target="WindowCaption" value="Ошибка" ver="4"/>
+			</object>
+		</do-on>
+		<object access-modifier="private" name="message" display-name="message" uuid="07c4ea13-1dd0-486f-b208-307f821cbe98" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+	</object>
+	<do access-modifier="private" name="UpdateLayout" display-name="UpdateLayout" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="om">
+			<![CDATA[Width = WindowWidth;
+Height = WindowHeight;
+
+RoleListTable.Height = Height - appInfo.Height;
+RightsTable.Height = Height - appInfo.Height;
+RightsTable.Width = Width - RoleListTable.Width;
+appInfo.Width = Width;
+appInfo.UpdateLayout();]]>
+		</body>
+	</do>
+	<object access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="9811db03-cc48-4bab-8cc8-79fdbad1836c" base-type="SystemCommands" base-type-id="0b754dab-38c6-43db-a050-37201965421c" base-const="true" base-ref="true" ver="4"/>
+	<do access-modifier="private" name="UpdateRolesTokenRights" display-name="UpdateRolesTokenRights" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+		<body kind="javascript">
+			<![CDATA[
+try {
+	var appTokenList = JSON.parse(Application.GetTokensList()).data;
+	var rolesList = JSON.parse(Application.GetRolesList()).data;
+} catch {
+	return;
+}
+
+if (rolesList.length != 0){
+	for (var i = 0; i < rolesList.length; i++ ){
+		try {var roleRightsList = JSON.parse(Application.GetRoleRights(rolesList[i].roleID)).data;} catch (err) {return;}
+		var newRigthsList = [];
+		
+		//добавляем токены
+		if (roleRightsList.length != 0){
+			for (let j = 0; j < appTokenList.length; j++) {
+				if (roleRightsList.findIndex(right => right.tokenName === appTokenList[j].tokenName) == -1) {
+					newRigthsList.push(appTokenList[j]);
+				}
+			}
+		} else {
+			newRigthsList = appTokenList;
+		}
+		//Формируем права 
+		for (var j = 0; j < newRigthsList.length; j++){
+			let TokenType = (newRigthsList[j].tokenType == "bool")?(1):(0);
+			let TokenValueAllow = (TokenType == 0)?(""):("TRUE"); 
+			let TokenValueDeny = (TokenType == 0)?(""):("FALSE");
+			Application.RoleAddRight(Application.ApplicationName,rolesList[i].roleID, newRigthsList[j].tokenName, TokenType, TokenValueAllow, TokenValueDeny);
+		}
+		
+		//Удаляем лишние
+		for (let j = 0; j < roleRightsList.length; j++) {
+			if (appTokenList.findIndex(right => right.tokenName === roleRightsList[j].tokenName) == -1) {
+				Application.RoleDeleteRight(Application.ApplicationName, rolesList[i].roleID, roleRightsList[j].tokenName);
+			}
+		}
+	}
+	SystemCommands.GoTo.doBlockingControll();
+	Application.Save();
+}]]>
+		</body>
+	</do>
+	<designed target="WindowIconPath" value="" ver="5"/>
+</type>
+

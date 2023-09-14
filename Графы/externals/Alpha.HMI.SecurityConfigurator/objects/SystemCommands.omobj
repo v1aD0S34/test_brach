@@ -1,0 +1,59 @@
+<type access-modifier="private" name="SystemCommands" display-name="SystemCommands" uuid="0b754dab-38c6-43db-a050-37201965421c" base-type="Dummy" base-type-id="e4b644cf-f3a8-4d11-82a0-6acc23748e14" ver="4">
+	<designed target="X" value="0" ver="4"/>
+	<designed target="Y" value="0" ver="4"/>
+	<designed target="ZValue" value="0" ver="4"/>
+	<designed target="Rotation" value="0" ver="4"/>
+	<designed target="Scale" value="1" ver="4"/>
+	<designed target="Visible" value="true" ver="4"/>
+	<designed target="Opacity" value="1" ver="4"/>
+	<designed target="Enabled" value="true" ver="4"/>
+	<designed target="Tooltip" value="" ver="4"/>
+	<object access-modifier="private" name="GoTo" display-name="GoTo" uuid="81bf4ba4-daef-4d3d-9d83-acf9104abc8a" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="sendData" display-name="sendData" uuid="939d2e2a-8429-42e0-abdd-2e275bed81ba" base-type="string" base-type-id="76403785-f3d5-41a7-9eb6-d19d2aa2d95d" ver="4"/>
+		<object access-modifier="private" name="frameCode" display-name="frameCode" uuid="7d5ff12c-f5a8-4d72-a09a-384ec4994bea" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="da0c737e-be08-4e9b-b280-448964cf5ea8" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+		<object access-modifier="private" name="AppList" display-name="AppList" uuid="61dd3cf3-ae9b-47b1-9b27-d430eec93940" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="AppEdit" display-name="AppEdit" uuid="88db4dc0-2b1a-4661-a474-0d3a6c317ae0" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="GroupList" display-name="GroupList" uuid="f0fccc43-6705-4d3e-b28d-90e04769e39e" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="GroupEdit" display-name="GroupEdit" uuid="19d58f61-4def-498b-8e28-c230a49bfc8f" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="UserList" display-name="UserList" uuid="d158e52d-9626-450c-a4ed-6bb71a9dd9fb" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="UserEdit" display-name="UserEdit" uuid="3a0e4b51-3969-403e-895b-7179bd3a6c10" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="UserCreate" display-name="UserCreate" uuid="cfd363f9-8ffd-457a-ba70-9c01c0d59809" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="RoleEditor" display-name="RoleEditor" uuid="dcd6a60f-6315-4ce7-8bf3-c41b3680cf68" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<object access-modifier="private" name="CloseMainForm" display-name="CloseMainForm" uuid="f60a09ac-fc40-4efb-a5cc-6983514d2ff4" base-type="uint1" base-type-id="f73099bc-ee13-42cf-82bb-87368b826707" ver="4"/>
+		<init target="AppList" ver="4" value="1"/>
+		<init target="AppEdit" ver="4" value="2"/>
+		<init target="GroupList" ver="4" value="3"/>
+		<init target="GroupEdit" ver="4" value="4"/>
+		<init target="UserList" ver="4" value="5"/>
+		<init target="UserEdit" ver="4" value="6"/>
+		<init target="UserCreate" ver="4" value="7"/>
+		<init target="RoleEditor" ver="4" value="8"/>
+		<init target="CloseMainForm" ver="4" value="100"/>
+		<init target="CanExecute" ver="4" value="true"/>
+		<do access-modifier="private" name="doBlockingControll" display-name="doBlockingControll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[CanExecute = false;]]>
+			</body>
+		</do>
+		<do access-modifier="private" name="doUnblockingControll" display-name="doUnblockingControll" ver="5" type="void" type-id="cfbbcafa-e13e-4354-a33a-6e57b818e4da">
+			<body kind="om">
+				<![CDATA[CanExecute = true;]]>
+			</body>
+		</do>
+	</object>
+	<object access-modifier="private" name="DoSave" display-name="DoSave" uuid="f373f736-88e5-44a2-825d-7e4ece96d613" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="38741fdf-52d0-4c80-98ca-a5a97ac20e74" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoUpdateLayout" display-name="DoUpdateLayout" uuid="1b23d8d4-1aab-441f-86e7-b20c78f62bf7" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="Width" display-name="Width" uuid="e25f0e14-8a41-4880-a19a-dc85de31339d" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+		<object access-modifier="private" name="Height" display-name="Height" uuid="9ff83d1a-e230-4330-9021-e9701163f46c" base-type="notifying_float8" base-type-id="3f905fb7-7738-4619-b402-5a91f136d4bd" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoRestoreBackup" display-name="DoRestoreBackup" uuid="891b3d7a-a19d-4e90-9afe-fb8dfe691c92" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="62377dfc-0447-4a0a-b0d9-00000affaece" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+	<object access-modifier="private" name="DoSaveBackup" display-name="DoSaveBackup" uuid="17ca0d5d-78bc-4e70-8fde-685928b1d29b" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4">
+		<object access-modifier="private" name="CanExecute" display-name="CanExecute" uuid="21ab2a77-b545-4c8c-ba7c-f42c0a6d2f3e" base-type="notifying_bool" base-type-id="f8797810-1baa-4a1f-af36-cf839bf252e8" ver="4"/>
+	</object>
+</type>
+
